@@ -1,8 +1,8 @@
 //
 //  StandFitApp.swift
-//  StandFit
+//  StandFit iOS
 //
-//  Created by Marty Kieliszek on 2/1/2026.
+//  iOS app entry point
 //
 
 import SwiftUI

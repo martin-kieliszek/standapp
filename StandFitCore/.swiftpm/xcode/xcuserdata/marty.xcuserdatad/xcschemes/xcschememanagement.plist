@@ -4,29 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>StandFit Watch App.xcscheme_^#shared#^_</key>
+		<key>StandFitCore.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<true/>
 			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>StandFit.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>406F62562F079A0A00CAE1C7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>406F62B22F079E8A00CAE1C7</key>
+		<key>StandFitCore</key>
 		<dict>
 			<key>primary</key>
 			<true/>

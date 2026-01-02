@@ -1,0 +1,204 @@
+//
+//  GamificationStore.swift
+//  StandFit
+//
+//  Refactored to use StandFitCore services
+//
+
+import Foundation
+import SwiftUI
+import Combine
+import StandFitCore
+
+@MainActor
+class GamificationStore: ObservableObject {
+    static let shared = GamificationStore()
+
+    // MARK: - Services
+
+    private let gamificationService: GamificationService
+
+    // MARK: - Published State
+
+    @Published var achievements: [Achievement] = []
+    @Published var streak: StreakData = StreakData()
+    @Published var levelProgress: LevelProgress = LevelProgress()
+    @Published var activeChallenges: [Challenge] = []
+    @Published var recentlyUnlockedAchievements: [Achievement] = []  // For showing notifications
+
+    // MARK: - Initialization
+
+    init() {
+        let persistence = try! JSONFilePersistence()
+        self.gamificationService = GamificationService(persistence: persistence)
+
+        // Load data from service
+        loadData()
+        initializeAchievementsIfNeeded()
+    }
+
+    private func loadData() {
+        do {
+            let data = try gamificationService.loadData()
+            self.achievements = data.achievements
+            self.streak = data.streak
+            self.levelProgress = data.levelProgress
+            self.activeChallenges = data.activeChallenges
+        } catch {
+            // First launch or corrupted data - start fresh
+            self.achievements = []
+            self.streak = StreakData()
+            self.levelProgress = LevelProgress()
+            self.activeChallenges = []
+        }
+    }
+
+    /// Initialize achievements from definitions if this is the first launch
+    private func initializeAchievementsIfNeeded() {
+        if achievements.isEmpty {
+            achievements = AchievementDefinitions.all
+            saveData()
+        }
+    }
+
+    private func saveData() {
+        let data = GamificationService.GamificationData(
+            achievements: achievements,
+            streak: streak,
+            levelProgress: levelProgress,
+            activeChallenges: activeChallenges
+        )
+
+        try? gamificationService.saveData(data)
+    }
+
+    // MARK: - Event Processing
+
+    /// Process a gamification event and update state accordingly
+    func processEvent(_ event: GamificationEvent, exerciseStore: ExerciseStore) {
+        let currentData = GamificationService.GamificationData(
+            achievements: achievements,
+            streak: streak,
+            levelProgress: levelProgress,
+            activeChallenges: activeChallenges
+        )
+
+        let (updatedData, result) = gamificationService.processEvent(
+            event,
+            currentData: currentData,
+            logs: exerciseStore.logs,
+            customExercises: exerciseStore.customExercises
+        )
+
+        // Update published state
+        self.achievements = updatedData.achievements
+        self.streak = updatedData.streak
+        self.levelProgress = updatedData.levelProgress
+        self.activeChallenges = updatedData.activeChallenges
+
+        // Handle newly unlocked achievements
+        if !result.newlyUnlockedAchievements.isEmpty {
+            recentlyUnlockedAchievements.append(contentsOf: result.newlyUnlockedAchievements)
+
+            // Send push notifications for each unlocked achievement
+            for achievement in result.newlyUnlockedAchievements {
+                NotificationManager.shared.sendAchievementNotification(achievement: achievement)
+            }
+        }
+
+        // Handle level up
+        if result.leveledUp, let newLevel = result.newLevel {
+            print("🎉 Level up! Now level \(newLevel)")
+            // Could show notification or celebration
+        }
+
+        // Save updated data
+        saveData()
+    }
+
+    /// Clear recently unlocked achievements (after showing notifications)
+    func clearRecentUnlocks() {
+        recentlyUnlockedAchievements.removeAll()
+    }
+
+    // MARK: - Challenge Management
+
+    /// Generate a new daily challenge
+    func generateDailyChallenge() {
+        // Remove old challenges
+        activeChallenges.removeAll { $0.isExpired || $0.isComplete }
+
+        if let newChallenge = gamificationService.generateDailyChallenge(currentChallenges: activeChallenges) {
+            activeChallenges.append(newChallenge)
+            saveData()
+        }
+    }
+
+    // MARK: - Query Methods
+
+    /// Get achievements filtered by category
+    func achievements(in category: AchievementCategory?) -> [Achievement] {
+        gamificationService.achievements(in: category, from: achievements)
+    }
+
+    /// Get unlocked achievements
+    var unlockedAchievements: [Achievement] {
+        gamificationService.unlockedAchievements(from: achievements)
+    }
+
+    /// Get locked achievements
+    var lockedAchievements: [Achievement] {
+        gamificationService.lockedAchievements(from: achievements)
+    }
+
+    /// Get in-progress achievements (started but not completed)
+    var inProgressAchievements: [Achievement] {
+        gamificationService.inProgressAchievements(from: achievements)
+    }
+
+    /// Count achievements by tier
+    func achievementCount(tier: AchievementTier, unlocked: Bool) -> Int {
+        gamificationService.achievementCount(tier: tier, unlocked: unlocked, from: achievements)
+    }
+
+    /// Get current active challenge
+    var activeChallenge: Challenge? {
+        gamificationService.activeChallenge(from: activeChallenges)
+    }
+
+    // MARK: - Streak Management
+
+    /// Reset streak freeze count (for testing or settings)
+    func resetStreakFreezes() {
+        streak.streakFreezesAvailable = 0
+        saveData()
+    }
+
+    /// Set rest day for streak protection
+    func setRestDay(_ weekday: Int?) {
+        streak.restDay = weekday
+        saveData()
+    }
+
+    // MARK: - Debug & Testing
+
+    /// Reset all gamification data (useful for testing)
+    func resetAllData() {
+        achievements = AchievementDefinitions.all
+        streak = StreakData()
+        levelProgress = LevelProgress()
+        activeChallenges = []
+        recentlyUnlockedAchievements = []
+        saveData()
+    }
+
+    /// Manually unlock an achievement (for testing)
+    func debugUnlockAchievement(id: String) {
+        if let index = achievements.firstIndex(where: { $0.id == id }) {
+            achievements[index].unlockedAt = Date()
+            achievements[index].progress = achievements[index].targetValue
+            recentlyUnlockedAchievements.append(achievements[index])
+            saveData()
+        }
+    }
+}

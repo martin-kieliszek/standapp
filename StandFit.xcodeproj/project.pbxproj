@@ -6,14 +6,38 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		406F62952F079D1100CAE1C7 /* StandFitCore in Frameworks */ = {isa = PBXBuildFile; productRef = 406F62942F079D1100CAE1C7 /* StandFitCore */; };
+		406F62F22F079FAA00CAE1C7 /* StandFitCore in Frameworks */ = {isa = PBXBuildFile; productRef = 406F62F12F079FAA00CAE1C7 /* StandFitCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		406F62572F079A0A00CAE1C7 /* StandFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		406F62B32F079E8A00CAE1C7 /* StandFit Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StandFit Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		406F62EF2F079F9400CAE1C7 /* Exceptions for "StandFit Watch App" folder in "StandFit Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				README.md,
+			);
+			target = 406F62B22F079E8A00CAE1C7 /* StandFit Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		406F62592F079A0A00CAE1C7 /* StandFit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = StandFit;
+			sourceTree = "<group>";
+		};
+		406F62B42F079E8A00CAE1C7 /* StandFit Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				406F62EF2F079F9400CAE1C7 /* Exceptions for "StandFit Watch App" folder in "StandFit Watch App" target */,
+			);
+			path = "StandFit Watch App";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +47,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				406F62952F079D1100CAE1C7 /* StandFitCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		406F62B02F079E8A00CAE1C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				406F62F22F079FAA00CAE1C7 /* StandFitCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				406F62592F079A0A00CAE1C7 /* StandFit */,
+				406F62B42F079E8A00CAE1C7 /* StandFit Watch App */,
+				406F62F02F079FAA00CAE1C7 /* Frameworks */,
 				406F62582F079A0A00CAE1C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +76,16 @@
 			isa = PBXGroup;
 			children = (
 				406F62572F079A0A00CAE1C7 /* StandFit.app */,
+				406F62B32F079E8A00CAE1C7 /* StandFit Watch App.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		406F62F02F079FAA00CAE1C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,9 +108,33 @@
 			);
 			name = StandFit;
 			packageProductDependencies = (
+				406F62942F079D1100CAE1C7 /* StandFitCore */,
 			);
 			productName = StandFit;
 			productReference = 406F62572F079A0A00CAE1C7 /* StandFit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		406F62B22F079E8A00CAE1C7 /* StandFit Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 406F62BB2F079E8C00CAE1C7 /* Build configuration list for PBXNativeTarget "StandFit Watch App" */;
+			buildPhases = (
+				406F62AF2F079E8A00CAE1C7 /* Sources */,
+				406F62B02F079E8A00CAE1C7 /* Frameworks */,
+				406F62B12F079E8A00CAE1C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				406F62B42F079E8A00CAE1C7 /* StandFit Watch App */,
+			);
+			name = "StandFit Watch App";
+			packageProductDependencies = (
+				406F62F12F079FAA00CAE1C7 /* StandFitCore */,
+			);
+			productName = "StandFit Watch App";
+			productReference = 406F62B32F079E8A00CAE1C7 /* StandFit Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -83,6 +150,9 @@
 					406F62562F079A0A00CAE1C7 = {
 						CreatedOnToolsVersion = 26.2;
 					};
+					406F62B22F079E8A00CAE1C7 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 				};
 			};
 			buildConfigurationList = 406F62522F079A0A00CAE1C7 /* Build configuration list for PBXProject "StandFit" */;
@@ -94,12 +164,16 @@
 			);
 			mainGroup = 406F624E2F079A0A00CAE1C7;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				406F62932F079D1100CAE1C7 /* XCLocalSwiftPackageReference "StandFitCore" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 406F62582F079A0A00CAE1C7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				406F62562F079A0A00CAE1C7 /* StandFit */,
+				406F62B22F079E8A00CAE1C7 /* StandFit Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -112,10 +186,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		406F62B12F079E8A00CAE1C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		406F62532F079A0A00CAE1C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		406F62AF2F079E8A00CAE1C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,6 +349,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,6 +382,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +397,72 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		406F62BC2F079E8C00CAE1C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4GY39C72M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StandFit;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		406F62BD2F079E8C00CAE1C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4GY39C72M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StandFit;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
 		};
@@ -331,7 +487,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		406F62BB2F079E8C00CAE1C7 /* Build configuration list for PBXNativeTarget "StandFit Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				406F62BC2F079E8C00CAE1C7 /* Debug */,
+				406F62BD2F079E8C00CAE1C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		406F62932F079D1100CAE1C7 /* XCLocalSwiftPackageReference "StandFitCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = StandFitCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		406F62942F079D1100CAE1C7 /* StandFitCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StandFitCore;
+		};
+		406F62F12F079FAA00CAE1C7 /* StandFitCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 406F62932F079D1100CAE1C7 /* XCLocalSwiftPackageReference "StandFitCore" */;
+			productName = StandFitCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 406F624F2F079A0A00CAE1C7 /* Project object */;
 }
