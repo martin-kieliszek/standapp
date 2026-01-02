@@ -147,7 +147,7 @@ struct ProgressReportView: View {
 
     private var timelineView: some View {
         let (notifications, exercises) = store.getTodaysTimeline()
-        return TimelineGraphView(notifications: notifications, exercises: exercises)
+        return DayActivityHeatmapView(notifications: notifications, exercises: exercises)
     }
 
     private var emptyStateView: some View {

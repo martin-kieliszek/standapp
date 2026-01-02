@@ -204,8 +204,8 @@ class NotificationManager: ObservableObject {
         // Cancel any existing (including follow-ups)
         cancelAllReminders()
 
-        // Find next valid time
-        guard let nextTime = store.nextValidReminderDate(afterMinutes: store.reminderIntervalMinutes) else {
+        // Find next valid time using profile system
+        guard let nextTime = calculateNextReminderTime(store: store, from: Date()) else {
             print("No valid reminder time found in the next week")
             return
         }
@@ -239,6 +239,127 @@ class NotificationManager: ObservableObject {
             }
         }
     }
+    
+    // MARK: - Advanced Scheduling with Profile System
+    
+    /// Calculate next reminder time using the active profile's schedule
+    func calculateNextReminderTime(store: ExerciseStore, from date: Date) -> Date? {
+        guard let profile = store.activeProfile else {
+            // Fallback to legacy system if no profile
+            return store.nextValidReminderDate(afterMinutes: store.reminderIntervalMinutes)
+        }
+        
+        let calendar = Calendar.current
+        var candidateTime = date
+        
+        // Try up to 7 days ahead
+        for _ in 0..<(7 * 24 * 60) {
+            let weekday = calendar.component(.weekday, from: candidateTime)
+            let hour = calendar.component(.hour, from: candidateTime)
+            let minute = calendar.component(.minute, from: candidateTime)
+            let currentMinutes = hour * 60 + minute
+            
+            guard let daySchedule = profile.dailySchedules[weekday],
+                  daySchedule.enabled else {
+                // Skip to next day at midnight
+                candidateTime = calendar.nextDate(
+                    after: candidateTime,
+                    matching: DateComponents(hour: 0, minute: 0),
+                    matchingPolicy: .nextTime
+                ) ?? candidateTime.addingTimeInterval(86400)
+                continue
+            }
+            
+            switch daySchedule.scheduleType {
+            case .timeBlocks(let blocks):
+                // Find matching time block
+                if let matchingBlock = blocks.first(where: { $0.contains(minutes: currentMinutes) }) {
+                    // We're in a block - calculate next time within this block
+                    return calculateNextTimeInBlock(
+                        block: matchingBlock,
+                        from: candidateTime,
+                        profile: profile,
+                        store: store
+                    )
+                } else {
+                    // Not in a block - jump to next block start
+                    if let nextBlock = blocks.first(where: { $0.startMinutes > currentMinutes }) {
+                        // Jump to start of next block today
+                        candidateTime = calendar.date(
+                            bySettingHour: nextBlock.startHour,
+                            minute: nextBlock.startMinute,
+                            second: 0,
+                            of: candidateTime
+                        ) ?? candidateTime
+                    } else {
+                        // No more blocks today, move to next day
+                        candidateTime = calendar.nextDate(
+                            after: candidateTime,
+                            matching: DateComponents(hour: 0, minute: 0),
+                            matchingPolicy: .nextTime
+                        ) ?? candidateTime.addingTimeInterval(86400)
+                    }
+                }
+                
+            case .fixedTimes(let reminders):
+                // Find next fixed time
+                if let nextReminder = reminders.first(where: { $0.totalMinutes > currentMinutes }) {
+                    return calendar.date(
+                        bySettingHour: nextReminder.hour,
+                        minute: nextReminder.minute,
+                        second: 0,
+                        of: candidateTime
+                    )
+                } else {
+                    // No more fixed times today, move to next day
+                    candidateTime = calendar.nextDate(
+                        after: candidateTime,
+                        matching: DateComponents(hour: 0, minute: 0),
+                        matchingPolicy: .nextTime
+                    ) ?? candidateTime.addingTimeInterval(86400)
+                }
+                
+            case .useFallback:
+                // Use global fallback interval
+                return candidateTime.addingTimeInterval(
+                    TimeInterval(profile.fallbackInterval * 60)
+                )
+            }
+        }
+        
+        return nil // No valid time found in next week
+    }
+    
+    private func calculateNextTimeInBlock(
+        block: TimeBlock,
+        from date: Date,
+        profile: ScheduleProfile,
+        store: ExerciseStore
+    ) -> Date {
+        var interval = block.intervalMinutes
+        
+        // Apply randomization if enabled
+        if let randomRange = block.randomizationRange {
+            let randomOffset = Int.random(in: -randomRange...randomRange)
+            interval = max(1, interval + randomOffset)
+        }
+        
+        let nextTime = date.addingTimeInterval(TimeInterval(interval * 60))
+        
+        // Check if next time is still within this block
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: nextTime)
+        let minute = calendar.component(.minute, from: nextTime)
+        let totalMinutes = hour * 60 + minute
+        
+        if totalMinutes >= block.endMinutes {
+            // Would exceed block - return nil to trigger jump to next block
+            return calculateNextReminderTime(store: store, from: nextTime) ?? nextTime
+        }
+        
+        return nextTime
+    }
+
     
     // MARK: - Progress Report Notifications
     

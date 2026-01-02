@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var showProgress = false
     @State private var showSettings = false
     @State private var showAchievements = false
+    @State private var showCreateExercise = false
     @State private var currentTime = Date()
     @State private var showingAchievementToast = false
     @State private var toastAchievement: Achievement?
@@ -106,6 +107,9 @@ struct ContentView: View {
                     selectedExerciseItem = item
                     showExercisePicker = false
                 }
+            }
+            .sheet(isPresented: $showCreateExercise) {
+                CreateExerciseView(store: exerciseStore)
             }
             .overlay {
                 if showingAchievementToast, let achievement = toastAchievement {
@@ -432,6 +436,16 @@ struct ContentView: View {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
+                
+                Button {
+                    showCreateExercise = true
+                } label: {
+                    Label("Create Custom", systemImage: "plus.circle.fill")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.pink)
             }
 
             ExercisePickerView { item in

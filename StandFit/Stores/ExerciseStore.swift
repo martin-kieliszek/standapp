@@ -27,19 +27,174 @@ class ExerciseStore: ObservableObject {
 
     // MARK: - Settings (AppStorage)
 
-    @AppStorage("reminderIntervalMinutes") var reminderIntervalMinutes: Int = 30
+    // Legacy settings (kept for migration)
+    @AppStorage("reminderIntervalMinutes") private var legacyReminderIntervalMinutes: Int = 30
+    @AppStorage("activeDaysData") private var legacyActiveDaysData: Data = Data()
+    @AppStorage("startHour") private var legacyStartHour: Int = 9
+    @AppStorage("endHour") private var legacyEndHour: Int = 17
+    @AppStorage("deadResponseEnabled") private var legacyDeadResponseEnabled: Bool = true
+    @AppStorage("deadResponseMinutes") private var legacyDeadResponseMinutes: Int = 5
+    
+    // New profile-based system
+    @AppStorage("scheduleProfiles") private var scheduleProfilesData: Data = Data()
+    @AppStorage("activeProfileId") private var activeProfileIdString: String = ""
+    @AppStorage("hasMigratedToProfiles") private var hasMigratedToProfiles: Bool = false
+    
+    // General settings (not profile-specific)
     @AppStorage("remindersEnabled") var remindersEnabled: Bool = true
-    @AppStorage("activeDaysData") private var activeDaysData: Data = Data()
-    @AppStorage("startHour") var startHour: Int = 9
-    @AppStorage("endHour") var endHour: Int = 17
     @AppStorage("nextScheduledNotificationTime") private var nextScheduledTimeInterval: Double = -1
-    @AppStorage("deadResponseEnabled") var deadResponseEnabled: Bool = true
-    @AppStorage("deadResponseMinutes") var deadResponseMinutes: Int = 5
     @AppStorage("progressReportSettingsData") private var progressReportSettingsData: Data = Data()
 
     // MARK: - Constants
 
     static let deadResponseOptions = [1, 2, 3, 5, 10, 15]
+    
+    // MARK: - Profile Management
+    
+    @Published var scheduleProfiles: [ScheduleProfile] = []
+    @Published var activeProfile: ScheduleProfile?
+    
+    // Computed properties for backward compatibility and ease of use
+    var reminderIntervalMinutes: Int {
+        get {
+            activeProfile?.fallbackInterval ?? legacyReminderIntervalMinutes
+        }
+        set {
+            if var profile = activeProfile {
+                profile.fallbackInterval = newValue
+                updateProfile(profile)
+            } else {
+                legacyReminderIntervalMinutes = newValue
+            }
+        }
+    }
+    
+    var activeDays: Set<Int> {
+        get {
+            activeProfile?.activeDays ?? legacyActiveDays
+        }
+        set {
+            if var profile = activeProfile {
+                // Update all days to match new active days set
+                // Clear existing schedules
+                for day in 1...7 {
+                    if newValue.contains(day) && !profile.activeDays.contains(day) {
+                        // Day was added - create a simple schedule for it
+                        let block = TimeBlock(
+                            startHour: startHour,
+                            startMinute: 0,
+                            endHour: endHour,
+                            endMinute: 0,
+                            intervalMinutes: reminderIntervalMinutes
+                        )
+                        profile.dailySchedules[day] = DailySchedule(
+                            enabled: true,
+                            scheduleType: .timeBlocks([block])
+                        )
+                    } else if !newValue.contains(day) && profile.activeDays.contains(day) {
+                        // Day was removed - disable it
+                        if var daySchedule = profile.dailySchedules[day] {
+                            daySchedule.enabled = false
+                            profile.dailySchedules[day] = daySchedule
+                        }
+                    }
+                }
+                updateProfile(profile)
+            } else {
+                if let encoded = try? JSONEncoder().encode(newValue) {
+                    legacyActiveDaysData = encoded
+                }
+            }
+        }
+    }
+    
+    var startHour: Int {
+        get {
+            // For simple cases, return the earliest start hour from active profile
+            guard let profile = activeProfile else { return legacyStartHour }
+            let allBlocks = profile.dailySchedules.values.compactMap { $0.timeBlocks }.flatMap { $0 }
+            return allBlocks.map(\.startHour).min() ?? legacyStartHour
+        }
+        set {
+            if var profile = activeProfile {
+                // Update all time blocks to use new start hour
+                for (day, var schedule) in profile.dailySchedules {
+                    if case .timeBlocks(var blocks) = schedule.scheduleType {
+                        for i in 0..<blocks.count {
+                            blocks[i].startHour = newValue
+                        }
+                        schedule.scheduleType = .timeBlocks(blocks)
+                        profile.dailySchedules[day] = schedule
+                    }
+                }
+                updateProfile(profile)
+            } else {
+                legacyStartHour = newValue
+            }
+        }
+    }
+    
+    var endHour: Int {
+        get {
+            // For simple cases, return the latest end hour from active profile
+            guard let profile = activeProfile else { return legacyEndHour }
+            let allBlocks = profile.dailySchedules.values.compactMap { $0.timeBlocks }.flatMap { $0 }
+            return allBlocks.map(\.endHour).max() ?? legacyEndHour
+        }
+        set {
+            if var profile = activeProfile {
+                // Update all time blocks to use new end hour
+                for (day, var schedule) in profile.dailySchedules {
+                    if case .timeBlocks(var blocks) = schedule.scheduleType {
+                        for i in 0..<blocks.count {
+                            blocks[i].endHour = newValue
+                        }
+                        schedule.scheduleType = .timeBlocks(blocks)
+                        profile.dailySchedules[day] = schedule
+                    }
+                }
+                updateProfile(profile)
+            } else {
+                legacyEndHour = newValue
+            }
+        }
+    }
+    
+    var deadResponseEnabled: Bool {
+        get {
+            activeProfile?.deadResponseEnabled ?? legacyDeadResponseEnabled
+        }
+        set {
+            if var profile = activeProfile {
+                profile.deadResponseEnabled = newValue
+                updateProfile(profile)
+            } else {
+                legacyDeadResponseEnabled = newValue
+            }
+        }
+    }
+    
+    var deadResponseMinutes: Int {
+        get {
+            activeProfile?.deadResponseMinutes ?? legacyDeadResponseMinutes
+        }
+        set {
+            if var profile = activeProfile {
+                profile.deadResponseMinutes = newValue
+                updateProfile(profile)
+            } else {
+                legacyDeadResponseMinutes = newValue
+            }
+        }
+    }
+    
+    private var legacyActiveDays: Set<Int> {
+        if let decoded = try? JSONDecoder().decode(Set<Int>.self, from: legacyActiveDaysData) {
+            return decoded
+        }
+        return [2, 3, 4, 5, 6]
+    }
+
 
     // MARK: - Computed Properties
 
@@ -69,19 +224,6 @@ class ExerciseStore: ObservableObject {
         }
     }
 
-    var activeDays: Set<Int> {
-        get {
-            if let decoded = try? JSONDecoder().decode(Set<Int>.self, from: activeDaysData) {
-                return decoded
-            }
-            return [2, 3, 4, 5, 6]
-        }
-        set {
-            if let encoded = try? JSONEncoder().encode(newValue) {
-                activeDaysData = encoded
-            }
-        }
-    }
 
     var shouldRemindNow: Bool {
         guard remindersEnabled else { return false }
@@ -108,7 +250,158 @@ class ExerciseStore: ObservableObject {
         // Load data from services
         self.logs = (try? exerciseService.loadLogs()) ?? []
         self.customExercises = (try? exerciseService.loadCustomExercises()) ?? []
+        
+        // Load and migrate to profile system
+        loadProfiles()
+        if !hasMigratedToProfiles {
+            migrateToProfileSystem()
+        }
     }
+    
+    // MARK: - Profile Management Methods
+    
+    private func loadProfiles() {
+        guard !scheduleProfilesData.isEmpty else {
+            scheduleProfiles = []
+            activeProfile = nil
+            return
+        }
+        
+        if let decoded = try? JSONDecoder().decode([ScheduleProfile].self, from: scheduleProfilesData) {
+            scheduleProfiles = decoded
+            
+            // Load active profile
+            if let profileId = UUID(uuidString: activeProfileIdString),
+               let profile = scheduleProfiles.first(where: { $0.id == profileId }) {
+                activeProfile = profile
+            } else if let firstProfile = scheduleProfiles.first {
+                // Fallback to first profile
+                activeProfile = firstProfile
+                activeProfileIdString = firstProfile.id.uuidString
+            }
+        }
+    }
+    
+    private func saveProfiles() {
+        if let encoded = try? JSONEncoder().encode(scheduleProfiles) {
+            scheduleProfilesData = encoded
+        }
+    }
+    
+    func migrateToProfileSystem() {
+        guard scheduleProfiles.isEmpty else { return }
+        
+        print("📅 Migrating to profile system...")
+        
+        // Create default profile from legacy settings
+        var defaultProfile = ScheduleProfile(
+            name: "Default",
+            createdDate: Date(),
+            fallbackInterval: legacyReminderIntervalMinutes,
+            deadResponseEnabled: legacyDeadResponseEnabled,
+            deadResponseMinutes: legacyDeadResponseMinutes
+        )
+        
+        // Convert legacy active days to daily schedules
+        for day in legacyActiveDays {
+            let timeBlock = TimeBlock(
+                name: nil,
+                startHour: legacyStartHour,
+                startMinute: 0,
+                endHour: legacyEndHour,
+                endMinute: 0,
+                intervalMinutes: legacyReminderIntervalMinutes
+            )
+            
+            defaultProfile.dailySchedules[day] = DailySchedule(
+                enabled: true,
+                scheduleType: .timeBlocks([timeBlock])
+            )
+        }
+        
+        scheduleProfiles = [defaultProfile]
+        activeProfile = defaultProfile
+        activeProfileIdString = defaultProfile.id.uuidString
+        
+        saveProfiles()
+        hasMigratedToProfiles = true
+        
+        print("✅ Migration complete. Created default profile with \(defaultProfile.activeDays.count) active days")
+    }
+    
+    func createProfile(name: String, basedOn template: ScheduleTemplate? = nil) -> ScheduleProfile {
+        let profile: ScheduleProfile
+        
+        if let template = template {
+            var newProfile = template.profile
+            newProfile.name = name
+            profile = newProfile
+        } else {
+            // Create empty profile
+            profile = ScheduleProfile(name: name)
+        }
+        
+        scheduleProfiles.append(profile)
+        saveProfiles()
+        
+        return profile
+    }
+    
+    func updateProfile(_ profile: ScheduleProfile) {
+        if let index = scheduleProfiles.firstIndex(where: { $0.id == profile.id }) {
+            scheduleProfiles[index] = profile
+            
+            // Update active profile if it's the one being edited
+            if activeProfile?.id == profile.id {
+                activeProfile = profile
+                activeProfileIdString = profile.id.uuidString
+                
+                // Reschedule notifications with updated profile
+                updateAllNotificationSchedules(reason: "Updated profile '\(profile.name)'")
+            }
+            
+            saveProfiles()
+        }
+    }
+    
+    func deleteProfile(_ profile: ScheduleProfile) {
+        scheduleProfiles.removeAll { $0.id == profile.id }
+        
+        // If deleting active profile, switch to first available
+        if activeProfile?.id == profile.id {
+            activeProfile = scheduleProfiles.first
+            activeProfileIdString = scheduleProfiles.first?.id.uuidString ?? ""
+        }
+        
+        saveProfiles()
+    }
+    
+    func switchToProfile(_ profile: ScheduleProfile) {
+        guard scheduleProfiles.contains(where: { $0.id == profile.id }) else { return }
+        
+        var updatedProfile = profile
+        updatedProfile.lastUsedDate = Date()
+        updateProfile(updatedProfile)
+        
+        activeProfile = updatedProfile
+        activeProfileIdString = updatedProfile.id.uuidString
+        
+        // Reschedule notifications with new profile
+        updateAllNotificationSchedules(reason: "Switched to profile '\(profile.name)'")
+    }
+    
+    func duplicateProfile(_ profile: ScheduleProfile, newName: String) -> ScheduleProfile {
+        var newProfile = profile
+        newProfile.name = newName
+        newProfile.createdDate = Date()
+        newProfile.lastUsedDate = nil
+        
+        scheduleProfiles.append(newProfile)
+        saveProfiles()
+        
+        return newProfile
+    }
+
 
     // MARK: - Utility Methods
 
