@@ -88,7 +88,7 @@ struct ContentView: View {
                 HistoryView(store: exerciseStore)
             }
             .sheet(isPresented: $showProgress) {
-                ProgressReportView(store: exerciseStore)
+                ProgressReportView(store: exerciseStore, gamificationStore: gamificationStore)
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView(store: exerciseStore)
@@ -263,6 +263,25 @@ struct ContentView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
                         .padding(.top, 12)
+
+                        // Quick link to reminder schedule settings
+                        NavigationLink {
+                            ReminderScheduleView(store: exerciseStore)
+                        } label: {
+                            HStack {
+                                Image(systemName: "calendar.badge.clock")
+                                    .font(.caption)
+                                Text("Edit Reminder Schedule")
+                                    .font(.caption)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption2)
+                                    .opacity(0.6)
+                            }
+                            .foregroundStyle(.white)
+                            .padding(.vertical, 8)
+                        }
+                        .padding(.top, 8)
                     }
                     .padding(20)
                     .background(

@@ -17,6 +17,7 @@ enum PeriodType: Hashable {
 
 struct ProgressReportView: View {
     @ObservedObject var store: ExerciseStore
+    @ObservedObject var gamificationStore: GamificationStore
     @State private var selectedPeriodType: PeriodType = .today
     @Environment(\.dismiss) private var dismiss
 
@@ -132,7 +133,8 @@ struct ProgressReportView: View {
         store.reportingService.getStats(
             for: selectedPeriod,
             logs: store.logs,
-            customExercises: store.customExercises
+            customExercises: store.customExercises,
+            currentStreak: gamificationStore.streak.currentStreak
         )
     }
 
@@ -179,6 +181,6 @@ struct ProgressReportView: View {
 
 #Preview {
     NavigationStack {
-        ProgressReportView(store: ExerciseStore.shared)
+        ProgressReportView(store: ExerciseStore.shared, gamificationStore: GamificationStore.shared)
     }
 }

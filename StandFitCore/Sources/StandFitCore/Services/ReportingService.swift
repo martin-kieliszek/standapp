@@ -16,7 +16,8 @@ public struct ReportingService {
     public func getStats(
         for period: ReportPeriod,
         logs: [ExerciseLog],
-        customExercises: [CustomExercise]
+        customExercises: [CustomExercise],
+        currentStreak: Int? = nil
     ) -> ReportStats {
         // Early exit if no logs at all
         guard !logs.isEmpty else {
@@ -32,9 +33,18 @@ public struct ReportingService {
 
         let totalCount = periodLogs.reduce(0) { $0 + $1.count }
         let breakdown = exerciseBreakdown(periodLogs, customExercises: customExercises)
-        let previousStats = previousPeriodStats(for: period, from: logs, customExercises: customExercises)
+        let previousStats = previousPeriodStats(for: period, from: logs, customExercises: customExercises, currentStreak: currentStreak)
         let percentChange = percentageChange(current: totalCount, previous: previousStats?.totalCount)
-        let streak = calculateStreak(from: logs)
+
+        // Use provided streak from gamification store if available, otherwise calculate
+        let calculatedStreak = calculateStreak(from: logs)
+        let streak: Int? = {
+            if let current = currentStreak {
+                return current > 0 ? current : nil
+            } else {
+                return calculatedStreak
+            }
+        }()
 
         return ReportStats(
             totalCount: totalCount,
@@ -92,7 +102,8 @@ public struct ReportingService {
     private func previousPeriodStats(
         for period: ReportPeriod,
         from logs: [ExerciseLog],
-        customExercises: [CustomExercise]
+        customExercises: [CustomExercise],
+        currentStreak: Int?
     ) -> ReportStats? {
         let previousPeriod: ReportPeriod?
         let calendar = Calendar.current
@@ -117,7 +128,7 @@ public struct ReportingService {
         }
 
         guard let previous = previousPeriod else { return nil }
-        return getStats(for: previous, logs: logs, customExercises: customExercises)
+        return getStats(for: previous, logs: logs, customExercises: customExercises, currentStreak: currentStreak)
     }
 
     private func percentageChange(current: Int, previous: Int?) -> Double? {
