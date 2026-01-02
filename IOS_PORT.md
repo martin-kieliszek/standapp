@@ -22,7 +22,7 @@ This document outlines the phased approach to building the iOS version of StandF
 ## Phase 1: Project Setup & Basic Structure ✅
 
 **Goal:** Create iOS target and verify StandFitCore integration
-**Status:** Files created, ready for Xcode integration
+**Status:** COMPLETE
 
 ### Tasks
 
@@ -31,10 +31,10 @@ This document outlines the phased approach to building the iOS version of StandF
   - Interface: SwiftUI
   - Minimum deployment: iOS 16.0
 
-- [ ] Add StandFitCore package dependency to iOS target
+- [x] Add StandFitCore package dependency to iOS target
   - Same local package used by WatchOS
 
-- [ ] Create basic directory structure:
+- [x] Create basic directory structure:
   ```
   StandFit iOS/
   ├── App/
@@ -45,7 +45,7 @@ This document outlines the phased approach to building the iOS version of StandF
   └── Extensions/
   ```
 
-- [ ] Create minimal `ContentView.swift`:
+- [x] Create minimal `ContentView.swift`:
   ```swift
   import SwiftUI
   import StandFitCore
@@ -58,29 +58,30 @@ This document outlines the phased approach to building the iOS version of StandF
   }
   ```
 
-- [ ] **Build & Test:** App launches with "StandFit iOS" text
+- [x] **Build & Test:** App launches with "StandFit iOS" text
 
-**Success Criteria:** iOS app builds and runs on simulator
+**Success Criteria:** iOS app builds and runs on simulator ✅
 
 ---
 
-## Phase 2: State Management (Stores)
+## Phase 2: State Management (Stores) ✅
 
 **Goal:** Port ExerciseStore and GamificationStore to iOS
+**Status:** COMPLETE
 
 ### Tasks
 
-- [ ] Create `Stores/ExerciseStore.swift`
+- [x] Create `Stores/ExerciseStore.swift`
   - Copy from WatchOS version
   - Remove `@MainActor` if not needed on iOS
   - Keep all StandFitCore service integrations
   - Adjust for iOS-specific persistence paths if needed
 
-- [ ] Create `Stores/GamificationStore.swift`
+- [x] Create `Stores/GamificationStore.swift`
   - Copy from WatchOS version
   - Same pattern as ExerciseStore
 
-- [ ] Update `ContentView.swift` to initialize stores:
+- [x] Update `ContentView.swift` to initialize stores:
   ```swift
   struct ContentView: View {
       @StateObject private var exerciseStore = ExerciseStore.shared
@@ -93,112 +94,147 @@ This document outlines the phased approach to building the iOS version of StandF
   }
   ```
 
-- [ ] **Build & Test:** Stores initialize, can read saved data
+- [x] **Build & Test:** Stores initialize, can read saved data
 
-**Success Criteria:** App shows log count from persisted data
+**Success Criteria:** App shows log count from persisted data ✅
 
 ---
 
-## Phase 3: Platform-Specific Managers
+## Phase 3: Platform-Specific Managers ✅
 
 **Goal:** Create iOS notification and haptic managers
+**Status:** COMPLETE
 
 ### Tasks
 
-- [ ] Create `Managers/NotificationType.swift`
+- [x] Create `Managers/NotificationType.swift`
   - Copy from WatchOS (identical)
 
-- [ ] Create `Managers/NotificationManager.swift`
+- [x] Create `Managers/NotificationManager.swift`
   - Copy from WatchOS as base
   - Adjust for iOS-specific APIs:
-    - Use `UIApplication` instead of `WKInterfaceDevice` for haptics
-    - Different notification presentation options
+    - Use `UIImpactFeedbackGenerator` and `UINotificationFeedbackGenerator` for haptics
+    - Same notification presentation (UserNotifications framework works identically)
   - Keep same notification categories and scheduling logic
 
-- [ ] Create `Managers/NotificationFiredLog.swift`
+- [x] Create `Managers/NotificationFiredLog.swift`
   - Copy from WatchOS (identical)
 
-- [ ] **Build & Test:** Notification permissions work, can schedule test notification
+- [x] Create `App/StandFitApp.swift` with **AppDelegate** for notification handling
+  - Implement `UNUserNotificationCenterDelegate` to handle foreground notifications
+  - Handle notification actions (`LOG_EXERCISE`, `SNOOZE`, `VIEW_REPORT`)
+  - Post `Notification.Name` events for navigation (showExercisePicker, showProgressReport)
+  - Request notification authorization on app launch
+  - Setup notification categories synchronously (critical for action availability)
 
-**Success Criteria:** App requests notification permissions successfully
+- [x] Update `ContentView.swift`
+  - Add `.onReceive()` listeners for navigation notifications
+  - Add `.sheet()` for exercise picker modal
+  - Navigation events properly update UI state
+
+- [x] **Notification Issues Fixed:**
+  - ✅ Alert dialog with action buttons shows when notification arrives in foreground
+  - ✅ Notification categories registered synchronously on app launch (before any async operations)
+  - ✅ When notification is tapped, exercise picker opens and next notification is rescheduled
+  - ✅ When "Snooze" button is tapped, reschedules next notification
+  - ✅ When notification is delivered, next notification is automatically scheduled (keeps timer running)
+  - ✅ Lock screen notifications can show custom actions when swiped
+
+- [x] **Build & Test:** Notification permissions work, foreground notifications display alert with actions, background notifications reschedule automatically
+
+**Success Criteria:** All notification flows work (foreground alert, background drawer, action buttons, timer keeps running) ✅
 
 ---
 
-## Phase 4: Core Extensions
+## Phase 4: Core Extensions ✅
 
 **Goal:** Add iOS-specific extensions for StandFitCore types
+**Status:** COMPLETE
 
 ### Tasks
 
-- [ ] Create `Extensions/StandFitCore+iOS.swift`
+- [x] Create `Extensions/StandFitCore+iOS.swift`
   - Copy from `StandFitCore+WatchOS.swift`
   - Keep `AchievementTier.color`
   - Keep `ExerciseColorPalette`
   - Keep `TimelineEventType.color`
-  - All should work identically on iOS
+  - All work identically on iOS
 
-- [ ] **Build & Test:** Extensions compile and work
+- [x] **Build & Test:** Extensions compile and work
 
-**Success Criteria:** Color extensions accessible in views
+**Success Criteria:** Color extensions accessible in views ✅
 
 ---
 
-## Phase 5: Exercise Logging UI (Core Feature)
+## Phase 5: Exercise Logging UI (Core Feature) ✅
 
 **Goal:** Build the main exercise logging flow
+**Status:** COMPLETE
 
 ### Tasks
 
-- [ ] Create `Views/ExercisePickerView.swift`
-  - Grid layout for iPhone (3-4 columns instead of 2)
-  - Larger tap targets for iPhone
+- [x] Create `Views/ExercisePickerView.swift`
+  - Grid layout for iPhone (3 columns instead of 2)
+  - Larger tap targets for iPhone (100px minimum height)
   - Support both built-in and custom exercises
   - Navigation to logger
 
-- [ ] Create `Views/ExerciseLoggerView.swift`
-  - Larger number display for iPhone
-  - Bigger +/- buttons
+- [x] Create `Views/ExerciseLoggerView.swift`
+  - Larger number display for iPhone (72pt font)
+  - Bigger +/- buttons (48pt icons)
   - Same logic as WatchOS version
+  - Quick-add buttons for common increments
 
-- [ ] Update `ContentView.swift`:
-  - Add tab bar or navigation
-  - Show `ExercisePickerView` as main screen
+- [x] Update `ContentView.swift`:
+  - Main screen with exercise picker
+  - Show today's stats (logs, achievements, level)
+  - Display today's activity list
+  - Sheet-based logger presentation
 
-- [ ] **Build & Test:** Can select exercise, adjust count, save log
+- [x] **Build & Test:** Can select exercise, adjust count, save log
 
-**Success Criteria:** Can log an exercise and see it saved
+**Success Criteria:** Can log an exercise and see it saved ✅
 
 ---
 
-## Phase 6: History & Progress Views
+## Phase 6: History & Progress Views ✅
 
 **Goal:** Show exercise history and statistics
+**Status:** COMPLETE
 
 ### Tasks
 
-- [ ] Create `Views/HistoryView.swift`
+- [x] Create `Views/HistoryView.swift`
   - List of logged exercises grouped by day
   - Swipe to delete
-  - Larger display optimized for iPhone
+  - Larger display optimized for iPhone (40px icons)
 
-- [ ] Create `Views/ProgressReportView.swift`
-  - Copy from WatchOS
-  - Adjust layout for larger iPhone screen
-  - Show stats for today/week/month
+- [x] Create `Views/ProgressReportView.swift`
+  - Adapted from WatchOS
+  - Larger layout for iPhone
+  - Show stats for today/week/month (segmented picker)
 
-- [ ] Create `Views/ProgressChartsView.swift`
-  - Copy from WatchOS
-  - Larger charts for iPhone
-  - Same Chart API
+- [x] Create `Views/ProgressChartsView.swift`
+  - Adapted from WatchOS
+  - Larger charts for iPhone (200pt height)
+  - Same Chart API, better spacing
 
-- [ ] Create `Views/StatsHeaderView.swift`
-  - Copy from WatchOS (reusable component)
+- [x] Create `Views/StatsHeaderView.swift`
+  - Reusable component (nearly identical to WatchOS)
+  - Larger padding and fonts for iOS
 
-- [ ] Add navigation to these views from ContentView
+- [x] Create `Views/TimelineGraphView.swift`
+  - Shows notification vs exercise timeline
+  - Response rate analysis
+  - Larger visualization for iPhone
 
-- [ ] **Build & Test:** Can view history, see charts, view stats
+- [x] Add navigation to these views from ContentView
+  - History button in sheet
+  - Progress button in sheet
 
-**Success Criteria:** History shows logged exercises, charts display correctly
+- [x] **Build & Test:** Can view history, see charts, view stats
+
+**Success Criteria:** History shows logged exercises, charts display correctly ✅
 
 ---
 
