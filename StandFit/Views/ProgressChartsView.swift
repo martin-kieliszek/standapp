@@ -22,20 +22,85 @@ struct ProgressChartsView: View {
                     .fontWeight(.semibold)
 
                 Chart(chartData) { point in
-                    ForEach(point.breakdown, id: \.exerciseId) { item in
-                        BarMark(
-                            x: .value("Day", point.label),
-                            y: .value("Count", item.count)
-                        )
-                        .foregroundStyle(item.color)
+                    // Show stacked bars for each exercise type
+                    // Note: Only hours with data will show bars (better readability than 24 empty bars)
+                    if period == .today {
+                        // For today view, use hour as numeric x-axis value
+                        if point.breakdown.isEmpty {
+                            // Show invisible placeholder to maintain x-axis continuity
+                            BarMark(
+                                x: .value("Hour", point.hourValue ?? 0),
+                                y: .value("Count", 0)
+                            )
+                            .opacity(0)
+                        } else {
+                            ForEach(point.breakdown, id: \.exerciseId) { item in
+                                BarMark(
+                                    x: .value("Hour", point.hourValue ?? 0),
+                                    y: .value("Count", item.count)
+                                )
+                                .foregroundStyle(item.color)
+                            }
+                        }
+                    } else {
+                        // For week/month views, use string labels
+                        if point.breakdown.isEmpty {
+                            BarMark(
+                                x: .value("Day", point.label),
+                                y: .value("Count", 0)
+                            )
+                            .opacity(0)
+                        } else {
+                            ForEach(point.breakdown, id: \.exerciseId) { item in
+                                BarMark(
+                                    x: .value("Day", point.label),
+                                    y: .value("Count", item.count)
+                                )
+                                .foregroundStyle(item.color)
+                            }
+                        }
                     }
                 }
                 .frame(height: 200)
                 .chartXAxis {
-                    AxisMarks(position: .bottom)
+                    if period == .today {
+                        // For hourly view with numeric x-axis
+                        AxisMarks(position: .bottom, values: [0, 4, 8, 12, 16, 20]) { value in
+                            AxisGridLine()
+                            AxisTick()
+                            AxisValueLabel {
+                                if let hour = value.as(Int.self) {
+                                    Text(hourLabelFormatted(hour))
+                                        .font(.system(size: 10))
+                                        .foregroundStyle(.primary)
+                                }
+                            }
+                        }
+                    } else {
+                        // For daily/weekly view, show all labels
+                        AxisMarks(position: .bottom) { value in
+                            AxisGridLine()
+                            AxisTick()
+                            AxisValueLabel {
+                                if let label = value.as(String.self) {
+                                    Text(label)
+                                        .font(.caption2)
+                                        .foregroundStyle(.primary)
+                                }
+                            }
+                        }
+                    }
                 }
                 .chartYAxis {
-                    AxisMarks(position: .leading)
+                    AxisMarks(position: .leading) { value in
+                        AxisGridLine()
+                        AxisTick()
+                        AxisValueLabel {
+                            Text("\(value.as(Int.self) ?? 0)")
+                                .font(.caption2)
+                                .foregroundStyle(.primary)
+                        }
+                    }
                 }
             }
             .padding()
@@ -49,19 +114,20 @@ struct ProgressChartsView: View {
 
         switch period {
         case .today:
-            // Show last 7 days in chronological order (oldest to newest)
+            // Show hourly breakdown for today (00:00 to 23:00)
             var points: [ChartDataPoint] = []
+            let todayStart = calendar.startOfDay(for: now)
 
-            for daysAgo in (0..<7).reversed() {
-                guard let date = calendar.date(byAdding: .day, value: -daysAgo, to: now) else { continue }
-                let dayStart = calendar.startOfDay(for: date)
-                guard let dayEnd = calendar.date(byAdding: .day, value: 1, to: dayStart) else { continue }
+            for hour in 0..<24 {
+                guard let hourStart = calendar.date(byAdding: .hour, value: hour, to: todayStart),
+                      let hourEnd = calendar.date(byAdding: .hour, value: 1, to: hourStart) else { continue }
 
-                let dayLogs = store.logs.filter { $0.timestamp >= dayStart && $0.timestamp < dayEnd }
-                let breakdown = calculateBreakdown(for: dayLogs)
+                let hourLogs = store.logs.filter { $0.timestamp >= hourStart && $0.timestamp < hourEnd }
+                let breakdown = calculateBreakdown(for: hourLogs)
 
-                let weekday = calendar.component(.weekday, from: date)
-                points.append(ChartDataPoint(label: dayLabel(weekday), breakdown: breakdown, date: date))
+                // Format hour label (12am, 1am, 2am... 11am, 12pm, 1pm... 11pm)
+                let hourLabel = hourLabelFormatted(hour)
+                points.append(ChartDataPoint(label: hourLabel, breakdown: breakdown, date: hourStart, hourValue: hour))
             }
 
             return points
@@ -80,7 +146,7 @@ struct ProgressChartsView: View {
                 let breakdown = calculateBreakdown(for: dayLogs)
 
                 let weekday = calendar.component(.weekday, from: date)
-                points.append(ChartDataPoint(label: dayLabel(weekday), breakdown: breakdown, date: date))
+                points.append(ChartDataPoint(label: dayLabel(weekday), breakdown: breakdown, date: date, hourValue: nil))
             }
 
             return points
@@ -98,7 +164,7 @@ struct ProgressChartsView: View {
                 let weekLogs = store.logs.filter { $0.timestamp >= weekStartDay && $0.timestamp < weekEnd }
                 let breakdown = calculateBreakdown(for: weekLogs)
 
-                points.append(ChartDataPoint(label: "W\(weekOffset + 1)", breakdown: breakdown, date: weekStartDay))
+                points.append(ChartDataPoint(label: "W\(weekOffset + 1)", breakdown: breakdown, date: weekStartDay, hourValue: nil))
             }
 
             return points
@@ -150,6 +216,19 @@ struct ProgressChartsView: View {
     private func dayLabel(_ weekday: Int) -> String {
         ["", "S", "M", "T", "W", "T", "F", "S"][weekday]
     }
+
+    private func hourLabelFormatted(_ hour: Int) -> String {
+        // Return compact hour labels: 12a, 1a, 2a... 12p, 1p, 2p...
+        if hour == 0 {
+            return "12a"
+        } else if hour < 12 {
+            return "\(hour)a"
+        } else if hour == 12 {
+            return "12p"
+        } else {
+            return "\(hour - 12)p"
+        }
+    }
 }
 
 struct ChartDataPoint: Identifiable {
@@ -157,6 +236,7 @@ struct ChartDataPoint: Identifiable {
     let label: String
     let breakdown: [ExerciseChartItem]
     let date: Date
+    let hourValue: Int?
 }
 
 struct ExerciseChartItem: Identifiable {

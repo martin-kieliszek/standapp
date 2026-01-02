@@ -148,6 +148,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         let notificationManager = NotificationManager.shared
         let store = ExerciseStore.shared
 
+        // Record that this notification was delivered (for background notifications)
+        // This captures the timestamp when user interacted with it
+        NotificationFiredLog.shared.recordNotificationFired()
+
         // User responded - cancel any pending follow-up
         notificationManager.cancelFollowUpReminder()
 

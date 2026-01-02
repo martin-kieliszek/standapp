@@ -25,20 +25,11 @@ public struct TimelineService {
             return ([], [])
         }
 
-        // Get notification events
-        let notificationEvents: [TimelineEvent]
-        if !firedNotifications.isEmpty {
-            // Use actual fired notifications
-            notificationEvents = firedNotifications
-                .filter { $0 >= dayStart && $0 < dayEnd }
-                .map { TimelineEvent(timestamp: $0, type: .notificationFired) }
-        } else if let calc = calculator {
-            // Fall back to scheduled times
-            let scheduledTimes = calc.scheduledTimes(for: date)
-            notificationEvents = scheduledTimes.map { TimelineEvent(timestamp: $0, type: .notificationFired) }
-        } else {
-            notificationEvents = []
-        }
+        // Get notification events - ONLY use actual fired notifications (no inferred/fake data)
+        // This ensures timeline only shows real notification deliveries that were persisted
+        let notificationEvents = firedNotifications
+            .filter { $0 >= dayStart && $0 < dayEnd }
+            .map { TimelineEvent(timestamp: $0, type: .notificationFired) }
 
         // Get exercise events
         let dayLogs = logs.filter { log in
