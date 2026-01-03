@@ -114,6 +114,49 @@ class NotificationManager: ObservableObject {
             withIdentifiers: [NotificationType.progressReport.rawValue]
         )
     }
+    
+    /// Snooze the reminder for a specified number of seconds from now.
+    /// This schedules a temporary notification that ignores schedule boundaries and active hours.
+    func snoozeReminder(seconds: Int, store: ExerciseStore) {
+        // Cancel any pending follow-up (user explicitly snoozed)
+        cancelFollowUpReminder()
+        
+        // Cancel existing reminder
+        UNUserNotificationCenter.current().removePendingNotificationRequests(
+            withIdentifiers: [NotificationType.exerciseReminder.rawValue]
+        )
+        
+        let snoozeTime = Date().addingTimeInterval(TimeInterval(seconds))
+        
+        let content = UNMutableNotificationContent()
+        content.title = LocalizedString.Notifications.timeToMoveTitle
+        content.body = LocalizedString.Notifications.standUpExerciseBody
+        content.sound = .default
+        content.categoryIdentifier = NotificationType.exerciseReminder.categoryIdentifier
+        
+        // Use time interval trigger for precise snooze timing
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: TimeInterval(seconds),
+            repeats: false
+        )
+        
+        let request = UNNotificationRequest(
+            identifier: NotificationType.exerciseReminder.rawValue,
+            content: content,
+            trigger: trigger
+        )
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Failed to schedule snooze: \(error)")
+            } else {
+                print("✅ Snoozed reminder for \(seconds) seconds (will fire at \(snoozeTime))")
+                DispatchQueue.main.async {
+                    store.nextScheduledNotificationTime = snoozeTime
+                }
+            }
+        }
+    }
 
     /// Schedule a follow-up reminder for dead response reset.
     /// This fires if the user doesn't respond to the main notification.

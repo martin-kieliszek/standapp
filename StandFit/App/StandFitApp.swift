@@ -71,8 +71,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // Schedule a follow-up in case user doesn't respond (dead response reset)
         NotificationManager.shared.scheduleFollowUpReminder(store: ExerciseStore.shared)
 
-        // ✅ Reschedule next notification immediately when this one is delivered
-        // This ensures timer always keeps running regardless of user interaction
+        // ✅ When notification fires, schedule next one using normal schedule
+        // This applies whether it was a regular notification or a snoozed one
         if notification.request.content.categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier {
             NotificationManager.shared.scheduleReminderWithSchedule(store: ExerciseStore.shared)
         }
@@ -107,7 +107,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             
             // Snooze button
             alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionSnooze5Min, style: .default) { _ in
-                NotificationManager.shared.scheduleReminderWithSchedule(store: ExerciseStore.shared)
+                NotificationManager.shared.snoozeReminder(seconds: 300, store: ExerciseStore.shared)
                 NotificationManager.shared.playClickHaptic()
             })
         } else if categoryIdentifier == NotificationType.progressReport.categoryIdentifier {
@@ -165,8 +165,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             }
 
         case "SNOOZE":
-            // User tapped "Snooze" - reschedule for next interval
-            notificationManager.scheduleReminderWithSchedule(store: store)
+            // User tapped "Snooze" - schedule notification in 5 minutes (300 seconds)
+            notificationManager.snoozeReminder(seconds: 300, store: store)
             notificationManager.playClickHaptic()
 
         case "VIEW_REPORT":

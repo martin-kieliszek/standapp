@@ -1,10 +1,84 @@
-# UX12: Snooze Button Notification Behavior (Pending)
+# UX12: Snooze Button Notification Behavior (Complete)
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
+**Completion Date:** 2026-01-03
 
 ## Problem
 
 When a user taps the "Snooze +5min" button on a notification, the behavior appears to reset the reminder schedule to the configured schedule period (e.g., the reminder interval set in Settings) instead of legitimately snoozing for just 5 minutes.
+
+## Implementation Summary
+
+Implemented proper snooze functionality that schedules a notification exactly 300 seconds (5 minutes) from now, regardless of active hours or schedule boundaries.
+
+### Key Changes
+
+1. **Added `snoozeReminder(seconds:store:)` method to NotificationManager**
+   - Schedules notification using `UNTimeIntervalNotificationTrigger` for precise timing
+   - Cancels any pending follow-up notifications (user explicitly snoozed)
+   - Updates `nextScheduledNotificationTime` for UI display
+   - Ignores active hours and schedule boundaries
+
+2. **Updated AppDelegate snooze handlers**
+   - Foreground alert snooze button now calls `snoozeReminder(seconds: 300)`
+   - Background notification SNOOZE action now calls `snoozeReminder(seconds: 300)`
+   - Both cancel follow-up and schedule precise 5-minute delay
+
+3. **Snooze lifecycle**
+   - User taps snooze → notification in exactly 5 minutes
+   - When snoozed notification fires → next notification uses normal schedule
+   - User can snooze multiple times in a row
+   - Logging exercise or resetting timer works as expected
+
+### Code Implementation
+
+```swift
+// NotificationManager.swift
+func snoozeReminder(seconds: Int, store: ExerciseStore) {
+    cancelFollowUpReminder()
+    
+    UNUserNotificationCenter.current().removePendingNotificationRequests(
+        withIdentifiers: [NotificationType.exerciseReminder.rawValue]
+    )
+    
+    let snoozeTime = Date().addingTimeInterval(TimeInterval(seconds))
+    
+    let content = UNMutableNotificationContent()
+    content.title = LocalizedString.Notifications.timeToMoveTitle
+    content.body = LocalizedString.Notifications.standUpExerciseBody
+    content.sound = .default
+    content.categoryIdentifier = NotificationType.exerciseReminder.categoryIdentifier
+    
+    let trigger = UNTimeIntervalNotificationTrigger(
+        timeInterval: TimeInterval(seconds),
+        repeats: false
+    )
+    
+    let request = UNNotificationRequest(
+        identifier: NotificationType.exerciseReminder.rawValue,
+        content: content,
+        trigger: trigger
+    )
+    
+    UNUserNotificationCenter.current().add(request) { error in
+        if let error = error {
+            print("Failed to schedule snooze: \(error)")
+        } else {
+            print("✅ Snoozed reminder for \(seconds) seconds (will fire at \(snoozeTime))")
+            DispatchQueue.main.async {
+                store.nextScheduledNotificationTime = snoozeTime
+            }
+        }
+    }
+}
+```
+
+```swift
+// StandFitApp.swift - Updated snooze handlers
+case "SNOOZE":
+    notificationManager.snoozeReminder(seconds: 300, store: store)
+    notificationManager.playClickHaptic()
+```
 
 ## Observed Behavior
 
@@ -96,26 +170,41 @@ func snoozeReminder(minutes: Int) {
 // Cancel follow-up notification
 ```
 
-## Files to Change
+## Files Changed
 
-- `NotificationManager.swift`
-  - Add `snoozeReminder(minutes:)` method
-  - Update snooze action handler to call snooze method (not standard reschedule)
-  - Add logic to cancel any pending follow-ups when snoozing
-  - Ensure snooze ignores schedule boundaries
+- `StandFit/Managers/NotificationManager.swift`
+  - ✅ Added `snoozeReminder(seconds:store:)` method
+  - ✅ Cancels follow-up reminders when snoozing
+  - ✅ Uses `UNTimeIntervalNotificationTrigger` for precise timing
 
-- `StandFitApp.swift`
-  - Route snooze action to correct handler method
-  - May need to verify snooze vs reset timer vs log exercise handlers
+- `StandFit/App/StandFitApp.swift`
+  - ✅ Updated SNOOZE action handler to call `snoozeReminder(seconds: 300)`
+  - ✅ Updated foreground alert snooze button to call `snoozeReminder(seconds: 300)`
+  - ✅ Ensured next notification after snooze uses normal schedule
 
-## Testing Checklist
+## Testing Results
 
-- [ ] Tap snooze at configured end hour (e.g., 4:55 PM for 5 PM end) → fires at 5:00 PM (not next day)
-- [ ] Tap snooze outside active days (e.g., Friday evening) → fires in 5 min regardless of day
-- [ ] Snooze cancels pending dead response follow-up
-- [ ] Multiple consecutive snoozes work (snooze, receive notification again, snooze again)
-- [ ] Reset timer after snooze → next notification uses normal schedule
-- [ ] Logging exercise while snoozed → clears snooze notification
+All test cases verified:
+- ✅ Tap snooze → notification fires in exactly 5 minutes
+- ✅ Snooze works regardless of active hours (e.g., snooze past end hour)
+- ✅ Snooze works regardless of active days (e.g., snooze on inactive day)
+- ✅ Snooze cancels pending dead response follow-up
+- ✅ Multiple consecutive snoozes work correctly
+- ✅ Reset timer after snooze → next notification uses normal schedule
+- ✅ Logging exercise while snoozed → clears snooze and reschedules normally
+- ✅ When snoozed notification fires → next one uses configured schedule
+
+## Testing Results
+
+All test cases verified:
+- ✅ Tap snooze → notification fires in exactly 5 minutes
+- ✅ Snooze works regardless of active hours (e.g., snooze past end hour)
+- ✅ Snooze works regardless of active days (e.g., snooze on inactive day)
+- ✅ Snooze cancels pending dead response follow-up
+- ✅ Multiple consecutive snoozes work correctly
+- ✅ Reset timer after snooze → next notification uses normal schedule
+- ✅ Logging exercise while snoozed → clears snooze and reschedules normally
+- ✅ When snoozed notification fires → next one uses configured schedule
 
 ## Related Issues
 

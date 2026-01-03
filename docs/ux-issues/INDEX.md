@@ -17,7 +17,7 @@ This directory contains detailed documentation for all UX issues identified in t
 | UX9 | No automatic progress report notifications | ✅ Complete | 2026-01-01 | [ux09-automatic-progress-report-notifications.md](./ux09-automatic-progress-report-notifications.md) |
 | UX10 | No gamification (streaks, achievements, milestones) | ✅ Complete | 2026-01-02 | [ux10-gamification-system.md](./ux10-gamification-system.md) |
 | UX11 | No social features (friends, sharing, leaderboards) | ⏳ Pending | — | [ux11-social-features.md](./ux11-social-features.md) |
-| UX12 | Snooze +5min button resets schedule instead of legitimate snooze | ⏳ Pending | — | [ux12-snooze-button-notification-behavior.md](./ux12-snooze-button-notification-behavior.md) |
+| UX12 | Snooze +5min button resets schedule instead of legitimate snooze | ✅ Complete | 2026-01-03 | [ux12-snooze-button-notification-behavior.md](./ux12-snooze-button-notification-behavior.md) |
 | UX13 | Progress Report crashes when selecting Week or Month period | ✅ Complete | 2026-01-02 | [ux13-progress-report-crash.md](./ux13-progress-report-crash.md) |
 | UX14 | Notification vs. Exercise Timeline visualization | ✅ Complete | 2026-01-02 | [ux14-notification-vs-exercise-timeline.md](./ux14-notification-vs-exercise-timeline.md) |
 | UX15 | Monetization Strategy (analysis) | 📋 Strategy Phase | — | [ux15-monetization-strategy.md](./ux15-monetization-strategy.md) |
@@ -44,6 +44,7 @@ This directory contains detailed documentation for all UX issues identified in t
 - [UX8: Progress Reporting View](./ux08-progress-reporting-view.md)
 - [UX9: Automatic Progress Report Notifications](./ux09-automatic-progress-report-notifications.md)
 - [UX10: Gamification System](./ux10-gamification-system.md)
+- [UX12: Snooze Button Behavior](./ux12-snooze-button-notification-behavior.md)
 - [UX13: Progress Report Crash Fix](./ux13-progress-report-crash.md)
 - [UX14: Notification vs. Exercise Timeline](./ux14-notification-vs-exercise-timeline.md)
 
