@@ -28,6 +28,20 @@ This directory contains detailed documentation for all UX issues identified in t
 | UX20 | International Language Support - Localization & i18n | 🚧 In Progress | — | [UX20_INTERNATIONAL_LANGUAGES.md](./UX20_INTERNATIONAL_LANGUAGES.md), [Progress](./UX20_IMPLEMENTATION_PROGRESS.md) |
 | UX21 | iCloud Sync for Premium Users - Cross-device data synchronization | ⏳ Pending | — | [ux21-icloud-sync.md](./ux21-icloud-sync.md) |
 | UX22 | Data Export - Download exercise logs, achievements, and settings | ⏳ Pending | — | [ux22-data-export.md](./ux22-data-export.md) |
+| UX23 | Social Sharing - Share achievements & stats via iOS ShareSheet | ⏳ Pending | — | [ux23-social-sharing.md](./ux23-social-sharing.md) |
+| UX24 | User Onboarding - Guide new users through profile setup and features | ⏳ Pending | — | [ux24-user-onboarding.md](./ux24-user-onboarding.md) |
+| UX25 | Notification Styles - Implement gentle/urgent notification behavior | ⏳ Pending | — | [ux25-notification-styles.md](./ux25-notification-styles.md) |
+| UX26 | Apple Health (HealthKit) Integration - Sync exercises as workouts | ⏳ Pending | — | [ux26-healthkit-integration.md](./ux26-healthkit-integration.md) |
+| UX27 | Siri Shortcuts - Voice-activated exercise logging | ⏳ Pending | — | [ux27-siri-shortcuts.md](./ux27-siri-shortcuts.md) |
+| UX28 | Apple Watch Complications - Display stats on watch face | ⏳ Pending | — | [ux28-watch-complications.md](./ux28-watch-complications.md) |
+| UX29 | Quick Actions - Home screen 3D Touch/long press shortcuts | ⏳ Pending | — | [ux29-quick-actions.md](./ux29-quick-actions.md) |
+| UX30 | Inline Notification Replies - Log exercises without opening app | ⏳ Pending | — | [ux30-inline-notification-replies.md](./ux30-inline-notification-replies.md) |
+| UX31 | Exercise Notes/Comments - Add context to logged exercises | ⏳ Pending | — | [ux31-exercise-notes.md](./ux31-exercise-notes.md) |
+| UX32 | Edit/Delete Exercise History - Modify or remove logged exercises | ⏳ Pending | — | [ux32-edit-delete-history.md](./ux32-edit-delete-history.md) |
+| UX33 | Progress Photos - Track visual fitness progress over time | ⏳ Pending | — | [ux33-progress-photos.md](./ux33-progress-photos.md) |
+| UX34 | Daily Goals - Set and track daily exercise targets | ⏳ Pending | — | [ux34-daily-goals.md](./ux34-daily-goals.md) |
+| UX35 | Streak Freeze/Recovery - Protect or restore exercise streaks | ⏳ Pending | — | [ux35-streak-freeze-recovery.md](./ux35-streak-freeze-recovery.md) |
+| UX36 | Sleep/Rest Day Tracking - Explicit rest day logging | ⏳ Pending | — | [ux36-rest-day-tracking.md](./ux36-rest-day-tracking.md) |
 
 ## Status Legend
 
@@ -58,9 +72,23 @@ This directory contains detailed documentation for all UX issues identified in t
 - [UX16: User-Created Achievement Templates](./ux16-user-created-achievement-templates.md)
 - [UX18: iOS Widgets](./ux18-ios-widgets.md)
 - [UX19: Advanced Reminder Scheduling](./ux19-advanced-reminder-scheduling.md)
-- [UX20: International Language Support](./UX20_INTERNATIONAL_
-- [UX22: Data Export](./ux22-data-export.md)LANGUAGES.md) - [Implementation Progress](./UX20_IMPLEMENTATION_PROGRESS.md)
+- [UX20: International Language Support](./UX20_INTERNATIONAL_LANGUAGES.md) - [Implementation Progress](./UX20_IMPLEMENTATION_PROGRESS.md)
 - [UX21: iCloud Sync for Premium Users](./ux21-icloud-sync.md)
+- [UX22: Data Export](./ux22-data-export.md)
+- [UX23: Social Sharing](./ux23-social-sharing.md)
+- [UX24: User Onboarding](./ux24-user-onboarding.md)
+- [UX25: Notification Styles](./ux25-notification-styles.md)
+- [UX26: Apple Health Integration](./ux26-healthkit-integration.md)
+- [UX27: Siri Shortcuts](./ux27-siri-shortcuts.md)
+- [UX28: Watch Complications](./ux28-watch-complications.md)
+- [UX29: Quick Actions](./ux29-quick-actions.md)
+- [UX30: Inline Notification Replies](./ux30-inline-notification-replies.md)
+- [UX31: Exercise Notes](./ux31-exercise-notes.md)
+- [UX32: Edit/Delete History](./ux32-edit-delete-history.md)
+- [UX33: Progress Photos](./ux33-progress-photos.md)
+- [UX34: Daily Goals](./ux34-daily-goals.md)
+- [UX35: Streak Freeze/Recovery](./ux35-streak-freeze-recovery.md)
+- [UX36: Rest Day Tracking](./ux36-rest-day-tracking.md)
 
 ### Strategy & Analysis Documents
 - [UX15: Monetization Strategy](./ux15-monetization-strategy.md)
