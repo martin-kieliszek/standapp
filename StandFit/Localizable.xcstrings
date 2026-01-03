@@ -53,9 +53,6 @@
     "%lld custom" : {
 
     },
-    "%lld min" : {
-
-    },
     "%lld:%@ - %lld:%@" : {
       "localizations" : {
         "en" : {
@@ -159,12 +156,6 @@
         }
       }
     },
-    "Add specific times for reminders" : {
-
-    },
-    "Add Time Block" : {
-
-    },
     "app.name" : {
       "comment" : "App name",
       "extractionState" : "manual",
@@ -217,9 +208,6 @@
 
     },
     "Day" : {
-
-    },
-    "Every %lldm" : {
 
     },
     "general.cancel" : {
@@ -418,15 +406,6 @@
       }
     },
     "Minute" : {
-
-    },
-    "No Fixed Times" : {
-
-    },
-    "Reminders will only fire during these time blocks" : {
-
-    },
-    "Time Blocks" : {
 
     },
     "time.minutes" : {
