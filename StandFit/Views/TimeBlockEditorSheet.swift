@@ -130,6 +130,30 @@ struct TimeBlockEditorView: View {
                 Text("Reminder Interval")
             }
             
+            // Visual preview of notification times
+            if isValidTimeRange {
+                Section {
+                    TimelineVisualizationView(
+                        dayLabel: "Preview",
+                        schedule: DailySchedule(
+                            enabled: true,
+                            scheduleType: .timeBlocks([currentTimeBlock])
+                        ),
+                        fallbackInterval: 30,
+                        config: TimelineVisualizationConfig(
+                            showHourLabels: true,
+                            showLegend: false,
+                            blockHeight: 24
+                        )
+                    )
+                    .padding(.vertical, 4)
+                } header: {
+                    Text("Notification Periods (Preview)")
+                } footer: {
+                    Text("Visual representation of when reminders will fire during this time block. Darker blue = more frequent.")
+                }
+            }
+            
             Section {
                 Toggle("Add Randomness", isOn: $enableRandomization)
                 
@@ -242,6 +266,21 @@ struct TimeBlockEditorView: View {
         let endMinutes = endHour * 60 + endMinute
         let duration = endMinutes - startMinutes
         return max(0, duration / intervalMinutes)
+    }
+    
+    private var currentTimeBlock: TimeBlock {
+        TimeBlock(
+            id: block.id,
+            name: name.isEmpty ? nil : name,
+            startHour: startHour,
+            startMinute: startMinute,
+            endHour: endHour,
+            endMinute: endMinute,
+            intervalMinutes: intervalMinutes,
+            randomizationRange: enableRandomization ? randomizationRange : nil,
+            icon: selectedIcon,
+            notificationStyle: notificationStyle
+        )
     }
 }
 
@@ -371,6 +410,30 @@ struct TimeBlockEditorSheet: View {
                     Text("Reminder Interval")
                 }
                 
+                // Visual preview of notification times
+                if isValidTimeRange {
+                    Section {
+                        TimelineVisualizationView(
+                            dayLabel: "Preview",
+                            schedule: DailySchedule(
+                                enabled: true,
+                                scheduleType: .timeBlocks([currentTimeBlockSheet])
+                            ),
+                            fallbackInterval: 30,
+                            config: TimelineVisualizationConfig(
+                                showHourLabels: true,
+                                showLegend: false,
+                                blockHeight: 24
+                            )
+                        )
+                        .padding(.vertical, 4)
+                    } header: {
+                        Text("Notification Preview")
+                    } footer: {
+                        Text("Visual representation of when reminders will fire during this time block. Darker blue = more frequent.")
+                    }
+                }
+                
                 Section {
                     Toggle("Add Randomness", isOn: $enableRandomization)
                     
@@ -488,6 +551,21 @@ struct TimeBlockEditorSheet: View {
         let endMinutes = endHour * 60 + endMinute
         let duration = endMinutes - startMinutes
         return max(0, duration / intervalMinutes)
+    }
+    
+    private var currentTimeBlockSheet: TimeBlock {
+        TimeBlock(
+            id: block.id,
+            name: name.isEmpty ? nil : name,
+            startHour: startHour,
+            startMinute: startMinute,
+            endHour: endHour,
+            endMinute: endMinute,
+            intervalMinutes: intervalMinutes,
+            randomizationRange: enableRandomization ? randomizationRange : nil,
+            icon: selectedIcon,
+            notificationStyle: notificationStyle
+        )
     }
 }
 

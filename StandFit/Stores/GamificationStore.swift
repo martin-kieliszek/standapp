@@ -37,7 +37,6 @@ class GamificationStore: ObservableObject {
 
         // Load data from service
         loadData()
-        initializeAchievementsIfNeeded()
     }
 
     private func loadData() {
@@ -48,19 +47,23 @@ class GamificationStore: ObservableObject {
             self.levelProgress = data.levelProgress
             self.activeChallenges = data.activeChallenges
         } catch {
-            // First launch or corrupted data - start fresh
-            self.achievements = []
-            self.streak = StreakData()
-            self.levelProgress = LevelProgress()
-            self.activeChallenges = []
-        }
-    }
-
-    /// Initialize achievements from definitions if this is the first launch
-    private func initializeAchievementsIfNeeded() {
-        if achievements.isEmpty {
-            achievements = AchievementDefinitions.all
-            saveData()
+            // Critical error loading data - log but preserve what we can
+            print("⚠️ Error loading gamification data: \(error). Starting fresh.")
+            // GamificationService.loadData() already returns initialized data on first launch,
+            // so if we're here, it's a real error. Start with defaults.
+            let defaultData = GamificationService.GamificationData(
+                achievements: AchievementDefinitions.all,
+                streak: StreakData(),
+                levelProgress: LevelProgress(),
+                activeChallenges: []
+            )
+            self.achievements = defaultData.achievements
+            self.streak = defaultData.streak
+            self.levelProgress = defaultData.levelProgress
+            self.activeChallenges = defaultData.activeChallenges
+            
+            // Save the default data to create the file
+            try? gamificationService.saveData(defaultData)
         }
     }
 
@@ -79,6 +82,9 @@ class GamificationStore: ObservableObject {
 
     /// Process a gamification event and update state accordingly
     func processEvent(_ event: GamificationEvent, exerciseStore: ExerciseStore) {
+        // Only process achievements for premium users
+        guard exerciseStore.isPremium else { return }
+        
         let currentData = GamificationService.GamificationData(
             achievements: achievements,
             streak: streak,
@@ -183,6 +189,60 @@ class GamificationStore: ObservableObject {
         saveData()
     }
 
+    // MARK: - Premium Upgrade
+    
+    /// Recalculate all achievements from scratch using exercise history
+    /// Call this when a user upgrades to premium
+    func recalculateAchievementsFromHistory(exerciseStore: ExerciseStore) {
+        print("🔄 Recalculating achievements from exercise history...")
+        
+        // Reset achievements to initial state
+        achievements = AchievementDefinitions.all
+        streak = StreakData()
+        levelProgress = LevelProgress()
+        activeChallenges = []
+        recentlyUnlockedAchievements = []
+        
+        // Process each log as an event to rebuild achievement state
+        let sortedLogs = exerciseStore.logs.sorted { $0.timestamp < $1.timestamp }
+        for log in sortedLogs {
+            let exerciseId = log.customExerciseId?.uuidString ?? log.exerciseType?.rawValue ?? "unknown"
+            let event = GamificationEvent.exerciseLogged(
+                exerciseId: exerciseId,
+                count: log.count,
+                timestamp: log.timestamp
+            )
+            
+            // Process without premium check (internal recalculation)
+            let currentData = GamificationService.GamificationData(
+                achievements: achievements,
+                streak: streak,
+                levelProgress: levelProgress,
+                activeChallenges: activeChallenges
+            )
+            
+            let (updatedData, result) = gamificationService.processEvent(
+                event,
+                currentData: currentData,
+                logs: exerciseStore.logs,
+                customExercises: exerciseStore.customExercises
+            )
+            
+            self.achievements = updatedData.achievements
+            self.streak = updatedData.streak
+            self.levelProgress = updatedData.levelProgress
+            self.activeChallenges = updatedData.activeChallenges
+            
+            // Collect unlocked achievements but don't notify
+            if !result.newlyUnlockedAchievements.isEmpty {
+                recentlyUnlockedAchievements.append(contentsOf: result.newlyUnlockedAchievements)
+            }
+        }
+        
+        saveData()
+        print("✅ Recalculation complete: \(unlockedAchievements.count) achievements unlocked")
+    }
+    
     // MARK: - Debug & Testing
 
     /// Reset all gamification data (useful for testing)

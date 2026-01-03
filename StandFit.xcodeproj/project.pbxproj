@@ -14,6 +14,7 @@
 /* Begin PBXFileReference section */
 		406F62572F079A0A00CAE1C7 /* StandFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		406F62B32F079E8A00CAE1C7 /* StandFit Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StandFit Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		406F636E2F07FDA400CAE1C7 /* StandFit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StandFit.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +66,7 @@
 		406F624E2F079A0A00CAE1C7 = {
 			isa = PBXGroup;
 			children = (
+				406F636E2F07FDA400CAE1C7 /* StandFit.storekit */,
 				406F62592F079A0A00CAE1C7 /* StandFit */,
 				406F62B42F079E8A00CAE1C7 /* StandFit Watch App */,
 				406F62F02F079FAA00CAE1C7 /* Frameworks */,

@@ -18,6 +18,31 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
+                // Subscription section
+                Section {
+                    NavigationLink {
+                        SubscriptionSettingsView(subscriptionManager: SubscriptionManager.shared)
+                    } label: {
+                        HStack {
+                            Image(systemName: store.isPremium ? "star.circle.fill" : "star.circle")
+                                .foregroundStyle(store.isPremium ? .yellow : .secondary)
+                                .font(.title2)
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(store.isPremium ? "Premium Active" : "Upgrade to Premium")
+                                    .font(.headline)
+                                if let trial = SubscriptionManager.shared.trialState, trial.isActive {
+                                    Text("\(trial.daysRemaining) days remaining")
+                                        .font(.caption)
+                                        .foregroundStyle(.orange)
+                                }
+                            }
+                            
+                            Spacer()
+                        }
+                    }
+                }
+                
                 // Reminders toggle
                 Section {
                     Toggle(isOn: $store.remindersEnabled) {

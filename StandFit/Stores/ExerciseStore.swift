@@ -19,11 +19,26 @@ class ExerciseStore: ObservableObject {
     private let exerciseService: ExerciseService
     internal let reportingService: ReportingService  // Accessible within module for NotificationManager
     private let timelineService: TimelineService
+    private let subscriptionManager = SubscriptionManager.shared
 
     // MARK: - Published State
 
     @Published var logs: [ExerciseLog] = []
     @Published var customExercises: [CustomExercise] = []
+    
+    // MARK: - Subscription Convenience
+    
+    var isPremium: Bool {
+        subscriptionManager.isPremium
+    }
+    
+    var entitlements: FeatureEntitlement {
+        subscriptionManager.entitlements
+    }
+    
+    var canCreateCustomExercise: Bool {
+        customExercises.count < entitlements.customExerciseLimit
+    }
 
     // MARK: - Settings (AppStorage)
 

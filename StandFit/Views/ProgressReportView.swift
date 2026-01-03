@@ -19,6 +19,7 @@ struct ProgressReportView: View {
     @ObservedObject var store: ExerciseStore
     @ObservedObject var gamificationStore: GamificationStore
     @State private var selectedPeriodType: PeriodType = .today
+    @State private var showingPaywall = false
     @Environment(\.dismiss) private var dismiss
 
     private let calendar = Calendar.current
@@ -67,10 +68,21 @@ struct ProgressReportView: View {
                     // Period selector (Picker instead of navigationLink for iOS)
                     Picker("Period", selection: $selectedPeriodType) {
                         Text("Today").tag(PeriodType.today)
-                        Text("Week").tag(PeriodType.week)
-                        Text("Month").tag(PeriodType.month)
+                        if store.isPremium {
+                            Text("Week").tag(PeriodType.week)
+                            Text("Month").tag(PeriodType.month)
+                        } else {
+                            Text("Week 🔒").tag(PeriodType.week)
+                            Text("Month 🔒").tag(PeriodType.month)
+                        }
                     }
                     .pickerStyle(.segmented)
+                    .onChange(of: selectedPeriodType) { oldValue, newValue in
+                        if !store.isPremium && newValue != .today {
+                            selectedPeriodType = oldValue
+                            showingPaywall = true
+                        }
+                    }
                     
                     // Date range for selected period
                     periodDateRange
@@ -103,6 +115,9 @@ struct ProgressReportView: View {
             }
             .navigationTitle("Progress")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $showingPaywall) {
+                PaywallView(subscriptionManager: SubscriptionManager.shared)
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Done") { dismiss() }

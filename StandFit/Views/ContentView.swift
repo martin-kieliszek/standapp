@@ -13,6 +13,7 @@ import StandFitCore
 struct ContentView: View {
     @StateObject private var exerciseStore = ExerciseStore.shared
     @StateObject private var gamificationStore = GamificationStore.shared
+    @StateObject private var subscriptionManager = SubscriptionManager.shared
     @State private var showExercisePicker = false
     @State private var selectedExerciseItem: ExerciseItem?
     @State private var showHistory = false
@@ -20,6 +21,7 @@ struct ContentView: View {
     @State private var showSettings = false
     @State private var showAchievements = false
     @State private var showCreateExercise = false
+    @State private var showPaywall = false
     @State private var currentTime = Date()
     @State private var showingAchievementToast = false
     @State private var toastAchievement: Achievement?
@@ -44,6 +46,11 @@ struct ContentView: View {
 
                 ScrollView {
                     VStack(spacing: 20) {
+                        // Trial expiration banner
+                        if shouldShowTrialBanner {
+                            trialExpirationBanner
+                        }
+                        
                         // Hero section with streak and timer
                         heroSection
 
@@ -111,6 +118,9 @@ struct ContentView: View {
             .sheet(isPresented: $showCreateExercise) {
                 CreateExerciseView(store: exerciseStore)
             }
+            .sheet(isPresented: $showPaywall) {
+                PaywallView(subscriptionManager: SubscriptionManager.shared)
+            }
             .overlay {
                 if showingAchievementToast, let achievement = toastAchievement {
                     ZStack {
@@ -152,7 +162,11 @@ struct ContentView: View {
         VStack(spacing: 16) {
             // Streak Card with gradient
             Button {
-                showAchievements = true
+                if exerciseStore.isPremium {
+                    showAchievements = true
+                } else {
+                    showPaywall = true
+                }
             } label: {
                 HStack(spacing: 16) {
                     ZStack {
@@ -173,10 +187,30 @@ struct ContentView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("\(gamificationStore.streak.currentStreak) day streak")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text("Keep the momentum going!")
+                        ZStack {
+                            Text("\(gamificationStore.streak.currentStreak) day streak")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            
+                            if !exerciseStore.isPremium {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "lock.fill")
+                                        .font(.caption)
+                                    Text("Premium")
+                                        .font(.caption.bold())
+                                }
+                                .foregroundStyle(.secondary)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(
+                                    Capsule()
+                                        .fill(.ultraThinMaterial)
+                                )
+                            }
+                        }
+                        .blur(radius: !exerciseStore.isPremium ? 3 : 0)
+                        
+                        Text(gamificationStore.streak.currentStreak == 0 ? "Edit a schedule reminder!" : "Keep the momentum going!")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -239,7 +273,7 @@ struct ContentView: View {
                             HStack(spacing: 4) {
                                 Image(systemName: "clock.fill")
                                     .font(.caption)
-                                Text(nextTime.formatted(date: .omitted, time: .shortened))
+                                Text(formatNextReminderDateTime(nextTime))
                                     .font(.caption)
                             }
                             .foregroundStyle(.secondary)
@@ -282,7 +316,7 @@ struct ContentView: View {
                                     .font(.caption2)
                                     .opacity(0.6)
                             }
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                             .padding(.vertical, 8)
                         }
                         .padding(.top, 8)
@@ -334,28 +368,52 @@ struct ContentView: View {
                 icon: "chart.line.uptrend.xyaxis",
                 title: "Progress",
                 color: .green,
-                action: { showProgress = true }
+                action: {
+                    if exerciseStore.isPremium {
+                        showProgress = true
+                    } else {
+                        showPaywall = true
+                    }
+                }
             )
 
             QuickActionCard(
                 icon: "clock.fill",
                 title: "History",
                 color: .orange,
-                action: { showHistory = true }
+                action: {
+                    if exerciseStore.isPremium {
+                        showHistory = true
+                    } else {
+                        showPaywall = true
+                    }
+                }
             )
 
             QuickActionCard(
                 icon: "trophy.fill",
                 title: "Achievements",
                 color: .cyan,
-                action: { showAchievements = true }
+                action: {
+                    if exerciseStore.isPremium {
+                        showAchievements = true
+                    } else {
+                        showPaywall = true
+                    }
+                }
             )
 
             QuickActionCard(
                 icon: "star.fill",
                 title: "Level \(gamificationStore.levelProgress.currentLevel)",
                 color: .yellow,
-                action: { showAchievements = true }
+                action: {
+                    if exerciseStore.isPremium {
+                        showAchievements = true
+                    } else {
+                        showPaywall = true
+                    }
+                }
             )
         }
     }
@@ -369,14 +427,16 @@ struct ContentView: View {
                     value: "\(exerciseStore.todaysLogs.count)",
                     label: "Today's Logs",
                     icon: "checkmark.circle.fill",
-                    color: .blue
+                    color: .blue,
+                    showLock: !exerciseStore.isPremium
                 )
 
                 StatCard(
                     value: "\(gamificationStore.unlockedAchievements.count)",
                     label: "Unlocked",
                     icon: "trophy.fill",
-                    color: .purple
+                    color: .purple,
+                    showLock: !exerciseStore.isPremium
                 )
             }
 
@@ -385,13 +445,44 @@ struct ContentView: View {
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundStyle(.yellow)
-                    Text("Level \(gamificationStore.levelProgress.currentLevel)")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
+                    
+                    ZStack {
+                        Text("Level \(gamificationStore.levelProgress.currentLevel)")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        
+                        if !exerciseStore.isPremium {
+                            HStack(spacing: 3) {
+                                Image(systemName: "lock.fill")
+                                    .font(.caption2)
+                                Text("Premium")
+                                    .font(.caption2.bold())
+                            }
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 3)
+                            .background(
+                                Capsule()
+                                    .fill(.ultraThinMaterial)
+                            )
+                        }
+                    }
+                    .blur(radius: !exerciseStore.isPremium ? 3 : 0)
+                    
                     Spacer()
-                    Text("\(gamificationStore.levelProgress.xpForNextLevel.current) / \(gamificationStore.levelProgress.xpForNextLevel.needed) XP")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    
+                    ZStack {
+                        Text("\(gamificationStore.levelProgress.xpForNextLevel.current) / \(gamificationStore.levelProgress.xpForNextLevel.needed) XP")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        
+                        if !exerciseStore.isPremium {
+                            Text("•••")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .blur(radius: !exerciseStore.isPremium ? 2 : 0)
                 }
 
                 GeometryReader { geometry in
@@ -440,12 +531,27 @@ struct ContentView: View {
                 Button {
                     showCreateExercise = true
                 } label: {
-                    Label("Create Custom", systemImage: "plus.circle.fill")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
+                    HStack(spacing: 6) {
+                        Image(systemName: "plus")
+                            .font(.subheadline.weight(.semibold))
+                        Text("Custom")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(
+                        Capsule()
+                            .fill(
+                                LinearGradient(
+                                    colors: [.pink, .purple],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                    )
+                    .foregroundStyle(.white)
+                    .shadow(color: .pink.opacity(0.3), radius: 8, x: 0, y: 4)
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.pink)
             }
 
             ExercisePickerView { item in
@@ -511,6 +617,31 @@ struct ContentView: View {
             return String(format: "0:%02d", seconds)
         }
     }
+    
+    private func formatNextReminderDateTime(_ date: Date) -> String {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        // Check if it's today
+        if calendar.isDateInToday(date) {
+            return "Today at \(date.formatted(date: .omitted, time: .shortened))"
+        }
+        
+        // Check if it's tomorrow
+        if calendar.isDateInTomorrow(date) {
+            return "Tomorrow at \(date.formatted(date: .omitted, time: .shortened))"
+        }
+        
+        // Check if it's within the next week
+        let daysUntil = calendar.dateComponents([.day], from: calendar.startOfDay(for: now), to: calendar.startOfDay(for: date)).day ?? 0
+        if daysUntil >= 0 && daysUntil < 7 {
+            let weekday = date.formatted(.dateTime.weekday(.wide))
+            return "\(weekday) at \(date.formatted(date: .omitted, time: .shortened))"
+        }
+        
+        // For dates further out, show full date
+        return date.formatted(date: .abbreviated, time: .shortened)
+    }
 
     private func requestNotificationPermission() async {
         do {
@@ -540,6 +671,69 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    // MARK: - Trial Banner
+    
+    private var shouldShowTrialBanner: Bool {
+        guard let trial = subscriptionManager.trialState,
+              trial.isActive,
+              !trial.hasExpired else {
+            return false
+        }
+        // Show banner when 3 or fewer days remaining
+        return trial.daysRemaining <= 3 && trial.daysRemaining > 0
+    }
+    
+    private var trialExpirationBanner: some View {
+        Button {
+            showPaywall = true
+        } label: {
+            VStack(spacing: 8) {
+                HStack(spacing: 12) {
+                    Image(systemName: "clock.badge.exclamationmark.fill")
+                        .font(.title2)
+                        .foregroundStyle(.white)
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Trial Ending Soon!")
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                        
+                        if let trial = subscriptionManager.trialState {
+                            Text("\(trial.daysRemaining) day\(trial.daysRemaining == 1 ? "" : "s") left in your free trial")
+                                .font(.subheadline)
+                                .foregroundStyle(.white.opacity(0.9))
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrow.right.circle.fill")
+                        .font(.title2)
+                        .foregroundStyle(.white)
+                }
+                
+                Text("Upgrade now to keep your achievements & stats")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.85))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(16)
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color.orange,
+                        Color.red
+                    ],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .shadow(color: .orange.opacity(0.3), radius: 8, x: 0, y: 4)
+        }
+        .buttonStyle(.plain)
     }
 }
 
@@ -592,17 +786,47 @@ struct StatCard: View {
     let label: String
     let icon: String
     let color: Color
+    var showLock: Bool = false
 
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundStyle(color)
+            ZStack(alignment: .topTrailing) {
+                Image(systemName: icon)
+                    .font(.title3)
+                    .foregroundStyle(color)
+                
+                if showLock {
+                    Image(systemName: "lock.fill")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .offset(x: 8, y: -8)
+                }
+            }
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(value)
-                    .font(.title2)
-                    .fontWeight(.bold)
+                ZStack {
+                    Text(value)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    if showLock {
+                        HStack(spacing: 4) {
+                            Image(systemName: "lock.fill")
+                                .font(.caption)
+                            Text("Premium")
+                                .font(.caption.bold())
+                        }
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(
+                            Capsule()
+                                .fill(.ultraThinMaterial)
+                        )
+                    }
+                }
+                .blur(radius: showLock ? 3 : 0)
+                
                 Text(label)
                     .font(.caption)
                     .foregroundStyle(.secondary)

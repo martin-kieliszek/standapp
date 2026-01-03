@@ -21,6 +21,7 @@ struct CreateExerciseView: View {
     @State private var unitType: ExerciseUnitType
     @State private var defaultCount: Int
     @State private var showingDeleteConfirmation = false
+    @State private var showPaywall = false
     @State private var previousUnitType: ExerciseUnitType
 
     private var isEditing: Bool {
@@ -58,46 +59,59 @@ struct CreateExerciseView: View {
 
     var body: some View {
         Form {
-            // Name Input Section
-            Section("Name") {
-                TextField("Exercise name", text: $name)
-                    .textInputAutocapitalization(.words)
-            }
-
-            // Icon Selection
-            Section("Icon") {
-                IconPickerButton(selectedIcon: $icon)
-            }
-
-            // Unit Type Selection
-            Section("Measurement") {
-                Picker("Measured In", selection: $unitType) {
-                    ForEach(ExerciseUnitType.allCases) {
-                        type in
-                        Text(type.rawValue).tag(type)
-                    }
+            // Premium check for custom exercise limit
+            if !isEditing && !store.canCreateCustomExercise {
+                Section {
+                    PremiumPrompt(
+                        feature: "Create unlimited custom exercises",
+                        icon: "lock.fill",
+                        onUpgrade: {
+                            showPaywall = true
+                        }
+                    )
                 }
-                .pickerStyle(.menu)
-                .onChange(of: unitType) { newValue in
-                    // Convert the current count when switching unit types
-                    let oldValue = previousUnitType
-                    if oldValue.isTimeBased && newValue.isTimeBased {
-                        // Converting between time units (seconds ↔ minutes)
-                        let currentDisplay = oldValue.toDisplayValue(defaultCount)
-                        defaultCount = newValue.toStorageValue(currentDisplay)
-                    } else if !oldValue.isTimeBased && newValue.isTimeBased {
-                        // Switching from reps to time - use sensible default
-                        defaultCount = newValue.toStorageValue(newValue == .minutes ? 5 : 30)
-                    } else if oldValue.isTimeBased && !newValue.isTimeBased {
-                        // Switching from time to reps - use sensible default
-                        defaultCount = 10
-                    }
-                    previousUnitType = newValue
+            } else {
+                // Name Input Section
+                Section("Name") {
+                    TextField("Exercise name", text: $name)
+                        .textInputAutocapitalization(.words)
                 }
-                
-                Text(unitTypeDescription)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+
+                // Icon Selection
+                Section("Icon") {
+                    IconPickerButton(selectedIcon: $icon)
+                }
+
+                // Unit Type Selection
+                Section("Measurement") {
+                    Picker("Measured In", selection: $unitType) {
+                        ForEach(ExerciseUnitType.allCases) {
+                            type in
+                            Text(type.rawValue).tag(type)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .onChange(of: unitType) { newValue in
+                        // Convert the current count when switching unit types
+                        let oldValue = previousUnitType
+                        if oldValue.isTimeBased && newValue.isTimeBased {
+                            // Converting between time units (seconds ↔ minutes)
+                            let currentDisplay = oldValue.toDisplayValue(defaultCount)
+                            defaultCount = newValue.toStorageValue(currentDisplay)
+                        } else if !oldValue.isTimeBased && newValue.isTimeBased {
+                            // Switching from reps to time - use sensible default
+                            defaultCount = newValue.toStorageValue(newValue == .minutes ? 5 : 30)
+                        } else if oldValue.isTimeBased && !newValue.isTimeBased {
+                            // Switching from time to reps - use sensible default
+                            defaultCount = 10
+                        }
+                        previousUnitType = newValue
+                    }
+                    
+                    Text(unitTypeDescription)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             // Default Count
@@ -206,6 +220,9 @@ struct CreateExerciseView: View {
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("This will remove the exercise. Your logged data will be kept.")
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView(subscriptionManager: SubscriptionManager.shared)
         }
     }
 
