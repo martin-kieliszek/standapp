@@ -12,7 +12,7 @@ This directory contains detailed documentation for all UX issues identified in t
 | UX4 | Additional UX polish items (see below) | ⏳ Pending | — | [ux04-additional-polish-items.md](./ux04-additional-polish-items.md) |
 | UX5 | "Log Exercise" notification lands on main view instead of exercise picker | ✅ Complete | 2026-01-01 | [ux05-notification-log-exercise-deep-link.md](./ux05-notification-log-exercise-deep-link.md) |
 | UX6 | "Reset Timer" button doesn't indicate what interval it will reset to | ✅ Complete | 2026-01-02 | [ux06-reset-timer-button-lacks-context.md](./ux06-reset-timer-button-lacks-context.md) |
-| UX7 | No warning when Focus Mode may block notifications | ⏳ Pending | — | [ux07-focus-mode-notification-warning.md](./ux07-focus-mode-notification-warning.md) |
+| UX7 | No warning when Focus Mode may block notifications | ✅ Complete | 2026-01-03 | [ux07-focus-mode-notification-warning.md](./ux07-focus-mode-notification-warning.md) |
 | UX8 | No progress comparison view (day/week/month/year reporting) | ✅ Complete | 2026-01-01 | [ux08-progress-reporting-view.md](./ux08-progress-reporting-view.md) |
 | UX9 | No automatic progress report notifications | ✅ Complete | 2026-01-01 | [ux09-automatic-progress-report-notifications.md](./ux09-automatic-progress-report-notifications.md) |
 | UX10 | No gamification (streaks, achievements, milestones) | ✅ Complete | 2026-01-02 | [ux10-gamification-system.md](./ux10-gamification-system.md) |
@@ -26,6 +26,8 @@ This directory contains detailed documentation for all UX issues identified in t
 | UX18 | iOS Widgets - Home Screen & Lock Screen engagement | ⏳ Pending | — | [ux18-ios-widgets.md](./ux18-ios-widgets.md) |
 | UX19 | Advanced Reminder Scheduling - Per-day, time blocks, profiles | ⏳ Pending | — | [ux19-advanced-reminder-scheduling.md](./ux19-advanced-reminder-scheduling.md) |
 | UX20 | International Language Support - Localization & i18n | 🚧 In Progress | — | [UX20_INTERNATIONAL_LANGUAGES.md](./UX20_INTERNATIONAL_LANGUAGES.md), [Progress](./UX20_IMPLEMENTATION_PROGRESS.md) |
+| UX21 | iCloud Sync for Premium Users - Cross-device data synchronization | ⏳ Pending | — | [ux21-icloud-sync.md](./ux21-icloud-sync.md) |
+| UX22 | Data Export - Download exercise logs, achievements, and settings | ⏳ Pending | — | [ux22-data-export.md](./ux22-data-export.md) |
 
 ## Status Legend
 
@@ -41,6 +43,7 @@ This directory contains detailed documentation for all UX issues identified in t
 - [UX3: Custom Exercises](./ux03-custom-exercises.md)
 - [UX5: Notification Deep Link](./ux05-notification-log-exercise-deep-link.md)
 - [UX6: Reset Timer Button Context](./ux06-reset-timer-button-lacks-context.md)
+- [UX7: Focus Mode Warning](./ux07-focus-mode-notification-warning.md)
 - [UX8: Progress Reporting View](./ux08-progress-reporting-view.md)
 - [UX9: Automatic Progress Report Notifications](./ux09-automatic-progress-report-notifications.md)
 - [UX10: Gamification System](./ux10-gamification-system.md)
@@ -50,13 +53,14 @@ This directory contains detailed documentation for all UX issues identified in t
 
 ### Pending Issues
 - [UX4: Additional Polish Items](./ux04-additional-polish-items.md)
-- [UX7: Focus Mode Warning](./ux07-focus-mode-notification-warning.md)
 - [UX11: Social Features](./ux11-social-features.md)
 - [UX12: Snooze Button Behavior](./ux12-snooze-button-notification-behavior.md)
 - [UX16: User-Created Achievement Templates](./ux16-user-created-achievement-templates.md)
 - [UX18: iOS Widgets](./ux18-ios-widgets.md)
 - [UX19: Advanced Reminder Scheduling](./ux19-advanced-reminder-scheduling.md)
-- [UX20: International Language Support](./UX20_INTERNATIONAL_LANGUAGES.md) - [Implementation Progress](./UX20_IMPLEMENTATION_PROGRESS.md)
+- [UX20: International Language Support](./UX20_INTERNATIONAL_
+- [UX22: Data Export](./ux22-data-export.md)LANGUAGES.md) - [Implementation Progress](./UX20_IMPLEMENTATION_PROGRESS.md)
+- [UX21: iCloud Sync for Premium Users](./ux21-icloud-sync.md)
 
 ### Strategy & Analysis Documents
 - [UX15: Monetization Strategy](./ux15-monetization-strategy.md)

@@ -53,6 +53,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             }
         }
         
+        // Request Focus Status authorization (iOS 15+)
+        if #available(iOS 15.0, *) {
+            FocusStatusManager.shared.requestAuthorization()
+        }
+        
         return true
     }
     

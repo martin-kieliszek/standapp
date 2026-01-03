@@ -123,6 +123,28 @@ struct SettingsView: View {
                 } footer: {
                     Text(LocalizedString.Settings.autoReports)
                 }
+                
+                // Focus Mode Warning
+                if #available(iOS 15.0, *) {
+                    Section {
+                        HStack(spacing: 12) {
+                            Image(systemName: "moon.fill")
+                                .foregroundStyle(.purple)
+                                .font(.title2)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(LocalizedString.Settings.focusModes)
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                Text(LocalizedString.Settings.focusMaySilence)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    } footer: {
+                        Text(LocalizedString.Settings.focusCheckSettings)
+                    }
+                }
 
                 // Haptic test
                 Section {

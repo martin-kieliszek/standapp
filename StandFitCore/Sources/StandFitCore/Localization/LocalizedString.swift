@@ -399,6 +399,12 @@ public enum LocalizedString {
         public static let today = NSLocalizedString("settings.today", tableName: table, comment: "Today")
         public static let tomorrow = NSLocalizedString("settings.tomorrow", tableName: table, comment: "Tomorrow")
         
+        // Focus Mode warnings
+        public static let focusModes = NSLocalizedString("settings.focus_modes", tableName: table, comment: "Focus Modes label")
+        public static let focusMaySilence = NSLocalizedString("settings.focus_may_silence", tableName: table, comment: "Reminders may be silenced when a Focus is active")
+        public static let focusCheckSettings = NSLocalizedString("settings.focus_check_settings", tableName: table, comment: "Check Settings > Focus to allow StandFit notifications")
+        public static let focusActiveBanner = NSLocalizedString("settings.focus_active_banner", tableName: table, comment: "Focus Mode active - reminders may be silenced")
+        
         // Helper functions for time interval formatting
         public static func formatInterval(_ minutes: Int) -> String {
             if minutes < 60 {

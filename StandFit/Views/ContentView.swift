@@ -46,6 +46,12 @@ struct ContentView: View {
 
                 ScrollView {
                     VStack(spacing: 20) {
+                        // Focus Mode Warning Banner
+                        if #available(iOS 15.0, *), 
+                           FocusStatusManager.shared.isFocusActive {
+                            focusModeWarningBanner
+                        }
+                        
                         // Trial expiration banner
                         if shouldShowTrialBanner {
                             trialExpirationBanner
@@ -756,6 +762,25 @@ struct ContentView: View {
             .shadow(color: .orange.opacity(0.3), radius: 8, x: 0, y: 4)
         }
         .buttonStyle(.plain)
+    }
+    
+    @available(iOS 15.0, *)
+    private var focusModeWarningBanner: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "moon.fill")
+                .foregroundStyle(.purple)
+                .font(.title3)
+            
+            Text(LocalizedString.Settings.focusActiveBanner)
+                .font(.subheadline)
+                .foregroundStyle(.primary)
+            
+            Spacer()
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity)
+        .background(Color.purple.opacity(0.15))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 
