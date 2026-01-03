@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import StandFitCore
 
 struct PaywallView: View {
     @ObservedObject var subscriptionManager: SubscriptionManager
@@ -31,10 +32,10 @@ struct PaywallView: View {
                                 )
                             )
                         
-                        Text("Start Free Trial")
+                        Text(LocalizedString.Premium.startFreeTrial)
                             .font(.title.bold())
                         
-                        Text("Unlock all features and maximize your fitness journey")
+                        Text(LocalizedString.Premium.maximizeJourney)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -43,17 +44,17 @@ struct PaywallView: View {
                     
                     // Features list
                     VStack(alignment: .leading, spacing: 16) {
-                        FeatureRow(icon: "trophy.fill", color: .purple, title: "Full Achievement System", description: "Unlock all badges, streaks, and challenges")
+                        FeatureRow(icon: "trophy.fill", color: .purple, title: LocalizedString.Premium.featureAchievementSystem, description: LocalizedString.Premium.featureAchievementSystemDesc)
                         
-                        FeatureRow(icon: "chart.line.uptrend.xyaxis", color: .blue, title: "Advanced Analytics", description: "30/60/90-day trends and insights")
+                        FeatureRow(icon: "chart.line.uptrend.xyaxis", color: .blue, title: LocalizedString.Premium.featureAdvancedAnalytics, description: LocalizedString.Premium.featureAdvancedAnalyticsDesc)
                         
-                        FeatureRow(icon: "clock.fill", color: .green, title: "Timeline Visualization", description: "See your response patterns over time")
+                        FeatureRow(icon: "clock.fill", color: .green, title: LocalizedString.Premium.featureTimelineViz, description: LocalizedString.Premium.featureTimelineVizDesc)
                         
-                        FeatureRow(icon: "plus.circle.fill", color: .pink, title: "Unlimited Custom Exercises", description: "Create as many exercises as you need")
+                        FeatureRow(icon: "plus.circle.fill", color: .pink, title: LocalizedString.Premium.featureUnlimitedCustom, description: LocalizedString.Premium.featureUnlimitedCustomDesc)
                         
-                        FeatureRow(icon: "square.and.arrow.up.fill", color: .cyan, title: "Export Your Data", description: "Download activity reports anytime")
+                        FeatureRow(icon: "square.and.arrow.up.fill", color: .cyan, title: LocalizedString.Premium.featureExportData, description: LocalizedString.Premium.featureExportDataDesc)
                         
-                        FeatureRow(icon: "icloud.fill", color: .indigo, title: "iCloud Sync", description: "Backup and sync across devices")
+                        FeatureRow(icon: "icloud.fill", color: .indigo, title: LocalizedString.Premium.featureiCloudSync, description: LocalizedString.Premium.featureiCloudSyncDesc)
                     }
                     .padding(.horizontal)
                     
@@ -63,8 +64,8 @@ struct PaywallView: View {
                         VStack(spacing: 12) {
                             PricingCard(
                                 product: annual,
-                                badge: "BEST VALUE",
-                                savings: "Save 37%",
+                                badge: LocalizedString.Premium.bestValueBadge,
+                                savings: LocalizedString.Premium.savePercentage,
                                 isSelected: selectedProduct?.id == annual.id
                             ) {
                                 selectedProduct = annual
@@ -87,10 +88,10 @@ struct PaywallView: View {
                     
                     // Trial info
                     VStack(spacing: 8) {
-                        Text("Start your 14-day free trial")
+                        Text(LocalizedString.Premium.trialDuration)
                             .font(.headline)
                         
-                        Text("No payment required • Cancel anytime")
+                        Text(LocalizedString.Premium.trialNoPayment)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -107,7 +108,7 @@ struct PaywallView: View {
                                 ProgressView()
                                     .tint(.white)
                             } else {
-                                Text("Start Free Trial")
+                                Text(LocalizedString.Premium.startFreeTrial)
                                     .font(.headline)
                             }
                         }
@@ -135,7 +136,7 @@ struct PaywallView: View {
                     }
                     
                     // Restore button
-                    Button("Restore Purchases") {
+                    Button(LocalizedString.Premium.restore) {
                         Task {
                             await subscriptionManager.restorePurchases()
                         }
@@ -144,7 +145,7 @@ struct PaywallView: View {
                     .foregroundStyle(.secondary)
                     
                     // Legal text
-                    Text("Subscription automatically renews unless canceled at least 24 hours before the end of the current period.")
+                    Text(LocalizedString.Premium.subscriptionRenewNote)
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
@@ -152,11 +153,11 @@ struct PaywallView: View {
                         .padding(.bottom, 20)
                 }
             }
-            .navigationTitle("Premium")
+            .navigationTitle(LocalizedString.Premium.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") {
+                    Button(LocalizedString.Premium.closeButton) {
                         dismiss()
                     }
                 }
@@ -180,7 +181,7 @@ struct PaywallView: View {
                 dismiss()
             }
         } catch {
-            errorMessage = "Purchase failed. Please try again."
+            errorMessage = LocalizedString.Premium.purchaseFailed
         }
         
         isPurchasing = false
@@ -255,7 +256,7 @@ struct PricingCard: View {
                     Text(product.displayPrice)
                         .font(.title2.bold())
                     
-                    Text(product.subscription?.subscriptionPeriod.unit == .month ? "/ month" : "/ year")
+                    Text(product.subscription?.subscriptionPeriod.unit == .month ? LocalizedString.Premium.perMonth : LocalizedString.Premium.perYear)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -290,7 +291,7 @@ struct PremiumPrompt: View {
                 .font(.system(size: 50))
                 .foregroundStyle(.secondary)
             
-            Text("Premium Feature")
+            Text(LocalizedString.Premium.premiumFeature)
                 .font(.title3.bold())
             
             Text(feature)
@@ -301,7 +302,7 @@ struct PremiumPrompt: View {
             Button {
                 onUpgrade()
             } label: {
-                Text("Start Free Trial")
+                Text(LocalizedString.Premium.startFreeTrial)
                     .font(.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)

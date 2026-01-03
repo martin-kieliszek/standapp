@@ -116,7 +116,7 @@ struct TimelineVisualizationView: View {
     @ViewBuilder
     private var legendView: some View {
         HStack(spacing: 8) {
-            Text("Less")
+            Text(LocalizedString.Schedule.less)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
             
@@ -129,7 +129,7 @@ struct TimelineVisualizationView: View {
                 }
             }
             
-            Text("More")
+            Text(LocalizedString.Schedule.more)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
         }
@@ -202,7 +202,15 @@ extension TimelineVisualizationView {
     
     /// Create visualization for a full week from profile
     init(profile: ScheduleProfile, config: TimelineVisualizationConfig = TimelineVisualizationConfig()) {
-        let dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        let dayNames = [
+            LocalizedString.Schedule.daySun,
+            LocalizedString.Schedule.dayMon,
+            LocalizedString.Schedule.dayTue,
+            LocalizedString.Schedule.dayWed,
+            LocalizedString.Schedule.dayThu,
+            LocalizedString.Schedule.dayFri,
+            LocalizedString.Schedule.daySat
+        ]
         let weekdays = [1, 2, 3, 4, 5, 6, 7]
         
         let data = weekdays.map { weekday in

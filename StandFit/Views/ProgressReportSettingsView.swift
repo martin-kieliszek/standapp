@@ -28,52 +28,52 @@ struct ProgressReportSettingsView: View {
             // Enabled toggle
             Section {
                 Toggle(isOn: $pendingSettings.enabled) {
-                    Label("Progress Reports", systemImage: "chart.bar.fill")
+                    Label(LocalizedString.ProgressReportSettings.enabledLabel, systemImage: "chart.bar.fill")
                 }
             } footer: {
-                Text("Receive automatic summaries of your exercise progress.")
+                Text(LocalizedString.ProgressReportSettings.enabledFooter)
             }
 
             if pendingSettings.enabled {
                 // Frequency picker 
                 Section {
-                    Picker("Frequency", selection: $pendingSettings.frequency) {
+                    Picker(LocalizedString.ProgressReportSettings.frequencyLabel, selection: $pendingSettings.frequency) {
                         ForEach(ReportFrequency.allCases, id: \.self) { freq in
                             Text(freq.displayName).tag(freq)
                         }
                     }
                     .pickerStyle(.menu)
                 } header: {
-                    Text("Schedule")
+                    Text(LocalizedString.ProgressReportSettings.scheduleHeader)
                 }
 
                 // Time pickers
                 Section {
-                    Picker("Hour", selection: $pendingSettings.hour) {
+                    Picker(LocalizedString.ProgressReportSettings.hourLabel, selection: $pendingSettings.hour) {
                         ForEach(0..<24, id: \.self) { hour in
                             Text(formatHour(hour)).tag(hour)
                         }
                     }
                     .pickerStyle(.navigationLink)
 
-                    Picker("Minute", selection: $pendingSettings.minute) {
+                    Picker(LocalizedString.ProgressReportSettings.minuteLabel, selection: $pendingSettings.minute) {
                         ForEach([0, 15, 30, 45], id: \.self) { min in
                             Text(String(format: "%02d", min)).tag(min)
                         }
                     }
                     .pickerStyle(.navigationLink)
                 } header: {
-                    Text("Time")
+                    Text(LocalizedString.ProgressReportSettings.timeHeader)
                 } footer: {
-                    Text("Reports will be sent at \(formatHour(pendingSettings.hour)):\(String(format: "%02d", pendingSettings.minute)) \(pendingSettings.frequency.displayName.lowercased()).")
+                    Text(LocalizedString.ProgressReportSettings.timeFooter(hour: formatHour(pendingSettings.hour), minute: String(format: "%02d", pendingSettings.minute), frequency: pendingSettings.frequency.displayName.lowercased()))
                 }
             }
         }
-        .navigationTitle("Progress Reports")
+        .navigationTitle(LocalizedString.ProgressReportSettings.navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
+                Button(LocalizedString.ProgressReportSettings.saveButton) {
                     saveChanges()
                 }
                 .disabled(!hasChanges)

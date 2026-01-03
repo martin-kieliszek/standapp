@@ -53,7 +53,7 @@ struct ExercisePickerView: View {
                     .foregroundStyle(.secondary)
                     .font(.subheadline)
                 
-                TextField("Search exercises...", text: $searchText)
+                TextField(LocalizedString.UI.searchExercises, text: $searchText)
                     .textFieldStyle(.plain)
                     .autocorrectionDisabled()
                 
@@ -80,7 +80,7 @@ struct ExercisePickerView: View {
                         Image(systemName: "clock.arrow.circlepath")
                             .foregroundStyle(.orange)
                             .font(.subheadline)
-                        Text("Recent")
+                        Text(LocalizedString.UI.recent)
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundStyle(.secondary)
@@ -121,7 +121,7 @@ struct ExercisePickerView: View {
                                 Image(systemName: "figure.walk")
                                     .foregroundStyle(.blue)
                                     .font(.subheadline)
-                                Text("Built-in Exercises")
+                                Text(LocalizedString.UI.builtInExercises)
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                                     .foregroundStyle(.secondary)
@@ -151,7 +151,7 @@ struct ExercisePickerView: View {
                                 Image(systemName: "star.fill")
                                     .foregroundStyle(.purple)
                                     .font(.subheadline)
-                                Text("Custom Exercises")
+                                Text(LocalizedString.UI.customExercises)
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                                     .foregroundStyle(.secondary)
@@ -180,10 +180,10 @@ struct ExercisePickerView: View {
                     Image(systemName: "magnifyingglass")
                         .font(.largeTitle)
                         .foregroundStyle(.secondary)
-                    Text("No exercises found")
+                    Text(LocalizedString.UI.noExercisesFound)
                         .font(.headline)
                         .foregroundStyle(.secondary)
-                    Text("Try adjusting your search")
+                    Text(LocalizedString.UI.tryAdjustSearch)
                         .font(.subheadline)
                         .foregroundStyle(.tertiary)
                 }
@@ -281,11 +281,11 @@ struct ExercisePickerFullScreenView: View {
                                     )
                                 )
 
-                            Text("What did you do?")
+                            Text(LocalizedString.UI.whatDidYouDo)
                                 .font(.title)
                                 .fontWeight(.bold)
 
-                            Text("Select an exercise to log your activity")
+                            Text(LocalizedString.UI.selectToLog)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)
@@ -294,7 +294,7 @@ struct ExercisePickerFullScreenView: View {
 
                         // Exercise grid in card
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Select Exercise")
+                            Text(LocalizedString.UI.selectExercise)
                                 .font(.headline)
                                 .foregroundStyle(.secondary)
                                 .padding(.horizontal, 4)
@@ -314,7 +314,7 @@ struct ExercisePickerFullScreenView: View {
                     .padding(.vertical, 16)
                 }
             }
-            .navigationTitle("Log Exercise")
+            .navigationTitle(LocalizedString.Main.logExercise)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

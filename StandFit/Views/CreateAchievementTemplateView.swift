@@ -65,13 +65,13 @@ struct CreateAchievementTemplateView: View {
     var body: some View {
         Form {
             // Template Name
-            Section("Template Name") {
-                TextField("Enter a name", text: $name)
+            Section(LocalizedString.Templates.templateNameSection) {
+                TextField(LocalizedString.Templates.enterName, text: $name)
                     .textInputAutocapitalization(.words)
             }
 
             // Exercise Selection
-            Section("Exercise") {
+            Section(LocalizedString.Templates.exercise) {
                 if let exercise = selectedExercise {
                     HStack {
                         Image(systemName: exercise.icon)
@@ -80,14 +80,14 @@ struct CreateAchievementTemplateView: View {
                         VStack(alignment: .leading, spacing: 2) {
                             Text(exercise.name)
                                 .font(.subheadline)
-                            Text(exercise.isBuiltIn ? "Built-in" : "Custom")
+                            Text(exercise.isBuiltIn ? LocalizedString.Templates.builtIn : LocalizedString.Templates.custom)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
 
                         Spacer()
 
-                        Button("Change") {
+                        Button(LocalizedString.Templates.change) {
                             showingExercisePicker = true
                         }
                         .font(.caption)
@@ -96,14 +96,14 @@ struct CreateAchievementTemplateView: View {
                     Button {
                         showingExercisePicker = true
                     } label: {
-                        Label("Select Exercise", systemImage: "plus.circle")
+                        Label(LocalizedString.Templates.selectExercise, systemImage: "plus.circle")
                     }
                 }
             }
 
             // Template Type
             Section {
-                Picker("Template Type", selection: $templateType) {
+                Picker(LocalizedString.Templates.templateType, selection: $templateType) {
                     ForEach(AchievementTemplateType.allCases, id: \.self) { type in
                         Label(type.rawValue, systemImage: type.icon)
                             .tag(type)
@@ -119,7 +119,7 @@ struct CreateAchievementTemplateView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             } header: {
-                Text("Achievement Type")
+                Text(LocalizedString.Templates.achievementType)
             }
 
             // Tiers Configuration
@@ -135,20 +135,20 @@ struct CreateAchievementTemplateView: View {
                 Button {
                     addTier()
                 } label: {
-                    Label("Add Tier", systemImage: "plus.circle")
+                    Label(LocalizedString.Templates.addTier, systemImage: "plus.circle")
                 }
                 .disabled(tiers.count >= 4) // Max 4 tiers
             } header: {
-                Text("Achievement Tiers")
+                Text(LocalizedString.Templates.achievementTiers)
             } footer: {
-                Text("Each tier creates a separate achievement. Higher tiers should have harder targets.")
+                Text(LocalizedString.Templates.tierFooter)
             }
 
             // Active Toggle
             Section {
-                Toggle("Template Active", isOn: $isActive)
+                Toggle(LocalizedString.Templates.templateActive, isOn: $isActive)
             } footer: {
-                Text("Inactive templates won't generate achievements until activated")
+                Text(LocalizedString.Templates.inactiveFooter)
             }
 
             // Save Button
@@ -156,7 +156,7 @@ struct CreateAchievementTemplateView: View {
                 Button {
                     saveTemplate()
                 } label: {
-                    Label("\(isEditing ? "Update" : "Create") Template", systemImage: "checkmark.circle.fill")
+                    Label(isEditing ? LocalizedString.Templates.updateTemplate : LocalizedString.Templates.createTemplate, systemImage: "checkmark.circle.fill")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                 }
@@ -165,10 +165,10 @@ struct CreateAchievementTemplateView: View {
                 .disabled(!isValid)
             }
         }
-        .navigationTitle(isEditing ? "Edit Template" : "New Template")
+        .navigationTitle(isEditing ? LocalizedString.Templates.editTemplate : LocalizedString.Templates.newTemplate)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button(LocalizedString.Templates.cancel) {
                     dismiss()
                 }
             }
@@ -274,7 +274,7 @@ private struct TierConfigRow: View {
 
             // Target count
             HStack {
-                Text("Target:")
+                Text(LocalizedString.Templates.target)
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
@@ -287,7 +287,7 @@ private struct TierConfigRow: View {
             // Time window for speed challenges
             if templateType == .speed {
                 HStack {
-                    Text("Time Window:")
+                    Text(LocalizedString.Templates.timeWindow)
                         .font(.caption)
                         .foregroundStyle(.secondary)
 
@@ -295,14 +295,14 @@ private struct TierConfigRow: View {
                         get: { tier.timeWindow ?? 10 },
                         set: { tier.timeWindow = $0 }
                     ), in: 1...60, step: 5) {
-                        Text("\(tier.timeWindow ?? 10) minutes")
+                        Text(LocalizedString.Templates.minutesFormat(tier.timeWindow ?? 10))
                             .font(.caption.monospacedDigit())
                     }
                 }
             }
 
             // Optional label
-            TextField("Label (optional)", text: Binding(
+            TextField(LocalizedString.Templates.labelOptional, text: Binding(
                 get: { tier.label ?? "" },
                 set: { tier.label = $0.isEmpty ? nil : $0 }
             ))
@@ -325,15 +325,15 @@ private struct TierConfigRow: View {
     private var targetLabel: String {
         switch templateType {
         case .volume:
-            return exercise?.unitType.unitLabelShort ?? "reps"
+            return exercise?.unitType.unitLabelShort ?? LocalizedString.Units.reps
         case .dailyGoal:
-            return "per day"
+            return LocalizedString.Templates.perDay
         case .weeklyGoal:
-            return "per week"
+            return LocalizedString.Templates.perWeek
         case .streak:
-            return tier.target == 1 ? "day" : "days"
+            return tier.target == 1 ? LocalizedString.Templates.daySingular : LocalizedString.Templates.daysPlural
         case .speed:
-            return exercise?.unitType.unitLabelShort ?? "reps"
+            return exercise?.unitType.unitLabelShort ?? LocalizedString.Units.reps
         }
     }
 }
@@ -346,7 +346,7 @@ private struct ExerciseSelectionList: View {
     var body: some View {
         List {
             // Built-in exercises
-            Section("Built-in Exercises") {
+            Section(LocalizedString.Templates.builtInExercises) {
                 ForEach(ExerciseType.allCases) { exercise in
                     let item = ExerciseItem(builtIn: exercise)
                     Button {
@@ -372,7 +372,7 @@ private struct ExerciseSelectionList: View {
 
             // Custom exercises
             if !exerciseStore.customExercises.isEmpty {
-                Section("Custom Exercises") {
+                Section(LocalizedString.Templates.customExercises) {
                     ForEach(exerciseStore.customExercises) { exercise in
                         let item = ExerciseItem(custom: exercise)
                         Button {
@@ -397,10 +397,10 @@ private struct ExerciseSelectionList: View {
                 }
             }
         }
-        .navigationTitle("Select Exercise")
+        .navigationTitle(LocalizedString.Templates.selectExercise)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button(LocalizedString.Templates.cancel) {
                     dismiss()
                 }
             }

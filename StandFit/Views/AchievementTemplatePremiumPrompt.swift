@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StandFitCore
 
 struct AchievementTemplatePremiumPrompt: View {
     let onUpgrade: () -> Void
@@ -38,11 +39,11 @@ struct AchievementTemplatePremiumPrompt: View {
 
             // Title
             VStack(spacing: 8) {
-                Text("Create Custom Achievement Templates")
+                Text(LocalizedString.Templates.premiumPromptTitle)
                     .font(.title2.bold())
                     .multilineTextAlignment(.center)
 
-                Text("Design personalized achievements for your custom exercises")
+                Text(LocalizedString.Templates.premiumPromptSubtitle)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -53,25 +54,25 @@ struct AchievementTemplatePremiumPrompt: View {
                 BenefitRow(
                     icon: "target",
                     color: .purple,
-                    text: "Set your own achievement targets and goals"
+                    text: LocalizedString.Templates.premiumPromptBenefitTargets
                 )
 
                 BenefitRow(
                     icon: "chart.line.uptrend.xyaxis",
                     color: .blue,
-                    text: "Track progress automatically as you exercise"
+                    text: LocalizedString.Templates.premiumPromptBenefitTrack
                 )
 
                 BenefitRow(
                     icon: "sparkles",
                     color: .pink,
-                    text: "Choose from 5 template types: Volume, Daily, Weekly, Streak, and Speed"
+                    text: LocalizedString.Templates.premiumPromptBenefitTypes
                 )
 
                 BenefitRow(
                     icon: "infinity",
                     color: .orange,
-                    text: "Create unlimited templates with Premium"
+                    text: LocalizedString.Templates.premiumPromptBenefitUnlimited
                 )
             }
             .padding(.horizontal)
@@ -83,7 +84,7 @@ struct AchievementTemplatePremiumPrompt: View {
                 Button {
                     onUpgrade()
                 } label: {
-                    Text("Start Free Trial")
+                    Text(LocalizedString.Templates.premiumPromptCTA)
                         .font(.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -98,7 +99,7 @@ struct AchievementTemplatePremiumPrompt: View {
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
 
-                Text("14-day free trial • Cancel anytime")
+                Text(LocalizedString.Templates.premiumPromptTrialInfo)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

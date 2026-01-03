@@ -17,7 +17,7 @@ struct ProgressChartsView: View {
         VStack(alignment: .leading, spacing: 16) {
             // Activity chart
             VStack(alignment: .leading, spacing: 8) {
-                Text("Activity")
+                Text(LocalizedString.Progress.activityTitle)
                     .font(.headline)
                     .fontWeight(.semibold)
 
@@ -164,7 +164,7 @@ struct ProgressChartsView: View {
                 let weekLogs = store.logs.filter { $0.timestamp >= weekStartDay && $0.timestamp < weekEnd }
                 let breakdown = calculateBreakdown(for: weekLogs)
 
-                points.append(ChartDataPoint(label: "W\(weekOffset + 1)", breakdown: breakdown, date: weekStartDay, hourValue: nil))
+                points.append(ChartDataPoint(label: LocalizedString.Progress.weekNumber(weekOffset + 1), breakdown: breakdown, date: weekStartDay, hourValue: nil))
             }
 
             return points
@@ -214,7 +214,16 @@ struct ProgressChartsView: View {
     }
 
     private func dayLabel(_ weekday: Int) -> String {
-        ["", "S", "M", "T", "W", "T", "F", "S"][weekday]
+        switch weekday {
+        case 1: return LocalizedString.Progress.daySunday
+        case 2: return LocalizedString.Progress.dayMonday
+        case 3: return LocalizedString.Progress.dayTuesday
+        case 4: return LocalizedString.Progress.dayWednesday
+        case 5: return LocalizedString.Progress.dayThursday
+        case 6: return LocalizedString.Progress.dayFriday
+        case 7: return LocalizedString.Progress.daySaturday
+        default: return ""
+        }
     }
 
     private func hourLabelFormatted(_ hour: Int) -> String {
@@ -255,12 +264,12 @@ struct ExerciseBreakdownView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Breakdown")
+            Text(LocalizedString.Progress.breakdownTitle)
                 .font(.headline)
                 .fontWeight(.semibold)
 
             if breakdown.isEmpty {
-                Text("No activity logged")
+                Text(LocalizedString.Progress.noActivityLogged)
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 16)

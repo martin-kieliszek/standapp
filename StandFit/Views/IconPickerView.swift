@@ -103,7 +103,7 @@ struct IconPickerView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                Text("Select Icon")
+                Text(LocalizedString.UI.selectIcon)
                     .font(.title2)
                     .fontWeight(.bold)
                     .padding(.top, 16)
@@ -127,7 +127,7 @@ struct IconPickerView: View {
                     Image(systemName: selectedIcon)
                         .font(.title)
                         .foregroundStyle(.green)
-                    Text("Selected: \(selectedIcon)")
+                    Text("\(LocalizedString.UI.selected) \(selectedIcon)")
                         .font(.headline)
                     Spacer()
                 }
@@ -136,7 +136,7 @@ struct IconPickerView: View {
                 .cornerRadius(10)
                 .padding(.horizontal, 16)
 
-                Button("Done") {
+                Button(LocalizedString.UI.done) {
                     dismiss()
                 }
                 .frame(maxWidth: .infinity)
@@ -193,7 +193,7 @@ struct IconPickerButton: View {
                     .background(Color.green.opacity(0.2))
                     .cornerRadius(8)
 
-                Text("Change Icon")
+                Text(LocalizedString.UI.changeIcon)
                     .font(.body)
 
                 Spacer()

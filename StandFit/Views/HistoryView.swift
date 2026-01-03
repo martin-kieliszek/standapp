@@ -20,10 +20,10 @@ struct HistoryView: View {
                         Image(systemName: "figure.stand")
                             .font(.system(size: 48))
                             .foregroundStyle(.secondary)
-                        Text("No Exercises Yet")
+                        Text(LocalizedString.UI.noExercisesYet)
                             .font(.headline)
                             .foregroundStyle(.secondary)
-                        Text("Start logging exercises to see your history here.")
+                        Text(LocalizedString.History.noHistory)
                             .font(.body)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -44,7 +44,7 @@ struct HistoryView: View {
                                 Text(formatDate(group.date))
                                     .fontWeight(.semibold)
                             } footer: {
-                                Text("Total: \(group.totalCount) exercises")
+                                Text(LocalizedString.Stats.totalExercises(group.totalCount))
                                     .font(.caption2)
                             }
                         }
@@ -52,11 +52,11 @@ struct HistoryView: View {
                     .listStyle(.insetGrouped)
                 }
             }
-            .navigationTitle("History")
+            .navigationTitle(LocalizedString.History.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") {
+                    Button(LocalizedString.General.done) {
                         dismiss()
                     }
                 }
@@ -90,9 +90,9 @@ struct HistoryView: View {
     private func formatDate(_ date: Date) -> String {
         let calendar = Calendar.current
         if calendar.isDateInToday(date) {
-            return "Today"
+            return LocalizedString.UI.today
         } else if calendar.isDateInYesterday(date) {
-            return "Yesterday"
+            return LocalizedString.History.yesterday
         } else {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium

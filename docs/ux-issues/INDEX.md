@@ -25,7 +25,7 @@ This directory contains detailed documentation for all UX issues identified in t
 | UX17 | Multi-platform deployment strategy (iOS/WatchOS) | 📋 Strategy Phase | — | [ux17-multi-platform-deployment-strategy.md](./ux17-multi-platform-deployment-strategy.md) |
 | UX18 | iOS Widgets - Home Screen & Lock Screen engagement | ⏳ Pending | — | [ux18-ios-widgets.md](./ux18-ios-widgets.md) |
 | UX19 | Advanced Reminder Scheduling - Per-day, time blocks, profiles | ⏳ Pending | — | [ux19-advanced-reminder-scheduling.md](./ux19-advanced-reminder-scheduling.md) |
-| UX20 | International Language Support - Localization & i18n | ⏳ Pending | — | [UX20_INTERNATIONAL_LANGUAGES.md](./UX20_INTERNATIONAL_LANGUAGES.md) |
+| UX20 | International Language Support - Localization & i18n | 🚧 In Progress | — | [UX20_INTERNATIONAL_LANGUAGES.md](./UX20_INTERNATIONAL_LANGUAGES.md), [Progress](./UX20_IMPLEMENTATION_PROGRESS.md) |
 
 ## Status Legend
 
@@ -55,7 +55,7 @@ This directory contains detailed documentation for all UX issues identified in t
 - [UX16: User-Created Achievement Templates](./ux16-user-created-achievement-templates.md)
 - [UX18: iOS Widgets](./ux18-ios-widgets.md)
 - [UX19: Advanced Reminder Scheduling](./ux19-advanced-reminder-scheduling.md)
-- [UX20: International Language Support](./UX20_INTERNATIONAL_LANGUAGES.md)
+- [UX20: International Language Support](./UX20_INTERNATIONAL_LANGUAGES.md) - [Implementation Progress](./UX20_IMPLEMENTATION_PROGRESS.md)
 
 ### Strategy & Analysis Documents
 - [UX15: Monetization Strategy](./ux15-monetization-strategy.md)

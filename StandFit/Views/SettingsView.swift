@@ -29,10 +29,10 @@ struct SettingsView: View {
                                 .font(.title2)
                             
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(store.isPremium ? "Premium Active" : "Upgrade to Premium")
+                                Text(store.isPremium ? LocalizedString.Premium.premiumActive : LocalizedString.Premium.unlockPremium)
                                     .font(.headline)
                                 if let trial = SubscriptionManager.shared.trialState, trial.isActive {
-                                    Text("\(trial.daysRemaining) days remaining")
+                                    Text(LocalizedString.Premium.daysRemaining(trial.daysRemaining))
                                         .font(.caption)
                                         .foregroundStyle(.orange)
                                 }
@@ -46,7 +46,7 @@ struct SettingsView: View {
                 // Reminders toggle
                 Section {
                     Toggle(isOn: $store.remindersEnabled) {
-                        Label("Reminders", systemImage: "bell.fill")
+                        Label(LocalizedString.Settings.reminders, systemImage: "bell.fill")
                     }
                     .onChange(of: store.remindersEnabled) { enabled in
                         if enabled {
@@ -64,7 +64,7 @@ struct SettingsView: View {
                         ReminderScheduleView(store: store)
                     } label: {
                         HStack {
-                            Label("Schedule", systemImage: "calendar.badge.clock")
+                            Label(LocalizedString.Schedule.schedule, systemImage: "calendar.badge.clock")
                             Spacer()
                             Text(schedulePreviewText)
                                 .foregroundStyle(.secondary)
@@ -73,14 +73,14 @@ struct SettingsView: View {
                     }
                     .disabled(!store.remindersEnabled)
                 } header: {
-                    Text("Reminder Schedule")
+                    Text(LocalizedString.Schedule.reminderSchedule)
                 } footer: {
                     if let nextTime = store.nextScheduledNotificationTime, store.remindersEnabled {
-                        Text("Next: \(formatDateTime(nextTime))")
+                        Text(LocalizedString.Schedule.nextReminder(formatDateTime(nextTime)))
                     } else if store.remindersEnabled {
-                        Text("Scheduling...")
+                        Text(LocalizedString.Schedule.scheduling)
                     } else {
-                        Text("Enable reminders to configure schedule")
+                        Text(LocalizedString.Settings.enableReminders)
                     }
                 }
 
@@ -90,7 +90,7 @@ struct SettingsView: View {
                         CustomExerciseListView(store: store)
                     } label: {
                         HStack {
-                            Label("Exercises", systemImage: "figure.run")
+                            Label(LocalizedString.Picker.custom, systemImage: "figure.run")
                             Spacer()
                             Text("\(store.customExercises.count) custom")
                                 .foregroundStyle(.secondary)
@@ -98,9 +98,9 @@ struct SettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Exercises")
+                    Text(LocalizedString.Picker.custom)
                 } footer: {
-                    Text("Create and manage custom exercises")
+                    Text(LocalizedString.Settings.manageExercises)
                 }
 
                 // Progress Reports
@@ -109,19 +109,19 @@ struct SettingsView: View {
                         ProgressReportSettingsView(store: store)
                     } label: {
                         HStack {
-                            Label("Progress Reports", systemImage: "chart.bar.fill")
+                            Label(LocalizedString.Settings.reports, systemImage: "chart.bar.fill")
                             Spacer()
                             if store.progressReportSettings.enabled {
-                                Text("On")
+                                Text(LocalizedString.Settings.on)
                                     .foregroundStyle(.secondary)
                                     .font(.caption)
                             }
                         }
                     }
                 } header: {
-                    Text("Reports")
+                    Text(LocalizedString.Settings.reports)
                 } footer: {
-                    Text("Automatic summaries of your exercise progress")
+                    Text(LocalizedString.Settings.autoReports)
                 }
 
                 // Haptic test
@@ -129,10 +129,10 @@ struct SettingsView: View {
                     Button {
                         notificationManager.playReminderHaptic()
                     } label: {
-                        Label("Test Haptic", systemImage: "hand.tap.fill")
+                        Label(LocalizedString.Settings.testHaptic, systemImage: "hand.tap.fill")
                     }
                 } header: {
-                    Text("Haptic Feedback")
+                    Text(LocalizedString.Settings.hapticFeedback)
                 }
                 
                 // Data management
@@ -141,31 +141,31 @@ struct SettingsView: View {
                         store.clearAllLogs()
                         notificationManager.playClickHaptic()
                     } label: {
-                        Label("Clear All Data", systemImage: "trash.fill")
+                        Label(LocalizedString.Settings.clearAllData, systemImage: "trash.fill")
                     }
                 } header: {
-                    Text("Data")
+                    Text(LocalizedString.Settings.data)
                 } footer: {
-                    Text("This will delete all exercise logs.")
+                    Text(LocalizedString.Settings.deleteConfirmation)
                 }
                 
                 // About
                 Section {
                     HStack {
-                        Text("Version")
+                        Text(LocalizedString.Settings.version)
                         Spacer()
                         Text("1.0.0")
                             .foregroundStyle(.secondary)
                     }
                 } header: {
-                    Text("About")
+                    Text(LocalizedString.Settings.about)
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle(LocalizedString.Settings.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") {
+                    Button(LocalizedString.Settings.done) {
                         dismiss()
                     }
                 }
@@ -176,41 +176,26 @@ struct SettingsView: View {
     // MARK: - Computed Properties
 
     private var schedulePreviewText: String {
-        let interval = formatInterval(store.reminderIntervalMinutes)
-        return "Every \(interval)"
+        let interval = LocalizedString.Settings.formatInterval(store.reminderIntervalMinutes)
+        return interval
     }
 
     // MARK: - Formatters
-
-    private func formatInterval(_ minutes: Int) -> String {
-        if minutes < 60 {
-            return "\(minutes) min"
-        } else if minutes == 60 {
-            return "1 hour"
-        } else {
-            let hours = minutes / 60
-            let remainingMinutes = minutes % 60
-            if remainingMinutes == 0 {
-                return "\(hours) hours"
-            } else {
-                return "\(hours)h \(remainingMinutes)m"
-            }
-        }
-    }
 
     private func formatDateTime(_ date: Date) -> String {
         let formatter = DateFormatter()
         let calendar = Calendar.current
 
         if calendar.isDateInToday(date) {
-            formatter.dateFormat = "'Today' h:mm a"
+            formatter.dateFormat = "h:mm a"
+            return "\(LocalizedString.Settings.today) \(formatter.string(from: date))"
         } else if calendar.isDateInTomorrow(date) {
-            formatter.dateFormat = "'Tomorrow' h:mm a"
+            formatter.dateFormat = "h:mm a"
+            return "\(LocalizedString.Settings.tomorrow) \(formatter.string(from: date))"
         } else {
             formatter.dateFormat = "EEE h:mm a"
+            return formatter.string(from: date)
         }
-
-        return formatter.string(from: date)
     }
 }
 

@@ -28,7 +28,7 @@ struct AchievementsView: View {
                         AchievementRow(achievement: achievement, showProgress: false)
                     }
                 } header: {
-                    Text("Unlocked (\(filteredUnlockedAchievements.count))")
+                    Text(LocalizedString.Achievements.unlocked + " (\(filteredUnlockedAchievements.count))")
                 }
             }
 
@@ -39,7 +39,7 @@ struct AchievementsView: View {
                         AchievementRow(achievement: achievement, showProgress: true)
                     }
                 } header: {
-                    Text("In Progress (\(filteredInProgressAchievements.count))")
+                    Text(LocalizedString.Achievements.inProgress + " (\(filteredInProgressAchievements.count))")
                 }
             }
 
@@ -50,11 +50,11 @@ struct AchievementsView: View {
                         AchievementRow(achievement: achievement, isLocked: true)
                     }
                 } header: {
-                    Text("Locked (\(filteredLockedAchievements.count))")
+                    Text(LocalizedString.Achievements.locked + " (\(filteredLockedAchievements.count))")
                 }
             }
         }
-        .navigationTitle("Achievements")
+        .navigationTitle(LocalizedString.Achievements.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if exerciseStore.isPremium {
@@ -81,7 +81,7 @@ struct AchievementsView: View {
                     Text("\(unlockedCount)/\(totalCount)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Achievements")
+                    Text(LocalizedString.Achievements.title)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -127,7 +127,7 @@ struct AchievementsView: View {
     private var categoryFilterSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                categoryPill(nil, label: "All")
+                categoryPill(nil, label: LocalizedString.Achievements.all)
                 ForEach(AchievementCategory.allCases) { category in
                     categoryPill(category, label: category.rawValue)
                 }
@@ -289,7 +289,7 @@ struct AchievementUnlockedToast: View {
                 .font(.system(size: 48))
                 .foregroundStyle(achievement.tier.color)
 
-            Text("Achievement Unlocked!")
+            Text(LocalizedString.Achievements.unlockedToast)
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
@@ -307,7 +307,7 @@ struct AchievementUnlockedToast: View {
             Button {
                 isPresented = false
             } label: {
-                Text("Awesome!")
+                Text(LocalizedString.Achievements.awesome)
                     .font(.headline)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)

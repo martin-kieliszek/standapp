@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StandFitCore
 
 struct SubscriptionSettingsView: View {
     @ObservedObject var subscriptionManager: SubscriptionManager
@@ -21,15 +22,15 @@ struct SubscriptionSettingsView: View {
                             .font(.headline)
                         
                         if let trial = subscriptionManager.trialState, trial.isActive {
-                            Text("\(trial.daysRemaining) days remaining in trial")
+                            Text(LocalizedString.Premium.daysRemainingInTrial(trial.daysRemaining))
                                 .font(.caption)
                                 .foregroundStyle(.orange)
                         } else if subscriptionManager.isPremium {
-                            Text("All features unlocked")
+                            Text(LocalizedString.Premium.allFeaturesUnlocked)
                                 .font(.caption)
                                 .foregroundStyle(.green)
                         } else {
-                            Text("Limited features")
+                            Text(LocalizedString.Premium.limitedFeatures)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -44,7 +45,7 @@ struct SubscriptionSettingsView: View {
                     }
                 }
             } header: {
-                Text("Subscription Status")
+                Text(LocalizedString.Premium.subscriptionStatus)
             }
             
             // Premium features
@@ -59,9 +60,9 @@ struct SubscriptionSettingsView: View {
                                 .font(.title2)
                             
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Upgrade to Premium")
+                                Text(LocalizedString.Premium.upgradeToPremium)
                                     .font(.headline)
-                                Text("Unlock all features")
+                                Text(LocalizedString.Premium.unlockAllFeatures)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -73,47 +74,47 @@ struct SubscriptionSettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Get More")
+                    Text(LocalizedString.Premium.getMore)
                 }
             }
             
             // Dev Mode (only show in debug builds)
             #if DEBUG
             Section {
-                Toggle("Enable Dev Mode", isOn: $subscriptionManager.devModeEnabled)
+                Toggle(LocalizedString.Premium.enableDevMode, isOn: $subscriptionManager.devModeEnabled)
                 
                 if subscriptionManager.devModeEnabled {
-                    Picker("Simulate Tier", selection: $subscriptionManager.devModeTier) {
-                        Text("Free").tag(SubscriptionTier.free)
-                        Text("Premium").tag(SubscriptionTier.premium)
+                    Picker(LocalizedString.Premium.simulateTier, selection: $subscriptionManager.devModeTier) {
+                        Text(LocalizedString.Premium.freeTier).tag(SubscriptionTier.free)
+                        Text(LocalizedString.Premium.premiumTier).tag(SubscriptionTier.premium)
                     }
                     
-                    Toggle("Active Trial", isOn: $subscriptionManager.devModeHasActiveTrial)
+                    Toggle(LocalizedString.Premium.activeTrial, isOn: $subscriptionManager.devModeHasActiveTrial)
                     
                     if subscriptionManager.devModeHasActiveTrial {
-                        Stepper("Trial: \(subscriptionManager.devModeTrialDuration) days",
+                        Stepper(LocalizedString.Premium.trialDaysFormat(subscriptionManager.devModeTrialDuration),
                                value: $subscriptionManager.devModeTrialDuration,
                                in: 1...30)
                     }
                     
                     if let trial = subscriptionManager.trialState {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Trial ends: \(trial.endDate.formatted(date: .abbreviated, time: .shortened))")
+                            Text(LocalizedString.Premium.trialEnds(trial.endDate.formatted(date: .abbreviated, time: .shortened)))
                                 .font(.caption)
-                            Text("\(trial.daysRemaining) days remaining")
+                            Text(LocalizedString.Premium.daysRemaining(trial.daysRemaining))
                                 .font(.caption2)
                                 .foregroundStyle(.secondary)
                         }
                     }
                 }
             } header: {
-                Text("🧪 Developer Testing")
+                Text(LocalizedString.Premium.devModeTesting)
             } footer: {
-                Text("Dev mode simulates subscription states without real purchases. Perfect for testing paywalls and premium features during development.")
+                Text(LocalizedString.Premium.devModeFooter)
             }
             #endif
         }
-        .navigationTitle("Subscription")
+        .navigationTitle(LocalizedString.Premium.subscriptionNavigation)
         .sheet(isPresented: $showingPaywall) {
             PaywallView(subscriptionManager: subscriptionManager)
         }

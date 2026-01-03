@@ -71,7 +71,7 @@ struct ExerciseLoggerView: View {
                     .padding(.vertical, 20)
                 }
             }
-            .navigationTitle("Log Exercise")
+            .navigationTitle(LocalizedString.ExerciseLogger.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -122,7 +122,7 @@ struct ExerciseLoggerView: View {
                 .font(.title)
                 .fontWeight(.bold)
 
-            Text("Adjust count and save")
+            Text(LocalizedString.ExerciseLogger.adjustCountInstruction)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }
@@ -252,7 +252,7 @@ struct ExerciseLoggerView: View {
                 Image(systemName: "bolt.fill")
                     .font(.caption)
                     .foregroundStyle(.orange)
-                Text("Quick add")
+                Text(LocalizedString.ExerciseLogger.quickAddHeader)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Spacer()
@@ -300,7 +300,7 @@ struct ExerciseLoggerView: View {
             HStack(spacing: 12) {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.title3)
-                Text("Save \(count) \(exerciseItem.unitType.unitLabel)")
+                Text(LocalizedString.ExerciseLogger.saveButton(count: count, unit: exerciseItem.unitType.unitLabel))
                     .fontWeight(.semibold)
             }
             .frame(maxWidth: .infinity)
@@ -351,10 +351,10 @@ struct ExerciseLoggerView: View {
                 .opacity(showSuccessAnimation ? 1.0 : 0.0)
 
                 VStack(spacing: 8) {
-                    Text("Logged!")
+                    Text(LocalizedString.ExerciseLogger.loggedSuccess)
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("\(count) \(exerciseItem.unitType.unitLabel) of \(exerciseItem.name)")
+                    Text(LocalizedString.ExerciseLogger.loggedSuccessDetail(count: count, unit: exerciseItem.unitType.unitLabel, exerciseName: exerciseItem.name))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }

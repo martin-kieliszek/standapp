@@ -31,13 +31,13 @@ struct ScheduleProfilePickerView: View {
                         }
                         .onDelete(perform: deleteProfiles)
                     } header: {
-                        Text("Your Profiles")
+                        Text(LocalizedString.ReminderSchedule.yourProfiles)
                     }
                 } else {
                     ContentUnavailableView(
-                        "No Profiles",
+                        LocalizedString.ReminderSchedule.noProfiles,
                         systemImage: "calendar.badge.clock",
-                        description: Text("Create your first schedule profile to get started")
+                        description: Text(LocalizedString.ReminderSchedule.createFirstProfile)
                     )
                 }
                 
@@ -45,23 +45,23 @@ struct ScheduleProfilePickerView: View {
                     Button {
                         showingCreateSheet = true
                     } label: {
-                        Label("Create Custom Profile", systemImage: "plus.circle.fill")
+                        Label(LocalizedString.ReminderSchedule.createCustomProfile, systemImage: "plus.circle.fill")
                     }
                     
                     Button {
                         showingTemplateSheet = true
                     } label: {
-                        Label("Create from Template", systemImage: "doc.on.doc.fill")
+                        Label(LocalizedString.ReminderSchedule.createFromTemplate, systemImage: "doc.on.doc.fill")
                     }
                 } header: {
-                    Text("Add New Profile")
+                    Text(LocalizedString.ReminderSchedule.addNewProfile)
                 }
             }
-            .navigationTitle("Schedule Profiles")
+            .navigationTitle(LocalizedString.ReminderSchedule.scheduleProfiles)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") {
+                    Button(LocalizedString.ReminderSchedule.doneButton) {
                         dismiss()
                     }
                 }
@@ -111,7 +111,7 @@ struct ProfileRow: View {
                         .foregroundStyle(.secondary)
                     
                     if let lastUsed = profile.lastUsedDate {
-                        Text("Last used: \(lastUsed, style: .relative) ago")
+                        Text("\(LocalizedString.ReminderSchedule.lastUsed) \(lastUsed, style: .relative) \(LocalizedString.ReminderSchedule.ago)")
                             .font(.caption2)
                             .foregroundStyle(.tertiary)
                     }
@@ -177,11 +177,11 @@ struct TemplatePickerSheet: View {
                     }
                 }
             }
-            .navigationTitle("Choose Template")
+            .navigationTitle(LocalizedString.ReminderSchedule.chooseTemplate)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(LocalizedString.ReminderSchedule.cancelButton) {
                         isPresented = false
                     }
                 }
@@ -207,17 +207,17 @@ struct NameProfileView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Profile Name", text: $customName)
+                TextField(LocalizedString.ReminderSchedule.profileName, text: $customName)
                     .textInputAutocapitalization(.words)
             } header: {
-                Text("Name Your Profile")
+                Text(LocalizedString.ReminderSchedule.nameYourProfile)
             } footer: {
-                Text("Based on template: \(template.name)")
+                Text(LocalizedString.ReminderSchedule.basedOnTemplate(template.name))
             }
             
             Section {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Preview")
+                    Text(LocalizedString.ReminderSchedule.preview)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     
@@ -230,11 +230,11 @@ struct NameProfileView: View {
                 }
             }
         }
-        .navigationTitle("Create Profile")
+        .navigationTitle(LocalizedString.ReminderSchedule.createProfile)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button("Create") {
+                Button(LocalizedString.ReminderSchedule.createButton) {
                     let profile = store.createProfile(name: customName, basedOn: template)
                     store.switchToProfile(profile)
                     onComplete()
@@ -254,24 +254,24 @@ struct CreateProfileSheet: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Profile Name", text: $profileName)
+                    TextField(LocalizedString.ReminderSchedule.profileName, text: $profileName)
                         .textInputAutocapitalization(.words)
                 } header: {
-                    Text("Profile Details")
+                    Text(LocalizedString.ReminderSchedule.profileDetails)
                 } footer: {
-                    Text("You can customize the schedule after creating the profile")
+                    Text(LocalizedString.ReminderSchedule.customizeAfterCreating)
                 }
             }
-            .navigationTitle("New Profile")
+            .navigationTitle(LocalizedString.ReminderSchedule.newProfile)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(LocalizedString.ReminderSchedule.cancelButton) {
                         isPresented = false
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Create") {
+                    Button(LocalizedString.ReminderSchedule.createButton) {
                         let profile = store.createProfile(name: profileName)
                         store.switchToProfile(profile)
                         isPresented = false

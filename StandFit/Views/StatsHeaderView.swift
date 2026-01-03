@@ -18,7 +18,7 @@ struct StatsHeaderView: View {
                 Text("\(stats.totalCount)")
                     .font(.title)
                     .fontWeight(.bold)
-                Text("rep\(stats.totalCount == 1 ? "" : "s")")
+                Text(stats.totalCount == 1 ? LocalizedString.Stats.rep : LocalizedString.Stats.reps)
                     .font(.body)
                     .foregroundStyle(.secondary)
             }
@@ -34,7 +34,7 @@ struct StatsHeaderView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
 
-                    Text("vs previous period")
+                    Text(LocalizedString.Stats.vsPreviousPeriod)
                         .font(.body)
                         .foregroundStyle(.secondary)
                 }
@@ -47,7 +47,7 @@ struct StatsHeaderView: View {
                         .foregroundStyle(.orange)
                         .font(.body)
 
-                    Text("\(streak)-day streak")
+                    Text(LocalizedString.Stats.dayStreak(streak))
                         .font(.headline)
 
                     if streak >= 7 {

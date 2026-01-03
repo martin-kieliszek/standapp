@@ -66,14 +66,14 @@ struct ProgressReportView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Period selector (Picker instead of navigationLink for iOS)
-                    Picker("Period", selection: $selectedPeriodType) {
-                        Text("Today").tag(PeriodType.today)
+                    Picker(LocalizedString.ProgressReport.periodLabel, selection: $selectedPeriodType) {
+                        Text(LocalizedString.ProgressReport.today).tag(PeriodType.today)
                         if store.isPremium {
-                            Text("Week").tag(PeriodType.week)
-                            Text("Month").tag(PeriodType.month)
+                            Text(LocalizedString.ProgressReport.week).tag(PeriodType.week)
+                            Text(LocalizedString.ProgressReport.month).tag(PeriodType.month)
                         } else {
-                            Text("Week 🔒").tag(PeriodType.week)
-                            Text("Month 🔒").tag(PeriodType.month)
+                            Text(LocalizedString.ProgressReport.weekLocked).tag(PeriodType.week)
+                            Text(LocalizedString.ProgressReport.monthLocked).tag(PeriodType.month)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -113,14 +113,14 @@ struct ProgressReportView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Progress")
+            .navigationTitle(LocalizedString.ProgressReport.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showingPaywall) {
                 PaywallView(subscriptionManager: SubscriptionManager.shared)
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") { dismiss() }
+                    Button(LocalizedString.ProgressReport.doneButton) { dismiss() }
                 }
             }
             .onAppear {
@@ -170,7 +170,7 @@ struct ProgressReportView: View {
             Image(systemName: "chart.bar.xaxis")
                 .font(.title)
                 .foregroundStyle(.secondary)
-            Text("No activity logged")
+            Text(LocalizedString.ProgressReport.noActivityLogged)
                 .font(.headline)
                 .foregroundStyle(.secondary)
             Text(emptyMessage)
@@ -185,11 +185,11 @@ struct ProgressReportView: View {
     private var emptyMessage: String {
         switch selectedPeriodType {
         case .today:
-            return "Start exercising to see today's stats"
+            return LocalizedString.ProgressReport.emptyToday
         case .week:
-            return "Log activity this week to see stats"
+            return LocalizedString.ProgressReport.emptyWeek
         case .month:
-            return "Activity logged this month will appear here"
+            return LocalizedString.ProgressReport.emptyMonth
         }
     }
 }

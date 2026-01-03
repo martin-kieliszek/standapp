@@ -26,7 +26,7 @@ struct ManageTemplatesView: View {
             Section {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Templates Created")
+                        Text(LocalizedString.Templates.templatesCreated)
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
@@ -53,13 +53,13 @@ struct ManageTemplatesView: View {
                     Button {
                         gamificationStore.regenerateAchievementsFromTemplates(exerciseStore: exerciseStore)
                     } label: {
-                        Label("Refresh Achievements", systemImage: "arrow.clockwise")
+                        Label(LocalizedString.Templates.refreshAchievements, systemImage: "arrow.clockwise")
                             .font(.caption)
                     }
                 }
             } footer: {
                 if !gamificationStore.achievementTemplates.isEmpty {
-                    Text("Tap 'Refresh Achievements' to update achievement names and progress")
+                    Text(LocalizedString.Templates.refreshFooter)
                 }
             }
 
@@ -71,10 +71,10 @@ struct ManageTemplatesView: View {
                             .font(.system(size: 50))
                             .foregroundStyle(.secondary)
 
-                        Text("No Templates Yet")
+                        Text(LocalizedString.Templates.noTemplatesTitle)
                             .font(.headline)
 
-                        Text("Create achievement templates to track progress on your custom exercises")
+                        Text(LocalizedString.Templates.noTemplatesDescription)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -83,7 +83,7 @@ struct ManageTemplatesView: View {
                             Button {
                                 showingCreateView = true
                             } label: {
-                                Label("Create Template", systemImage: "plus.circle.fill")
+                                Label(LocalizedString.Templates.createTemplate, systemImage: "plus.circle.fill")
                             }
                             .buttonStyle(.borderedProminent)
                         }
@@ -120,7 +120,7 @@ struct ManageTemplatesView: View {
                 }
             }
         }
-        .navigationTitle("Achievement Templates")
+        .navigationTitle(LocalizedString.Templates.navigationTitle)
         .toolbar {
             if exerciseStore.isPremium && !gamificationStore.achievementTemplates.isEmpty {
                 ToolbarItem(placement: .primaryAction) {
@@ -157,7 +157,7 @@ struct ManageTemplatesView: View {
             PaywallView(subscriptionManager: SubscriptionManager.shared)
         }
         .confirmationDialog(
-            "Delete Template?",
+            LocalizedString.Templates.deleteTemplate,
             isPresented: Binding(
                 get: { templateToDelete != nil },
                 set: { if !$0 { templateToDelete = nil } }
@@ -165,15 +165,15 @@ struct ManageTemplatesView: View {
             titleVisibility: .visible,
             presenting: templateToDelete
         ) { template in
-            Button("Delete", role: .destructive) {
+            Button(LocalizedString.Templates.delete, role: .destructive) {
                 gamificationStore.deleteTemplate(template.id)
                 templateToDelete = nil
             }
-            Button("Cancel", role: .cancel) {
+            Button(LocalizedString.Templates.cancel, role: .cancel) {
                 templateToDelete = nil
             }
         } message: { template in
-            Text("This will delete the template and all generated achievements. Your exercise logs will be kept.")
+            Text(LocalizedString.Templates.deleteMessage)
         }
     }
 }
@@ -204,7 +204,7 @@ private struct TemplateRow: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     } else {
-                        Text("Exercise Deleted")
+                        Text(LocalizedString.Templates.exerciseDeleted)
                             .font(.caption)
                             .foregroundStyle(.red)
                     }
@@ -226,7 +226,7 @@ private struct TemplateRow: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
-                Label("\(template.tiers.count) tiers", systemImage: "square.stack.3d.up")
+                Label(LocalizedString.Templates.tiersCount(template.tiers.count), systemImage: "square.stack.3d.up")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -236,7 +236,7 @@ private struct TemplateRow: View {
                 Button {
                     onEdit()
                 } label: {
-                    Label("Edit", systemImage: "pencil")
+                    Label(LocalizedString.Templates.edit, systemImage: "pencil")
                         .font(.caption)
                 }
                 .buttonStyle(.bordered)
@@ -245,7 +245,7 @@ private struct TemplateRow: View {
                 Button(role: .destructive) {
                     onDelete()
                 } label: {
-                    Label("Delete", systemImage: "trash")
+                    Label(LocalizedString.Templates.delete, systemImage: "trash")
                         .font(.caption)
                 }
                 .buttonStyle(.bordered)
@@ -254,7 +254,7 @@ private struct TemplateRow: View {
                 Spacer()
 
                 if !template.isActive {
-                    Text("Inactive")
+                    Text(LocalizedString.Templates.inactive)
                         .font(.caption2)
                         .foregroundStyle(.white)
                         .padding(.horizontal, 8)

@@ -62,7 +62,7 @@ struct TimelineGraphView: View {
 
     private var headerView: some View {
         HStack(alignment: .firstTextBaseline) {
-            Text("Timeline")
+            Text(LocalizedString.Stats.timeline)
                 .font(.headline)
                 .fontWeight(.semibold)
 
@@ -70,7 +70,7 @@ struct TimelineGraphView: View {
 
             if let analysis = timelineAnalysis {
                 if let avgResponse = analysis.averageResponseTimeMinutes {
-                    Text("\(Int(avgResponse))min avg")
+                    Text(LocalizedString.Stats.minAvg(Int(avgResponse)))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -122,7 +122,7 @@ struct TimelineGraphView: View {
     private var legendView: some View {
         HStack(spacing: 16) {
             Label {
-                Text("Notifications")
+                Text(LocalizedString.Stats.notifications)
             } icon: {
                 Circle()
                     .fill(Color.orange)
@@ -131,7 +131,7 @@ struct TimelineGraphView: View {
             .font(.caption)
 
             Label {
-                Text("Exercises")
+                Text(LocalizedString.Stats.exercises)
             } icon: {
                 Image(systemName: "checkmark")
                     .font(.system(size: 8, weight: .bold))
@@ -143,7 +143,7 @@ struct TimelineGraphView: View {
 
             if let analysis = timelineAnalysis {
                 let responsePercent = Int(analysis.responseRate * 100)
-                Text("\(responsePercent)% response rate")
+                Text(LocalizedString.Stats.responseRatePercent(responsePercent))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -157,7 +157,7 @@ struct TimelineGraphView: View {
             Image(systemName: "chart.line.downtrend.xyaxis")
                 .font(.title2)
                 .foregroundStyle(.secondary)
-            Text("No activity today")
+            Text(LocalizedString.Stats.noActivityToday)
                 .font(.body)
                 .foregroundStyle(.secondary)
         }

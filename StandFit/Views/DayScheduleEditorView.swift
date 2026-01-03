@@ -13,13 +13,13 @@ struct DayScheduleEditorView: View {
     @State private var showingPaywall = false
     
     let weekdays = [
-        (1, "Sunday"),
-        (2, "Monday"),
-        (3, "Tuesday"),
-        (4, "Wednesday"),
-        (5, "Thursday"),
-        (6, "Friday"),
-        (7, "Saturday")
+        (1, LocalizedString.ScheduleEditor.sunday),
+        (2, LocalizedString.ScheduleEditor.monday),
+        (3, LocalizedString.ScheduleEditor.tuesday),
+        (4, LocalizedString.ScheduleEditor.wednesday),
+        (5, LocalizedString.ScheduleEditor.thursday),
+        (6, LocalizedString.ScheduleEditor.friday),
+        (7, LocalizedString.ScheduleEditor.saturday)
     ]
     
     var body: some View {
@@ -36,7 +36,7 @@ struct DayScheduleEditorView: View {
                         } label: {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text("Everyday")
+                                    Text(LocalizedString.Schedule.everyday)
                                         .font(.headline)
                                     Text(everydayScheduleDescription)
                                         .font(.caption)
@@ -46,9 +46,9 @@ struct DayScheduleEditorView: View {
                             }
                         }
                     } header: {
-                        Text("Schedule")
+                        Text(LocalizedString.Schedule.schedule)
                     } footer: {
-                        Text("Configure your daily reminder schedule. Same schedule applies to all days.")
+                        Text(LocalizedString.Schedule.configureDailyReminder)
                     }
                     
                     Section {
@@ -72,9 +72,9 @@ struct DayScheduleEditorView: View {
                             .foregroundStyle(.secondary)
                         }
                     } header: {
-                        Text("Individual Days (Premium)")
+                        Text(LocalizedString.Schedule.individualDaysPremium)
                     } footer: {
-                        Text("Upgrade to Premium to customize each day individually with different time blocks and intervals.")
+                        Text(LocalizedString.Schedule.upgradePremiumCustomDays)
                     }
                 } else {
                     // Premium users see full individual day editing
@@ -104,22 +104,22 @@ struct DayScheduleEditorView: View {
                         Button {
                             copyWeekdaysToWeekends()
                         } label: {
-                            Label("Copy Weekdays to Weekends", systemImage: "doc.on.doc")
+                            Label(LocalizedString.Schedule.copyWeekdaysToWeekends, systemImage: "doc.on.doc")
                         }
                         
                         Button {
                             setAllDaysToSame()
                         } label: {
-                            Label("Set All Days to Monday", systemImage: "square.on.square")
+                            Label(LocalizedString.Schedule.setAllDaysToMonday, systemImage: "square.on.square")
                         }
                         
                         Button(role: .destructive) {
                             clearAllSchedules()
                         } label: {
-                            Label("Clear All Schedules", systemImage: "trash")
+                            Label(LocalizedString.Schedule.clearAllSchedules, systemImage: "trash")
                         }
                     } header: {
-                        Text("Quick Actions")
+                        Text(LocalizedString.Schedule.quickActions)
                     }
                 }
                 
@@ -135,23 +135,23 @@ struct DayScheduleEditorView: View {
                     )
                     .padding(.vertical, 4)
                 } header: {
-                    Text("Week Overview")
+                    Text(LocalizedString.Schedule.weekOverview)
                 } footer: {
-                    Text("Darker blue indicates more frequent reminders. Tap a day above to customize.")
+                    Text(LocalizedString.Schedule.darkerBlueMoreFrequent)
                 }
             }
             .navigationTitle(profile.name)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button(LocalizedString.Schedule.save) {
                         store.updateProfile(profile)
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(LocalizedString.Schedule.cancel) {
                         dismiss()
                     }
                 }
@@ -168,24 +168,24 @@ struct DayScheduleEditorView: View {
            let schedule = profile.dailySchedules[firstSchedule] {
             return scheduleDescriptionFor(schedule)
         }
-        return "No reminders configured"
+        return LocalizedString.Schedule.noRemindersConfigured
     }
     
     private func scheduleDescriptionFor(_ schedule: DailySchedule) -> String {
         switch schedule.scheduleType {
         case .timeBlocks(let blocks):
             if blocks.isEmpty {
-                return "No time blocks"
+                return LocalizedString.ScheduleEditor.noTimeBlocksShort
             } else if blocks.count == 1 {
                 let block = blocks[0]
-                return "\(block.startHour):\(String(format: "%02d", block.startMinute)) - \(block.endHour):\(String(format: "%02d", block.endMinute)), every \(block.intervalMinutes)m"
+                return LocalizedString.ScheduleEditor.timeBlockDetail(startHour: block.startHour, startMinute: block.startMinute, endHour: block.endHour, endMinute: block.endMinute, interval: block.intervalMinutes)
             } else {
-                return "\(blocks.count) time blocks"
+                return LocalizedString.ScheduleEditor.timeBlocksCount(blocks.count)
             }
         case .fixedTimes(let reminders):
-            return "\(reminders.count) fixed reminders"
+            return LocalizedString.ScheduleEditor.fixedRemindersCount(reminders.count)
         case .useFallback:
-            return "Using default interval (\(profile.fallbackInterval)m)"
+            return LocalizedString.ScheduleEditor.usingDefaultInterval(profile.fallbackInterval)
         }
     }
     
@@ -230,37 +230,45 @@ struct EverydayScheduleEditorView: View {
     @State private var newReminderHour = 9
     @State private var newReminderMinute = 0
     
-    enum ScheduleTypeOption: String, CaseIterable {
-        case timeBlocks = "Time Blocks"
-        case fixedTimes = "Fixed Times"
-        case useFallback = "Use Default"
+    enum ScheduleTypeOption: CaseIterable {
+        case timeBlocks
+        case fixedTimes
+        case useFallback
+        
+        var displayName: String {
+            switch self {
+            case .timeBlocks: return LocalizedString.ScheduleEditor.timeBlocksOption
+            case .fixedTimes: return LocalizedString.ScheduleEditor.fixedTimesOption
+            case .useFallback: return LocalizedString.ScheduleEditor.useDefaultOption
+            }
+        }
     }
     
     var body: some View {
         List {
             Section {
-                Toggle("Enable Reminders", isOn: $isEnabled)
+                Toggle(LocalizedString.Schedule.enableReminders, isOn: $isEnabled)
             } footer: {
-                Text("When enabled, reminders will be active every day of the week with the same schedule.")
+                Text(LocalizedString.Schedule.whenEnabledRemindersActive)
             }
             
             if isEnabled {
                 Section {
-                    Picker("Schedule Type", selection: $scheduleType) {
+                    Picker(LocalizedString.Schedule.scheduleType, selection: $scheduleType) {
                         ForEach(ScheduleTypeOption.allCases, id: \.self) { option in
-                            Text(option.rawValue).tag(option)
+                            Text(option.displayName).tag(option)
                         }
                     }
                     .pickerStyle(.segmented)
                 } header: {
-                    Text("Schedule Type")
+                    Text(LocalizedString.Schedule.scheduleType)
                 }
                 
                 // Day visualization (show single day as example)
                 if scheduleType == .timeBlocks && !timeBlocks.isEmpty {
                     Section {
                         TimelineVisualizationView(
-                            dayLabel: "Every Day",
+                            dayLabel: LocalizedString.Schedule.everyDay,
                             schedule: DailySchedule(enabled: true, scheduleType: .timeBlocks(timeBlocks)),
                             fallbackInterval: profile.fallbackInterval,
                             config: TimelineVisualizationConfig(
@@ -271,9 +279,9 @@ struct EverydayScheduleEditorView: View {
                         )
                         .padding(.vertical, 4)
                     } header: {
-                        Text("Daily Overview")
+                        Text(LocalizedString.Schedule.dailyOverview)
                     } footer: {
-                        Text("This schedule will apply to all 7 days of the week.")
+                        Text(LocalizedString.Schedule.appliesAllDays)
                     }
                 }
                 
@@ -287,7 +295,7 @@ struct EverydayScheduleEditorView: View {
                 }
             }
         }
-        .navigationTitle("Everyday Schedule")
+        .navigationTitle(LocalizedString.Schedule.everydaySchedule)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: loadSchedule)
         .onChange(of: isEnabled) { _, _ in saveSchedule() }
@@ -317,9 +325,9 @@ struct EverydayScheduleEditorView: View {
                 Form {
                     Section {
                         HStack {
-                            Text("Time")
+                            Text(LocalizedString.Schedule.time)
                             Spacer()
-                            Picker("Hour", selection: $newReminderHour) {
+                            Picker(LocalizedString.ScheduleEditor.hour, selection: $newReminderHour) {
                                 ForEach(0..<24) { hour in
                                     Text("\(hour)").tag(hour)
                                 }
@@ -338,21 +346,21 @@ struct EverydayScheduleEditorView: View {
                             .frame(width: 60)
                         }
                     } header: {
-                        Text("Reminder Time")
+                        Text(LocalizedString.Schedule.reminderTime)
                     } footer: {
-                        Text("Set the exact time for this reminder")
+                        Text(LocalizedString.Schedule.setExactTime)
                     }
                 }
-                .navigationTitle("Add Fixed Time")
+                .navigationTitle(LocalizedString.Schedule.addFixedTime)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("Cancel") {
+                        Button(LocalizedString.Schedule.cancel) {
                             showingAddReminder = false
                         }
                     }
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Add") {
+                        Button(LocalizedString.Schedule.add) {
                             let newReminder = FixedReminder(hour: newReminderHour, minute: newReminderMinute)
                             fixedReminders.append(newReminder)
                             showingAddReminder = false
@@ -368,9 +376,9 @@ struct EverydayScheduleEditorView: View {
         Section {
             if timeBlocks.isEmpty {
                 ContentUnavailableView(
-                    "No Time Blocks",
+                    LocalizedString.Schedule.noTimeBlocks,
                     systemImage: "clock",
-                    description: Text("Add time blocks to define when reminders should occur")
+                    description: Text(LocalizedString.Schedule.addTimeBlocksToDefine)
                 )
             } else {
                 ForEach(timeBlocks) { block in
@@ -466,10 +474,10 @@ struct EverydayScheduleEditorView: View {
                 newReminderMinute = 0
                 showingAddReminder = true
             } label: {
-                Label("Add Fixed Time", systemImage: "plus.circle.fill")
+                Label(LocalizedString.Schedule.addFixedTime, systemImage: "plus.circle.fill")
             }
         } header: {
-            Text("Fixed Reminder Times")
+            Text(LocalizedString.Schedule.fixedReminderTimes)
         }
     }
     
@@ -477,13 +485,13 @@ struct EverydayScheduleEditorView: View {
     private var fallbackSection: some View {
         Section {
             HStack {
-                Text("Default Interval")
+                Text(LocalizedString.Schedule.defaultInterval)
                 Spacer()
                 Text("\(profile.fallbackInterval) min")
                     .foregroundStyle(.secondary)
             }
         } footer: {
-            Text("Reminders will use the profile's default interval throughout the day")
+            Text(LocalizedString.Schedule.reminderIntervalFooter)
         }
     }
     
@@ -584,7 +592,7 @@ struct DayScheduleRow: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else {
-                    Text("No reminders")
+                    Text(LocalizedString.Schedule.noRemindersLabel)
                         .font(.caption)
                         .foregroundStyle(.tertiary)
                 }
@@ -598,17 +606,17 @@ struct DayScheduleRow: View {
         switch schedule.scheduleType {
         case .timeBlocks(let blocks):
             if blocks.isEmpty {
-                return "No time blocks"
+                return LocalizedString.ScheduleEditor.noTimeBlocksShort
             } else if blocks.count == 1 {
                 let block = blocks[0]
-                return "\(block.startHour):\(String(format: "%02d", block.startMinute)) - \(block.endHour):\(String(format: "%02d", block.endMinute)), every \(block.intervalMinutes)m"
+                return LocalizedString.ScheduleEditor.timeBlockDetail(startHour: block.startHour, startMinute: block.startMinute, endHour: block.endHour, endMinute: block.endMinute, interval: block.intervalMinutes)
             } else {
-                return "\(blocks.count) time blocks"
+                return LocalizedString.ScheduleEditor.timeBlocksCount(blocks.count)
             }
         case .fixedTimes(let reminders):
-            return "\(reminders.count) fixed reminders"
+            return LocalizedString.ScheduleEditor.fixedRemindersCount(reminders.count)
         case .useFallback:
-            return "Using default interval (\(profile.fallbackInterval)m)"
+            return LocalizedString.ScheduleEditor.usingDefaultInterval(profile.fallbackInterval)
         }
     }
 }
@@ -628,28 +636,36 @@ struct SingleDayEditorView: View {
     @State private var newReminderHour = 9
     @State private var newReminderMinute = 0
     
-    enum ScheduleTypeOption: String, CaseIterable {
-        case timeBlocks = "Time Blocks"
-        case fixedTimes = "Fixed Times"
-        case useFallback = "Use Default"
+    enum ScheduleTypeOption: CaseIterable {
+        case timeBlocks
+        case fixedTimes
+        case useFallback
+        
+        var displayName: String {
+            switch self {
+            case .timeBlocks: return LocalizedString.ScheduleEditor.timeBlocksOption
+            case .fixedTimes: return LocalizedString.ScheduleEditor.fixedTimesOption
+            case .useFallback: return LocalizedString.ScheduleEditor.useDefaultOption
+            }
+        }
     }
     
     var body: some View {
         List {
             Section {
-                Toggle("Enable \(dayName)", isOn: $isEnabled)
+                Toggle(LocalizedString.Schedule.enableDayFormat(dayName), isOn: $isEnabled)
             }
             
             if isEnabled {
                 Section {
-                    Picker("Schedule Type", selection: $scheduleType) {
+                    Picker(LocalizedString.Schedule.scheduleType, selection: $scheduleType) {
                         ForEach(ScheduleTypeOption.allCases, id: \.self) { option in
-                            Text(option.rawValue).tag(option)
+                            Text(option.displayName).tag(option)
                         }
                     }
                     .pickerStyle(.segmented)
                 } header: {
-                    Text("Schedule Type")
+                    Text(LocalizedString.Schedule.scheduleType)
                 }
                 
                 // Day visualization
@@ -667,9 +683,9 @@ struct SingleDayEditorView: View {
                         )
                         .padding(.vertical, 4)
                     } header: {
-                        Text("Day Overview")
+                        Text(LocalizedString.Schedule.dayOverview)
                     } footer: {
-                        Text("Visual representation of your time blocks. Darker blue = more frequent reminders.")
+                        Text(LocalizedString.Schedule.visualRepresentationBlocks)
                     }
                 }
                 
@@ -713,9 +729,9 @@ struct SingleDayEditorView: View {
                 Form {
                     Section {
                         HStack {
-                            Text("Time")
+                            Text(LocalizedString.Schedule.time)
                             Spacer()
-                            Picker("Hour", selection: $newReminderHour) {
+                            Picker(LocalizedString.ScheduleEditor.hour, selection: $newReminderHour) {
                                 ForEach(0..<24) { hour in
                                     Text("\(hour)").tag(hour)
                                 }
@@ -725,7 +741,7 @@ struct SingleDayEditorView: View {
                             
                             Text(":")
                             
-                            Picker("Minute", selection: $newReminderMinute) {
+                            Picker(LocalizedString.ScheduleEditor.minute, selection: $newReminderMinute) {
                                 ForEach(0..<60) { minute in
                                     Text(String(format: "%02d", minute)).tag(minute)
                                 }
@@ -734,21 +750,21 @@ struct SingleDayEditorView: View {
                             .frame(width: 60)
                         }
                     } header: {
-                        Text("Reminder Time")
+                        Text(LocalizedString.Schedule.reminderTime)
                     } footer: {
-                        Text("Set the exact time for this reminder")
+                        Text(LocalizedString.Schedule.setExactTime)
                     }
                 }
-                .navigationTitle("Add Fixed Time")
+                .navigationTitle(LocalizedString.Schedule.addFixedTime)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("Cancel") {
+                        Button(LocalizedString.Schedule.cancel) {
                             showingAddReminder = false
                         }
                     }
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Add") {
+                        Button(LocalizedString.Schedule.add) {
                             let newReminder = FixedReminder(hour: newReminderHour, minute: newReminderMinute)
                             fixedReminders.append(newReminder)
                             showingAddReminder = false
@@ -764,9 +780,9 @@ struct SingleDayEditorView: View {
         Section {
             if timeBlocks.isEmpty {
                 ContentUnavailableView(
-                    "No Time Blocks",
+                    LocalizedString.Schedule.noTimeBlocks,
                     systemImage: "clock",
-                    description: Text("Add time blocks to define when reminders should occur")
+                    description: Text(LocalizedString.Schedule.addTimeBlocksToDefine)
                 )
             } else {
                 ForEach(timeBlocks) { block in
@@ -807,12 +823,12 @@ struct SingleDayEditorView: View {
             Button {
                 showingAddBlock = true
             } label: {
-                Label("Add Time Block", systemImage: "plus.circle.fill")
+                Label(LocalizedString.Schedule.addTimeBlock, systemImage: "plus.circle.fill")
             }
         } header: {
-            Text("Time Blocks")
+            Text(LocalizedString.Schedule.timeBlocks)
         } footer: {
-            Text("Reminders will only fire during these time blocks")
+            Text(LocalizedString.Schedule.remindersOnlyDuringBlocks)
         }
     }
     
@@ -821,9 +837,9 @@ struct SingleDayEditorView: View {
         Section {
             if fixedReminders.isEmpty {
                 ContentUnavailableView(
-                    "No Fixed Times",
+                    LocalizedString.Schedule.noFixedTimes,
                     systemImage: "clock.badge.checkmark",
-                    description: Text("Add specific times for reminders")
+                    description: Text(LocalizedString.Schedule.addSpecificTimes)
                 )
             } else {
                 ForEach(fixedReminders) { reminder in
@@ -862,10 +878,10 @@ struct SingleDayEditorView: View {
                 newReminderMinute = 0
                 showingAddReminder = true
             } label: {
-                Label("Add Fixed Time", systemImage: "plus.circle.fill")
+                Label(LocalizedString.Schedule.addFixedTime, systemImage: "plus.circle.fill")
             }
         } header: {
-            Text("Fixed Reminder Times")
+            Text(LocalizedString.Schedule.fixedReminderTimes)
         }
     }
     
@@ -873,13 +889,13 @@ struct SingleDayEditorView: View {
     private var fallbackSection: some View {
         Section {
             HStack {
-                Text("Default Interval")
+                Text(LocalizedString.Schedule.defaultInterval)
                 Spacer()
                 Text("\(profile.fallbackInterval) min")
                     .foregroundStyle(.secondary)
             }
         } footer: {
-            Text("Reminders will use the profile's default interval throughout the day")
+            Text(LocalizedString.Schedule.reminderIntervalFooter)
         }
     }
     

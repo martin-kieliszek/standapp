@@ -65,7 +65,7 @@ struct CreateExerciseView: View {
             if !isEditing && !store.canCreateCustomExercise {
                 Section {
                     PremiumPrompt(
-                        feature: "Create unlimited custom exercises",
+                        feature: LocalizedString.CreateExercise.unlimitedCustom,
                         icon: "lock.fill",
                         onUpgrade: {
                             showPaywall = true
@@ -74,19 +74,19 @@ struct CreateExerciseView: View {
                 }
             } else {
                 // Name Input Section
-                Section("Name") {
-                    TextField("Exercise name", text: $name)
+                Section(LocalizedString.UI.name) {
+                    TextField(LocalizedString.CreateExercise.exerciseNamePlaceholder, text: $name)
                         .textInputAutocapitalization(.words)
                 }
 
                 // Icon Selection
-                Section("Icon") {
+                Section(LocalizedString.UI.icon) {
                     IconPickerButton(selectedIcon: $icon)
                 }
 
                 // Unit Type Selection
-                Section("Measurement") {
-                    Picker("Measured In", selection: $unitType) {
+                Section(LocalizedString.CreateExercise.unitType) {
+                    Picker(LocalizedString.CreateExercise.measuredIn, selection: $unitType) {
                         ForEach(ExerciseUnitType.allCases) {
                             type in
                             Text(type.rawValue).tag(type)
@@ -117,7 +117,7 @@ struct CreateExerciseView: View {
             }
 
             // Default Count
-            Section("Default Count") {
+            Section(LocalizedString.CreateExercise.defaultCount) {
                 HStack {
                     Button {
                         let currentDisplay = unitType.toDisplayValue(defaultCount)
@@ -153,21 +153,21 @@ struct CreateExerciseView: View {
                 }
                 .padding(.vertical, 8)
                 
-                Text("This is the starting value when logging")
+                Text(LocalizedString.CreateExercise.startingValue)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity)
             }
 
             // Preview
-            Section("Preview") {
+            Section(LocalizedString.CreateExercise.preview) {
                 HStack(spacing: 16) {
                     Image(systemName: icon)
                         .font(.title)
                         .foregroundStyle(.green)
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(name.isEmpty ? "Exercise Name" : name)
+                        Text(name.isEmpty ? LocalizedString.CreateExercise.exerciseNamePlaceholder : name)
                             .font(.headline)
                         Text(defaultPreview)
                             .font(.subheadline)
@@ -182,7 +182,7 @@ struct CreateExerciseView: View {
                 Button {
                     saveExercise()
                 } label: {
-                    Label("\(isEditing ? "Update" : "Create") Exercise", systemImage: "checkmark.circle.fill")
+                    Label(isEditing ? LocalizedString.CreateExercise.updateExercise : LocalizedString.CreateExercise.createExercise, systemImage: "checkmark.circle.fill")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                 }
@@ -194,7 +194,7 @@ struct CreateExerciseView: View {
                     Button(role: .destructive) {
                         showingDeleteConfirmation = true
                     } label: {
-                        Label("Delete Exercise", systemImage: "trash")
+                        Label(LocalizedString.CreateExercise.deleteExercise, systemImage: "trash")
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 10)
                     }
@@ -203,40 +203,40 @@ struct CreateExerciseView: View {
                 }
             }
         }
-        .navigationTitle(isEditing ? "Edit Exercise" : "New Exercise")
+        .navigationTitle(isEditing ? LocalizedString.CreateExercise.editTitle : LocalizedString.CreateExercise.newExercise)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button(LocalizedString.CreateExercise.cancelButton) {
                     dismiss()
                 }
             }
         }
         .confirmationDialog(
-            "Delete Exercise?",
+            LocalizedString.CreateExercise.deleteConfirmationTitle,
             isPresented: $showingDeleteConfirmation,
             titleVisibility: .visible
         ) {
-            Button("Delete", role: .destructive) {
+            Button(LocalizedString.CreateExercise.delete, role: .destructive) {
                 deleteExercise()
             }
-            Button("Cancel", role: .cancel) { }
+            Button(LocalizedString.CreateExercise.cancelButton, role: .cancel) { }
         } message: {
-            Text("This will remove the exercise. Your logged data will be kept.")
+            Text(LocalizedString.CreateExercise.deleteMessage)
         }
         .sheet(isPresented: $showPaywall) {
             PaywallView(subscriptionManager: SubscriptionManager.shared)
         }
-        .alert("Create Achievement Template?", isPresented: $showTemplatePrompt) {
-            Button("Not Now", role: .cancel) {
+        .alert(LocalizedString.CreateExercise.templatePromptTitle, isPresented: $showTemplatePrompt) {
+            Button(LocalizedString.CreateExercise.notNow, role: .cancel) {
                 dismiss()
             }
-            Button("Learn More") {
+            Button(LocalizedString.CreateExercise.learnMore) {
                 // This will trigger opening AchievementsView → ManageTemplatesView
                 // User can navigate there manually for now
                 dismiss()
             }
         } message: {
-            Text("Premium users can create achievement templates to track progress with custom exercises. Visit the Achievements tab to get started!")
+            Text(LocalizedString.CreateExercise.templateMessage)
         }
     }
 
@@ -245,11 +245,11 @@ struct CreateExerciseView: View {
     private var unitTypeDescription: String {
         switch unitType {
         case .reps:
-            return "Count repetitions (e.g., 10 pushups)"
+            return LocalizedString.CreateExercise.unitTypeReps
         case .seconds:
-            return "Count seconds (e.g., 30 second plank)"
+            return LocalizedString.CreateExercise.unitTypeSeconds
         case .minutes:
-            return "Count minutes (e.g., 15 minute walk)"
+            return LocalizedString.CreateExercise.unitTypeMinutes
         }
     }
 
@@ -316,7 +316,7 @@ struct CustomExerciseListView: View {
             builtInSection
             customSection
         }
-        .navigationTitle("Exercises")
+        .navigationTitle(LocalizedString.CreateExercise.exercises)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
@@ -327,7 +327,7 @@ struct CustomExerciseListView: View {
                 CreateExerciseView(store: store)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel") {
+                            Button(LocalizedString.CreateExercise.cancelButton) {
                                 showingCreateView = false
                             }
                         }
@@ -343,7 +343,7 @@ struct CustomExerciseListView: View {
                 builtInExerciseRow(exercise)
             }
         } header: {
-            Text("Built-in")
+            Text(LocalizedString.CreateExercise.builtIn)
         }
     }
 
@@ -393,14 +393,14 @@ struct CustomExerciseListView: View {
             Button {
                 showingCreateView = true
             } label: {
-                Label("Add Exercise", systemImage: "plus.circle")
+                Label(LocalizedString.CreateExercise.addExercise, systemImage: "plus.circle")
             }
             .foregroundStyle(.green)
         } header: {
-            Text("Custom")
+            Text(LocalizedString.CreateExercise.custom)
         } footer: {
             if store.customExercises.isEmpty {
-                Text("Tap + to create your own exercises")
+                Text(LocalizedString.CreateExercise.tapPlusCreate)
             }
         }
     }

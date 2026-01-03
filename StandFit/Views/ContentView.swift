@@ -73,7 +73,7 @@ struct ContentView: View {
                     .padding(.bottom, 24)
                 }
             }
-            .navigationTitle("StandFit")
+            .navigationTitle(LocalizedString.General.appName)
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -188,7 +188,7 @@ struct ContentView: View {
 
                     VStack(alignment: .leading, spacing: 4) {
                         ZStack {
-                            Text("\(gamificationStore.streak.currentStreak) day streak")
+                            Text(LocalizedString.Stats.dayStreak(gamificationStore.streak.currentStreak))
                                 .font(.title2)
                                 .fontWeight(.bold)
                             
@@ -196,7 +196,7 @@ struct ContentView: View {
                                 HStack(spacing: 4) {
                                     Image(systemName: "lock.fill")
                                         .font(.caption)
-                                    Text("Premium")
+                                    Text(LocalizedString.UI.premium)
                                         .font(.caption.bold())
                                 }
                                 .foregroundStyle(.secondary)
@@ -208,9 +208,9 @@ struct ContentView: View {
                                 )
                             }
                         }
-                        .blur(radius: !exerciseStore.isPremium ? 3 : 0)
+                        // .blur(radius: !exerciseStore.isPremium ? 3 : 0)
                         
-                        Text(gamificationStore.streak.currentStreak == 0 ? "Edit a schedule reminder!" : "Keep the momentum going!")
+                        Text(gamificationStore.streak.currentStreak == 0 ? LocalizedString.Schedule.editSchedule : LocalizedString.Stats.keepMomentum)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -254,7 +254,7 @@ struct ContentView: View {
                     VStack(spacing: 12) {
                         // Time display
                         VStack(spacing: 6) {
-                            Text("Next Reminder")
+                            Text(LocalizedString.Main.nextReminder)
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .foregroundStyle(.secondary)
@@ -290,7 +290,7 @@ struct ContentView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "arrow.clockwise")
-                                Text("Reset Timer")
+                                Text(LocalizedString.Notifications.resetTimer)
                             }
                             .font(.subheadline)
                             .fontWeight(.semibold)
@@ -309,7 +309,7 @@ struct ContentView: View {
                             HStack {
                                 Image(systemName: "calendar.badge.clock")
                                     .font(.caption)
-                                Text("Edit Reminder Schedule")
+                                Text(LocalizedString.Schedule.editSchedule)
                                     .font(.caption)
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -328,7 +328,7 @@ struct ContentView: View {
                             .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
                     )
                 } else {
-                    Text("Scheduling...")
+                    Text(LocalizedString.Schedule.scheduling)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity)
@@ -343,7 +343,7 @@ struct ContentView: View {
                     Image(systemName: "bell.slash.fill")
                         .font(.title2)
                         .foregroundStyle(.secondary)
-                    Text("Reminders Off")
+                    Text(LocalizedString.Settings.remindersOff)
                         .font(.headline)
                         .foregroundStyle(.secondary)
                 }
@@ -366,7 +366,7 @@ struct ContentView: View {
         ], spacing: 12) {
             QuickActionCard(
                 icon: "chart.line.uptrend.xyaxis",
-                title: "Progress",
+                title: LocalizedString.Progress.title,
                 color: .green,
                 action: {
                     if exerciseStore.isPremium {
@@ -379,7 +379,7 @@ struct ContentView: View {
 
             QuickActionCard(
                 icon: "clock.fill",
-                title: "History",
+                title: LocalizedString.History.title,
                 color: .orange,
                 action: {
                     if exerciseStore.isPremium {
@@ -392,7 +392,7 @@ struct ContentView: View {
 
             QuickActionCard(
                 icon: "trophy.fill",
-                title: "Achievements",
+                title: LocalizedString.Achievements.title,
                 color: .cyan,
                 action: {
                     if exerciseStore.isPremium {
@@ -405,7 +405,7 @@ struct ContentView: View {
 
             QuickActionCard(
                 icon: "star.fill",
-                title: "Level \(gamificationStore.levelProgress.currentLevel)",
+                title: "\(LocalizedString.Stats.level) \(gamificationStore.levelProgress.currentLevel)",
                 color: .yellow,
                 action: {
                     if exerciseStore.isPremium {
@@ -425,7 +425,7 @@ struct ContentView: View {
             HStack(spacing: 12) {
                 StatCard(
                     value: "\(exerciseStore.todaysLogs.count)",
-                    label: "Today's Logs",
+                    label: LocalizedString.Stats.todaysLogs,
                     icon: "checkmark.circle.fill",
                     color: .blue,
                     showLock: !exerciseStore.isPremium
@@ -433,7 +433,7 @@ struct ContentView: View {
 
                 StatCard(
                     value: "\(gamificationStore.unlockedAchievements.count)",
-                    label: "Unlocked",
+                    label: LocalizedString.Stats.unlocked,
                     icon: "trophy.fill",
                     color: .purple,
                     showLock: !exerciseStore.isPremium
@@ -447,7 +447,7 @@ struct ContentView: View {
                         .foregroundStyle(.yellow)
                     
                     ZStack {
-                        Text("Level \(gamificationStore.levelProgress.currentLevel)")
+                        Text(LocalizedString.Stats.levelFormat(gamificationStore.levelProgress.currentLevel))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                         
@@ -455,7 +455,7 @@ struct ContentView: View {
                             HStack(spacing: 3) {
                                 Image(systemName: "lock.fill")
                                     .font(.caption2)
-                                Text("Premium")
+                                Text(LocalizedString.UI.premium)
                                     .font(.caption2.bold())
                             }
                             .foregroundStyle(.secondary)
@@ -472,7 +472,7 @@ struct ContentView: View {
                     Spacer()
                     
                     ZStack {
-                        Text("\(gamificationStore.levelProgress.xpForNextLevel.current) / \(gamificationStore.levelProgress.xpForNextLevel.needed) XP")
+                        Text(LocalizedString.Stats.xpFormat(gamificationStore.levelProgress.xpForNextLevel.current, gamificationStore.levelProgress.xpForNextLevel.needed))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         
@@ -519,10 +519,10 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Quick Log")
+                    Text(LocalizedString.Stats.quickLog)
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Tap an exercise to log it")
+                    Text(LocalizedString.UI.tapToLog)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -534,7 +534,7 @@ struct ContentView: View {
                     HStack(spacing: 6) {
                         Image(systemName: "plus")
                             .font(.subheadline.weight(.semibold))
-                        Text("Custom")
+                        Text(LocalizedString.UI.custom)
                             .font(.subheadline.weight(.semibold))
                     }
                     .padding(.horizontal, 16)
@@ -572,10 +572,10 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Today's Activity")
+                    Text(LocalizedString.Stats.todayActivity)
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("\(exerciseStore.todaysLogs.count) exercise\(exerciseStore.todaysLogs.count == 1 ? "" : "s") logged")
+                    Text(LocalizedString.Stats.exercisesLogged(exerciseStore.todaysLogs.count))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -605,7 +605,7 @@ struct ContentView: View {
     private func timeUntil(_ date: Date) -> String {
         let interval = date.timeIntervalSince(currentTime)
         if interval <= 0 {
-            return "Now!"
+            return LocalizedString.Stats.now
         }
 
         let totalSeconds = Int(interval)
@@ -646,19 +646,19 @@ struct ContentView: View {
         
         // Check if it's today
         if calendar.isDateInToday(date) {
-            return "Today at \(date.formatted(date: .omitted, time: .shortened))"
+            return LocalizedString.Stats.todayAt(date.formatted(date: .omitted, time: .shortened))
         }
         
         // Check if it's tomorrow
         if calendar.isDateInTomorrow(date) {
-            return "Tomorrow at \(date.formatted(date: .omitted, time: .shortened))"
+            return LocalizedString.Stats.tomorrowAt(date.formatted(date: .omitted, time: .shortened))
         }
         
         // Check if it's within the next week
         let daysUntil = calendar.dateComponents([.day], from: calendar.startOfDay(for: now), to: calendar.startOfDay(for: date)).day ?? 0
         if daysUntil >= 0 && daysUntil < 7 {
             let weekday = date.formatted(.dateTime.weekday(.wide))
-            return "\(weekday) at \(date.formatted(date: .omitted, time: .shortened))"
+            return LocalizedString.Stats.weekdayAt(weekday, date.formatted(date: .omitted, time: .shortened))
         }
         
         // For dates further out, show full date
@@ -718,12 +718,12 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Trial Ending Soon!")
+                        Text(LocalizedString.Stats.trialEndingSoon)
                             .font(.headline)
                             .foregroundStyle(.white)
                         
                         if let trial = subscriptionManager.trialState {
-                            Text("\(trial.daysRemaining) day\(trial.daysRemaining == 1 ? "" : "s") left in your free trial")
+                            Text(LocalizedString.Premium.daysRemainingInTrial(trial.daysRemaining))
                                 .font(.subheadline)
                                 .foregroundStyle(.white.opacity(0.9))
                         }
@@ -736,7 +736,7 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                 }
                 
-                Text("Upgrade now to keep your achievements & stats")
+                Text(LocalizedString.Premium.upgradeKeepAchievements)
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.85))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -835,7 +835,7 @@ struct StatCard: View {
                         HStack(spacing: 4) {
                             Image(systemName: "lock.fill")
                                 .font(.caption)
-                            Text("Premium")
+                            Text(LocalizedString.UI.premium)
                                 .font(.caption.bold())
                         }
                         .foregroundStyle(.secondary)

@@ -31,7 +31,7 @@ struct ReminderScheduleView: View {
             // Current schedule info
             currentScheduleSection
         }
-        .navigationTitle("Reminder Schedule")
+        .navigationTitle(LocalizedString.ReminderSchedule.navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingProfilePicker) {
             ScheduleProfilePickerView(store: store)
@@ -79,7 +79,7 @@ struct ReminderScheduleView: View {
                     Button {
                         showingProfileEditor = true
                     } label: {
-                        Label("Edit Schedule", systemImage: "slider.horizontal.3")
+                        Label(LocalizedString.ReminderSchedule.editSchedule, systemImage: "slider.horizontal.3")
                             .font(.subheadline)
                             .frame(maxWidth: .infinity)
                     }
@@ -92,7 +92,7 @@ struct ReminderScheduleView: View {
                 Button {
                     showingProfilePicker = true
                 } label: {
-                    Label("Switch Profile", systemImage: "arrow.left.arrow.right")
+                    Label(LocalizedString.ReminderSchedule.switchProfile, systemImage: "arrow.left.arrow.right")
                         .font(.subheadline)
                         .frame(maxWidth: .infinity)
                 }
@@ -103,13 +103,13 @@ struct ReminderScheduleView: View {
                 Button {
                     showingProfilePicker = true
                 } label: {
-                    Label("Create Schedule Profile", systemImage: "plus.circle.fill")
+                    Label(LocalizedString.ReminderSchedule.createScheduleProfile, systemImage: "plus.circle.fill")
                 }
             }
         } header: {
-            Text("Active Schedule Profile")
+            Text(LocalizedString.ReminderSchedule.activeScheduleProfile)
         } footer: {
-            Text("Use profiles for advanced scheduling with time blocks, per-day customization, and more")
+            Text(LocalizedString.ReminderSchedule.profileFooter)
         }
     }
 
@@ -121,7 +121,7 @@ struct ReminderScheduleView: View {
                         .foregroundStyle(.blue)
                         .font(.title2)
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Next Reminder")
+                        Text(LocalizedString.ReminderSchedule.nextReminder)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         Text(formatDateTime(nextTime))
@@ -132,7 +132,7 @@ struct ReminderScheduleView: View {
                 HStack(spacing: 12) {
                     Image(systemName: "bell.slash")
                         .foregroundStyle(.secondary)
-                    Text("No reminder scheduled")
+                    Text(LocalizedString.ReminderSchedule.noReminderScheduled)
                         .foregroundStyle(.secondary)
                 }
             }
@@ -142,20 +142,20 @@ struct ReminderScheduleView: View {
                     Divider()
                         .padding(.vertical, 4)
                     
-                    Text("Schedule Summary")
+                    Text(LocalizedString.ReminderSchedule.scheduleSummary)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     
                     HStack {
-                        Label("Active Days", systemImage: "calendar")
+                        Label(LocalizedString.ReminderSchedule.activeDays, systemImage: "calendar")
                             .font(.subheadline)
                         Spacer()
-                        Text("\(profile.activeDays.count) days")
+                        Text(LocalizedString.ReminderSchedule.daysCount(profile.activeDays.count))
                             .foregroundStyle(.secondary)
                     }
                     
                     HStack {
-                        Label("Avg. Daily Reminders", systemImage: "bell.badge")
+                        Label(LocalizedString.ReminderSchedule.avgDailyReminders, systemImage: "bell.badge")
                             .font(.subheadline)
                         Spacer()
                         Text("\(profile.estimatedDailyAverage)")
@@ -163,18 +163,18 @@ struct ReminderScheduleView: View {
                     }
                     
                     HStack {
-                        Label("Dead Response", systemImage: "arrow.clockwise")
+                        Label(LocalizedString.ReminderSchedule.deadResponse, systemImage: "arrow.clockwise")
                             .font(.subheadline)
                         Spacer()
-                        Text(profile.deadResponseEnabled ? "\(profile.deadResponseMinutes) min" : "Off")
+                        Text(profile.deadResponseEnabled ? LocalizedString.ReminderSchedule.minutesFormat(profile.deadResponseMinutes) : LocalizedString.ReminderSchedule.off)
                             .foregroundStyle(.secondary)
                     }
                 }
             }
         } header: {
-            Text("Current Schedule")
+            Text(LocalizedString.ReminderSchedule.currentSchedule)
         } footer: {
-            Text("Use 'Edit' to modify time blocks, intervals, and per-day settings")
+            Text(LocalizedString.ReminderSchedule.scheduleFooter)
         }
     }
 
@@ -185,11 +185,11 @@ struct ReminderScheduleView: View {
         let calendar = Calendar.current
 
         if calendar.isDateInToday(date) {
-            formatter.dateFormat = "'Today at' h:mm a"
+            formatter.dateFormat = "'\(LocalizedString.ReminderSchedule.todayAt)' h:mm a"
         } else if calendar.isDateInTomorrow(date) {
-            formatter.dateFormat = "'Tomorrow at' h:mm a"
+            formatter.dateFormat = "'\(LocalizedString.ReminderSchedule.tomorrowAt)' h:mm a"
         } else {
-            formatter.dateFormat = "EEE 'at' h:mm a"
+            formatter.dateFormat = "EEE '\(LocalizedString.ReminderSchedule.weekdayAt)' h:mm a"
         }
 
         return formatter.string(from: date)

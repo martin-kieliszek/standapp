@@ -47,17 +47,17 @@ struct TimeBlockEditorView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Block Name (optional)", text: $name)
+                TextField(LocalizedString.Schedule.blockNamePlaceholder, text: $name)
                     .textInputAutocapitalization(.words)
             } header: {
-                Text("Name")
+                Text(LocalizedString.Schedule.nameSection)
             } footer: {
-                Text("e.g., 'Morning Focus', 'Work Hours', 'Evening Wind-Down'")
+                Text(LocalizedString.Schedule.nameExamples)
             }
             
             Section {
                 HStack {
-                    Text("Start Time")
+                    Text(LocalizedString.Schedule.startTime)
                     Spacer()
                     Picker("Hour", selection: $startHour) {
                         ForEach(0..<24) { hour in
@@ -79,7 +79,7 @@ struct TimeBlockEditorView: View {
                 }
                 
                 HStack {
-                    Text("End Time")
+                    Text(LocalizedString.Schedule.endTime)
                     Spacer()
                     Picker("Hour", selection: $endHour) {
                         ForEach(0..<24) { hour in
@@ -100,41 +100,41 @@ struct TimeBlockEditorView: View {
                     .frame(width: 60)
                 }
             } header: {
-                Text("Time Range")
+                Text(LocalizedString.Schedule.timeRange)
             } footer: {
                 if isValidTimeRange {
-                    Text("Duration: \(durationDescription)")
+                    Text(LocalizedString.Schedule.durationFormat(durationDescription))
                 } else {
-                    Text("End time must be after start time")
+                    Text(LocalizedString.Schedule.endAfterStartError)
                         .foregroundStyle(.red)
                 }
             }
             
             Section {
-                Picker("Interval", selection: $intervalMinutes) {
+                Picker(LocalizedString.Schedule.interval, selection: $intervalMinutes) {
                     ForEach(intervalOptions, id: \.self) { interval in
-                        Text("\(interval) min").tag(interval)
+                        Text(LocalizedString.Schedule.intervalMinFormat(interval)).tag(interval)
                     }
                 }
                 .pickerStyle(.menu)
                 
                 if isValidTimeRange {
                     HStack {
-                        Text("Estimated Reminders")
+                        Text(LocalizedString.Schedule.estimatedReminders)
                         Spacer()
                         Text("\(estimatedReminderCount)")
                             .foregroundStyle(.secondary)
                     }
                 }
             } header: {
-                Text("Reminder Interval")
+                Text(LocalizedString.Schedule.reminderInterval)
             }
             
             // Visual preview of notification times
             if isValidTimeRange {
                 Section {
                     TimelineVisualizationView(
-                        dayLabel: "Preview",
+                        dayLabel: LocalizedString.Schedule.preview,
                         schedule: DailySchedule(
                             enabled: true,
                             scheduleType: .timeBlocks([currentTimeBlock])
@@ -148,38 +148,38 @@ struct TimeBlockEditorView: View {
                     )
                     .padding(.vertical, 4)
                 } header: {
-                    Text("Notification Periods (Preview)")
+                    Text(LocalizedString.Schedule.notificationPeriodsPreview)
                 } footer: {
-                    Text("Visual representation of when reminders will fire during this time block. Darker blue = more frequent.")
+                    Text(LocalizedString.Schedule.visualRepresentationFooter)
                 }
             }
             
             Section {
-                Toggle("Add Randomness", isOn: $enableRandomization)
+                Toggle(LocalizedString.Schedule.addRandomness, isOn: $enableRandomization)
                 
                 if enableRandomization {
-                    Stepper("± \(randomizationRange) minutes", value: $randomizationRange, in: 1...30)
+                    Stepper(LocalizedString.Schedule.randomnessRangeFormat(randomizationRange), value: $randomizationRange, in: 1...30)
                     
-                    Text("Prevents habituation by varying reminder times slightly")
+                    Text(LocalizedString.Schedule.preventsHabituation)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             } header: {
-                Text("Advanced")
+                Text(LocalizedString.Schedule.advanced)
             } footer: {
                 if enableRandomization {
-                    Text("Reminders will vary by ±\(randomizationRange) minutes from the base interval")
+                    Text(LocalizedString.Schedule.randomnessFooterFormat(randomizationRange))
                 }
             }
             
             Section {
-                Picker("Style", selection: $notificationStyle) {
-                    Text("Standard").tag(TimeBlock.NotificationStyle.standard)
-                    Text("Gentle (Silent)").tag(TimeBlock.NotificationStyle.gentle)
-                    Text("Urgent").tag(TimeBlock.NotificationStyle.urgent)
+                Picker(LocalizedString.Schedule.style, selection: $notificationStyle) {
+                    Text(LocalizedString.Schedule.standard).tag(TimeBlock.NotificationStyle.standard)
+                    Text(LocalizedString.Schedule.gentleSilent).tag(TimeBlock.NotificationStyle.gentle)
+                    Text(LocalizedString.Schedule.urgent).tag(TimeBlock.NotificationStyle.urgent)
                 }
             } header: {
-                Text("Notification Style")
+                Text(LocalizedString.Schedule.notificationStyle)
             }
             
             Section {
@@ -192,7 +192,7 @@ struct TimeBlockEditorView: View {
                                 Image(systemName: "xmark.circle")
                                     .font(.title)
                                     .foregroundStyle(selectedIcon == nil ? .blue : .gray)
-                                Text("None")
+                                Text(LocalizedString.Schedule.none)
                                     .font(.caption2)
                             }
                         }
@@ -210,14 +210,14 @@ struct TimeBlockEditorView: View {
                     .padding(.vertical, 8)
                 }
             } header: {
-                Text("Icon (Optional)")
+                Text(LocalizedString.Schedule.iconOptional)
             }
         }
-        .navigationTitle("Time Block")
+        .navigationTitle(LocalizedString.Schedule.timeBlock)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
+                Button(LocalizedString.Schedule.save) {
                     let updatedBlock = TimeBlock(
                         id: block.id,
                         name: name.isEmpty ? nil : name,
@@ -327,17 +327,17 @@ struct TimeBlockEditorSheet: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Block Name (optional)", text: $name)
+                    TextField(LocalizedString.Schedule.blockNamePlaceholder, text: $name)
                         .textInputAutocapitalization(.words)
                 } header: {
-                    Text("Name")
+                    Text(LocalizedString.Schedule.nameSection)
                 } footer: {
-                    Text("e.g., 'Morning Focus', 'Work Hours', 'Evening Wind-Down'")
+                    Text(LocalizedString.Schedule.nameExamples)
                 }
                 
                 Section {
                     HStack {
-                        Text("Start Time")
+                        Text(LocalizedString.Schedule.startTime)
                         Spacer()
                         Picker("Hour", selection: $startHour) {
                             ForEach(0..<24) { hour in
@@ -359,7 +359,7 @@ struct TimeBlockEditorSheet: View {
                     }
                     
                     HStack {
-                        Text("End Time")
+                        Text(LocalizedString.Schedule.endTime)
                         Spacer()
                         Picker("Hour", selection: $endHour) {
                             ForEach(0..<24) { hour in
@@ -380,41 +380,41 @@ struct TimeBlockEditorSheet: View {
                         .frame(width: 60)
                     }
                 } header: {
-                    Text("Time Range")
+                    Text(LocalizedString.Schedule.timeRange)
                 } footer: {
                     if isValidTimeRange {
-                        Text("Duration: \(durationDescription)")
+                        Text(LocalizedString.Schedule.durationFormat(durationDescription))
                     } else {
-                        Text("End time must be after start time")
+                        Text(LocalizedString.Schedule.endAfterStartError)
                             .foregroundStyle(.red)
                     }
                 }
                 
                 Section {
-                    Picker("Interval", selection: $intervalMinutes) {
+                    Picker(LocalizedString.Schedule.interval, selection: $intervalMinutes) {
                         ForEach(intervalOptions, id: \.self) { interval in
-                            Text("\(interval) min").tag(interval)
+                            Text(LocalizedString.Schedule.intervalMinFormat(interval)).tag(interval)
                         }
                     }
                     .pickerStyle(.menu)
                     
                     if isValidTimeRange {
                         HStack {
-                            Text("Estimated Reminders")
+                            Text(LocalizedString.Schedule.estimatedReminders)
                             Spacer()
                             Text("\(estimatedReminderCount)")
                                 .foregroundStyle(.secondary)
                         }
                     }
                 } header: {
-                    Text("Reminder Interval")
+                    Text(LocalizedString.Schedule.reminderInterval)
                 }
                 
                 // Visual preview of notification times
                 if isValidTimeRange {
                     Section {
                         TimelineVisualizationView(
-                            dayLabel: "Preview",
+                            dayLabel: LocalizedString.Schedule.preview,
                             schedule: DailySchedule(
                                 enabled: true,
                                 scheduleType: .timeBlocks([currentTimeBlockSheet])
@@ -428,38 +428,38 @@ struct TimeBlockEditorSheet: View {
                         )
                         .padding(.vertical, 4)
                     } header: {
-                        Text("Notification Preview")
+                        Text(LocalizedString.Schedule.notificationPreview)
                     } footer: {
-                        Text("Visual representation of when reminders will fire during this time block. Darker blue = more frequent.")
+                        Text(LocalizedString.Schedule.visualRepresentationFooter)
                     }
                 }
                 
                 Section {
-                    Toggle("Add Randomness", isOn: $enableRandomization)
+                    Toggle(LocalizedString.Schedule.addRandomness, isOn: $enableRandomization)
                     
                     if enableRandomization {
-                        Stepper("± \(randomizationRange) minutes", value: $randomizationRange, in: 1...30)
+                        Stepper(LocalizedString.Schedule.randomnessRangeFormat(randomizationRange), value: $randomizationRange, in: 1...30)
                         
-                        Text("Prevents habituation by varying reminder times slightly")
+                        Text(LocalizedString.Schedule.preventsHabituation)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
                 } header: {
-                    Text("Advanced")
+                    Text(LocalizedString.Schedule.advanced)
                 } footer: {
                     if enableRandomization {
-                        Text("Reminders will vary by ±\(randomizationRange) minutes from the base interval")
+                        Text(LocalizedString.Schedule.randomnessFooterFormat(randomizationRange))
                     }
                 }
                 
                 Section {
-                    Picker("Style", selection: $notificationStyle) {
-                        Text("Standard").tag(TimeBlock.NotificationStyle.standard)
-                        Text("Gentle (Silent)").tag(TimeBlock.NotificationStyle.gentle)
-                        Text("Urgent").tag(TimeBlock.NotificationStyle.urgent)
+                    Picker(LocalizedString.Schedule.style, selection: $notificationStyle) {
+                        Text(LocalizedString.Schedule.standard).tag(TimeBlock.NotificationStyle.standard)
+                        Text(LocalizedString.Schedule.gentleSilent).tag(TimeBlock.NotificationStyle.gentle)
+                        Text(LocalizedString.Schedule.urgent).tag(TimeBlock.NotificationStyle.urgent)
                     }
                 } header: {
-                    Text("Notification Style")
+                    Text(LocalizedString.Schedule.notificationStyle)
                 }
                 
                 Section {
@@ -472,7 +472,7 @@ struct TimeBlockEditorSheet: View {
                                     Image(systemName: "xmark.circle")
                                         .font(.title)
                                         .foregroundStyle(selectedIcon == nil ? .blue : .gray)
-                                    Text("None")
+                                    Text(LocalizedString.Schedule.none)
                                         .font(.caption2)
                                 }
                             }
@@ -490,18 +490,18 @@ struct TimeBlockEditorSheet: View {
                         .padding(.vertical, 8)
                     }
                 } header: {
-                    Text("Icon (Optional)")
+                    Text(LocalizedString.Schedule.iconOptional)
                 }
             }
-            .navigationTitle("Time Block")
+            .navigationTitle(LocalizedString.Schedule.timeBlock)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", action: onCancel)
+                    Button(LocalizedString.Schedule.cancel, action: onCancel)
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button(LocalizedString.Schedule.save) {
                         let updatedBlock = TimeBlock(
                             id: block.id,
                             name: name.isEmpty ? nil : name,

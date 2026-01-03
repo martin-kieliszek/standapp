@@ -42,7 +42,7 @@ struct DayActivityHeatmapView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Today's Activity")
+            Text(LocalizedString.Stats.todaysActivity)
                 .font(.headline)
                 .fontWeight(.semibold)
             
@@ -62,14 +62,14 @@ struct DayActivityHeatmapView: View {
                 
                 // Notification row
                 activityRow(
-                    label: "Notifications",
+                    label: LocalizedString.Stats.notifications,
                     events: notifications,
                     color: .blue
                 )
                 
                 // Exercise row
                 activityRow(
-                    label: "Exercises",
+                    label: LocalizedString.Stats.exercises,
                     events: exercises,
                     color: .green
                 )
@@ -91,7 +91,7 @@ struct DayActivityHeatmapView: View {
                         RoundedRectangle(cornerRadius: 2)
                             .fill(Color(.systemGray5))
                             .frame(width: 12, height: 12)
-                        Text("None")
+                        Text(LocalizedString.Stats.none)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
@@ -100,7 +100,7 @@ struct DayActivityHeatmapView: View {
                         RoundedRectangle(cornerRadius: 2)
                             .fill(Color.blue.opacity(0.3))
                             .frame(width: 12, height: 12)
-                        Text("Low")
+                        Text(LocalizedString.Stats.low)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
@@ -109,7 +109,7 @@ struct DayActivityHeatmapView: View {
                         RoundedRectangle(cornerRadius: 2)
                             .fill(Color.blue.opacity(0.7))
                             .frame(width: 12, height: 12)
-                        Text("Medium")
+                        Text(LocalizedString.Stats.medium)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
@@ -118,7 +118,7 @@ struct DayActivityHeatmapView: View {
                         RoundedRectangle(cornerRadius: 2)
                             .fill(Color.blue)
                             .frame(width: 12, height: 12)
-                        Text("High")
+                        Text(LocalizedString.Stats.high)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
