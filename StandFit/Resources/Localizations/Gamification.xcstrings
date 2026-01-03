@@ -1,962 +1,1154 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "notification.achievement_unlocked" : {
-      "comment" : "Achievement unlocked notification title",
+    "gamification.category_milestone" : {
+      "comment" : "Achievement category for milestone achievements",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erfolg freigeschaltet!"
+            "value" : "Meilenstein"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Achievement Unlocked!"
+            "value" : "Milestone"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Logro Desbloqueado!"
+            "value" : "Hito"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réalisation Débloquée !"
+            "value" : "Jalon"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "達成度アンロック！"
+            "value" : "マイルストーン"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conquista Desbloqueada!"
+            "value" : "Marco"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "成就已解锁！"
+            "value" : "里程碑"
           }
         }
       }
     },
-    "notification.action_dismiss" : {
-      "comment" : "Dismiss action",
+    "gamification.category_consistency" : {
+      "comment" : "Achievement category for consistency achievements",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ablehnen"
+            "value" : "Beständigkeit"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dismiss"
+            "value" : "Consistency"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descartar"
+            "value" : "Consistencia"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ignorer"
+            "value" : "Constance"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "閉じる"
+            "value" : "継続性"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dispensar"
+            "value" : "Consistência"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "关闭"
+            "value" : "连续性"
           }
         }
       }
     },
-    "notification.action_log" : {
-      "comment" : "Log exercise action",
+    "gamification.category_volume" : {
+      "comment" : "Achievement category for volume achievements",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Protokollieren"
+            "value" : "Volumen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Log"
+            "value" : "Volume"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registrar"
+            "value" : "Volumen"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enregistrer"
+            "value" : "Volume"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "記録"
+            "value" : "ボリューム"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registrar"
+            "value" : "Volume"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "记录"
+            "value" : "总量"
           }
         }
       }
     },
-    "notification.action_snooze" : {
-      "comment" : "Snooze action",
+    "gamification.category_variety" : {
+      "comment" : "Achievement category for variety achievements",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schlummern"
+            "value" : "Vielfalt"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Snooze"
+            "value" : "Variety"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Posponer"
+            "value" : "Variedad"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reporter"
+            "value" : "Variété"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "スヌーズ"
+            "value" : "多様性"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Soneca"
+            "value" : "Variedade"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "稍后提醒"
+            "value" : "多样性"
           }
         }
       }
     },
-    "notification.action_view" : {
-      "comment" : "View action",
+    "gamification.category_challenge" : {
+      "comment" : "Achievement category for challenge achievements",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anzeigen"
+            "value" : "Herausforderung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "View"
+            "value" : "Challenge"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver"
+            "value" : "Desafío"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voir"
+            "value" : "Défi"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "表示"
+            "value" : "チャレンジ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver"
+            "value" : "Desafio"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "查看"
+            "value" : "挑战"
           }
         }
       }
     },
-    "notification.daily_report" : {
-      "comment" : "Daily report message (formatted with exercise count)",
+    "gamification.category_social" : {
+      "comment" : "Achievement category for social achievements",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie haben heute %d Übungen protokolliert"
+            "value" : "Sozial"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You logged %d exercises today"
+            "value" : "Social"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha registrado %d ejercicios hoy"
+            "value" : "Social"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous avez enregistré %d exercices aujourd'hui"
+            "value" : "Social"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "今日%d個のエクササイズを記録しました"
+            "value" : "ソーシャル"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Você registrou %d exercícios hoje"
+            "value" : "Social"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您今天记录了%d个练习"
+            "value" : "社交"
           }
         }
       }
     },
-    "notification.exercise_reminder" : {
-      "comment" : "Exercise reminder notification title",
+    "gamification.category_template" : {
+      "comment" : "Achievement category for custom template achievements",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Übungserinnerung"
+            "value" : "Eigene Vorlagen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exercise Reminder"
+            "value" : "Custom Templates"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recordatorio de Ejercicio"
+            "value" : "Plantillas Personalizadas"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rappel d'Exercice"
+            "value" : "Modèles Personnalisés"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "エクササイズのリマインダー"
+            "value" : "カスタムテンプレート"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lembrete de Exercício"
+            "value" : "Modelos Personalizados"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "练习提醒"
+            "value" : "自定义模板"
           }
         }
       }
     },
-    "notification.progress_report" : {
-      "comment" : "Progress report notification title",
+    "gamification.tier_bronze" : {
+      "comment" : "Achievement tier - Bronze",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fortschrittsbericht"
+            "value" : "Bronze"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Progress Report"
+            "value" : "Bronze"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Informe de Progreso"
+            "value" : "Bronce"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rapport de Progrès"
+            "value" : "Bronze"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "進捗レポート"
+            "value" : "ブロンズ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Relatório de Progresso"
+            "value" : "Bronze"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "进度报告"
+            "value" : "铜牌"
           }
         }
       }
     },
-    "notification.reset_timer" : {
-      "comment" : "Reset timer button",
+    "gamification.tier_silver" : {
+      "comment" : "Achievement tier - Silver",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Timer zurücksetzen"
+            "value" : "Silber"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reset Timer"
+            "value" : "Silver"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reiniciar Temporizador"
+            "value" : "Plata"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réinitialiser Minuteur"
+            "value" : "Argent"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "タイマーをリセット"
+            "value" : "シルバー"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reiniciar Temporizador"
+            "value" : "Prata"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重置计时器"
+            "value" : "银牌"
           }
         }
       }
     },
-    "notification.still_there" : {
-      "comment" : "Dead response follow-up notification",
+    "gamification.tier_gold" : {
+      "comment" : "Achievement tier - Gold",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Noch da? Zeit für eine kurze Bewegungspause!"
+            "value" : "Gold"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Still there? Time for a quick movement break!"
+            "value" : "Gold"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Sigues ahí? ¡Es hora de un descanso rápido!"
+            "value" : "Oro"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toujours là ? Il est temps de bouger un peu !"
+            "value" : "Or"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "まだいますか？軽い運動の時間です！"
+            "value" : "ゴールド"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ainda aí? Hora de uma pausa rápida!"
+            "value" : "Ouro"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "还在吗？该休息一下了！"
+            "value" : "金牌"
           }
         }
       }
     },
-    "notification.time_to_exercise" : {
-      "comment" : "Time to exercise notification message",
+    "gamification.tier_platinum" : {
+      "comment" : "Achievement tier - Platinum",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeit für eine kurze Übung!"
+            "value" : "Platin"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Time for a quick exercise!"
+            "value" : "Platinum"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Hora de un ejercicio rápido!"
+            "value" : "Platino"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il est temps de faire un exercice !"
+            "value" : "Platine"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "軽いエクササイズの時間です！"
+            "value" : "プラチナ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hora de um exercício rápido!"
+            "value" : "Platina"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该做快速练习了！"
+            "value" : "铂金"
           }
         }
       }
     },
-    "notification.action_log_exercise" : {
-      "comment" : "Log Exercise action button",
+    "gamification.streak_daily_active" : {
+      "comment" : "Streak type - Daily Active",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Übung protokollieren"
+            "value" : "Täglich Aktiv"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Log Exercise"
+            "value" : "Daily Active"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registrar Ejercicio"
+            "value" : "Activo Diario"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enregistrer l'exercice"
+            "value" : "Actif Quotidien"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "運動を記録"
+            "value" : "毎日アクティブ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registrar Exercício"
+            "value" : "Ativo Diário"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "记录运动"
+            "value" : "每日活跃"
           }
         }
       }
     },
-    "notification.action_snooze_5min" : {
-      "comment" : "Snooze 5 min action button",
+    "gamification.streak_reminder_response" : {
+      "comment" : "Streak type - Reminder Response",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5 Min. schlummern"
+            "value" : "Erinnerungsreaktion"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Snooze 5 min"
+            "value" : "Reminder Response"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Posponer 5 min"
+            "value" : "Respuesta a Recordatorios"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reporter 5 min"
+            "value" : "Réponse aux Rappels"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5分スヌーズ"
+            "value" : "リマインダー応答"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Soneca 5 min"
+            "value" : "Resposta a Lembretes"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "稍后5分钟"
+            "value" : "提醒响应"
           }
         }
       }
     },
-    "notification.action_view_details" : {
-      "comment" : "View Details action button",
+    "gamification.streak_weekly_goal" : {
+      "comment" : "Streak type - Weekly Goal",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Details anzeigen"
+            "value" : "Wochenziel"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "View Details"
+            "value" : "Weekly Goal"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver Detalles"
+            "value" : "Meta Semanal"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voir Détails"
+            "value" : "Objectif Hebdomadaire"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "詳細を表示"
+            "value" : "週間目標"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver Detalhes"
+            "value" : "Meta Semanal"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "查看详情"
+            "value" : "每周目标"
           }
         }
       }
     },
-    "notification.action_view_all" : {
-      "comment" : "View All action button",
+    "gamification.challenge_daily_exercises" : {
+      "comment" : "Challenge type - Daily Exercises",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle anzeigen"
+            "value" : "Tägliche Übungen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "View All"
+            "value" : "Daily Exercises"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver Todo"
+            "value" : "Ejercicios Diarios"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voir Tout"
+            "value" : "Exercices Quotidiens"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "すべて表示"
+            "value" : "毎日のエクササイズ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver Tudo"
+            "value" : "Exercícios Diários"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "查看全部"
+            "value" : "每日锻炼"
           }
         }
       }
     },
-    "notification.still_there_title" : {
-      "comment" : "Dead response follow-up title",
+    "gamification.challenge_specific_exercise" : {
+      "comment" : "Challenge type - Specific Exercise",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Noch da?"
+            "value" : "Spezifische Übung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Still there?"
+            "value" : "Specific Exercise"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Sigues ahí?"
+            "value" : "Ejercicio Específico"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toujours là ?"
+            "value" : "Exercice Spécifique"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "まだいますか？"
+            "value" : "特定のエクササイズ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ainda aí?"
+            "value" : "Exercício Específico"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "还在吗？"
+            "value" : "特定锻炼"
           }
         }
       }
     },
-    "notification.missed_reminder_body" : {
-      "comment" : "Dead response follow-up body message",
+    "gamification.challenge_variety_challenge" : {
+      "comment" : "Challenge type - Variety Challenge",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie haben die letzte Erinnerung verpasst. Zeit sich zu bewegen!"
+            "value" : "Abwechslungs-Herausforderung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You missed the last reminder. Time to move!"
+            "value" : "Variety Challenge"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Te perdiste el último recordatorio. ¡Es hora de moverse!"
+            "value" : "Desafío de Variedad"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous avez manqué le dernier rappel. Il est temps de bouger !"
+            "value" : "Défi de Variété"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "前回のリマインダーを見逃しました。動きましょう！"
+            "value" : "多様性チャレンジ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Você perdeu o último lembrete. Hora de se mexer!"
+            "value" : "Desafio de Variedade"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您错过了上次提醒。该动起来了！"
+            "value" : "多样性挑战"
           }
         }
       }
     },
-    "notification.time_to_move_title" : {
-      "comment" : "Exercise reminder notification title",
+    "gamification.challenge_streak_protect" : {
+      "comment" : "Challenge type - Streak Protect",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeit sich zu bewegen!"
+            "value" : "Streak-Schutz"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Time to Move!"
+            "value" : "Streak Protect"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Es hora de moverse!"
+            "value" : "Protección de Racha"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il est temps de bouger !"
+            "value" : "Protection de Série"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "動く時間です！"
+            "value" : "連続記録保護"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hora de se mexer!"
+            "value" : "Proteção de Sequência"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该动起来了！"
+            "value" : "连续保护"
           }
         }
       }
     },
-    "notification.stand_up_exercise_body" : {
-      "comment" : "Exercise reminder body message",
+    "gamification.challenge_early_bird" : {
+      "comment" : "Challenge type - Early Bird",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stehen Sie auf und machen Sie ein paar schnelle Übungen"
+            "value" : "Frühaufsteher"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stand up and do some quick exercises"
+            "value" : "Early Bird"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Levántate y haz algunos ejercicios rápidos"
+            "value" : "Madrugador"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Levez-vous et faites quelques exercices rapides"
+            "value" : "Lève-tôt"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "立ち上がって軽い運動をしましょう"
+            "value" : "早起き"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Levante-se e faça alguns exercícios rápidos"
+            "value" : "Madrugador"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "站起来做一些快速练习"
+            "value" : "早起鸟"
           }
         }
       }
     },
-    "notification.achievement_unlocked_with_trophy" : {
-      "comment" : "Achievement unlocked notification title with trophy emoji",
+    "gamification.challenge_desc_daily_exercises" : {
+      "comment" : "Challenge description - Complete exercises today",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🏆 Erfolg freigeschaltet!"
+            "value" : "Übungen heute absolvieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🏆 Achievement Unlocked!"
+            "value" : "Complete exercises today"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🏆 ¡Logro Desbloqueado!"
+            "value" : "Completar ejercicios hoy"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🏆 Réalisation Débloquée !"
+            "value" : "Terminer les exercices aujourd'hui"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🏆 達成度アンロック！"
+            "value" : "今日のエクササイズを完了"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🏆 Conquista Desbloqueada!"
+            "value" : "Completar exercícios hoje"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🏆 成就已解锁！"
+            "value" : "今天完成锻炼"
+          }
+        }
+      }
+    },
+    "gamification.challenge_desc_specific_exercise" : {
+      "comment" : "Challenge description - Complete specific exercise",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spezifische Übung absolvieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete specific exercise"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completar ejercicio específico"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminer un exercice spécifique"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特定のエクササイズを完了"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completar exercício específico"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成特定锻炼"
+          }
+        }
+      }
+    },
+    "gamification.challenge_desc_variety_challenge" : {
+      "comment" : "Challenge description - Try different exercises",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschiedene Übungen ausprobieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try different exercises"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probar diferentes ejercicios"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayer différents exercices"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "さまざまなエクササイズを試す"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Experimentar exercícios diferentes"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尝试不同的锻炼"
+          }
+        }
+      }
+    },
+    "gamification.challenge_desc_streak_protect" : {
+      "comment" : "Challenge description - Maintain your streak",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streak aufrechterhalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintain your streak"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantener tu racha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenir votre série"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連続記録を維持"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manter sua sequência"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保持连续"
+          }
+        }
+      }
+    },
+    "gamification.challenge_desc_early_bird" : {
+      "comment" : "Challenge description - Exercise before 8 AM",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vor 8 Uhr trainieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise before 8 AM"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejercitarse antes de las 8 AM"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S'exercer avant 8h"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "午前8時前にエクササイズ"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercitar antes das 8h"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上午8点前锻炼"
           }
         }
       }

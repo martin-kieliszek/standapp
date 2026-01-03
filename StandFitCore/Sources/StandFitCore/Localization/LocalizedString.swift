@@ -420,19 +420,33 @@ public enum LocalizedString {
 
     public enum Notifications {
         private static let table = "Notifications"
-        
-        public static let exerciseReminder = NSLocalizedString("notification.exercise_reminder", tableName: table, comment: "Exercise reminder title")
-        public static let timeToExercise = NSLocalizedString("notification.time_to_exercise", tableName: table, comment: "Time to exercise message")
-        public static let stillThere = NSLocalizedString("notification.still_there", tableName: table, comment: "Dead response follow-up")
-        public static let actionLog = NSLocalizedString("notification.action_log", tableName: table, comment: "Log exercise action")
-        public static let actionSnooze = NSLocalizedString("notification.action_snooze", tableName: table, comment: "Snooze action")
-        public static let actionDismiss = NSLocalizedString("notification.action_dismiss", tableName: table, comment: "Dismiss action")
-        public static let actionView = NSLocalizedString("notification.action_view", tableName: table, comment: "View action")
-        public static let resetTimer = NSLocalizedString("notification.reset_timer", tableName: table, comment: "Reset Timer button")
 
+        // Notification titles
+        public static let exerciseReminder = NSLocalizedString("notification.exercise_reminder", tableName: table, comment: "Exercise reminder title")
+        public static let timeToMoveTitle = NSLocalizedString("notification.time_to_move_title", tableName: table, comment: "Time to Move! title")
+        public static let stillThereTitle = NSLocalizedString("notification.still_there_title", tableName: table, comment: "Still there? title")
         public static let progressReport = NSLocalizedString("notification.progress_report", tableName: table, comment: "Progress report title")
         public static let achievementUnlocked = NSLocalizedString("notification.achievement_unlocked", tableName: table, comment: "Achievement unlocked title")
+        public static let achievementUnlockedWithTrophy = NSLocalizedString("notification.achievement_unlocked_with_trophy", tableName: table, comment: "Achievement unlocked with trophy emoji")
 
+        // Notification bodies
+        public static let timeToExercise = NSLocalizedString("notification.time_to_exercise", tableName: table, comment: "Time to exercise message")
+        public static let standUpExerciseBody = NSLocalizedString("notification.stand_up_exercise_body", tableName: table, comment: "Stand up and do some quick exercises")
+        public static let stillThere = NSLocalizedString("notification.still_there", tableName: table, comment: "Dead response follow-up")
+        public static let missedReminderBody = NSLocalizedString("notification.missed_reminder_body", tableName: table, comment: "Missed reminder body message")
+
+        // Action buttons
+        public static let actionLog = NSLocalizedString("notification.action_log", tableName: table, comment: "Log exercise action")
+        public static let actionLogExercise = NSLocalizedString("notification.action_log_exercise", tableName: table, comment: "Log Exercise action button")
+        public static let actionSnooze = NSLocalizedString("notification.action_snooze", tableName: table, comment: "Snooze action")
+        public static let actionSnooze5Min = NSLocalizedString("notification.action_snooze_5min", tableName: table, comment: "Snooze 5 min action button")
+        public static let actionDismiss = NSLocalizedString("notification.action_dismiss", tableName: table, comment: "Dismiss action")
+        public static let actionView = NSLocalizedString("notification.action_view", tableName: table, comment: "View action")
+        public static let actionViewDetails = NSLocalizedString("notification.action_view_details", tableName: table, comment: "View Details action button")
+        public static let actionViewAll = NSLocalizedString("notification.action_view_all", tableName: table, comment: "View All action button")
+        public static let resetTimer = NSLocalizedString("notification.reset_timer", tableName: table, comment: "Reset Timer button")
+
+        // Format strings
         public static func dailyReport(_ totalExercises: Int) -> String {
             String(format: NSLocalizedString("notification.daily_report", tableName: table, comment: "Daily report message"), totalExercises)
         }
@@ -568,78 +582,82 @@ public enum LocalizedString {
 
     public enum Premium {
         private static let table = "Premium"
-        
-        public static let title = NSLocalizedString("premium.title", tableName: table, comment: "Premium screen title")
-        public static let unlockPremium = NSLocalizedString("premium.unlock", tableName: table, comment: "Unlock premium button")
-        public static let startFreeTrial = NSLocalizedString("premium.start_free_trial", tableName: table, comment: "Start free trial button")
-        public static let restore = NSLocalizedString("premium.restore", tableName: table, comment: "Restore purchases button")
-        public static let upgradeNow = NSLocalizedString("premium.upgrade_now", tableName: table, comment: "Upgrade now button")
-        public static let premiumActive = NSLocalizedString("premium.active", tableName: table, comment: "Premium active status")
-        public static let trialActive = NSLocalizedString("premium.trial_active", tableName: table, comment: "Trial active status")
-        public static let limitedFeatures = NSLocalizedString("premium.limited_features", tableName: table, comment: "Limited features label")
-        public static let allFeaturesUnlocked = NSLocalizedString("premium.all_features_unlocked", tableName: table, comment: "All features unlocked")
-        
-        // Features
-        public static let featureCustomExercises = NSLocalizedString("premium.feature.custom_exercises", tableName: table, comment: "Custom exercises feature")
-        public static let featureTemplates = NSLocalizedString("premium.feature.templates", tableName: table, comment: "Achievement templates feature")
-        public static let featureAdvancedStats = NSLocalizedString("premium.feature.advanced_stats", tableName: table, comment: "Advanced statistics feature")
-        public static let featureAchievementSystem = NSLocalizedString("premium.feature.achievement_system", tableName: table, comment: "Full Achievement System")
-        public static let featureAdvancedAnalytics = NSLocalizedString("premium.feature.advanced_analytics", tableName: table, comment: "Advanced Analytics")
-        public static let featureTimelineViz = NSLocalizedString("premium.feature.timeline", tableName: table, comment: "Timeline Visualization")
-        public static let featureUnlimitedCustom = NSLocalizedString("premium.feature.unlimited_custom", tableName: table, comment: "Unlimited Custom Exercises")
-        public static let featureExportData = NSLocalizedString("premium.feature.export", tableName: table, comment: "Export Your Data")
-        public static let featureiCloudSync = NSLocalizedString("premium.feature.icloud", tableName: table, comment: "iCloud Sync")
-        
-        // Descriptions
-        public static let featureAchievementSystemDesc = NSLocalizedString("premium.feature.achievement_system.desc", tableName: table, comment: "Unlock all badges, streaks, and challenges")
-        public static let featureAdvancedAnalyticsDesc = NSLocalizedString("premium.feature.advanced_analytics.desc", tableName: table, comment: "30/60/90-day trends and insights")
-        public static let featureTimelineVizDesc = NSLocalizedString("premium.feature.timeline.desc", tableName: table, comment: "See your response patterns over time")
-        public static let featureUnlimitedCustomDesc = NSLocalizedString("premium.feature.unlimited_custom.desc", tableName: table, comment: "Create as many exercises as you need")
-        public static let featureExportDataDesc = NSLocalizedString("premium.feature.export.desc", tableName: table, comment: "Download activity reports anytime")
-        public static let featureiCloudSyncDesc = NSLocalizedString("premium.feature.icloud.desc", tableName: table, comment: "Backup and sync across devices")
-        
-        // Trial info
-        public static let trialDuration = NSLocalizedString("premium.trial_duration", tableName: table, comment: "14-day free trial")
-        public static let trialNoPayment = NSLocalizedString("premium.trial_no_payment", tableName: table, comment: "No payment required • Cancel anytime")
-        public static let trialFreeDescription = NSLocalizedString("premium.trial_free_desc", tableName: table, comment: "14-day free trial • Cancel anytime")
+
+        // Basic strings
+        public static let title = NSLocalizedString("premium.title", tableName: table, comment: "StandFit Premium")
+        public static let unlockAll = NSLocalizedString("premium.unlock_all", tableName: table, comment: "Unlock all premium features")
+        public static let allFeaturesUnlocked = unlockAll  // Alias for consistency
+        public static let unlockAllFeatures = unlockAll  // Another alias
+        public static let unlockPremium = unlockAll  // Another alias
+        public static let limitedFeatures = NSLocalizedString("premium.limited_features", tableName: table, comment: "Free tier label")
+        public static let premiumActive = NSLocalizedString("premium.premium_active", tableName: table, comment: "Premium active status")
+        public static let maximizeJourney = unlockAll  // Placeholder - use unlockAll text
+        public static let startFreeTrial = NSLocalizedString("premium.start_free_trial", tableName: table, comment: "Start Free Trial")
+        public static let restorePurchases = NSLocalizedString("premium.restore_purchases", tableName: table, comment: "Restore Purchases")
+        public static let restore = restorePurchases  // Alias
+        public static let subscribe = NSLocalizedString("premium.subscribe", tableName: table, comment: "Subscribe")
+        public static let cancelAnytime = NSLocalizedString("premium.cancel_anytime", tableName: table, comment: "Cancel anytime")
+        public static let privacyPolicy = NSLocalizedString("premium.privacy_policy", tableName: table, comment: "Privacy Policy")
+        public static let termsOfUse = NSLocalizedString("premium.terms_of_use", tableName: table, comment: "Terms of Use")
+        public static let trialDuration = freeTrial(14)  // Default 14-day trial
+        public static let trialNoPayment = cancelAnytime  // Alias
         public static let subscriptionRenewNote = NSLocalizedString("premium.subscription_renew_note", tableName: table, comment: "Subscription automatically renews unless canceled at least 24 hours before the end of the current period.")
-        
-        // Trial status
-        public static func daysRemaining(_ days: Int) -> String {
-            String(format: NSLocalizedString("premium.days_remaining", tableName: table, comment: "X days remaining"), days)
-        }
-        
-        public static func daysRemainingInTrial(_ days: Int) -> String {
-            String(format: NSLocalizedString("premium.days_remaining_in_trial", tableName: table, comment: "X days remaining in trial"), days)
-        }
-        
-        // Pricing
-        public static let bestValue = NSLocalizedString("premium.best_value", tableName: table, comment: "BEST VALUE badge")
+        public static let upgradeKeepAchievements = NSLocalizedString("premium.upgrade_keep_achievements", tableName: table, comment: "Upgrade now to keep your achievements & stats")
+
+        // Features
+        public static let customExercises = NSLocalizedString("premium.custom_exercises", tableName: table, comment: "Create custom exercises")
+        public static let featureAchievements = NSLocalizedString("premium.feature_achievements", tableName: table, comment: "Track achievements")
+        public static let featureAchievementSystem = featureAchievements  // Alias
+        public static let featureAdvancedStats = NSLocalizedString("premium.feature_advanced_stats", tableName: table, comment: "Advanced statistics")
+        public static let featureAdvancedAnalytics = featureAdvancedStats  // Alias
+        public static let featureCustomTemplates = NSLocalizedString("premium.feature_custom_templates", tableName: table, comment: "Custom achievement templates")
+        public static let featureProgressReports = NSLocalizedString("premium.feature_progress_reports", tableName: table, comment: "Progress reports")
+        public static let featureUnlimitedExercises = NSLocalizedString("premium.feature_unlimited_exercises", tableName: table, comment: "Unlimited custom exercises")
+        public static let featureUnlimitedCustom = featureUnlimitedExercises  // Alias
+        public static let featureUnlimitedProfiles = NSLocalizedString("premium.feature_unlimited_profiles", tableName: table, comment: "Unlimited schedule profiles")
+        public static let featureTimelineViz = NSLocalizedString("premium.feature_timeline_viz", tableName: table, comment: "Timeline Visualization")
+        public static let featureExportData = NSLocalizedString("premium.feature_export_data", tableName: table, comment: "Export Your Data")
+        public static let featureiCloudSync = NSLocalizedString("premium.feature_icloud_sync", tableName: table, comment: "iCloud Sync")
+
+        // Feature Descriptions
+        public static let featureAchievementSystemDesc = NSLocalizedString("premium.feature_achievement_system_desc", tableName: table, comment: "Unlock all badges, streaks, and challenges")
+        public static let featureAdvancedAnalyticsDesc = NSLocalizedString("premium.feature_advanced_analytics_desc", tableName: table, comment: "30/60/90-day trends and insights")
+        public static let featureTimelineVizDesc = NSLocalizedString("premium.feature_timeline_viz_desc", tableName: table, comment: "See your response patterns over time")
+        public static let featureUnlimitedCustomDesc = NSLocalizedString("premium.feature_unlimited_custom_desc", tableName: table, comment: "Create as many exercises as you need")
+        public static let featureExportDataDesc = NSLocalizedString("premium.feature_export_data_desc", tableName: table, comment: "Download activity reports anytime")
+        public static let featureiCloudSyncDesc = NSLocalizedString("premium.feature_icloud_sync_desc", tableName: table, comment: "Backup and sync across devices")
+
+        // Pricing & Format strings
         public static let perMonth = NSLocalizedString("premium.per_month", tableName: table, comment: "/ month")
         public static let perYear = NSLocalizedString("premium.per_year", tableName: table, comment: "/ year")
-        
-        public static func saveAmount(_ amount: String) -> String {
-            String(format: NSLocalizedString("premium.save_amount", tableName: table, comment: "Save X%"), amount)
+        public static let savePercentage = NSLocalizedString("premium.save_percentage", tableName: table, comment: "Save 37%")
+        public static let bestValueBadge = NSLocalizedString("premium.best_value_badge", tableName: table, comment: "BEST VALUE")
+
+        public static func freeTrial(_ days: Int) -> String {
+            String(format: NSLocalizedString("premium.free_trial", tableName: table, comment: "X-day free trial"), days)
         }
-        
-        // Unlock features
-        public static let unlockAllFeatures = NSLocalizedString("premium.unlock_all_features", tableName: table, comment: "Unlock all features")
-        public static let maximizeJourney = NSLocalizedString("premium.maximize_journey", tableName: table, comment: "Unlock all features and maximize your fitness journey")
-        public static let upgradeKeepAchievements = NSLocalizedString("premium.upgrade_keep_achievements", tableName: table, comment: "Upgrade now to keep your achievements & stats")
-        
+
+        public static func monthlyPrice(_ price: String) -> String {
+            String(format: NSLocalizedString("premium.monthly_price", tableName: table, comment: "X / month"), price)
+        }
+
+        public static func yearlyPrice(_ price: String) -> String {
+            String(format: NSLocalizedString("premium.yearly_price", tableName: table, comment: "X / year"), price)
+        }
+
         // PaywallView
-        public static let navigationTitle = NSLocalizedString("premium.navigation_title", tableName: table, comment: "Premium navigation title")
-        public static let closeButton = NSLocalizedString("premium.close_button", tableName: table, comment: "Close button")
-        public static let bestValueBadge = NSLocalizedString("premium.best_value_badge", tableName: table, comment: "Best value badge text")
-        public static let savePercentage = NSLocalizedString("premium.save_percentage", tableName: table, comment: "Save percentage text")
-        public static let purchaseFailed = NSLocalizedString("premium.purchase_failed", tableName: table, comment: "Purchase failed error message")
-        public static let premiumFeature = NSLocalizedString("premium.premium_feature", tableName: table, comment: "Premium feature title")
-        
+        public static let navigationTitle = NSLocalizedString("premium.navigation_title", tableName: table, comment: "Premium")
+        public static let closeButton = NSLocalizedString("premium.close_button", tableName: table, comment: "Close")
+        public static let premiumFeature = NSLocalizedString("premium.premium_feature", tableName: table, comment: "Premium Feature")
+        public static let purchaseFailed = NSLocalizedString("premium.purchase_failed", tableName: table, comment: "Purchase failed. Please try again.")
+
         // SubscriptionSettingsView
         public static let subscriptionStatus = NSLocalizedString("premium.subscription_status", tableName: table, comment: "Subscription Status")
         public static let getMore = NSLocalizedString("premium.get_more", tableName: table, comment: "Get More")
         public static let upgradeToPremium = NSLocalizedString("premium.upgrade_to_premium", tableName: table, comment: "Upgrade to Premium")
         public static let subscriptionNavigation = NSLocalizedString("premium.subscription_navigation", tableName: table, comment: "Subscription")
+
+        // Developer Mode
         public static let devModeTesting = NSLocalizedString("premium.dev_mode_testing", tableName: table, comment: "🧪 Developer Testing")
         public static let devModeFooter = NSLocalizedString("premium.dev_mode_footer", tableName: table, comment: "Dev mode simulates subscription states without real purchases. Perfect for testing paywalls and premium features during development.")
         public static let enableDevMode = NSLocalizedString("premium.enable_dev_mode", tableName: table, comment: "Enable Dev Mode")
@@ -647,13 +665,22 @@ public enum LocalizedString {
         public static let freeTier = NSLocalizedString("premium.free_tier", tableName: table, comment: "Free")
         public static let premiumTier = NSLocalizedString("premium.premium_tier", tableName: table, comment: "Premium")
         public static let activeTrial = NSLocalizedString("premium.active_trial", tableName: table, comment: "Active Trial")
-        
+
         public static func trialDaysFormat(_ days: Int) -> String {
             String(format: NSLocalizedString("premium.trial_days_format", tableName: table, comment: "Trial: %d days"), days)
         }
-        
+
         public static func trialEnds(_ date: String) -> String {
             String(format: NSLocalizedString("premium.trial_ends", tableName: table, comment: "Trial ends: %@"), date)
+        }
+
+        // Helper functions for trial days remaining
+        public static func daysRemainingInTrial(_ days: Int) -> String {
+            return trialDaysFormat(days)
+        }
+
+        public static func daysRemaining(_ days: Int) -> String {
+            return trialDaysFormat(days)
         }
     }
     
@@ -822,8 +849,32 @@ public enum LocalizedString {
             default: return ""
             }
         }
+
+        // Schedule Profile Summary
+        public static let noActiveDays = NSLocalizedString("schedule.no_active_days", tableName: table, comment: "No active days")
+
+        public static func everyDayRemindersPerDay(_ reminders: Int) -> String {
+            String(format: NSLocalizedString("schedule.every_day_reminders_per_day", tableName: table, comment: "Every day, X reminders/day"), reminders)
+        }
+
+        public static func daysRemindersPerDay(_ days: String, _ reminders: Int) -> String {
+            String(format: NSLocalizedString("schedule.days_reminders_per_day", tableName: table, comment: "X, Y reminders/day"), days, reminders)
+        }
+
+        // DayScheduleEditorView strings
+        public static let minutePicker = NSLocalizedString("schedule.minute_picker", tableName: table, comment: "Minute picker label")
+        public static let addTimeBlockButton = NSLocalizedString("schedule.add_time_block_button", tableName: table, comment: "Add Time Block button")
+        public static let timeBlocksHeader = NSLocalizedString("schedule.time_blocks_header", tableName: table, comment: "Time Blocks section header")
+        public static let remindersOnlyDuringBlocksFooter = NSLocalizedString("schedule.reminders_only_during_blocks_footer", tableName: table, comment: "Reminders only fire during these time blocks")
+        public static let noFixedTimesTitle = NSLocalizedString("schedule.no_fixed_times_title", tableName: table, comment: "No Fixed Times title")
+        public static let addSpecificTimesDescription = NSLocalizedString("schedule.add_specific_times_description", tableName: table, comment: "Add specific times for reminders")
+        public static let minSuffix = NSLocalizedString("schedule.min_suffix", tableName: table, comment: " min suffix")
+
+        public static func everyMinutesShort(_ minutes: Int) -> String {
+            String(format: NSLocalizedString("schedule.every_minutes_short", tableName: table, comment: "Every Xm"), minutes)
+        }
     }
-    
+
     // MARK: - Stats & Quick Actions
     
     public enum Stats {
@@ -1042,5 +1093,70 @@ public enum LocalizedString {
         public static let custom = NSLocalizedString("ui.custom", tableName: table, comment: "Custom")
         public static let selected = NSLocalizedString("ui.selected", tableName: table, comment: "Selected:")
         public static let done = NSLocalizedString("ui.done", tableName: table, comment: "Done")
+    }
+    
+    // MARK: - Reporting
+    
+    public enum Reporting {
+        private static let table = "Reporting"
+        
+        public static let today = NSLocalizedString("reporting.today", tableName: table, comment: "Today")
+        public static let yesterday = NSLocalizedString("reporting.yesterday", tableName: table, comment: "Yesterday")
+        public static let daily = NSLocalizedString("reporting.daily", tableName: table, comment: "Daily")
+        public static let weekly = NSLocalizedString("reporting.weekly", tableName: table, comment: "Weekly")
+        public static let progressReportTitle = NSLocalizedString("reporting.progress_report_title", tableName: table, comment: "Progress Report")
+        public static let timeframeToday = NSLocalizedString("reporting.timeframe_today", tableName: table, comment: "today")
+        public static let timeframeThisWeek = NSLocalizedString("reporting.timeframe_this_week", tableName: table, comment: "this week")
+        
+        public static func weekOf(_ date: String) -> String {
+            String(format: NSLocalizedString("reporting.week_of", tableName: table, comment: "Week of %@"), date)
+        }
+        
+        public static func exercisesLogged(count: Int, plural: String, timeframe: String) -> String {
+            String(format: NSLocalizedString("reporting.exercises_logged", tableName: table, comment: "You logged %d exercise(s) %@"), count, plural, timeframe)
+        }
+        
+        public static func comparisonVsLast(arrow: String, percent: Int, timeframe: String) -> String {
+            String(format: NSLocalizedString("reporting.comparison_vs_last", tableName: table, comment: "%@%d%% vs last %@"), arrow, percent, timeframe)
+        }
+        
+        public static func streakDays(_ days: Int) -> String {
+            String(format: NSLocalizedString("reporting.streak_days", tableName: table, comment: "🔥 %d-day streak!"), days)
+        }
+        
+        public static let pluralS = NSLocalizedString("reporting.plural_s", tableName: table, comment: "s")
+    }
+    
+    // MARK: - Schedule Templates
+    
+    public enum ScheduleTemplate {
+        private static let table = "ScheduleTemplate"
+        
+        // Template names
+        public static let officeWorkerName = NSLocalizedString("schedule_template.office_worker_name", tableName: table, comment: "Office Worker")
+        public static let officeWorkerDescription = NSLocalizedString("schedule_template.office_worker_description", tableName: table, comment: "Mon-Fri work hours with lunch break")
+        public static let remoteWorkerName = NSLocalizedString("schedule_template.remote_worker_name", tableName: table, comment: "Remote Worker")
+        public static let remoteWorkerDescription = NSLocalizedString("schedule_template.remote_worker_description", tableName: table, comment: "Flexible schedule for remote work")
+        public static let trainingModeName = NSLocalizedString("schedule_template.training_mode_name", tableName: table, comment: "Training Mode")
+        public static let trainingModeDescription = NSLocalizedString("schedule_template.training_mode_description", tableName: table, comment: "Intensive training schedule")
+        public static let recoveryModeName = NSLocalizedString("schedule_template.recovery_mode_name", tableName: table, comment: "Recovery Mode")
+        public static let recoveryModeDescription = NSLocalizedString("schedule_template.recovery_mode_description", tableName: table, comment: "Gentle reminders for rest days")
+        public static let weekendWarriorName = NSLocalizedString("schedule_template.weekend_warrior_name", tableName: table, comment: "Weekend Warrior")
+        public static let weekendWarriorDescription = NSLocalizedString("schedule_template.weekend_warrior_description", tableName: table, comment: "Active weekends only")
+        public static let minimalistName = NSLocalizedString("schedule_template.minimalist_name", tableName: table, comment: "Minimalist")
+        public static let minimalistDescription = NSLocalizedString("schedule_template.minimalist_description", tableName: table, comment: "3 reminders per day")
+        public static let everyDayName = NSLocalizedString("schedule_template.every_day_name", tableName: table, comment: "Every Day")
+        public static let everyDayDescription = NSLocalizedString("schedule_template.every_day_description", tableName: table, comment: "Consistent daily routine")
+        
+        // Time block names
+        public static let morning = NSLocalizedString("schedule_template.morning", tableName: table, comment: "Morning")
+        public static let afternoon = NSLocalizedString("schedule_template.afternoon", tableName: table, comment: "Afternoon")
+        public static let evening = NSLocalizedString("schedule_template.evening", tableName: table, comment: "Evening")
+        public static let workHours = NSLocalizedString("schedule_template.work_hours", tableName: table, comment: "Work Hours")
+        public static let weekend = NSLocalizedString("schedule_template.weekend", tableName: table, comment: "Weekend")
+        public static let training = NSLocalizedString("schedule_template.training", tableName: table, comment: "Training")
+        public static let gentleMovement = NSLocalizedString("schedule_template.gentle_movement", tableName: table, comment: "Gentle Movement")
+        public static let weekendActivity = NSLocalizedString("schedule_template.weekend_activity", tableName: table, comment: "Weekend Activity")
+        public static let activeHours = NSLocalizedString("schedule_template.active_hours", tableName: table, comment: "Active Hours")
     }
 }

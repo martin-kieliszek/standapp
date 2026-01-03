@@ -82,13 +82,13 @@ public enum ReportPeriod: Hashable {
         let calendar = Calendar.current
         switch self {
         case .today:
-            return "Today"
+            return LocalizedString.Reporting.today
         case .yesterday:
-            return "Yesterday"
+            return LocalizedString.Reporting.yesterday
         case .weekStarting(let date):
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM d"
-            return "Week of \(formatter.string(from: date))"
+            return LocalizedString.Reporting.weekOf(formatter.string(from: date))
         case .monthStarting(let date):
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM yyyy"
@@ -160,25 +160,26 @@ public struct ReportNotificationContent {
 
         // Main stat with formatting
         let timeframeText = timeframeLabel(for: frequency)
-        bodyParts.append("You logged \(stats.totalCount) exercise\(stats.totalCount == 1 ? "" : "s") \(timeframeText)")
+        let plural = stats.totalCount == 1 ? "" : LocalizedString.Reporting.pluralS
+        bodyParts.append(LocalizedString.Reporting.exercisesLogged(count: stats.totalCount, plural: plural, timeframe: timeframeText))
 
         // Comparison to previous period
         if let previous = previousStats, let percentChange = stats.comparisonToPrevious {
             let arrow = percentChange >= 0 ? "↑" : "↓"
             let percent = abs(Int(percentChange * 100))
-            bodyParts.append("\(arrow)\(percent)% vs last \(timeframeText.lowercased())")
+            bodyParts.append(LocalizedString.Reporting.comparisonVsLast(arrow: arrow, percent: percent, timeframe: timeframeText.lowercased()))
         }
 
         // Streak indicator
         if let streak = stats.streak, streak > 0 {
-            bodyParts.append("🔥 \(streak)-day streak!")
+            bodyParts.append(LocalizedString.Reporting.streakDays(streak))
         }
 
         let body = bodyParts.joined(separator: " • ")
         let badge = determineBadge(stats: stats)
 
         return ReportNotificationContent(
-            title: "Progress Report",
+            title: LocalizedString.Reporting.progressReportTitle,
             body: body,
             badge: badge
         )
@@ -187,9 +188,9 @@ public struct ReportNotificationContent {
     private static func timeframeLabel(for frequency: ReportFrequency) -> String {
         switch frequency {
         case .daily:
-            return "today"
+            return LocalizedString.Reporting.timeframeToday
         case .weekly:
-            return "this week"
+            return LocalizedString.Reporting.timeframeThisWeek
         }
     }
 
@@ -239,8 +240,8 @@ public enum ReportFrequency: String, Codable, CaseIterable {
 
     public var displayName: String {
         switch self {
-        case .daily: return "Daily"
-        case .weekly: return "Weekly"
+        case .daily: return LocalizedString.Reporting.daily
+        case .weekly: return LocalizedString.Reporting.weekly
         }
     }
 

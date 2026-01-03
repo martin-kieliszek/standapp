@@ -1,0 +1,162 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "reporting.today" : {
+      "comment" : "Today",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Heute" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Today" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Hoy" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aujourd'hui" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今日" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Hoje" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "今天" } }
+      }
+    },
+    "reporting.yesterday" : {
+      "comment" : "Yesterday",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gestern" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Yesterday" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ayer" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Hier" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "昨日" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Ontem" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "昨天" } }
+      }
+    },
+    "reporting.week_of" : {
+      "comment" : "Week of %@ - format string for week starting date",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Woche ab %@" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week of %@" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Semana del %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Semaine du %@" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%@の週" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Semana de %@" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "%@的一周" } }
+      }
+    },
+    "reporting.daily" : {
+      "comment" : "Daily - report frequency",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Täglich" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Diario" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Quotidien" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Diário" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日" } }
+      }
+    },
+    "reporting.weekly" : {
+      "comment" : "Weekly - report frequency",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wöchentlich" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weekly" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Semanal" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Hebdomadaire" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎週" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Semanal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每周" } }
+      }
+    },
+    "reporting.exercises_logged" : {
+      "comment" : "You logged %d exercise(s) %@ - notification body part",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sie haben %d Übung(en) %@ protokolliert" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You logged %d exercise%@ %@" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registraste %d ejercicio%@ %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vous avez enregistré %d exercice%@ %@" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%@に%d件のエクササイズを記録しました" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Você registrou %d exercício%@ %@" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "您在%@记录了%d次锻炼" } }
+      }
+    },
+    "reporting.plural_s" : {
+      "comment" : "s - plural suffix for exercises",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "en" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "s" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "s" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "s" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "s" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "" } }
+      }
+    },
+    "reporting.timeframe_today" : {
+      "comment" : "today - timeframe label in notification",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "heute" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "today" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "hoy" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "aujourd'hui" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今日" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "hoje" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "今天" } }
+      }
+    },
+    "reporting.timeframe_this_week" : {
+      "comment" : "this week - timeframe label in notification",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "diese Woche" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "this week" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "esta semana" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "cette semaine" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今週" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "esta semana" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "本周" } }
+      }
+    },
+    "reporting.comparison_vs_last" : {
+      "comment" : "%@%d%% vs last %@ - comparison text in notification",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "%@%d%% vs. letzte %@" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%@%d%% vs last %@" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "%@%d%% vs última %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%@%d%% vs dernier %@" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "前回の%@と比較して%@%d%%" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "%@%d%% vs última %@" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "比上%@%@%d%%" } }
+      }
+    },
+    "reporting.streak_days" : {
+      "comment" : "🔥 %d-day streak! - streak indicator",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "🔥 %d-Tage-Serie!" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "🔥 %d-day streak!" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "🔥 ¡Racha de %d días!" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "🔥 Série de %d jours !" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "🔥 %d日連続！" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "🔥 Sequência de %d dias!" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "🔥 连续%d天！" } }
+      }
+    },
+    "reporting.progress_report_title" : {
+      "comment" : "Progress Report - notification title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fortschrittsbericht" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Progress Report" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Informe de Progreso" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Rapport de Progrès" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "進捗レポート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Relatório de Progresso" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "进度报告" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

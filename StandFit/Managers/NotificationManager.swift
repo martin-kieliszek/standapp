@@ -52,15 +52,15 @@ class NotificationManager: ObservableObject {
        
     func setupNotificationCategories() {
         let logAction = UNNotificationAction(
-            identifier: logExerciseActionID, title: "Log Exercise", options: .foreground)
+            identifier: logExerciseActionID, title: LocalizedString.Notifications.actionLogExercise, options: .foreground)
 
-        let snoozeAction = UNNotificationAction(identifier: snoozeActionID, title: "Snooze 5 min", options: [])
+        let snoozeAction = UNNotificationAction(identifier: snoozeActionID, title: LocalizedString.Notifications.actionSnooze5Min, options: [])
 
         let viewReportAction = UNNotificationAction(
-            identifier: "VIEW_REPORT", title: "View Details", options: [.foreground])
+            identifier: "VIEW_REPORT", title: LocalizedString.Notifications.actionViewDetails, options: [.foreground])
 
         let viewAchievementsAction = UNNotificationAction(
-            identifier: "VIEW_ACHIEVEMENTS", title: "View All", options: [.foreground])
+            identifier: "VIEW_ACHIEVEMENTS", title: LocalizedString.Notifications.actionViewAll, options: [.foreground])
 
         let exerciseCategory = UNNotificationCategory(
             identifier: NotificationType.exerciseReminder.categoryIdentifier,
@@ -121,8 +121,8 @@ class NotificationManager: ObservableObject {
         guard store.deadResponseEnabled else { return }
 
         let content = UNMutableNotificationContent()
-        content.title = "Still there?"
-        content.body = "You missed the last reminder. Time to move!"
+        content.title = LocalizedString.Notifications.stillThereTitle
+        content.body = LocalizedString.Notifications.missedReminderBody
         content.sound = .default
         content.categoryIdentifier = NotificationType.deadResponseReminder.categoryIdentifier
 
@@ -211,8 +211,8 @@ class NotificationManager: ObservableObject {
         }
 
         let content = UNMutableNotificationContent()
-        content.title = "Time to Move!"
-        content.body = "Stand up and do some quick exercises"
+        content.title = LocalizedString.Notifications.timeToMoveTitle
+        content.body = LocalizedString.Notifications.standUpExerciseBody
         content.sound = .default
         content.categoryIdentifier = NotificationType.exerciseReminder.categoryIdentifier
 
@@ -442,7 +442,7 @@ class NotificationManager: ObservableObject {
     /// Send a notification when an achievement is unlocked
     func sendAchievementNotification(achievement: Achievement) {
         let content = UNMutableNotificationContent()
-        content.title = "🏆 Achievement Unlocked!"
+        content.title = LocalizedString.Notifications.achievementUnlockedWithTrophy
         content.body = "\(achievement.name) - \(achievement.description)"
         content.sound = .default
         content.categoryIdentifier = NotificationType.achievementUnlocked.categoryIdentifier

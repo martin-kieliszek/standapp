@@ -336,8 +336,8 @@ struct EverydayScheduleEditorView: View {
                             .frame(width: 60)
                             
                             Text(":")
-                            
-                            Picker("Minute", selection: $newReminderMinute) {
+
+                            Picker(LocalizedString.Schedule.minutePicker, selection: $newReminderMinute) {
                                 ForEach(0..<60) { minute in
                                     Text(String(format: "%02d", minute)).tag(minute)
                                 }
@@ -419,12 +419,12 @@ struct EverydayScheduleEditorView: View {
             Button {
                 showingAddBlock = true
             } label: {
-                Label("Add Time Block", systemImage: "plus.circle.fill")
+                Label(LocalizedString.Schedule.addTimeBlockButton, systemImage: "plus.circle.fill")
             }
         } header: {
-            Text("Time Blocks")
+            Text(LocalizedString.Schedule.timeBlocksHeader)
         } footer: {
-            Text("Reminders will only fire during these time blocks")
+            Text(LocalizedString.Schedule.remindersOnlyDuringBlocksFooter)
         }
     }
     
@@ -433,9 +433,9 @@ struct EverydayScheduleEditorView: View {
         Section {
             if fixedReminders.isEmpty {
                 ContentUnavailableView(
-                    "No Fixed Times",
+                    LocalizedString.Schedule.noFixedTimesTitle,
                     systemImage: "clock.badge.checkmark",
-                    description: Text("Add specific times for reminders")
+                    description: Text(LocalizedString.Schedule.addSpecificTimesDescription)
                 )
             } else {
                 ForEach(fixedReminders) { reminder in
@@ -487,7 +487,7 @@ struct EverydayScheduleEditorView: View {
             HStack {
                 Text(LocalizedString.Schedule.defaultInterval)
                 Spacer()
-                Text("\(profile.fallbackInterval) min")
+                Text("\(profile.fallbackInterval)\(LocalizedString.Schedule.minSuffix)")
                     .foregroundStyle(.secondary)
             }
         } footer: {
@@ -891,7 +891,7 @@ struct SingleDayEditorView: View {
             HStack {
                 Text(LocalizedString.Schedule.defaultInterval)
                 Spacer()
-                Text("\(profile.fallbackInterval) min")
+                Text("\(profile.fallbackInterval)\(LocalizedString.Schedule.minSuffix)")
                     .foregroundStyle(.secondary)
             }
         } footer: {
@@ -970,8 +970,8 @@ struct TimeBlockRowView: View {
                     
                     Text("•")
                         .foregroundStyle(.secondary)
-                    
-                    Text("Every \(block.intervalMinutes)m")
+
+                    Text(LocalizedString.Schedule.everyMinutesShort(block.intervalMinutes))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }

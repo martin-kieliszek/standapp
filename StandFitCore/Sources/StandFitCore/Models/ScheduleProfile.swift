@@ -68,15 +68,15 @@ public struct ScheduleProfile: Codable, Identifiable, Hashable {
     public var summaryDescription: String {
         let enabledDays = activeDays.count
         if enabledDays == 0 {
-            return "No active days"
+            return LocalizedString.Schedule.noActiveDays
         } else if enabledDays == 7 {
-            return "Every day, \(estimatedDailyAverage) reminders/day"
+            return LocalizedString.Schedule.everyDayRemindersPerDay(estimatedDailyAverage)
         } else {
             let dayNames = activeDays.sorted().map { weekday in
                 let formatter = DateFormatter()
                 return formatter.shortWeekdaySymbols[weekday - 1]
             }.joined(separator: ", ")
-            return "\(dayNames), \(estimatedDailyAverage) reminders/day"
+            return LocalizedString.Schedule.daysRemindersPerDay(dayNames, estimatedDailyAverage)
         }
     }
 }

@@ -32,16 +32,16 @@ public enum ScheduleTemplates {
     /// Office Worker: Mon-Fri 9am-5pm with lunch break
     public static let officeWorker = ScheduleTemplate(
         id: "office-worker",
-        name: "Office Worker",
-        description: "Mon-Fri work hours with lunch break",
+        name: LocalizedString.ScheduleTemplate.officeWorkerName,
+        description: LocalizedString.ScheduleTemplate.officeWorkerDescription,
         icon: "briefcase.fill",
         profile: {
-            var profile = ScheduleProfile(name: "Office Worker", fallbackInterval: 30)
+            var profile = ScheduleProfile(name: LocalizedString.ScheduleTemplate.officeWorkerName, fallbackInterval: 30)
             
             // Monday through Friday
             for weekday in 2...6 {
                 let morningBlock = TimeBlock(
-                    name: "Morning",
+                    name: LocalizedString.ScheduleTemplate.morning,
                     startHour: 9, startMinute: 0,
                     endHour: 12, endMinute: 0,
                     intervalMinutes: 20,
@@ -49,7 +49,7 @@ public enum ScheduleTemplates {
                 )
                 
                 let afternoonBlock = TimeBlock(
-                    name: "Afternoon",
+                    name: LocalizedString.ScheduleTemplate.afternoon,
                     startHour: 13, startMinute: 0,
                     endHour: 17, endMinute: 0,
                     intervalMinutes: 30,
@@ -57,7 +57,7 @@ public enum ScheduleTemplates {
                 )
                 
                 let eveningBlock = TimeBlock(
-                    name: "Evening",
+                    name: LocalizedString.ScheduleTemplate.evening,
                     startHour: 18, startMinute: 0,
                     endHour: 21, endMinute: 0,
                     intervalMinutes: 60,
@@ -78,16 +78,16 @@ public enum ScheduleTemplates {
     /// Remote/Flexible Worker
     public static let remoteWorker = ScheduleTemplate(
         id: "remote-worker",
-        name: "Remote Worker",
-        description: "Flexible schedule for remote work",
+        name: LocalizedString.ScheduleTemplate.remoteWorkerName,
+        description: LocalizedString.ScheduleTemplate.remoteWorkerDescription,
         icon: "house.fill",
         profile: {
-            var profile = ScheduleProfile(name: "Remote Worker", fallbackInterval: 30)
+            var profile = ScheduleProfile(name: LocalizedString.ScheduleTemplate.remoteWorkerName, fallbackInterval: 30)
             
             // Monday through Friday
             for weekday in 2...6 {
                 let workBlock = TimeBlock(
-                    name: "Work Hours",
+                    name: LocalizedString.ScheduleTemplate.workHours,
                     startHour: 8, startMinute: 0,
                     endHour: 18, endMinute: 0,
                     intervalMinutes: 30,
@@ -103,7 +103,7 @@ public enum ScheduleTemplates {
             // Weekends - lighter schedule
             for weekday in [1, 7] {
                 let weekendBlock = TimeBlock(
-                    name: "Weekend",
+                    name: LocalizedString.ScheduleTemplate.weekend,
                     startHour: 10, startMinute: 0,
                     endHour: 16, endMinute: 0,
                     intervalMinutes: 45,
@@ -124,16 +124,16 @@ public enum ScheduleTemplates {
     /// Athlete/Training Mode
     public static let athleteTraining = ScheduleTemplate(
         id: "athlete-training",
-        name: "Training Mode",
-        description: "Intensive training schedule",
+        name: LocalizedString.ScheduleTemplate.trainingModeName,
+        description: LocalizedString.ScheduleTemplate.trainingModeDescription,
         icon: "figure.run",
         profile: {
-            var profile = ScheduleProfile(name: "Training Mode", fallbackInterval: 15)
+            var profile = ScheduleProfile(name: LocalizedString.ScheduleTemplate.trainingModeName, fallbackInterval: 15)
             
             // All days - intensive
             for weekday in 1...7 {
                 let trainingBlock = TimeBlock(
-                    name: "Training",
+                    name: LocalizedString.ScheduleTemplate.training,
                     startHour: 6, startMinute: 0,
                     endHour: 20, endMinute: 0,
                     intervalMinutes: 15,
@@ -153,16 +153,16 @@ public enum ScheduleTemplates {
     /// Wellness/Recovery Mode
     public static let wellnessRecovery = ScheduleTemplate(
         id: "wellness-recovery",
-        name: "Recovery Mode",
-        description: "Gentle reminders for rest days",
+        name: LocalizedString.ScheduleTemplate.recoveryModeName,
+        description: LocalizedString.ScheduleTemplate.recoveryModeDescription,
         icon: "leaf.fill",
         profile: {
-            var profile = ScheduleProfile(name: "Recovery Mode", fallbackInterval: 90)
+            var profile = ScheduleProfile(name: LocalizedString.ScheduleTemplate.recoveryModeName, fallbackInterval: 90)
             
             // All days - gentle
             for weekday in 1...7 {
                 let recoveryBlock = TimeBlock(
-                    name: "Gentle Movement",
+                    name: LocalizedString.ScheduleTemplate.gentleMovement,
                     startHour: 10, startMinute: 0,
                     endHour: 18, endMinute: 0,
                     intervalMinutes: 90,
@@ -183,16 +183,16 @@ public enum ScheduleTemplates {
     /// Weekend Warrior
     public static let weekendWarrior = ScheduleTemplate(
         id: "weekend-warrior",
-        name: "Weekend Warrior",
-        description: "Active weekends only",
+        name: LocalizedString.ScheduleTemplate.weekendWarriorName,
+        description: LocalizedString.ScheduleTemplate.weekendWarriorDescription,
         icon: "calendar",
         profile: {
-            var profile = ScheduleProfile(name: "Weekend Warrior", fallbackInterval: 30)
+            var profile = ScheduleProfile(name: LocalizedString.ScheduleTemplate.weekendWarriorName, fallbackInterval: 30)
             
             // Only weekends
             for weekday in [1, 7] {
                 let weekendBlock = TimeBlock(
-                    name: "Weekend Activity",
+                    name: LocalizedString.ScheduleTemplate.weekendActivity,
                     startHour: 8, startMinute: 0,
                     endHour: 18, endMinute: 0,
                     intervalMinutes: 30,
@@ -212,18 +212,18 @@ public enum ScheduleTemplates {
     /// Minimalist - Fixed times only
     public static let minimalist = ScheduleTemplate(
         id: "minimalist",
-        name: "Minimalist",
-        description: "3 reminders per day",
+        name: LocalizedString.ScheduleTemplate.minimalistName,
+        description: LocalizedString.ScheduleTemplate.minimalistDescription,
         icon: "minus.circle.fill",
         profile: {
-            var profile = ScheduleProfile(name: "Minimalist", fallbackInterval: 240)
+            var profile = ScheduleProfile(name: LocalizedString.ScheduleTemplate.minimalistName, fallbackInterval: 240)
             
             // All days - 3 fixed reminders
             for weekday in 1...7 {
                 let reminders = [
-                    FixedReminder(hour: 9, minute: 0, label: "Morning"),
-                    FixedReminder(hour: 13, minute: 0, label: "Afternoon"),
-                    FixedReminder(hour: 18, minute: 0, label: "Evening")
+                    FixedReminder(hour: 9, minute: 0, label: LocalizedString.ScheduleTemplate.morning),
+                    FixedReminder(hour: 13, minute: 0, label: LocalizedString.ScheduleTemplate.afternoon),
+                    FixedReminder(hour: 18, minute: 0, label: LocalizedString.ScheduleTemplate.evening)
                 ]
                 
                 profile.dailySchedules[weekday] = DailySchedule(
@@ -239,16 +239,16 @@ public enum ScheduleTemplates {
     /// Every Day - Simple consistent schedule
     public static let everyDay = ScheduleTemplate(
         id: "every-day",
-        name: "Every Day",
-        description: "Consistent daily routine",
+        name: LocalizedString.ScheduleTemplate.everyDayName,
+        description: LocalizedString.ScheduleTemplate.everyDayDescription,
         icon: "repeat",
         profile: {
-            var profile = ScheduleProfile(name: "Every Day", fallbackInterval: 30)
+            var profile = ScheduleProfile(name: LocalizedString.ScheduleTemplate.everyDayName, fallbackInterval: 30)
             
             // All days - same schedule
             for weekday in 1...7 {
                 let dailyBlock = TimeBlock(
-                    name: "Active Hours",
+                    name: LocalizedString.ScheduleTemplate.activeHours,
                     startHour: 9, startMinute: 0,
                     endHour: 21, endMinute: 0,
                     intervalMinutes: 30,

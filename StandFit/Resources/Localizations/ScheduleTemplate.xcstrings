@@ -1,0 +1,305 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "schedule_template.office_worker_name" : {
+      "comment" : "Office Worker - template name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Büroangestellter" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Office Worker" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Trabajador de Oficina" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Employé de Bureau" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "オフィスワーカー" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Trabalhador de Escritório" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "办公室职员" } }
+      }
+    },
+    "schedule_template.office_worker_description" : {
+      "comment" : "Mon-Fri work hours with lunch break",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Mo-Fr Arbeitszeiten mit Mittagspause" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mon-Fri work hours with lunch break" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Horario laboral Lun-Vie con pausa para almorzar" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Heures de travail Lun-Ven avec pause déjeuner" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "月～金の勤務時間（昼休憩あり）" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Horário de trabalho Seg-Sex com pausa para almoço" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周一至周五工作时间，含午休" } }
+      }
+    },
+    "schedule_template.morning" : {
+      "comment" : "Morning - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Morgen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Morning" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mañana" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Matin" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "午前" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Manhã" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "早晨" } }
+      }
+    },
+    "schedule_template.afternoon" : {
+      "comment" : "Afternoon - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Nachmittag" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Afternoon" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tarde" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Après-midi" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "午後" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Tarde" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下午" } }
+      }
+    },
+    "schedule_template.evening" : {
+      "comment" : "Evening - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Abend" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Evening" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Noche" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Soirée" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "夜" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Noite" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "晚上" } }
+      }
+    },
+    "schedule_template.remote_worker_name" : {
+      "comment" : "Remote Worker - template name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Remote-Arbeiter" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remote Worker" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Trabajador Remoto" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Travailleur à Distance" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "リモートワーカー" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Trabalhador Remoto" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "远程工作者" } }
+      }
+    },
+    "schedule_template.remote_worker_description" : {
+      "comment" : "Flexible schedule for remote work",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Flexibler Zeitplan für Remote-Arbeit" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Flexible schedule for remote work" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Horario flexible para trabajo remoto" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Horaire flexible pour le travail à distance" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "リモートワーク向けの柔軟なスケジュール" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Horário flexível para trabalho remoto" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "远程工作的灵活时间表" } }
+      }
+    },
+    "schedule_template.work_hours" : {
+      "comment" : "Work Hours - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Arbeitszeiten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Work Hours" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Horario Laboral" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Heures de Travail" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "勤務時間" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Horário de Trabalho" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "工作时间" } }
+      }
+    },
+    "schedule_template.weekend" : {
+      "comment" : "Weekend - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wochenende" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weekend" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fin de Semana" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Week-end" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週末" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Fim de Semana" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周末" } }
+      }
+    },
+    "schedule_template.training_mode_name" : {
+      "comment" : "Training Mode - template name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Trainingsmodus" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Training Mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo de Entrenamiento" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mode Entraînement" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "トレーニングモード" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Modo de Treino" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "训练模式" } }
+      }
+    },
+    "schedule_template.training_mode_description" : {
+      "comment" : "Intensive training schedule",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Intensiver Trainingsplan" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Intensive training schedule" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Horario de entrenamiento intensivo" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Programme d'entraînement intensif" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "集中トレーニングスケジュール" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Cronograma de treino intensivo" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "强化训练时间表" } }
+      }
+    },
+    "schedule_template.training" : {
+      "comment" : "Training - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Training" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Training" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Entrenamiento" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Entraînement" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "トレーニング" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Treino" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "训练" } }
+      }
+    },
+    "schedule_template.recovery_mode_name" : {
+      "comment" : "Recovery Mode - template name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erholungsmodus" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recovery Mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo de Recuperación" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mode Récupération" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "回復モード" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Modo de Recuperação" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "恢复模式" } }
+      }
+    },
+    "schedule_template.recovery_mode_description" : {
+      "comment" : "Gentle reminders for rest days",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sanfte Erinnerungen für Ruhetage" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gentle reminders for rest days" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recordatorios suaves para días de descanso" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Rappels doux pour les jours de repos" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "休息日の優しいリマインダー" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Lembretes suaves para dias de descanso" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "休息日的温和提醒" } }
+      }
+    },
+    "schedule_template.gentle_movement" : {
+      "comment" : "Gentle Movement - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sanfte Bewegung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gentle Movement" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Movimiento Suave" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mouvement Doux" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "軽い運動" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Movimento Suave" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "轻柔运动" } }
+      }
+    },
+    "schedule_template.weekend_warrior_name" : {
+      "comment" : "Weekend Warrior - template name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wochenendkrieger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weekend Warrior" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guerrero de Fin de Semana" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Guerrier du Week-end" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週末ウォリアー" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Guerreiro de Fim de Semana" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周末战士" } }
+      }
+    },
+    "schedule_template.weekend_warrior_description" : {
+      "comment" : "Active weekends only",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Nur aktive Wochenenden" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active weekends only" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Solo fines de semana activos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Week-ends actifs uniquement" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週末のみアクティブ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Apenas fins de semana ativos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "仅限活跃周末" } }
+      }
+    },
+    "schedule_template.weekend_activity" : {
+      "comment" : "Weekend Activity - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wochenendaktivität" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weekend Activity" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Actividad de Fin de Semana" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Activité Week-end" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週末アクティビティ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Atividade de Fim de Semana" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周末活动" } }
+      }
+    },
+    "schedule_template.minimalist_name" : {
+      "comment" : "Minimalist - template name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Minimalist" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Minimalist" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Minimalista" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Minimaliste" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ミニマリスト" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Minimalista" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "极简主义" } }
+      }
+    },
+    "schedule_template.minimalist_description" : {
+      "comment" : "3 reminders per day",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "3 Erinnerungen pro Tag" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "3 reminders per day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "3 recordatorios por día" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "3 rappels par jour" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1日3回のリマインダー" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "3 lembretes por dia" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每天3次提醒" } }
+      }
+    },
+    "schedule_template.every_day_name" : {
+      "comment" : "Every Day - template name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Jeden Tag" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Every Day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Todos los Días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tous les Jours" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Todos os Dias" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每天" } }
+      }
+    },
+    "schedule_template.every_day_description" : {
+      "comment" : "Consistent daily routine",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Konsistente tägliche Routine" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Consistent daily routine" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Rutina diaria consistente" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Routine quotidienne cohérente" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "一貫した毎日のルーティン" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Rotina diária consistente" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "一致的日常例程" } }
+      }
+    },
+    "schedule_template.active_hours" : {
+      "comment" : "Active Hours - time block name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aktive Stunden" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active Hours" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Horas Activas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Heures Actives" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アクティブ時間" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Horas Ativas" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "活跃时间" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
