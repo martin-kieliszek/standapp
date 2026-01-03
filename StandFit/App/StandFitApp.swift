@@ -98,7 +98,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // Add actions based on category
         if categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier {
             // Log Exercise button
-            alert.addAction(UIAlertAction(title: "Log Exercise", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionLogExercise, style: .default) { _ in
                 NotificationManager.shared.playClickHaptic()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     NotificationCenter.default.post(name: .showExercisePicker, object: nil)
@@ -106,13 +106,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             })
             
             // Snooze button
-            alert.addAction(UIAlertAction(title: "Snooze 5 min", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionSnooze5Min, style: .default) { _ in
                 NotificationManager.shared.scheduleReminderWithSchedule(store: ExerciseStore.shared)
                 NotificationManager.shared.playClickHaptic()
             })
         } else if categoryIdentifier == NotificationType.progressReport.categoryIdentifier {
             // View Details button
-            alert.addAction(UIAlertAction(title: "View Details", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionViewDetails, style: .default) { _ in
                 NotificationManager.shared.playClickHaptic()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     NotificationCenter.default.post(name: .showProgressReport, object: nil)
@@ -120,14 +120,14 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             })
         } else if categoryIdentifier == NotificationType.achievementUnlocked.categoryIdentifier {
             // View Achievements button
-            alert.addAction(UIAlertAction(title: "View All", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionViewAll, style: .default) { _ in
                 NotificationManager.shared.playClickHaptic()
                 // Navigate to achievements (or just dismiss for now)
             })
         }
         
         // Always add dismiss button
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+        alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionDismiss, style: .cancel))
         
         // Present on main window
         await MainActor.run {
