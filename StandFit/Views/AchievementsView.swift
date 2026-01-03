@@ -56,6 +56,20 @@ struct AchievementsView: View {
         }
         .navigationTitle("Achievements")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if exerciseStore.isPremium {
+                ToolbarItem(placement: .primaryAction) {
+                    NavigationLink {
+                        ManageTemplatesView(
+                            gamificationStore: gamificationStore,
+                            exerciseStore: exerciseStore
+                        )
+                    } label: {
+                        Image(systemName: "star.square.on.square")
+                    }
+                }
+            }
+        }
     }
 
     // MARK: - Summary Section
@@ -207,6 +221,12 @@ struct AchievementRow: View {
                         .font(.body)
                         .fontWeight(achievement.isUnlocked ? .semibold : .regular)
                         .foregroundStyle(isLocked ? .secondary : .primary)
+
+                    if achievement.category == .template {
+                        Image(systemName: "star.circle.fill")
+                            .font(.caption2)
+                            .foregroundStyle(.purple)
+                    }
 
                     if achievement.isUnlocked {
                         Image(systemName: "checkmark.circle.fill")

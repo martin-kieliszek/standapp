@@ -37,6 +37,8 @@ protocol FeatureEntitlement {
     var canAccessSocialFeatures: Bool { get }
     var canExportData: Bool { get }
     var historyDaysLimit: Int { get }
+    var canCreateAchievementTemplates: Bool { get }
+    var achievementTemplateLimit: Int { get }
 }
 
 /// Concrete entitlement implementation
@@ -73,6 +75,17 @@ struct TierEntitlements: FeatureEntitlement {
     var historyDaysLimit: Int {
         switch tier {
         case .free: return 7
+        case .premium: return Int.max
+        }
+    }
+
+    var canCreateAchievementTemplates: Bool {
+        tier == .premium
+    }
+
+    var achievementTemplateLimit: Int {
+        switch tier {
+        case .free: return 0
         case .premium: return Int.max
         }
     }

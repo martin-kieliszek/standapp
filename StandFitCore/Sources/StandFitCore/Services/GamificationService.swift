@@ -349,6 +349,99 @@ public struct AchievementEngine {
             let today = calendar.startOfDay(for: Date())
             let todaysCount = logs.filter { calendar.isDate($0.timestamp, inSameDayAs: today) }.count
             return (todaysCount, todaysCount >= target)
+
+        // Template-based requirements (UX16)
+        case .customExerciseCount(let reference, let target):
+            // Count total reps/seconds for specific exercise (built-in or custom)
+            let total = Self.filterLogsByReference(logs, reference: reference, customExercises: customExercises)
+                .reduce(0) { $0 + $1.count }
+            return (total, total >= target)
+
+        case .dailyExerciseGoal(let reference, let target):
+            // Check if user did N reps of specific exercise in one day (best day)
+            let calendar = Calendar.current
+            var bestDay = 0
+            let grouped = Dictionary(grouping: Self.filterLogsByReference(logs, reference: reference, customExercises: customExercises)) {
+                calendar.startOfDay(for: $0.timestamp)
+            }
+            for (_, dayLogs) in grouped {
+                let dayTotal = dayLogs.reduce(0) { $0 + $1.count }
+                bestDay = max(bestDay, dayTotal)
+            }
+            return (bestDay, bestDay >= target)
+
+        case .weeklyExerciseGoal(let reference, let target):
+            // Check if user did N reps of specific exercise in one week (best week)
+            let calendar = Calendar.current
+            var bestWeek = 0
+            let grouped = Dictionary(grouping: Self.filterLogsByReference(logs, reference: reference, customExercises: customExercises)) {
+                calendar.dateInterval(of: .weekOfYear, for: $0.timestamp)?.start ?? $0.timestamp
+            }
+            for (_, weekLogs) in grouped {
+                let weekTotal = weekLogs.reduce(0) { $0 + $1.count }
+                bestWeek = max(bestWeek, weekTotal)
+            }
+            return (bestWeek, bestWeek >= target)
+
+        case .exerciseStreak(let reference, let target):
+            // Calculate streak for specific exercise
+            let streak = Self.calculateExerciseStreak(logs: logs, reference: reference, customExercises: customExercises)
+            return (streak, streak >= target)
+
+        case .speedChallenge(let reference, let target, let timeWindowMinutes):
+            // Find best count within time window
+            let sortedLogs = Self.filterLogsByReference(logs, reference: reference, customExercises: customExercises)
+                .sorted { $0.timestamp < $1.timestamp }
+
+            var bestCount = 0
+            for i in 0..<sortedLogs.count {
+                let windowStart = sortedLogs[i].timestamp
+                let windowEnd = windowStart.addingTimeInterval(TimeInterval(timeWindowMinutes * 60))
+                let windowLogs = sortedLogs.filter { $0.timestamp >= windowStart && $0.timestamp < windowEnd }
+                let windowTotal = windowLogs.reduce(0) { $0 + $1.count }
+                bestCount = max(bestCount, windowTotal)
+            }
+            return (bestCount, bestCount >= target)
         }
+    }
+
+    /// Filter logs by exercise reference (built-in or custom)
+    private static func filterLogsByReference(
+        _ logs: [ExerciseLog],
+        reference: ExerciseReference,
+        customExercises: [CustomExercise]
+    ) -> [ExerciseLog] {
+        switch reference {
+        case .builtIn(let type):
+            return logs.filter { $0.exerciseType == type }
+        case .custom(let id):
+            return logs.filter { $0.customExerciseId == id }
+        }
+    }
+
+    /// Calculate consecutive day streak for specific exercise
+    private static func calculateExerciseStreak(
+        logs: [ExerciseLog],
+        reference: ExerciseReference,
+        customExercises: [CustomExercise]
+    ) -> Int {
+        let exerciseLogs = filterLogsByReference(logs, reference: reference, customExercises: customExercises)
+        guard !exerciseLogs.isEmpty else { return 0 }
+
+        let calendar = Calendar.current
+        var streak = 0
+        var checkDate = calendar.startOfDay(for: Date())
+        let maxIterations = 1000
+
+        for _ in 0..<maxIterations {
+            let dayLogs = exerciseLogs.filter { calendar.isDate($0.timestamp, inSameDayAs: checkDate) }
+            guard !dayLogs.isEmpty else { break }
+
+            streak += 1
+            guard let previousDay = calendar.date(byAdding: .day, value: -1, to: checkDate) else { break }
+            checkDate = previousDay
+        }
+
+        return streak
     }
 }

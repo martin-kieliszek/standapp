@@ -71,6 +71,7 @@ public enum AchievementCategory: String, Codable, CaseIterable, Identifiable {
     case variety = "Variety"
     case challenge = "Challenge"
     case social = "Social"
+    case template = "Custom Templates"  // UX16: User-created achievements
 
     public var id: String { rawValue }
 
@@ -82,6 +83,7 @@ public enum AchievementCategory: String, Codable, CaseIterable, Identifiable {
         case .variety: return "circle.hexagongrid.fill"
         case .challenge: return "trophy.fill"
         case .social: return "person.2.fill"
+        case .template: return "star.square.on.square.fill"
         }
     }
 }
@@ -112,6 +114,13 @@ public enum AchievementRequirement: Codable, Equatable {
     case timeWindow(hour: Int, comparison: TimeComparison, count: Int)  // Exercise sessions before/after specific hour
     case dailyGoal(Int)                // Complete N exercise sessions in one day
 
+    // Template-based requirements (UX16)
+    case customExerciseCount(exerciseReference: ExerciseReference, count: Int)  // Total count for specific exercise (built-in or custom)
+    case dailyExerciseGoal(exerciseReference: ExerciseReference, count: Int)    // Specific exercise count in one day
+    case weeklyExerciseGoal(exerciseReference: ExerciseReference, count: Int)   // Specific exercise count in one week
+    case exerciseStreak(exerciseReference: ExerciseReference, days: Int)        // Consecutive days with specific exercise
+    case speedChallenge(exerciseReference: ExerciseReference, count: Int, timeWindowMinutes: Int)  // N reps in M minutes
+
     public enum TimeComparison: String, Codable {
         case before
         case after
@@ -126,6 +135,11 @@ public enum AchievementRequirement: Codable, Equatable {
         case .unique(let count): return count
         case .timeWindow(_, _, let count): return count
         case .dailyGoal(let count): return count
+        case .customExerciseCount(_, let count): return count
+        case .dailyExerciseGoal(_, let count): return count
+        case .weeklyExerciseGoal(_, let count): return count
+        case .exerciseStreak(_, let days): return days
+        case .speedChallenge(_, let count, _): return count
         }
     }
     
@@ -137,6 +151,7 @@ public enum AchievementRequirement: Codable, Equatable {
         case value2
         case value3
         case comparison
+        case exerciseReference
     }
     
     public init(from decoder: Decoder) throws {
@@ -174,6 +189,28 @@ public enum AchievementRequirement: Codable, Equatable {
         case "dailyGoal":
             let count = try container.decode(Int.self, forKey: .value1)
             self = .dailyGoal(count)
+        // Template-based cases
+        case "customExerciseCount":
+            let reference = try container.decode(ExerciseReference.self, forKey: .exerciseReference)
+            let count = try container.decode(Int.self, forKey: .value1)
+            self = .customExerciseCount(exerciseReference: reference, count: count)
+        case "dailyExerciseGoal":
+            let reference = try container.decode(ExerciseReference.self, forKey: .exerciseReference)
+            let count = try container.decode(Int.self, forKey: .value1)
+            self = .dailyExerciseGoal(exerciseReference: reference, count: count)
+        case "weeklyExerciseGoal":
+            let reference = try container.decode(ExerciseReference.self, forKey: .exerciseReference)
+            let count = try container.decode(Int.self, forKey: .value1)
+            self = .weeklyExerciseGoal(exerciseReference: reference, count: count)
+        case "exerciseStreak":
+            let reference = try container.decode(ExerciseReference.self, forKey: .exerciseReference)
+            let days = try container.decode(Int.self, forKey: .value1)
+            self = .exerciseStreak(exerciseReference: reference, days: days)
+        case "speedChallenge":
+            let reference = try container.decode(ExerciseReference.self, forKey: .exerciseReference)
+            let count = try container.decode(Int.self, forKey: .value1)
+            let timeWindow = try container.decode(Int.self, forKey: .value2)
+            self = .speedChallenge(exerciseReference: reference, count: count, timeWindowMinutes: timeWindow)
         default:
             throw DecodingError.dataCorruptedError(forKey: .type, in: container, debugDescription: "Unknown requirement type")
         }
@@ -204,6 +241,28 @@ public enum AchievementRequirement: Codable, Equatable {
         case .dailyGoal(let count):
             try container.encode("dailyGoal", forKey: .type)
             try container.encode(count, forKey: .value1)
+        // Template-based cases
+        case .customExerciseCount(let reference, let count):
+            try container.encode("customExerciseCount", forKey: .type)
+            try container.encode(reference, forKey: .exerciseReference)
+            try container.encode(count, forKey: .value1)
+        case .dailyExerciseGoal(let reference, let count):
+            try container.encode("dailyExerciseGoal", forKey: .type)
+            try container.encode(reference, forKey: .exerciseReference)
+            try container.encode(count, forKey: .value1)
+        case .weeklyExerciseGoal(let reference, let count):
+            try container.encode("weeklyExerciseGoal", forKey: .type)
+            try container.encode(reference, forKey: .exerciseReference)
+            try container.encode(count, forKey: .value1)
+        case .exerciseStreak(let reference, let days):
+            try container.encode("exerciseStreak", forKey: .type)
+            try container.encode(reference, forKey: .exerciseReference)
+            try container.encode(days, forKey: .value1)
+        case .speedChallenge(let reference, let count, let timeWindow):
+            try container.encode("speedChallenge", forKey: .type)
+            try container.encode(reference, forKey: .exerciseReference)
+            try container.encode(count, forKey: .value1)
+            try container.encode(timeWindow, forKey: .value2)
         }
     }
 }

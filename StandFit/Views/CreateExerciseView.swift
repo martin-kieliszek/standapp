@@ -23,6 +23,8 @@ struct CreateExerciseView: View {
     @State private var showingDeleteConfirmation = false
     @State private var showPaywall = false
     @State private var previousUnitType: ExerciseUnitType
+    @State private var showTemplatePrompt = false
+    @State private var createdExercise: CustomExercise?
 
     private var isEditing: Bool {
         existingExercise != nil
@@ -224,6 +226,18 @@ struct CreateExerciseView: View {
         .sheet(isPresented: $showPaywall) {
             PaywallView(subscriptionManager: SubscriptionManager.shared)
         }
+        .alert("Create Achievement Template?", isPresented: $showTemplatePrompt) {
+            Button("Not Now", role: .cancel) {
+                dismiss()
+            }
+            Button("Learn More") {
+                // This will trigger opening AchievementsView → ManageTemplatesView
+                // User can navigate there manually for now
+                dismiss()
+            }
+        } message: {
+            Text("Premium users can create achievement templates to track progress with custom exercises. Visit the Achievements tab to get started!")
+        }
     }
 
     // MARK: - Helpers
@@ -259,6 +273,9 @@ struct CreateExerciseView: View {
             updated.unitType = unitType
             updated.defaultCount = defaultCount
             store.updateCustomExercise(updated)
+
+            NotificationManager.shared.playClickHaptic()
+            dismiss()
         } else {
             // Create new
             let newExercise = CustomExercise(
@@ -268,10 +285,17 @@ struct CreateExerciseView: View {
                 defaultCount: defaultCount
             )
             store.addCustomExercise(newExercise)
-        }
 
-        NotificationManager.shared.playClickHaptic()
-        dismiss()
+            NotificationManager.shared.playClickHaptic()
+
+            // Offer template creation for premium users (UX16)
+            if store.isPremium {
+                createdExercise = newExercise
+                showTemplatePrompt = true
+            } else {
+                dismiss()
+            }
+        }
     }
 
     private func deleteExercise() {

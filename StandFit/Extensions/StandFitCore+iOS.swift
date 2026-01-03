@@ -20,6 +20,21 @@ extension AchievementTier {
         case .platinum: return .cyan
         }
     }
+
+    /// SF Symbol icon for this achievement tier
+    var icon: String {
+        switch self {
+        case .bronze: return "medal.fill"
+        case .silver: return "star.fill"
+        case .gold: return "crown.fill"
+        case .platinum: return "sparkles"
+        }
+    }
+
+    /// Display name for tier
+    var displayName: String {
+        return self.rawValue
+    }
 }
 
 // MARK: - ExerciseItem Color Palette

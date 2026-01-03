@@ -37,6 +37,9 @@ class GamificationStore: ObservableObject {
 
         // Load data from service
         loadData()
+
+        // Load templates (UX16)
+        loadTemplates()
     }
 
     private func loadData() {
@@ -263,5 +266,130 @@ class GamificationStore: ObservableObject {
             recentlyUnlockedAchievements.append(achievements[index])
             saveData()
         }
+    }
+
+    // MARK: - Achievement Template Management (UX16 - Premium)
+
+    @Published var achievementTemplates: [AchievementTemplate] = []
+    private var templateGenerationRecords: [TemplateGeneratedAchievement] = []
+    private let templateEngine = AchievementTemplateEngine()
+
+    // Persistence
+    private var templatesFileURL: URL {
+        let docsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        return docsDir.appendingPathComponent("achievement_templates.json")
+    }
+
+    private var templateRecordsFileURL: URL {
+        let docsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        return docsDir.appendingPathComponent("template_generation_records.json")
+    }
+
+    /// Load templates from disk
+    func loadTemplates() {
+        // Load templates
+        if let data = try? Data(contentsOf: templatesFileURL),
+           let decoded = try? JSONDecoder().decode([AchievementTemplate].self, from: data) {
+            achievementTemplates = decoded
+        }
+
+        // Load generation records
+        if let data = try? Data(contentsOf: templateRecordsFileURL),
+           let decoded = try? JSONDecoder().decode([TemplateGeneratedAchievement].self, from: data) {
+            templateGenerationRecords = decoded
+        }
+    }
+
+    /// Save templates to disk
+    private func saveTemplates() {
+        if let data = try? JSONEncoder().encode(achievementTemplates) {
+            try? data.write(to: templatesFileURL, options: .atomic)
+        }
+    }
+
+    /// Save template generation records
+    private func saveTemplateRecords() {
+        if let data = try? JSONEncoder().encode(templateGenerationRecords) {
+            try? data.write(to: templateRecordsFileURL, options: .atomic)
+        }
+    }
+
+    /// Create a new template (Premium only)
+    func createTemplate(_ template: AchievementTemplate, exerciseStore: ExerciseStore) {
+        achievementTemplates.append(template)
+        saveTemplates()
+        regenerateAchievementsFromTemplates(exerciseStore: exerciseStore)
+    }
+
+    /// Update existing template
+    func updateTemplate(_ template: AchievementTemplate, exerciseStore: ExerciseStore) {
+        if let index = achievementTemplates.firstIndex(where: { $0.id == template.id }) {
+            var updated = template
+            updated.lastModified = Date()
+            achievementTemplates[index] = updated
+            saveTemplates()
+            regenerateAchievementsFromTemplates(exerciseStore: exerciseStore)
+        }
+    }
+
+    /// Delete a template
+    func deleteTemplate(_ templateId: UUID) {
+        achievementTemplates.removeAll { $0.id == templateId }
+
+        // Remove generated achievements
+        let generatedIds = templateGenerationRecords
+            .filter { $0.sourceTemplateId == templateId }
+            .map { $0.achievementId }
+
+        achievements.removeAll { generatedIds.contains($0.id) }
+        templateGenerationRecords.removeAll { $0.sourceTemplateId == templateId }
+
+        saveTemplates()
+        saveTemplateRecords()
+        saveData()
+    }
+
+    /// Toggle template active state
+    func toggleTemplate(_ templateId: UUID, exerciseStore: ExerciseStore) {
+        if let index = achievementTemplates.firstIndex(where: { $0.id == templateId }) {
+            achievementTemplates[index].isActive.toggle()
+            saveTemplates()
+            regenerateAchievementsFromTemplates(exerciseStore: exerciseStore)
+        }
+    }
+
+    /// Regenerate all achievements from templates
+    func regenerateAchievementsFromTemplates(exerciseStore: ExerciseStore) {
+        // Build lookup map of existing unlock dates BEFORE removal
+        let templateAchievementIds = Set(templateGenerationRecords.map { $0.achievementId })
+        var existingUnlockDates: [String: Date] = [:]
+        for achievement in achievements where templateAchievementIds.contains(achievement.id) {
+            if let unlockedAt = achievement.unlockedAt {
+                existingUnlockDates[achievement.id] = unlockedAt
+            }
+        }
+
+        // Remove all template-generated achievements
+        achievements.removeAll { templateAchievementIds.contains($0.id) }
+
+        // Regenerate from active templates
+        let (newAchievements, newRecords) = templateEngine.generateAchievements(
+            from: achievementTemplates,
+            customExercises: exerciseStore.customExercises,
+            exerciseLogs: exerciseStore.logs,
+            existingUnlockDates: existingUnlockDates  // Pass preserved dates
+        )
+
+        // Merge with existing achievements
+        achievements.append(contentsOf: newAchievements)
+        templateGenerationRecords = newRecords
+
+        saveData()
+        saveTemplateRecords()
+    }
+
+    /// Check if user can create more templates
+    func canCreateTemplate(entitlements: FeatureEntitlement) -> Bool {
+        achievementTemplates.count < entitlements.achievementTemplateLimit
     }
 }
