@@ -105,12 +105,12 @@ public enum AchievementTier: String, Codable, CaseIterable {
 
 /// Defines what needs to be accomplished to unlock an achievement
 public enum AchievementRequirement: Codable, Equatable {
-    case totalExercises(Int)           // Total exercise count across all types
-    case specificExercise(String, Int) // Specific exercise type, target count
+    case totalSessions(Int)            // Total exercise SESSIONS (log entries) across all types
+    case exerciseVolume(String, Int)   // Total REPS/SECONDS for specific exercise type
     case streak(Int)                   // Maintain streak for N days
     case unique(Int)                   // Unique exercise types in one day
-    case timeWindow(hour: Int, comparison: TimeComparison, count: Int)  // Exercise before/after specific hour
-    case dailyGoal(Int)                // Complete N exercises in one day
+    case timeWindow(hour: Int, comparison: TimeComparison, count: Int)  // Exercise sessions before/after specific hour
+    case dailyGoal(Int)                // Complete N exercise sessions in one day
 
     public enum TimeComparison: String, Codable {
         case before
@@ -120,12 +120,90 @@ public enum AchievementRequirement: Codable, Equatable {
     /// Get the target value for progress calculation
     public var targetValue: Int {
         switch self {
-        case .totalExercises(let count): return count
-        case .specificExercise(_, let count): return count
+        case .totalSessions(let count): return count
+        case .exerciseVolume(_, let count): return count
         case .streak(let days): return days
         case .unique(let count): return count
         case .timeWindow(_, _, let count): return count
         case .dailyGoal(let count): return count
+        }
+    }
+    
+    // MARK: - Backward Compatibility
+    
+    private enum CodingKeys: String, CodingKey {
+        case type
+        case value1
+        case value2
+        case value3
+        case comparison
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let type = try container.decode(String.self, forKey: .type)
+        
+        switch type {
+        // Handle legacy cases
+        case "totalExercises":
+            let count = try container.decode(Int.self, forKey: .value1)
+            self = .totalSessions(count)
+        case "specificExercise":
+            let name = try container.decode(String.self, forKey: .value1)
+            let count = try container.decode(Int.self, forKey: .value2)
+            self = .exerciseVolume(name, count)
+        // Handle current cases
+        case "totalSessions":
+            let count = try container.decode(Int.self, forKey: .value1)
+            self = .totalSessions(count)
+        case "exerciseVolume":
+            let name = try container.decode(String.self, forKey: .value1)
+            let count = try container.decode(Int.self, forKey: .value2)
+            self = .exerciseVolume(name, count)
+        case "streak":
+            let days = try container.decode(Int.self, forKey: .value1)
+            self = .streak(days)
+        case "unique":
+            let count = try container.decode(Int.self, forKey: .value1)
+            self = .unique(count)
+        case "timeWindow":
+            let hour = try container.decode(Int.self, forKey: .value1)
+            let comparison = try container.decode(TimeComparison.self, forKey: .comparison)
+            let count = try container.decode(Int.self, forKey: .value2)
+            self = .timeWindow(hour: hour, comparison: comparison, count: count)
+        case "dailyGoal":
+            let count = try container.decode(Int.self, forKey: .value1)
+            self = .dailyGoal(count)
+        default:
+            throw DecodingError.dataCorruptedError(forKey: .type, in: container, debugDescription: "Unknown requirement type")
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        switch self {
+        case .totalSessions(let count):
+            try container.encode("totalSessions", forKey: .type)
+            try container.encode(count, forKey: .value1)
+        case .exerciseVolume(let name, let count):
+            try container.encode("exerciseVolume", forKey: .type)
+            try container.encode(name, forKey: .value1)
+            try container.encode(count, forKey: .value2)
+        case .streak(let days):
+            try container.encode("streak", forKey: .type)
+            try container.encode(days, forKey: .value1)
+        case .unique(let count):
+            try container.encode("unique", forKey: .type)
+            try container.encode(count, forKey: .value1)
+        case .timeWindow(let hour, let comparison, let count):
+            try container.encode("timeWindow", forKey: .type)
+            try container.encode(hour, forKey: .value1)
+            try container.encode(comparison, forKey: .comparison)
+            try container.encode(count, forKey: .value2)
+        case .dailyGoal(let count):
+            try container.encode("dailyGoal", forKey: .type)
+            try container.encode(count, forKey: .value1)
         }
     }
 }
@@ -376,7 +454,7 @@ public enum GamificationEvent {
 /// Predefined achievements available in the app
 public struct AchievementDefinitions {
     public static let all: [Achievement] = [
-        // MARK: Milestones
+        // MARK: Milestones (Session-based)
         Achievement(
             id: "first_exercise",
             name: "First Steps",
@@ -384,47 +462,47 @@ public struct AchievementDefinitions {
             icon: "figure.walk",
             category: .milestone,
             tier: .bronze,
-            requirement: .totalExercises(1),
+            requirement: .totalSessions(1),
             progress: 0
         ),
         Achievement(
             id: "ten_exercises",
             name: "Getting Started",
-            description: "Log 10 total exercises",
+            description: "Log 10 exercise sessions",
             icon: "10.circle.fill",
             category: .milestone,
             tier: .bronze,
-            requirement: .totalExercises(10),
+            requirement: .totalSessions(10),
             progress: 0
         ),
         Achievement(
             id: "century",
             name: "Century Club",
-            description: "Log 100 total exercises",
+            description: "Log 100 exercise sessions",
             icon: "100.circle.fill",
             category: .milestone,
             tier: .silver,
-            requirement: .totalExercises(100),
+            requirement: .totalSessions(100),
             progress: 0
         ),
         Achievement(
             id: "five_hundred",
             name: "Dedicated",
-            description: "Log 500 total exercises",
+            description: "Log 500 exercise sessions",
             icon: "star.fill",
             category: .milestone,
             tier: .gold,
-            requirement: .totalExercises(500),
+            requirement: .totalSessions(500),
             progress: 0
         ),
         Achievement(
             id: "thousand",
             name: "The Grind",
-            description: "Log 1,000 total exercises",
+            description: "Log 1,000 exercise sessions",
             icon: "star.circle.fill",
             category: .milestone,
             tier: .platinum,
-            requirement: .totalExercises(1000),
+            requirement: .totalSessions(1000),
             progress: 0
         ),
 
@@ -474,11 +552,21 @@ public struct AchievementDefinitions {
         Achievement(
             id: "well_rounded",
             name: "Well Rounded",
-            description: "Do all exercise types in one day",
+            description: "Do 5 different exercise types in one day",
             icon: "circle.hexagongrid.fill",
             category: .variety,
             tier: .bronze,
-            requirement: .unique(4),
+            requirement: .unique(5),
+            progress: 0
+        ),
+        Achievement(
+            id: "variety_expert",
+            name: "Variety Expert",
+            description: "Do all 10 exercise types in one day",
+            icon: "star.circle.fill",
+            category: .variety,
+            tier: .silver,
+            requirement: .unique(10),
             progress: 0
         ),
 
@@ -524,65 +612,275 @@ public struct AchievementDefinitions {
             progress: 0
         ),
 
-        // MARK: Volume (Built-in exercises)
+        // MARK: Volume (Built-in exercises - Rep/Duration based)
         Achievement(
             id: "pushup_100",
             name: "Pushup Pro",
-            description: "Complete 100 lifetime pushups",
+            description: "Complete 100 total pushup reps",
             icon: "figure.strengthtraining.traditional",
             category: .volume,
             tier: .bronze,
-            requirement: .specificExercise("Pushups", 100),
+            requirement: .exerciseVolume("Pushups", 100),
             progress: 0
         ),
         Achievement(
             id: "pushup_500",
             name: "Pushup Expert",
-            description: "Complete 500 lifetime pushups",
+            description: "Complete 500 total pushup reps",
             icon: "figure.strengthtraining.traditional",
             category: .volume,
             tier: .silver,
-            requirement: .specificExercise("Pushups", 500),
+            requirement: .exerciseVolume("Pushups", 500),
             progress: 0
         ),
         Achievement(
             id: "pushup_1000",
             name: "Pushup Master",
-            description: "Complete 1,000 lifetime pushups",
+            description: "Complete 1,000 total pushup reps",
             icon: "figure.strengthtraining.traditional",
             category: .volume,
             tier: .gold,
-            requirement: .specificExercise("Pushups", 1000),
+            requirement: .exerciseVolume("Pushups", 1000),
             progress: 0
         ),
         Achievement(
             id: "squat_100",
             name: "Squat Pro",
-            description: "Complete 100 lifetime squats",
+            description: "Complete 100 total squat reps",
             icon: "figure.stand",
             category: .volume,
             tier: .bronze,
-            requirement: .specificExercise("Squats", 100),
+            requirement: .exerciseVolume("Squats", 100),
             progress: 0
         ),
         Achievement(
             id: "squat_500",
             name: "Squat Expert",
-            description: "Complete 500 lifetime squats",
+            description: "Complete 500 total squat reps",
             icon: "figure.stand",
             category: .volume,
             tier: .silver,
-            requirement: .specificExercise("Squats", 500),
+            requirement: .exerciseVolume("Squats", 500),
             progress: 0
         ),
         Achievement(
             id: "squat_1000",
             name: "Squat Master",
-            description: "Complete 1,000 lifetime squats",
+            description: "Complete 1,000 total squat reps",
             icon: "figure.stand",
             category: .volume,
             tier: .gold,
-            requirement: .specificExercise("Squats", 1000),
+            requirement: .exerciseVolume("Squats", 1000),
+            progress: 0
+        ),
+        Achievement(
+            id: "lunge_100",
+            name: "Lunge Pro",
+            description: "Complete 100 total lunge reps",
+            icon: "figure.walk",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Lunges", 100),
+            progress: 0
+        ),
+        Achievement(
+            id: "lunge_500",
+            name: "Lunge Expert",
+            description: "Complete 500 total lunge reps",
+            icon: "figure.walk",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Lunges", 500),
+            progress: 0
+        ),
+        Achievement(
+            id: "lunge_1000",
+            name: "Lunge Master",
+            description: "Complete 1,000 total lunge reps",
+            icon: "figure.walk",
+            category: .volume,
+            tier: .gold,
+            requirement: .exerciseVolume("Lunges", 1000),
+            progress: 0
+        ),
+        Achievement(
+            id: "plank_300",
+            name: "Plank Beginner",
+            description: "Hold plank for 300 total seconds",
+            icon: "figure.core.training",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Plank", 300),
+            progress: 0
+        ),
+        Achievement(
+            id: "plank_1800",
+            name: "Plank Warrior",
+            description: "Hold plank for 1,800 total seconds",
+            icon: "figure.core.training",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Plank", 1800),
+            progress: 0
+        ),
+        Achievement(
+            id: "plank_3600",
+            name: "Plank Champion",
+            description: "Hold plank for 3,600 total seconds (1 hour)",
+            icon: "figure.core.training",
+            category: .volume,
+            tier: .gold,
+            requirement: .exerciseVolume("Plank", 3600),
+            progress: 0
+        ),
+        Achievement(
+            id: "stretch_600",
+            name: "Flexibility Friend",
+            description: "Stretch for 600 total seconds",
+            icon: "figure.flexibility",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Standing Stretch", 600),
+            progress: 0
+        ),
+        Achievement(
+            id: "stretch_3000",
+            name: "Stretch Master",
+            description: "Stretch for 3,000 total seconds",
+            icon: "figure.flexibility",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Standing Stretch", 3000),
+            progress: 0
+        ),
+        Achievement(
+            id: "stretch_6000",
+            name: "Zen Master",
+            description: "Stretch for 6,000 total seconds",
+            icon: "figure.flexibility",
+            category: .volume,
+            tier: .gold,
+            requirement: .exerciseVolume("Standing Stretch", 6000),
+            progress: 0
+        ),
+        Achievement(
+            id: "calf_raise_200",
+            name: "Calf Crusher",
+            description: "Complete 200 total calf raises",
+            icon: "figure.stand",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Calf Raises", 200),
+            progress: 0
+        ),
+        Achievement(
+            id: "calf_raise_1000",
+            name: "Calf Expert",
+            description: "Complete 1,000 total calf raises",
+            icon: "figure.stand",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Calf Raises", 1000),
+            progress: 0
+        ),
+        Achievement(
+            id: "calf_raise_2000",
+            name: "Steel Calves",
+            description: "Complete 2,000 total calf raises",
+            icon: "figure.stand",
+            category: .volume,
+            tier: .gold,
+            requirement: .exerciseVolume("Calf Raises", 2000),
+            progress: 0
+        ),
+        Achievement(
+            id: "walk_1000",
+            name: "Stepping Up",
+            description: "Walk in place 1,000 total steps",
+            icon: "figure.walk.motion",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Walk In Place", 1000),
+            progress: 0
+        ),
+        Achievement(
+            id: "walk_5000",
+            name: "Step Counter",
+            description: "Walk in place 5,000 total steps",
+            icon: "figure.walk.motion",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Walk In Place", 5000),
+            progress: 0
+        ),
+        Achievement(
+            id: "walk_10000",
+            name: "Daily Walker",
+            description: "Walk in place 10,000 total steps",
+            icon: "figure.walk.motion",
+            category: .volume,
+            tier: .gold,
+            requirement: .exerciseVolume("Walk In Place", 10000),
+            progress: 0
+        ),
+        Achievement(
+            id: "neck_roll_100",
+            name: "Neck Relief",
+            description: "Complete 100 total neck rolls",
+            icon: "figure.mind.and.body",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Neck Rolls", 100),
+            progress: 0
+        ),
+        Achievement(
+            id: "neck_roll_500",
+            name: "Tension Tamer",
+            description: "Complete 500 total neck rolls",
+            icon: "figure.mind.and.body",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Neck Rolls", 500),
+            progress: 0
+        ),
+        Achievement(
+            id: "shoulder_shrug_200",
+            name: "Shoulder Soother",
+            description: "Complete 200 total shoulder shrugs",
+            icon: "figure.cooldown",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Shoulder Shrugs", 200),
+            progress: 0
+        ),
+        Achievement(
+            id: "shoulder_shrug_1000",
+            name: "Desk Warrior",
+            description: "Complete 1,000 total shoulder shrugs",
+            icon: "figure.cooldown",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Shoulder Shrugs", 1000),
+            progress: 0
+        ),
+        Achievement(
+            id: "arm_circle_150",
+            name: "Circle Starter",
+            description: "Complete 150 total arm circles",
+            icon: "figure.arms.open",
+            category: .volume,
+            tier: .bronze,
+            requirement: .exerciseVolume("Arm Circles", 150),
+            progress: 0
+        ),
+        Achievement(
+            id: "arm_circle_750",
+            name: "Rotation Master",
+            description: "Complete 750 total arm circles",
+            icon: "figure.arms.open",
+            category: .volume,
+            tier: .silver,
+            requirement: .exerciseVolume("Arm Circles", 750),
             progress: 0
         ),
     ]

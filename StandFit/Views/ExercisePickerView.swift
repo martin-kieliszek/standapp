@@ -13,20 +13,182 @@ import StandFitCore
 struct ExercisePickerView: View {
     @ObservedObject var store: ExerciseStore = ExerciseStore.shared
     let onSelect: (ExerciseItem) -> Void
+    
+    @State private var searchText = ""
 
     private let notificationManager = NotificationManager.shared
+    
+    // Computed properties for filtering and sectioning
+    private var builtInExercises: [ExerciseItem] {
+        store.allExercises.filter { $0.isBuiltIn }
+    }
+    
+    private var customExercises: [ExerciseItem] {
+        store.allExercises.filter { !$0.isBuiltIn }
+    }
+    
+    private var filteredBuiltIn: [ExerciseItem] {
+        if searchText.isEmpty {
+            return builtInExercises
+        }
+        return builtInExercises.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
+    
+    private var filteredCustom: [ExerciseItem] {
+        if searchText.isEmpty {
+            return customExercises
+        }
+        return customExercises.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
+    
+    private var hasResults: Bool {
+        !filteredBuiltIn.isEmpty || !filteredCustom.isEmpty
+    }
 
     var body: some View {
-        LazyVGrid(columns: [
-            GridItem(.flexible(), spacing: 12),
-            GridItem(.flexible(), spacing: 12),
-            GridItem(.flexible(), spacing: 12)
-        ], spacing: 12) {
-            ForEach(store.allExercises) { item in
-                ExercisePickerButton(item: item) {
-                    notificationManager.playClickHaptic()
-                    onSelect(item)
+        VStack(spacing: 16) {
+            // Search bar (always visible for quick filtering)
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+                    .font(.subheadline)
+                
+                TextField("Search exercises...", text: $searchText)
+                    .textFieldStyle(.plain)
+                    .autocorrectionDisabled()
+                
+                if !searchText.isEmpty {
+                    Button {
+                        searchText = ""
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                            .font(.subheadline)
+                    }
                 }
+            }
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(.systemGray6))
+            )
+            
+            // Recent exercises section (if any, hidden when searching)
+            if !store.recentExercises.isEmpty && searchText.isEmpty {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Image(systemName: "clock.arrow.circlepath")
+                            .foregroundStyle(.orange)
+                            .font(.subheadline)
+                        Text("Recent")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.secondary)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 4)
+                    
+                    LazyVGrid(columns: [
+                        GridItem(.flexible(), spacing: 12),
+                        GridItem(.flexible(), spacing: 12),
+                        GridItem(.flexible(), spacing: 12)
+                    ], spacing: 12) {
+                        ForEach(store.recentExercises) { item in
+                            ExercisePickerButton(item: item) {
+                                notificationManager.playClickHaptic()
+                                onSelect(item)
+                            }
+                        }
+                    }
+                }
+                .padding(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(.orange.opacity(0.05))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(.orange.opacity(0.2), lineWidth: 1)
+                )
+            }
+            
+            if hasResults {
+                VStack(spacing: 20) {
+                    // Built-in exercises section
+                    if !filteredBuiltIn.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            HStack {
+                                Image(systemName: "figure.walk")
+                                    .foregroundStyle(.blue)
+                                    .font(.subheadline)
+                                Text("Built-in Exercises")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                            }
+                            .padding(.horizontal, 4)
+                            
+                            LazyVGrid(columns: [
+                                GridItem(.flexible(), spacing: 12),
+                                GridItem(.flexible(), spacing: 12),
+                                GridItem(.flexible(), spacing: 12)
+                            ], spacing: 12) {
+                                ForEach(filteredBuiltIn) { item in
+                                    ExercisePickerButton(item: item) {
+                                        notificationManager.playClickHaptic()
+                                        onSelect(item)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Custom exercises section
+                    if !filteredCustom.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            HStack {
+                                Image(systemName: "star.fill")
+                                    .foregroundStyle(.purple)
+                                    .font(.subheadline)
+                                Text("Custom Exercises")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                            }
+                            .padding(.horizontal, 4)
+                            
+                            LazyVGrid(columns: [
+                                GridItem(.flexible(), spacing: 12),
+                                GridItem(.flexible(), spacing: 12),
+                                GridItem(.flexible(), spacing: 12)
+                            ], spacing: 12) {
+                                ForEach(filteredCustom) { item in
+                                    ExercisePickerButton(item: item) {
+                                        notificationManager.playClickHaptic()
+                                        onSelect(item)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                // No results state
+                VStack(spacing: 12) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.largeTitle)
+                        .foregroundStyle(.secondary)
+                    Text("No exercises found")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                    Text("Try adjusting your search")
+                        .font(.subheadline)
+                        .foregroundStyle(.tertiary)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 40)
             }
         }
     }
@@ -132,7 +294,7 @@ struct ExercisePickerFullScreenView: View {
 
                         // Exercise grid in card
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Built-in Exercises")
+                            Text("Select Exercise")
                                 .font(.headline)
                                 .foregroundStyle(.secondary)
                                 .padding(.horizontal, 4)

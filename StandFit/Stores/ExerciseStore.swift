@@ -481,6 +481,44 @@ class ExerciseStore: ObservableObject {
     var allExercises: [ExerciseItem] {
         exerciseService.getAllExercises(customExercises: customExercises)
     }
+    
+    /// Get the 3 most recently logged exercises (by unique exercise type/id)
+    var recentExercises: [ExerciseItem] {
+        var seenExerciseIds = Set<String>()
+        var recentItems: [ExerciseItem] = []
+        
+        // Sort logs by timestamp descending (most recent first) and iterate
+        let sortedLogs = logs.sorted { $0.timestamp > $1.timestamp }
+        
+        for log in sortedLogs {
+            let exerciseId: String
+            let item: ExerciseItem?
+            
+            if let type = log.exerciseType {
+                exerciseId = "builtin_\(type.id)"
+                item = ExerciseItem(builtIn: type)
+            } else if let customId = log.customExerciseId,
+                      let customEx = customExercise(byId: customId) {
+                exerciseId = "custom_\(customId.uuidString)"
+                item = ExerciseItem(custom: customEx)
+            } else {
+                continue // Skip invalid logs
+            }
+            
+            // Add if we haven't seen this exercise yet
+            if !seenExerciseIds.contains(exerciseId), let exerciseItem = item {
+                seenExerciseIds.insert(exerciseId)
+                recentItems.append(exerciseItem)
+                
+                if recentItems.count >= 3 {
+                    break
+                }
+            }
+        }
+        
+        print("🎯 Returning \(recentItems.count) recent exercises")
+        return recentItems
+    }
 
     func customExercise(byId id: UUID) -> CustomExercise? {
         exerciseService.customExercise(byId: id, in: customExercises)

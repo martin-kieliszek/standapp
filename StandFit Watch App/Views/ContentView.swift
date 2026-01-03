@@ -415,9 +415,31 @@ struct ContentView: View {
             return "Now!"
         }
 
-        let minutes = Int(interval) / 60
-        let seconds = Int(interval) % 60
+        let totalSeconds = Int(interval)
+        let days = totalSeconds / 86400
+        let hours = (totalSeconds % 86400) / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        let seconds = totalSeconds % 60
 
+        // Show days if >= 1 day
+        if days > 0 {
+            if hours > 0 {
+                return "\(days)d \(hours)h"
+            } else {
+                return "\(days)d"
+            }
+        }
+        
+        // Show hours if >= 1 hour
+        if hours > 0 {
+            if minutes > 0 {
+                return "\(hours)h \(minutes)m"
+            } else {
+                return "\(hours)h"
+            }
+        }
+        
+        // Show minutes:seconds for < 1 hour
         if minutes > 0 {
             return String(format: "%d:%02d", minutes, seconds)
         } else {

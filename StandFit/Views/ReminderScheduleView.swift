@@ -79,7 +79,7 @@ struct ReminderScheduleView: View {
                     Button {
                         showingProfileEditor = true
                     } label: {
-                        Label("Edit", systemImage: "slider.horizontal.3")
+                        Label("Edit Schedule", systemImage: "slider.horizontal.3")
                             .font(.subheadline)
                             .frame(maxWidth: .infinity)
                     }

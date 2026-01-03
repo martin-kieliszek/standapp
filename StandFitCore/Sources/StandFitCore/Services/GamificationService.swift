@@ -292,12 +292,13 @@ public struct AchievementEngine {
         timestamp: Date = Date()
     ) -> (progress: Int, unlocked: Bool) {
         switch achievement.requirement {
-        case .totalExercises(let target):
-            let total = logs.reduce(0) { $0 + $1.count }
+        case .totalSessions(let target):
+            // Count the NUMBER of exercise log entries (sessions), not the sum of reps
+            let total = logs.count
             return (total, total >= target)
 
-        case .specificExercise(let exerciseName, let target):
-            // Count exercises matching the name
+        case .exerciseVolume(let exerciseName, let target):
+            // Count the TOTAL REPS/SECONDS for a specific exercise across all sessions
             let total = logs.filter { log in
                 if let exerciseType = log.exerciseType {
                     return exerciseType.rawValue == exerciseName
@@ -306,7 +307,7 @@ public struct AchievementEngine {
                     return customExercise.name == exerciseName
                 }
                 return false
-            }.reduce(0) { $0 + $1.count }
+            }.reduce(0) { $0 + $1.count }  // Sum up the reps/seconds
             return (total, total >= target)
 
         case .streak(let target):
@@ -332,7 +333,7 @@ public struct AchievementEngine {
             return (count, count >= target)
 
         case .timeWindow(let hour, let comparison, let target):
-            // Count exercises logged before/after specific hour
+            // Count exercise SESSIONS logged before/after specific hour
             let count = logs.filter { log in
                 let logHour = Calendar.current.component(.hour, from: log.timestamp)
                 switch comparison {
@@ -340,15 +341,13 @@ public struct AchievementEngine {
                 case .after: return logHour >= hour
                 }
             }.count
-
             return (count, count >= target)
 
         case .dailyGoal(let target):
-            // Check if user completed N exercises in one day (today)
+            // Check if user completed N exercise SESSIONS in one day (today)
             let calendar = Calendar.current
             let today = calendar.startOfDay(for: Date())
             let todaysCount = logs.filter { calendar.isDate($0.timestamp, inSameDayAs: today) }.count
-
             return (todaysCount, todaysCount >= target)
         }
     }

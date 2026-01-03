@@ -233,11 +233,11 @@ class GamificationStore: ObservableObject {
             self.levelProgress = updatedData.levelProgress
             self.activeChallenges = updatedData.activeChallenges
             
-            // Collect unlocked achievements but don't notify
-            if !result.newlyUnlockedAchievements.isEmpty {
-                recentlyUnlockedAchievements.append(contentsOf: result.newlyUnlockedAchievements)
-            }
+            // Don't collect achievements during recalculation - user already earned them
         }
+        
+        // Clear any accumulated achievements to prevent duplicate notifications
+        recentlyUnlockedAchievements = []
         
         saveData()
         print("✅ Recalculation complete: \(unlockedAchievements.count) achievements unlocked")

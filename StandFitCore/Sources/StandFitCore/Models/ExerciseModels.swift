@@ -63,9 +63,15 @@ public enum ExerciseUnitType: String, Codable, CaseIterable, Identifiable {
 /// An enum for exercise types that can be saved to JSON (`Codable`) and displayed in lists (`CaseIterable`)
 public enum ExerciseType: String, Codable, CaseIterable, Identifiable {
     case squats = "Squats"
-    case pushups = "Pushups"
+    case pushups = "Push-ups"
     case lunges = "Lunges"
-    case plank = "Plank (seconds)"
+    case plank = "Plank"
+    case standingStretch = "Standing Stretch"
+    case neckRolls = "Neck Rolls"
+    case shoulderShrugs = "Shoulder Shrugs"
+    case calfRaises = "Calf Raises"
+    case armCircles = "Arm Circles"
+    case walkInPlace = "Walk in Place"
 
     public var id: String {
         rawValue
@@ -77,6 +83,12 @@ public enum ExerciseType: String, Codable, CaseIterable, Identifiable {
         case .pushups: return "figure.strengthtraining.traditional"
         case .lunges: return "figure.walk"
         case .plank: return "figure.core.training"
+        case .standingStretch: return "figure.flexibility"
+        case .neckRolls: return "figure.mind.and.body"
+        case .shoulderShrugs: return "figure.arms.open"
+        case .calfRaises: return "figure.stairs"
+        case .armCircles: return "figure.disc.sports"
+        case .walkInPlace: return "figure.step.training"
         }
     }
 
@@ -86,13 +98,21 @@ public enum ExerciseType: String, Codable, CaseIterable, Identifiable {
         case .pushups: return 10
         case .lunges: return 10
         case .plank: return 30
+        case .standingStretch: return 30
+        case .neckRolls: return 10
+        case .shoulderShrugs: return 15
+        case .calfRaises: return 20
+        case .armCircles: return 10
+        case .walkInPlace: return 60
         }
     }
 
     public var unitType: ExerciseUnitType {
         switch self {
-        case .squats, .pushups, .lunges: return .reps
-        case .plank: return .seconds
+        case .squats, .pushups, .lunges, .neckRolls, .shoulderShrugs, .calfRaises, .armCircles:
+            return .reps
+        case .plank, .standingStretch, .walkInPlace:
+            return .seconds
         }
     }
 }
