@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StandFitCore
+import AudioToolbox
 
 struct ExerciseLoggerView: View {
     @ObservedObject var store: ExerciseStore
@@ -15,6 +16,8 @@ struct ExerciseLoggerView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var count: Int
     @State private var showSuccessAnimation = false
+    @State private var showXPPopup = false
+    @State private var xpEarned: Int = 0
 
     private let notificationManager = NotificationManager.shared
 
@@ -23,6 +26,9 @@ struct ExerciseLoggerView: View {
         self.store = store
         self.exerciseItem = exerciseItem
         _count = State(initialValue: exerciseItem.unitType.toDisplayValue(exerciseItem.defaultCount))
+        _showSuccessAnimation = State(initialValue: false)
+        _showXPPopup = State(initialValue: false)
+        _xpEarned = State(initialValue: 0)
     }
 
     /// Convenience initializer for built-in exercise types (backwards compatibility)
@@ -30,6 +36,9 @@ struct ExerciseLoggerView: View {
         self.store = store
         self.exerciseItem = ExerciseItem(builtIn: exerciseType)
         _count = State(initialValue: exerciseType.unitType.toDisplayValue(exerciseType.defaultCount))
+        _showSuccessAnimation = State(initialValue: false)
+        _showXPPopup = State(initialValue: false)
+        _xpEarned = State(initialValue: 0)
     }
 
     var body: some View {
@@ -87,6 +96,17 @@ struct ExerciseLoggerView: View {
             .overlay {
                 if showSuccessAnimation {
                     successOverlay
+                }
+            }
+            .overlay {
+                // XP Popup - rendered on top
+                if showXPPopup {
+                    XPEarnedPopup(xpAmount: xpEarned)
+                        .zIndex(10)
+                        .transition(.asymmetric(
+                            insertion: .scale.combined(with: .opacity),
+                            removal: .opacity
+                        ))
                 }
             }
         }
@@ -395,6 +415,10 @@ struct ExerciseLoggerView: View {
         let storageCount = exerciseItem.unitType.toStorageValue(count)
         store.logExercise(item: exerciseItem, count: storageCount)
 
+        // Capture XP immediately after logging (before it gets cleared)
+        let earnedXP = GamificationStore.shared.lastXPGained
+        print("🎯 Captured XP immediately: \(earnedXP ?? 0)")
+
         // Show success animation
         withAnimation(.spring(response: 0.5)) {
             showSuccessAnimation = true
@@ -406,11 +430,90 @@ struct ExerciseLoggerView: View {
         if store.remindersEnabled {
             notificationManager.scheduleReminderWithSchedule(store: store)
         }
+        
+        // Show XP popup after 1 second (if premium user) - appears over success animation
+        if store.isPremium, let xp = earnedXP {
+            print("✅ User is premium, scheduling XP popup for \(xp) XP")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                print("🎯 Showing XP popup: +\(xp) XP")
+                xpEarned = xp
+                
+                // Play satisfying haptic and sound
+                notificationManager.playXPGainHaptic()
+                AudioServicesPlaySystemSound(1057) // SMS received sound
+                
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                    showXPPopup = true
+                }
+                
+                // Hide popup after 2.5 seconds
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        showXPPopup = false
+                    }
+                }
+            }
+            
+            // Clear the XP value from store
+            GamificationStore.shared.lastXPGained = nil
+        } else {
+            print("❌ Skipping XP popup - isPremium: \(store.isPremium), XP: \(earnedXP ?? 0)")
+        }
 
-        // Dismiss after animation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        // Dismiss after animation (extended to 4.5s to allow XP popup to show and hide)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
             dismiss()
         }
+    }
+}
+
+// MARK: - XP Earned Popup
+
+struct XPEarnedPopup: View {
+    let xpAmount: Int
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "star.fill")
+                .font(.system(size: 32))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.yellow, .orange],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .shadow(color: .yellow.opacity(0.5), radius: 8)
+            
+            Text(LocalizedString.Stats.xpEarned(xpAmount))
+                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.orange, .pink],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .shadow(color: .orange.opacity(0.3), radius: 2)
+        }
+        .padding(.horizontal, 32)
+        .padding(.vertical, 24)
+        .background(
+            RoundedRectangle(cornerRadius: 24)
+                .fill(.ultraThinMaterial)
+                .shadow(color: .black.opacity(0.15), radius: 20, y: 10)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 24)
+                .strokeBorder(
+                    LinearGradient(
+                        colors: [.yellow.opacity(0.3), .orange.opacity(0.3)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 2
+                )
+        )
     }
 }
 

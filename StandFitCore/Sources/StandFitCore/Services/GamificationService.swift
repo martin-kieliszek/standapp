@@ -57,11 +57,13 @@ public class GamificationService {
         public let newlyUnlockedAchievements: [Achievement]
         public let leveledUp: Bool
         public let newLevel: Int?
+        public let xpEarned: Int?
 
-        public init(newlyUnlockedAchievements: [Achievement] = [], leveledUp: Bool = false, newLevel: Int? = nil) {
+        public init(newlyUnlockedAchievements: [Achievement] = [], leveledUp: Bool = false, newLevel: Int? = nil, xpEarned: Int? = nil) {
             self.newlyUnlockedAchievements = newlyUnlockedAchievements
             self.leveledUp = leveledUp
             self.newLevel = newLevel
+            self.xpEarned = xpEarned
         }
     }
 
@@ -80,16 +82,21 @@ public class GamificationService {
             // Update streak
             data.streak.recordActivity(on: timestamp)
 
-            // Award XP
-            let xpEarned = LevelSystem.xpPerExercise * count
-            let xpStreakBonus = LevelSystem.xpPerStreak * data.streak.currentStreak
+            // Award XP: base + count bonus + streak bonus
+            let baseXP = LevelSystem.xpPerExercise
+            let countBonus = LevelSystem.countBonus(for: count)
+            let streakBonus = LevelSystem.xpPerStreak * data.streak.currentStreak
+            let totalXP = baseXP + countBonus + streakBonus
+            
             let oldLevel = data.levelProgress.currentLevel
-            data.levelProgress.addXP(xpEarned + xpStreakBonus)
+            data.levelProgress.addXP(totalXP)
             let newLevel = data.levelProgress.currentLevel
 
             // Check for level up
             if newLevel > oldLevel {
-                result = EventProcessingResult(leveledUp: true, newLevel: newLevel)
+                result = EventProcessingResult(leveledUp: true, newLevel: newLevel, xpEarned: totalXP)
+            } else {
+                result = EventProcessingResult(xpEarned: totalXP)
             }
 
             // Update achievement progress
@@ -110,7 +117,8 @@ public class GamificationService {
             result = EventProcessingResult(
                 newlyUnlockedAchievements: newlyUnlocked,
                 leveledUp: result.leveledUp,
-                newLevel: result.newLevel
+                newLevel: result.newLevel,
+                xpEarned: result.xpEarned  // Preserve XP from exercise logging
             )
 
             // Update active challenges

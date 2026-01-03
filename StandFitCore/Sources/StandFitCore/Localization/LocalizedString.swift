@@ -948,6 +948,11 @@ public enum LocalizedString {
         // StatsHeaderView strings
         public static let rep = NSLocalizedString("stats.rep", tableName: table, comment: "rep (singular)")
         public static let reps = NSLocalizedString("stats.reps", tableName: table, comment: "reps (plural)")
+        
+        // XP earned popup
+        public static func xpEarned(_ amount: Int) -> String {
+            String(format: NSLocalizedString("stats.xp_earned", tableName: table, comment: "+X XP earned"), amount)
+        }
         public static let vsPreviousPeriod = NSLocalizedString("stats.vs_previous_period", tableName: table, comment: "vs previous period")
         
         // TimelineGraphView strings

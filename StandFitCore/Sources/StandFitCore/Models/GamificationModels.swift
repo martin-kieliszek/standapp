@@ -405,6 +405,17 @@ public struct LevelSystem {
     public static let xpPerExercise = 10
     public static let xpPerStreak = 5  // Bonus XP per day of current streak
     public static let xpPerAchievement = 50
+    
+    /// Calculate bonus XP based on exercise count (reps or seconds)
+    /// Returns +1 XP per 5 reps/seconds, capped at +10 XP maximum
+    /// Examples:
+    /// - 10 reps = +2 XP
+    /// - 25 reps = +5 XP
+    /// - 50+ reps = +10 XP (capped)
+    public static func countBonus(for count: Int) -> Int {
+        let bonus = count / 5
+        return min(bonus, 10)  // Cap at +10 XP
+    }
 
     /// Calculate level from total XP (exponential curve)
     public static func levelFor(xp: Int) -> Int {

@@ -29,6 +29,7 @@ class GamificationStore: ObservableObject {
     @Published var levelProgress: LevelProgress = LevelProgress()
     @Published var activeChallenges: [Challenge] = []
     @Published var recentlyUnlockedAchievements: [Achievement] = []  // For showing notifications
+    @Published var lastXPGained: Int? = nil  // For XP popup animation
 
     // MARK: - Initialization
 
@@ -109,6 +110,14 @@ class GamificationStore: ObservableObject {
         self.levelProgress = updatedData.levelProgress
         self.activeChallenges = updatedData.activeChallenges
 
+        // Capture XP earned for popup animation
+        if let xp = result.xpEarned {
+            print("💰 Setting lastXPGained to \(xp)")
+            self.lastXPGained = xp
+        } else {
+            print("⚠️ No XP earned in result")
+        }
+        
         // Handle newly unlocked achievements
         if !result.newlyUnlockedAchievements.isEmpty {
             recentlyUnlockedAchievements.append(contentsOf: result.newlyUnlockedAchievements)
@@ -225,7 +234,7 @@ class GamificationStore: ObservableObject {
                 activeChallenges: activeChallenges
             )
             
-            let (updatedData, result) = gamificationService.processEvent(
+            let (updatedData, _) = gamificationService.processEvent(
                 event,
                 currentData: currentData,
                 logs: exerciseStore.logs,

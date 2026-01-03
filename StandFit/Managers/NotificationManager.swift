@@ -225,6 +225,15 @@ class NotificationManager: ObservableObject {
         impactFeedback.impactOccurred()
     }
     
+    func playXPGainHaptic() {
+        // Double tap for XP gain celebration
+        let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
+        impactFeedback.impactOccurred()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            impactFeedback.impactOccurred(intensity: 0.8)
+        }
+    }
+    
     // MARK: - Scheduling
     
     func debugPendingNotifications() {
