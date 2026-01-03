@@ -20,6 +20,7 @@ class ExerciseStore: ObservableObject {
     internal let reportingService: ReportingService  // Accessible within module for NotificationManager
     private let timelineService: TimelineService
     private let subscriptionManager = SubscriptionManager.shared
+    public let localizationManager = LocalizationManager.shared
 
     // MARK: - Published State
 

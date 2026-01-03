@@ -20,6 +20,7 @@ class GamificationStore: ObservableObject {
     // MARK: - Services
 
     private let gamificationService: GamificationService
+    public let localizationManager = LocalizationManager.shared
 
     // MARK: - Published State
 

@@ -1,0 +1,1353 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    ":" : {
+
+    },
+    "/ month" : {
+
+    },
+    "/ year" : {
+
+    },
+    "%@ – %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ – %2$@"
+          }
+        }
+      }
+    },
+    "%@ Exercise" : {
+
+    },
+    "%@ Template" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld / %lld XP" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld XP"
+          }
+        }
+      }
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "%lld %@ of %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@ of %3$@"
+          }
+        }
+      }
+    },
+    "%lld custom" : {
+
+    },
+    "%lld day streak" : {
+
+    },
+    "%lld day%@ left in your free trial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld day%2$@ left in your free trial"
+          }
+        }
+      }
+    },
+    "%lld days" : {
+
+    },
+    "%lld days remaining" : {
+
+    },
+    "%lld days remaining in trial" : {
+
+    },
+    "%lld exercise%@ logged" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld exercise%2$@ logged"
+          }
+        }
+      }
+    },
+    "%lld min" : {
+
+    },
+    "%lld minutes" : {
+
+    },
+    "%lld tiers" : {
+
+    },
+    "%lld-day streak" : {
+
+    },
+    "%lld:%@ - %lld:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld:%2$@ - %3$lld:%4$@"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld (%lld%%)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld (%3$lld%%)"
+          }
+        }
+      }
+    },
+    "%lld%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%2$@"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+
+    },
+    "%lld%% response rate" : {
+
+    },
+    "%lldmin avg" : {
+
+    },
+    "•" : {
+
+    },
+    "•••" : {
+
+    },
+    "± %lld minutes" : {
+
+    },
+    "🧪 Developer Testing" : {
+
+    },
+    "0 / 0" : {
+
+    },
+    "1.0.0" : {
+
+    },
+    "14-day free trial • Cancel anytime" : {
+
+    },
+    "About" : {
+
+    },
+    "Achievement Templates" : {
+
+    },
+    "Achievement Tiers" : {
+
+    },
+    "Achievement Type" : {
+
+    },
+    "Achievement Unlocked!" : {
+
+    },
+    "Achievements" : {
+
+    },
+    "achievements.title" : {
+      "comment" : "Achievements screen title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Erfolge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achievements"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Logros"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Succès"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "実績"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Conquistas"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "成就"
+          }
+        }
+      }
+    },
+    "Active Days" : {
+
+    },
+    "Active Schedule Profile" : {
+
+    },
+    "Active Trial" : {
+
+    },
+    "Activity" : {
+
+    },
+    "Add" : {
+
+    },
+    "Add Exercise" : {
+
+    },
+    "Add Fixed Time" : {
+
+    },
+    "Add New Profile" : {
+
+    },
+    "Add Randomness" : {
+
+    },
+    "Add specific times for reminders" : {
+
+    },
+    "Add Tier" : {
+
+    },
+    "Add Time Block" : {
+
+    },
+    "Add time blocks to define when reminders should occur" : {
+
+    },
+    "Adjust count and save" : {
+
+    },
+    "Advanced" : {
+
+    },
+    "All features unlocked" : {
+
+    },
+    "app.name" : {
+      "comment" : "App name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "StandFit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StandFit"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "StandFit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "StandFit"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "StandFit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "StandFit"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "StandFit"
+          }
+        }
+      }
+    },
+    "Automatic summaries of your exercise progress" : {
+
+    },
+    "Avg. Daily Reminders" : {
+
+    },
+    "Awesome!" : {
+
+    },
+    "Based on template: %@" : {
+
+    },
+    "Block Name (optional)" : {
+
+    },
+    "Breakdown" : {
+
+    },
+    "Built-in" : {
+
+    },
+    "Built-in Exercises" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Change" : {
+
+    },
+    "Change Icon" : {
+
+    },
+    "Choose Template" : {
+
+    },
+    "Clear All Data" : {
+
+    },
+    "Clear All Schedules" : {
+
+    },
+    "Close" : {
+
+    },
+    "Configure your daily reminder schedule. Same schedule applies to all days." : {
+
+    },
+    "Copy Weekdays to Weekends" : {
+
+    },
+    "Count" : {
+
+    },
+    "Create" : {
+
+    },
+    "Create Achievement Template?" : {
+
+    },
+    "Create achievement templates to track progress on your custom exercises" : {
+
+    },
+    "Create and manage custom exercises" : {
+
+    },
+    "Create Custom Achievement Templates" : {
+
+    },
+    "Create Custom Profile" : {
+
+    },
+    "Create from Template" : {
+
+    },
+    "Create Profile" : {
+
+    },
+    "Create Schedule Profile" : {
+
+    },
+    "Create Template" : {
+
+    },
+    "Create your first schedule profile to get started" : {
+
+    },
+    "Current Schedule" : {
+
+    },
+    "Custom" : {
+
+    },
+    "Custom Exercises" : {
+
+    },
+    "Daily Overview" : {
+
+    },
+    "Darker blue indicates more frequent reminders. Tap a day above to customize." : {
+
+    },
+    "Data" : {
+
+    },
+    "Day" : {
+
+    },
+    "Day Overview" : {
+
+    },
+    "Dead Response" : {
+
+    },
+    "Default Count" : {
+
+    },
+    "Default Interval" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Delete Exercise" : {
+
+    },
+    "Delete Exercise?" : {
+
+    },
+    "Delete Template?" : {
+
+    },
+    "Design personalized achievements for your custom exercises" : {
+
+    },
+    "Dev mode simulates subscription states without real purchases. Perfect for testing paywalls and premium features during development." : {
+
+    },
+    "Done" : {
+
+    },
+    "Duration: %@" : {
+
+    },
+    "e.g., 'Morning Focus', 'Work Hours', 'Evening Wind-Down'" : {
+
+    },
+    "Each tier creates a separate achievement. Higher tiers should have harder targets." : {
+
+    },
+    "Edit" : {
+
+    },
+    "Edit a schedule reminder!" : {
+
+    },
+    "Edit Exercise" : {
+
+    },
+    "Edit Reminder Schedule" : {
+
+    },
+    "Edit Schedule" : {
+
+    },
+    "Edit Template" : {
+
+    },
+    "Enable %@" : {
+
+    },
+    "Enable Dev Mode" : {
+
+    },
+    "Enable Reminders" : {
+
+    },
+    "Enable reminders to configure schedule" : {
+
+    },
+    "End Time" : {
+
+    },
+    "End time must be after start time" : {
+
+    },
+    "Enter a name" : {
+
+    },
+    "Estimated Reminders" : {
+
+    },
+    "Every %lldm" : {
+
+    },
+    "Everyday" : {
+
+    },
+    "Everyday Schedule" : {
+
+    },
+    "Exercise" : {
+
+    },
+    "Exercise Deleted" : {
+
+    },
+    "Exercise name" : {
+
+    },
+    "Exercises" : {
+
+    },
+    "Fixed Reminder Times" : {
+
+    },
+    "Free" : {
+
+    },
+    "Frequency" : {
+
+    },
+    "general.cancel" : {
+      "comment" : "Cancel button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Abbrechen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Annuler"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "キャンセル"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Cancelar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "取消"
+          }
+        }
+      }
+    },
+    "general.delete" : {
+      "comment" : "Delete button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Eliminar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Supprimer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "削除"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Excluir"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "删除"
+          }
+        }
+      }
+    },
+    "general.save" : {
+      "comment" : "Save button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Speichern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Guardar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Enregistrer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "保存"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Salvar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "保存"
+          }
+        }
+      }
+    },
+    "Gentle (Silent)" : {
+
+    },
+    "Get More" : {
+
+    },
+    "Haptic Feedback" : {
+
+    },
+    "High" : {
+
+    },
+    "History" : {
+
+    },
+    "Hour" : {
+
+    },
+    "Icon" : {
+
+    },
+    "Icon (Optional)" : {
+
+    },
+    "In Progress (%lld)" : {
+
+    },
+    "Inactive" : {
+
+    },
+    "Inactive templates won't generate achievements until activated" : {
+
+    },
+    "Individual Days (Premium)" : {
+
+    },
+    "Interval" : {
+
+    },
+    "Keep the momentum going!" : {
+
+    },
+    "Label (optional)" : {
+
+    },
+    "Last used: %@ ago" : {
+
+    },
+    "Learn More" : {
+
+    },
+    "Less" : {
+
+    },
+    "Level %lld" : {
+
+    },
+    "Limited features" : {
+
+    },
+    "Locked (%lld)" : {
+
+    },
+    "Log Exercise" : {
+
+    },
+    "Logged!" : {
+
+    },
+    "Low" : {
+
+    },
+    "main.log_exercise" : {
+      "comment" : "Log exercise button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Übung protokollieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log Exercise"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Registrar Ejercicio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Enregistrer l'exercice"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "運動を記録"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Registrar Exercício"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "记录运动"
+          }
+        }
+      }
+    },
+    "Measured In" : {
+
+    },
+    "Measurement" : {
+
+    },
+    "Medium" : {
+
+    },
+    "Minute" : {
+
+    },
+    "Month" : {
+
+    },
+    "Month 🔒" : {
+
+    },
+    "More" : {
+
+    },
+    "Name" : {
+
+    },
+    "Name Your Profile" : {
+
+    },
+    "New Exercise" : {
+
+    },
+    "New Profile" : {
+
+    },
+    "New Template" : {
+
+    },
+    "Next Reminder" : {
+
+    },
+    "Next: %@" : {
+
+    },
+    "No activity logged" : {
+
+    },
+    "No activity today" : {
+
+    },
+    "No exercises found" : {
+
+    },
+    "No Exercises Yet" : {
+
+    },
+    "No Fixed Times" : {
+
+    },
+    "No payment required • Cancel anytime" : {
+
+    },
+    "No Profiles" : {
+
+    },
+    "No reminder scheduled" : {
+
+    },
+    "No reminders" : {
+
+    },
+    "No Templates Yet" : {
+
+    },
+    "No Time Blocks" : {
+
+    },
+    "None" : {
+
+    },
+    "Not Now" : {
+
+    },
+    "Notification Periods (Preview)" : {
+
+    },
+    "Notification Preview" : {
+
+    },
+    "Notification Style" : {
+
+    },
+    "Notifications" : {
+
+    },
+    "Off" : {
+
+    },
+    "On" : {
+
+    },
+    "Period" : {
+
+    },
+    "Premium" : {
+
+    },
+    "Premium Active" : {
+
+    },
+    "Premium Feature" : {
+
+    },
+    "Premium users can create achievement templates to track progress with custom exercises. Visit the Achievements tab to get started!" : {
+
+    },
+    "Prevents habituation by varying reminder times slightly" : {
+
+    },
+    "Preview" : {
+
+    },
+    "Profile Details" : {
+
+    },
+    "Profile Name" : {
+
+    },
+    "Progress" : {
+
+    },
+    "Progress Reports" : {
+
+    },
+    "Quick Actions" : {
+
+    },
+    "Quick add" : {
+
+    },
+    "Quick Log" : {
+
+    },
+    "Receive automatic summaries of your exercise progress." : {
+
+    },
+    "Recent" : {
+
+    },
+    "Refresh Achievements" : {
+
+    },
+    "Reminder Interval" : {
+
+    },
+    "Reminder Schedule" : {
+
+    },
+    "Reminder Time" : {
+
+    },
+    "Reminders" : {
+
+    },
+    "Reminders Off" : {
+
+    },
+    "Reminders will only fire during these time blocks" : {
+
+    },
+    "Reminders will use the profile's default interval throughout the day" : {
+
+    },
+    "Reminders will vary by ±%lld minutes from the base interval" : {
+
+    },
+    "rep%@" : {
+
+    },
+    "Reports" : {
+
+    },
+    "Reports will be sent at %@:%@ %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reports will be sent at %1$@:%2$@ %3$@."
+          }
+        }
+      }
+    },
+    "Reset Timer" : {
+
+    },
+    "Restore Purchases" : {
+
+    },
+    "Save" : {
+
+    },
+    "Save %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save %1$lld %2$@"
+          }
+        }
+      }
+    },
+    "Schedule" : {
+
+    },
+    "Schedule Profiles" : {
+
+    },
+    "Schedule Summary" : {
+
+    },
+    "Schedule Type" : {
+
+    },
+    "Scheduling..." : {
+
+    },
+    "Search exercises..." : {
+
+    },
+    "Select an exercise to log your activity" : {
+
+    },
+    "Select Exercise" : {
+
+    },
+    "Select Icon" : {
+
+    },
+    "Selected: %@" : {
+
+    },
+    "Set All Days to Monday" : {
+
+    },
+    "Set the exact time for this reminder" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Simulate Tier" : {
+
+    },
+    "Standard" : {
+
+    },
+    "StandFit" : {
+
+    },
+    "Start Free Trial" : {
+
+    },
+    "Start logging exercises to see your history here." : {
+
+    },
+    "Start Time" : {
+
+    },
+    "Start your 14-day free trial" : {
+
+    },
+    "Style" : {
+
+    },
+    "Subscription" : {
+
+    },
+    "Subscription automatically renews unless canceled at least 24 hours before the end of the current period." : {
+
+    },
+    "Subscription Status" : {
+
+    },
+    "Switch Profile" : {
+
+    },
+    "Tap 'Refresh Achievements' to update achievement names and progress" : {
+
+    },
+    "Tap + to create your own exercises" : {
+
+    },
+    "Tap an exercise to log it" : {
+
+    },
+    "Target:" : {
+
+    },
+    "Template Active" : {
+
+    },
+    "Template Name" : {
+
+    },
+    "Template Type" : {
+
+    },
+    "Templates Created" : {
+
+    },
+    "Test Haptic" : {
+
+    },
+    "This is the starting value when logging" : {
+
+    },
+    "This schedule will apply to all 7 days of the week." : {
+
+    },
+    "This will delete all exercise logs." : {
+
+    },
+    "This will delete the template and all generated achievements. Your exercise logs will be kept." : {
+
+    },
+    "This will remove the exercise. Your logged data will be kept." : {
+
+    },
+    "Time" : {
+
+    },
+    "Time Block" : {
+
+    },
+    "Time Blocks" : {
+
+    },
+    "Time Range" : {
+
+    },
+    "Time Window:" : {
+
+    },
+    "time.minutes" : {
+      "comment" : "X minutes duration",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d Minuten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d minutes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d minutos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d minutes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d分"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d minutos"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d分钟"
+          }
+        }
+      }
+    },
+    "time.seconds" : {
+      "comment" : "X seconds duration",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d Sekunden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d seconds"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d segundos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d secondes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d秒"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d segundos"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%d秒"
+          }
+        }
+      }
+    },
+    "Timeline" : {
+
+    },
+    "Today" : {
+
+    },
+    "Today's Activity" : {
+
+    },
+    "Total: %lld exercises" : {
+
+    },
+    "Trial Ending Soon!" : {
+
+    },
+    "Trial ends: %@" : {
+
+    },
+    "Trial: %lld days" : {
+
+    },
+    "Try adjusting your search" : {
+
+    },
+    "Unlock all features" : {
+
+    },
+    "Unlock all features and maximize your fitness journey" : {
+
+    },
+    "Unlocked (%lld)" : {
+
+    },
+    "Upgrade now to keep your achievements & stats" : {
+
+    },
+    "Upgrade to Premium" : {
+
+    },
+    "Upgrade to Premium to customize each day individually with different time blocks and intervals." : {
+
+    },
+    "Urgent" : {
+
+    },
+    "Use 'Edit' to modify time blocks, intervals, and per-day settings" : {
+
+    },
+    "Use profiles for advanced scheduling with time blocks, per-day customization, and more" : {
+
+    },
+    "Version" : {
+
+    },
+    "Visual representation of when reminders will fire during this time block. Darker blue = more frequent." : {
+
+    },
+    "Visual representation of your time blocks. Darker blue = more frequent reminders." : {
+
+    },
+    "vs previous period" : {
+
+    },
+    "Week" : {
+
+    },
+    "Week 🔒" : {
+
+    },
+    "Week Overview" : {
+
+    },
+    "What did you do?" : {
+
+    },
+    "When enabled, reminders will be active every day of the week with the same schedule." : {
+
+    },
+    "You can customize the schedule after creating the profile" : {
+
+    },
+    "Your Profiles" : {
+
+    }
+  },
+  "version" : "1.0"
+}
