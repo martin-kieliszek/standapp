@@ -8,6 +8,47 @@
 import SwiftUI
 import StandFitCore
 
+// MARK: - Color Hex Extension
+
+extension Color {
+    /// Initialize a Color from a hex string (e.g., "#FF5733" or "FF5733")
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (255, 0, 0, 0)
+        }
+        self.init(
+            .sRGB,
+            red: Double(r) / 255,
+            green: Double(g) / 255,
+            blue: Double(b) / 255,
+            opacity: Double(a) / 255
+        )
+    }
+    
+    /// Convert Color to hex string
+    func toHex() -> String? {
+        guard let components = UIColor(self).cgColor.components else { return nil }
+        let r = Float(components[0])
+        let g = Float(components[1])
+        let b = Float(components[2])
+        return String(format: "#%02lX%02lX%02lX",
+                     lroundf(r * 255),
+                     lroundf(g * 255),
+                     lroundf(b * 255))
+    }
+}
+
 // MARK: - AchievementTier Color Extension
 
 extension AchievementTier {
@@ -41,7 +82,13 @@ struct ExerciseColorPalette {
         .squats: .blue,
         .pushups: .green,
         .lunges: .orange,
-        .plank: .purple
+        .plank: .purple,
+        .standingStretch: .cyan,
+        .neckRolls: .mint,
+        .shoulderShrugs: .indigo,
+        .calfRaises: .pink,
+        .armCircles: .teal,
+        .walkInPlace: .yellow
     ]
 
     // Extended palette for custom exercises (carefully chosen for iOS visibility)
@@ -69,16 +116,13 @@ struct ExerciseColorPalette {
             return builtInColors[type] ?? .gray
         }
 
-        // For custom exercises, assign a consistent color based on ID
-        if let cached = customExerciseColors[item.id] {
-            return cached
+        // For custom exercises, use the stored color
+        if let hexColor = item.colorHex {
+            return Color(hex: hexColor)
         }
 
-        // Assign new color from palette
-        let index = customExerciseColors.count % customColorPalette.count
-        let color = customColorPalette[index]
-        customExerciseColors[item.id] = color
-        return color
+        // Fallback to gray if no color is set
+        return .gray
     }
 
     // Reset cache (useful if exercises are deleted)

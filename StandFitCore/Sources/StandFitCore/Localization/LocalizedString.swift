@@ -531,6 +531,8 @@ public enum LocalizedString {
         public static let unitType = NSLocalizedString("create_exercise.unit_type", tableName: table, comment: "Unit type field")
         public static let defaultCount = NSLocalizedString("create_exercise.default_count", tableName: table, comment: "Default count field")
         public static let color = NSLocalizedString("create_exercise.color", tableName: table, comment: "Color field")
+        public static let selectColor = NSLocalizedString("create_exercise.select_color", tableName: table, comment: "Select Color")
+        public static let colorPreview = NSLocalizedString("create_exercise.color_preview", tableName: table, comment: "Color preview")
         public static let preview = NSLocalizedString("create_exercise.preview", tableName: table, comment: "Preview section")
         public static let saveButton = NSLocalizedString("create_exercise.save", tableName: table, comment: "Save button")
         public static let cancelButton = NSLocalizedString("create_exercise.cancel", tableName: table, comment: "Cancel button")

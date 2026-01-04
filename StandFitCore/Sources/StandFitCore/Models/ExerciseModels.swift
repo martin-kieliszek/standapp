@@ -151,6 +151,7 @@ public struct CustomExercise: Codable, Identifiable, Equatable {
     public var unitType: ExerciseUnitType
     public var defaultCount: Int  // Stored in base unit (seconds for time, reps for count)
     public var sortOrder: Int
+    public var colorHex: String  // Hex color code (e.g., "#FF5733")
 
     public init(
         id: UUID = UUID(),
@@ -158,7 +159,8 @@ public struct CustomExercise: Codable, Identifiable, Equatable {
         icon: String,
         unitType: ExerciseUnitType = .reps,
         defaultCount: Int = 10,
-        sortOrder: Int = 0
+        sortOrder: Int = 0,
+        colorHex: String = "#007AFF"  // Default iOS blue
     ) {
         self.id = id
         self.name = name
@@ -166,6 +168,7 @@ public struct CustomExercise: Codable, Identifiable, Equatable {
         self.unitType = unitType
         self.defaultCount = defaultCount
         self.sortOrder = sortOrder
+        self.colorHex = colorHex
     }
 
     /// Get the display value for the default count (converts seconds to minutes if needed)
@@ -186,6 +189,7 @@ public struct ExerciseItem: Identifiable, Equatable, Hashable {
     public let isBuiltIn: Bool
     public let builtInType: ExerciseType?
     public let customExercise: CustomExercise?
+    public let colorHex: String?  // Hex color for custom exercises
 
     public init(builtIn: ExerciseType) {
         self.id = "builtin_\(builtIn.id)"
@@ -196,6 +200,7 @@ public struct ExerciseItem: Identifiable, Equatable, Hashable {
         self.isBuiltIn = true
         self.builtInType = builtIn
         self.customExercise = nil
+        self.colorHex = nil
     }
 
     public init(custom: CustomExercise) {
@@ -207,6 +212,7 @@ public struct ExerciseItem: Identifiable, Equatable, Hashable {
         self.isBuiltIn = false
         self.builtInType = nil
         self.customExercise = custom
+        self.colorHex = custom.colorHex
     }
 
     public static func == (lhs: ExerciseItem, rhs: ExerciseItem) -> Bool {

@@ -20,6 +20,7 @@ struct CreateExerciseView: View {
     @State private var icon: String
     @State private var unitType: ExerciseUnitType
     @State private var defaultCount: Int
+    @State private var selectedColor: Color
     @State private var showingDeleteConfirmation = false
     @State private var showPaywall = false
     @State private var previousUnitType: ExerciseUnitType
@@ -40,12 +41,14 @@ struct CreateExerciseView: View {
             _icon = State(initialValue: exercise.icon)
             _unitType = State(initialValue: exercise.unitType)
             _defaultCount = State(initialValue: exercise.defaultCount)
+            _selectedColor = State(initialValue: Color(hex: exercise.colorHex))
             _previousUnitType = State(initialValue: exercise.unitType)
         } else {
             _name = State(initialValue: "")
             _icon = State(initialValue: "figure.stand")
             _unitType = State(initialValue: .reps)
             _defaultCount = State(initialValue: 10)
+            _selectedColor = State(initialValue: .blue)
             _previousUnitType = State(initialValue: .reps)
         }
     }
@@ -82,6 +85,22 @@ struct CreateExerciseView: View {
                 // Icon Selection
                 Section(LocalizedString.UI.icon) {
                     IconPickerButton(selectedIcon: $icon)
+                }
+
+                // Color Selection
+                Section(LocalizedString.CreateExercise.color) {
+                    ColorPicker(LocalizedString.CreateExercise.selectColor, selection: $selectedColor, supportsOpacity: false)
+                    
+                    // Color preview with icon
+                    HStack {
+                        Image(systemName: icon)
+                            .font(.title)
+                            .foregroundStyle(selectedColor)
+                        Text(LocalizedString.CreateExercise.colorPreview)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.vertical, 4)
                 }
 
                 // Unit Type Selection
@@ -164,7 +183,7 @@ struct CreateExerciseView: View {
                 HStack(spacing: 16) {
                     Image(systemName: icon)
                         .font(.title)
-                        .foregroundStyle(.green)
+                        .foregroundStyle(selectedColor)
 
                     VStack(alignment: .leading, spacing: 4) {
                         Text(name.isEmpty ? LocalizedString.CreateExercise.exerciseNamePlaceholder : name)
@@ -272,6 +291,7 @@ struct CreateExerciseView: View {
             updated.icon = icon
             updated.unitType = unitType
             updated.defaultCount = defaultCount
+            updated.colorHex = selectedColor.toHex() ?? "#007AFF"
             store.updateCustomExercise(updated)
 
             NotificationManager.shared.playClickHaptic()
@@ -282,7 +302,8 @@ struct CreateExerciseView: View {
                 name: trimmedName,
                 icon: icon,
                 unitType: unitType,
-                defaultCount: defaultCount
+                defaultCount: defaultCount,
+                colorHex: selectedColor.toHex() ?? "#007AFF"
             )
             store.addCustomExercise(newExercise)
 
