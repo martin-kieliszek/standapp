@@ -46,15 +46,17 @@ struct PaywallView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         FeatureRow(icon: "trophy.fill", color: .purple, title: LocalizedString.Premium.featureAchievementSystem, description: LocalizedString.Premium.featureAchievementSystemDesc)
                         
-                        FeatureRow(icon: "chart.line.uptrend.xyaxis", color: .blue, title: LocalizedString.Premium.featureAdvancedAnalytics, description: LocalizedString.Premium.featureAdvancedAnalyticsDesc)
+                        FeatureRow(icon: "chart.bar.doc.horizontal.fill", color: .blue, title: LocalizedString.Premium.featureWeeklyInsights, description: LocalizedString.Premium.featureWeeklyInsightsDesc)
                         
                         FeatureRow(icon: "clock.fill", color: .green, title: LocalizedString.Premium.featureTimelineViz, description: LocalizedString.Premium.featureTimelineVizDesc)
                         
                         FeatureRow(icon: "plus.circle.fill", color: .pink, title: LocalizedString.Premium.featureUnlimitedCustom, description: LocalizedString.Premium.featureUnlimitedCustomDesc)
                         
-                        FeatureRow(icon: "square.and.arrow.up.fill", color: .cyan, title: LocalizedString.Premium.featureExportData, description: LocalizedString.Premium.featureExportDataDesc)
+                        FeatureRow(icon: "target", color: .orange, title: LocalizedString.Premium.featureCustomGoals, description: LocalizedString.Premium.featureCustomGoalsDesc)
                         
-                        FeatureRow(icon: "icloud.fill", color: .indigo, title: LocalizedString.Premium.featureiCloudSync, description: LocalizedString.Premium.featureiCloudSyncDesc)
+                        // MARK: - Future Features (Commented Out)
+                        // FeatureRow(icon: "square.and.arrow.up.fill", color: .cyan, title: LocalizedString.Premium.featureExportData, description: LocalizedString.Premium.featureExportDataDesc)
+                        // FeatureRow(icon: "icloud.fill", color: .indigo, title: LocalizedString.Premium.featureiCloudSync, description: LocalizedString.Premium.featureiCloudSyncDesc)
                     }
                     .padding(.horizontal)
                     

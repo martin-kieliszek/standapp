@@ -301,7 +301,7 @@ struct TimeBlockEditorSheet: View {
     @State private var selectedIcon: String?
     @State private var notificationStyle: TimeBlock.NotificationStyle
     
-    let intervalOptions = [1, 15, 20, 30, 45, 60, 90, 120]
+    let intervalOptions = [5,10, 15, 20, 30, 45, 60, 90, 120]
     let icons = ["sun.max.fill", "sunrise.fill", "moon.fill", "briefcase.fill", 
                  "laptopcomputer", "figure.run", "leaf.fill", "clock.fill",
                  "bell.fill", "star.fill", "heart.fill", "bolt.fill"]

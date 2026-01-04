@@ -623,12 +623,16 @@ public enum LocalizedString {
         public static let featureUnlimitedCustom = featureUnlimitedExercises  // Alias
         public static let featureUnlimitedProfiles = NSLocalizedString("premium.feature_unlimited_profiles", tableName: table, comment: "Unlimited schedule profiles")
         public static let featureTimelineViz = NSLocalizedString("premium.feature_timeline_viz", tableName: table, comment: "Timeline Visualization")
+        public static let featureWeeklyInsights = NSLocalizedString("premium.feature_weekly_insights", tableName: table, comment: "Weekly Insights")
+        public static let featureCustomGoals = NSLocalizedString("premium.feature_custom_goals", tableName: table, comment: "Custom Goals & Achievements")
         public static let featureExportData = NSLocalizedString("premium.feature_export_data", tableName: table, comment: "Export Your Data")
         public static let featureiCloudSync = NSLocalizedString("premium.feature_icloud_sync", tableName: table, comment: "iCloud Sync")
 
         // Feature Descriptions
         public static let featureAchievementSystemDesc = NSLocalizedString("premium.feature_achievement_system_desc", tableName: table, comment: "Unlock all badges, streaks, and challenges")
         public static let featureAdvancedAnalyticsDesc = NSLocalizedString("premium.feature_advanced_analytics_desc", tableName: table, comment: "30/60/90-day trends and insights")
+        public static let featureWeeklyInsightsDesc = NSLocalizedString("premium.feature_weekly_insights_desc", tableName: table, comment: "Get personalized weekly progress reports")
+        public static let featureCustomGoalsDesc = NSLocalizedString("premium.feature_custom_goals_desc", tableName: table, comment: "Create your own goals and achievement milestones")
         public static let featureTimelineVizDesc = NSLocalizedString("premium.feature_timeline_viz_desc", tableName: table, comment: "See your response patterns over time")
         public static let featureUnlimitedCustomDesc = NSLocalizedString("premium.feature_unlimited_custom_desc", tableName: table, comment: "Create as many exercises as you need")
         public static let featureExportDataDesc = NSLocalizedString("premium.feature_export_data_desc", tableName: table, comment: "Download activity reports anytime")

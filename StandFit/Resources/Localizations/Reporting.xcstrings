@@ -67,16 +67,16 @@
       }
     },
     "reporting.exercises_logged" : {
-      "comment" : "You logged %d exercise(s) %@ - notification body part",
+      "comment" : "You logged %d exercise(s) %@ - notification body part. %1$d=count, %2$@=plural suffix, %3$@=timeframe",
       "extractionState" : "manual",
       "localizations" : {
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sie haben %d Übung(en) %@ protokolliert" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "You logged %d exercise%@ %@" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registraste %d ejercicio%@ %@" } },
-        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vous avez enregistré %d exercice%@ %@" } },
-        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%@に%d件のエクササイズを記録しました" } },
-        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Você registrou %d exercício%@ %@" } },
-        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "您在%@记录了%d次锻炼" } }
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sie haben %1$d Übung%2$@ %3$@ protokolliert" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You logged %1$d exercise%2$@ %3$@" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registraste %1$d ejercicio%2$@ %3$@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vous avez enregistré %1$d exercice%2$@ %3$@" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%3$@に%1$d件のエクササイズ%2$@を記録しました" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Você registrou %1$d exercício%2$@ %3$@" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "您在%3$@记录了%1$d次锻炼%2$@" } }
       }
     },
     "reporting.plural_s" : {
