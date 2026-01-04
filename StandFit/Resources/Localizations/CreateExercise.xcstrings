@@ -1489,7 +1489,7 @@
         }
       }
     },
-    "create_exercise.exercises_title" : {
+    "create_exercise.exercises" : {
       "comment" : "Exercises (navigation title for list)",
       "extractionState" : "manual",
       "localizations" : {
