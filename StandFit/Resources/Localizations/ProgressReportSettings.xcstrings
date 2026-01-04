@@ -480,6 +480,102 @@
           }
         }
       }
+    },
+    "progress_report_settings.weekly_schedule_day" : {
+      "comment" : "Day for weekly progress reports",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeden Sonntag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every Sunday"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada domingo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque dimanche"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "毎週日曜日"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo domingo"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每周日"
+          }
+        }
+      }
+    },
+    "progress_report_settings.weekly_schedule_footer" : {
+      "comment" : "Footer explaining weekly insights schedule",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wöchentliche Einblicke werden jeden Sonntagmorgen mit Ihren Fortschritts-Highlights zugestellt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly insights will be delivered every Sunday morning with your progress highlights."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los informes semanales se enviarán cada domingo por la mañana con los aspectos destacados de su progreso."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les rapports hebdomadaires seront livrés chaque dimanche matin avec vos points forts de progression."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "毎週日曜日の朝に、進捗のハイライトとともに週次インサイトが配信されます。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os insights semanais serão entregues todos os domingos de manhã com os destaques do seu progresso."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每周日早上将发送每周见解，包含您的进度亮点。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

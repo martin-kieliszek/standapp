@@ -123,9 +123,6 @@
     "1.0.0" : {
 
     },
-    "9:00 AM" : {
-
-    },
     "achievements.title" : {
       "comment" : "Achievements screen title",
       "extractionState" : "manual",
@@ -226,9 +223,6 @@
 
     },
     "Day" : {
-
-    },
-    "Every Sunday" : {
 
     },
     "general.cancel" : {
@@ -429,9 +423,6 @@
     "Minute" : {
 
     },
-    "Schedule" : {
-
-    },
     "Send Test Notification (5s)" : {
 
     },
@@ -536,9 +527,6 @@
           }
         }
       }
-    },
-    "Weekly insights will be delivered every Sunday morning with your progress highlights." : {
-
     }
   },
   "version" : "1.0"

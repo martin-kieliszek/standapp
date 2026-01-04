@@ -1002,6 +1002,8 @@ public enum LocalizedString {
         public static let timeHeader = NSLocalizedString("progress_report_settings.time_header", tableName: table, comment: "Section header for time settings")
         public static let navigationTitle = NSLocalizedString("progress_report_settings.navigation_title", tableName: table, comment: "Navigation title for progress report settings screen")
         public static let saveButton = NSLocalizedString("progress_report_settings.save_button", tableName: table, comment: "Save button text")
+        public static let weeklyScheduleDay = NSLocalizedString("progress_report_settings.weekly_schedule_day", tableName: table, comment: "Day for weekly progress reports")
+        public static let weeklyScheduleFooter = NSLocalizedString("progress_report_settings.weekly_schedule_footer", tableName: table, comment: "Footer explaining weekly insights schedule")
         
         public static func timeFooter(hour: String, minute: String, frequency: String) -> String {
             String(format: NSLocalizedString("progress_report_settings.time_footer", tableName: table, comment: "Footer text showing when reports will be sent"), hour, minute, frequency)

@@ -38,27 +38,27 @@ struct ProgressReportSettingsView: View {
                 Text(LocalizedString.ProgressReportSettings.enabledFooter)
             }
             
-            // Info section
+            // Info section showing fixed schedule
             if isEnabled {
                 Section {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Image(systemName: "calendar")
                                 .foregroundStyle(.blue)
-                            Text("Every Sunday")
+                            Text(LocalizedString.ProgressReportSettings.weeklyScheduleDay)
                                 .font(.body)
                         }
                         HStack {
                             Image(systemName: "clock")
                                 .foregroundStyle(.blue)
-                            Text("9:00 AM")
+                            Text(formatHour(9))
                                 .font(.body)
                         }
                     }
                 } header: {
-                    Text("Schedule")
+                    Text(LocalizedString.ProgressReportSettings.scheduleHeader)
                 } footer: {
-                    Text("Weekly insights will be delivered every Sunday morning with your progress highlights.")
+                    Text(LocalizedString.ProgressReportSettings.weeklyScheduleFooter)
                 }
             }
         }
@@ -90,6 +90,13 @@ struct ProgressReportSettingsView: View {
         notificationManager.playSuccessHaptic()
         hasChanges = false
         dismiss()
+    }
+    
+    private func formatHour(_ hour: Int) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h a"
+        let date = Calendar.current.date(from: DateComponents(hour: hour)) ?? Date()
+        return formatter.string(from: date)
     }
 }
 
