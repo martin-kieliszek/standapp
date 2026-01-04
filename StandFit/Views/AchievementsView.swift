@@ -111,7 +111,7 @@ struct AchievementsView: View {
                 Text("\(unlocked)/\(total)")
                     .font(.caption)
                     .fontWeight(.semibold)
-                Text(tier.rawValue)
+                Text(tier.displayName)
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
@@ -129,7 +129,7 @@ struct AchievementsView: View {
             HStack(spacing: 8) {
                 categoryPill(nil, label: LocalizedString.Achievements.all)
                 ForEach(AchievementCategory.allCases) { category in
-                    categoryPill(category, label: category.rawValue)
+                    categoryPill(category, label: category.displayName)
                 }
             }
         }
@@ -255,7 +255,7 @@ struct AchievementRow: View {
                     Circle()
                         .fill(achievement.tier.color.opacity(0.3))
                         .frame(width: 8, height: 8)
-                    Text(achievement.tier.rawValue)
+                    Text(achievement.tier.displayName)
                         .font(.caption2)
                         .foregroundStyle(.secondary)
 

@@ -89,7 +89,7 @@ struct CreateExerciseView: View {
                     Picker(LocalizedString.CreateExercise.measuredIn, selection: $unitType) {
                         ForEach(ExerciseUnitType.allCases) {
                             type in
-                            Text(type.rawValue).tag(type)
+                            Text(type.displayName).tag(type)
                         }
                     }
                     .pickerStyle(.menu)
@@ -351,7 +351,7 @@ struct CustomExerciseListView: View {
         HStack {
             Image(systemName: exercise.icon)
                 .foregroundStyle(.blue)
-            Text(exercise.rawValue)
+            Text(exercise.displayName)
             Spacer()
             Text("\(exercise.defaultCount)\(exercise.unitType.unitLabelShort)")
                 .font(.caption)

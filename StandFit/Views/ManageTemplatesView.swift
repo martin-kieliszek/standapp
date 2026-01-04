@@ -222,7 +222,7 @@ private struct TemplateRow: View {
 
             // Type and tier count
             HStack(spacing: 16) {
-                Label(template.templateType.rawValue, systemImage: template.templateType.icon)
+                Label(template.templateType.displayName, systemImage: template.templateType.icon)
                     .font(.caption)
                     .foregroundStyle(.secondary)
 

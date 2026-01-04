@@ -184,7 +184,7 @@ struct LogRow: View {
 
     private var exerciseName: String {
         if let exerciseType = log.exerciseType {
-            return exerciseType.rawValue
+            return exerciseType.displayName
         } else if let customId = log.customExerciseId,
                   let customExercise = store.customExercise(byId: customId) {
             return customExercise.name

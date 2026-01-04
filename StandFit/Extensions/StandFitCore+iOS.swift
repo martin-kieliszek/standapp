@@ -30,11 +30,6 @@ extension AchievementTier {
         case .platinum: return "sparkles"
         }
     }
-
-    /// Display name for tier
-    var displayName: String {
-        return self.rawValue
-    }
 }
 
 // MARK: - ExerciseItem Color Palette
