@@ -42,6 +42,7 @@ This directory contains detailed documentation for all UX issues identified in t
 | UX34 | Daily Goals - Set and track daily exercise targets | ⏳ Pending | — | [ux34-daily-goals.md](./ux34-daily-goals.md) |
 | UX35 | Streak Freeze/Recovery - Protect or restore exercise streaks | ⏳ Pending | — | [ux35-streak-freeze-recovery.md](./ux35-streak-freeze-recovery.md) |
 | UX36 | Sleep/Rest Day Tracking - Explicit rest day logging | ⏳ Pending | — | [ux36-rest-day-tracking.md](./ux36-rest-day-tracking.md) |
+| UX37 | Weekly Insights Cards - Swipeable progress highlights view | ⏳ Pending | — | [ux37-weekly-insights-cards.md](./ux37-weekly-insights-cards.md) |
 
 ## Status Legend
 
@@ -89,6 +90,7 @@ This directory contains detailed documentation for all UX issues identified in t
 - [UX34: Daily Goals](./ux34-daily-goals.md)
 - [UX35: Streak Freeze/Recovery](./ux35-streak-freeze-recovery.md)
 - [UX36: Rest Day Tracking](./ux36-rest-day-tracking.md)
+- [UX37: Weekly Insights Cards](./ux37-weekly-insights-cards.md)
 
 ### Strategy & Analysis Documents
 - [UX15: Monetization Strategy](./ux15-monetization-strategy.md)
