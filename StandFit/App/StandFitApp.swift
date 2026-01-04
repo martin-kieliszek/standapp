@@ -12,10 +12,25 @@ import StandFitCore
 @main
 struct StandFitApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+    @StateObject private var exerciseStore = ExerciseStore.shared
+    @State private var showInitialOnboarding = false
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .sheet(isPresented: $showInitialOnboarding) {
+                    OnboardingView(store: exerciseStore, isInitialOnboarding: true)
+                }
+                .onAppear {
+                    // Check if user has completed onboarding
+                    let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+                    if !hasCompletedOnboarding {
+                        // Small delay to let the app settle before showing onboarding
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            showInitialOnboarding = true
+                        }
+                    }
+                }
         }
     }
 }

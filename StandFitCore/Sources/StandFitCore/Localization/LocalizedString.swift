@@ -1510,4 +1510,48 @@ public enum LocalizedString {
         public static let secondsLabel = NSLocalizedString("exercise_unit_type.seconds.label", tableName: table, comment: "Seconds unit label (lowercase)")
         public static let minutesLabel = NSLocalizedString("exercise_unit_type.minutes.label", tableName: table, comment: "Minutes unit label (lowercase)")
     }
+
+    // MARK: - Onboarding
+
+    public enum Onboarding {
+        private static let table = "Onboarding"
+
+        // Welcome screen
+        public static let welcomeTitle = NSLocalizedString("onboarding.welcome_title", tableName: table, comment: "Welcome screen title")
+        public static let welcomeSubtitle = NSLocalizedString("onboarding.welcome_subtitle", tableName: table, comment: "Welcome screen subtitle")
+        public static let benefitScheduling = NSLocalizedString("onboarding.benefit_scheduling", tableName: table, comment: "Scheduling benefit")
+        public static let benefitTimeBlocks = NSLocalizedString("onboarding.benefit_time_blocks", tableName: table, comment: "Time blocks benefit")
+        public static let benefitReschedule = NSLocalizedString("onboarding.benefit_reschedule", tableName: table, comment: "Reschedule benefit")
+
+        // Schedule power screen
+        public static let schedulePowerTitle = NSLocalizedString("onboarding.schedule_power_title", tableName: table, comment: "Schedule power page title")
+        public static let schedulePowerDescription = NSLocalizedString("onboarding.schedule_power_description", tableName: table, comment: "Schedule power page description")
+        public static let exampleSchedule = NSLocalizedString("onboarding.example_schedule", tableName: table, comment: "Example schedule label")
+        public static let exampleMorningRoutine = NSLocalizedString("onboarding.example_morning_routine", tableName: table, comment: "Morning routine example")
+        public static let exampleWorkTime = NSLocalizedString("onboarding.example_work_time", tableName: table, comment: "Work time example")
+        public static let exampleEvening = NSLocalizedString("onboarding.example_evening", tableName: table, comment: "Evening example")
+        public static let exampleEvery30Min = NSLocalizedString("onboarding.example_every_30min", tableName: table, comment: "Every 30 min interval example")
+        public static let exampleEvery60Min = NSLocalizedString("onboarding.example_every_60min", tableName: table, comment: "Every 60 min interval example")
+        public static let exampleEvery45Min = NSLocalizedString("onboarding.example_every_45min", tableName: table, comment: "Every 45 min interval example")
+        public static let createYourSchedule = NSLocalizedString("onboarding.create_your_schedule", tableName: table, comment: "Create your schedule button")
+        public static let viewYourSchedule = NSLocalizedString("onboarding.view_your_schedule", tableName: table, comment: "View your schedule button")
+        public static let noProfileYet = NSLocalizedString("onboarding.no_profile_yet", tableName: table, comment: "No profile yet message")
+
+        // Reschedule screen
+        public static let rescheduleTitle = NSLocalizedString("onboarding.reschedule_title", tableName: table, comment: "Reschedule page title")
+        public static let rescheduleDescription = NSLocalizedString("onboarding.reschedule_description", tableName: table, comment: "Reschedule page description")
+        public static let rescheduleButtonLocation = NSLocalizedString("onboarding.reschedule_button_location", tableName: table, comment: "Reschedule button location label")
+        public static let nextReminder = NSLocalizedString("onboarding.next_reminder", tableName: table, comment: "Next reminder label")
+        public static let whenToReschedule = NSLocalizedString("onboarding.when_to_reschedule", tableName: table, comment: "When to reschedule header")
+        public static let useCaseSleep = NSLocalizedString("onboarding.use_case_sleep", tableName: table, comment: "Sleep use case")
+        public static let useCaseMeeting = NSLocalizedString("onboarding.use_case_meeting", tableName: table, comment: "Meeting use case")
+        public static let useCaseErrand = NSLocalizedString("onboarding.use_case_errand", tableName: table, comment: "Errand use case")
+
+        // Navigation
+        public static let next = NSLocalizedString("onboarding.next", tableName: table, comment: "Next button")
+        public static let back = NSLocalizedString("onboarding.back", tableName: table, comment: "Back button")
+        public static let getStarted = NSLocalizedString("onboarding.get_started", tableName: table, comment: "Get started button")
+        public static let gotIt = NSLocalizedString("onboarding.got_it", tableName: table, comment: "Got it button")
+        public static let skip = NSLocalizedString("onboarding.skip", tableName: table, comment: "Skip button")
+    }
 }

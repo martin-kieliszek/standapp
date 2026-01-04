@@ -23,6 +23,7 @@ struct ContentView: View {
     @State private var showAchievements = false
     @State private var showCreateExercise = false
     @State private var showPaywall = false
+    @State private var showOnboarding = false
     @State private var currentTime = Date()
     @State private var showingAchievementToast = false
     @State private var toastAchievement: Achievement?
@@ -83,6 +84,16 @@ struct ContentView: View {
             .navigationTitle(LocalizedString.General.appName)
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showOnboarding = true
+                    } label: {
+                        Image(systemName: "questionmark.circle.fill")
+                            .font(.title3)
+                            .foregroundStyle(.blue)
+                    }
+                }
+
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showSettings = true
@@ -130,6 +141,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showPaywall) {
                 PaywallView(subscriptionManager: SubscriptionManager.shared)
+            }
+            .sheet(isPresented: $showOnboarding) {
+                OnboardingView(store: exerciseStore, isInitialOnboarding: false)
             }
             .overlay {
                 if showingAchievementToast, let achievement = toastAchievement {
