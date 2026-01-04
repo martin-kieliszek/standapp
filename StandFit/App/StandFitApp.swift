@@ -58,7 +58,41 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             FocusStatusManager.shared.requestAuthorization()
         }
         
+        // ✅ Monitor app lifecycle to ensure notifications stay scheduled
+        setupAppLifecycleMonitoring()
+        
         return true
+    }
+    
+    /// Monitor app entering foreground to ensure notification chain stays active
+    private func setupAppLifecycleMonitoring() {
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willEnterForegroundNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.ensureNotificationChainActive()
+        }
+    }
+    
+    /// Check if there's a pending exercise reminder notification, schedule one if missing
+    private func ensureNotificationChainActive() {
+        Task {
+            let center = UNUserNotificationCenter.current()
+            let pendingRequests = await center.pendingNotificationRequests()
+            
+            // Check if there's a pending exercise reminder
+            let hasExerciseReminder = pendingRequests.contains { request in
+                request.identifier == NotificationType.exerciseReminder.rawValue
+            }
+            
+            if !hasExerciseReminder {
+                print("⚠️ No exercise reminder scheduled - scheduling one now")
+                NotificationManager.shared.scheduleReminderWithSchedule(store: ExerciseStore.shared)
+            } else {
+                print("✅ Exercise reminder is scheduled")
+            }
+        }
     }
     
     // MARK: - UNUserNotificationCenterDelegate
@@ -159,6 +193,17 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
         // User responded - cancel any pending follow-up
         notificationManager.cancelFollowUpReminder()
+        
+        // ✅ CRITICAL: Schedule next notification regardless of which action was taken
+        // This ensures notification chain continues even if user dismisses/ignores
+        // Only do this for exercise reminders (not progress reports or achievements)
+        let categoryIdentifier = response.notification.request.content.categoryIdentifier
+        if categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier {
+            // Don't schedule if user snoozed (snooze handles its own scheduling)
+            if response.actionIdentifier != "SNOOZE" {
+                notificationManager.scheduleReminderWithSchedule(store: store)
+            }
+        }
 
         switch response.actionIdentifier {
         case "LOG_EXERCISE":
@@ -171,6 +216,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
         case "SNOOZE":
             // User tapped "Snooze" - schedule notification in 5 minutes (300 seconds)
+            // Note: Snooze handles its own scheduling, so we skip the auto-schedule above
             notificationManager.snoozeReminder(seconds: 300, store: store)
             notificationManager.playClickHaptic()
 
@@ -182,14 +228,16 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             }
 
         case UNNotificationDefaultActionIdentifier:
-            // User tapped the notification itself - open exercise picker and reschedule
+            // User tapped the notification itself - open exercise picker
+            // (Next notification already scheduled above)
             notificationManager.playClickHaptic()
-            notificationManager.scheduleReminderWithSchedule(store: store)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 NotificationCenter.default.post(name: .showExercisePicker, object: nil)
             }
 
         default:
+            // User dismissed notification or other action
+            // (Next notification already scheduled above)
             break
         }
     }
