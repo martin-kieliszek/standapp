@@ -24,7 +24,7 @@ struct StandFitApp: App {
 
 extension Notification.Name {
     static let showExercisePicker = Notification.Name("showExercisePicker")
-    static let showProgressReport = Notification.Name("showProgressReport")
+    static let showWeeklyInsights = Notification.Name("showWeeklyInsights")
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -154,7 +154,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionViewDetails, style: .default) { _ in
                 NotificationManager.shared.playClickHaptic()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    NotificationCenter.default.post(name: .showProgressReport, object: nil)
+                    NotificationCenter.default.post(name: .showWeeklyInsights, object: nil)
                 }
             })
         } else if categoryIdentifier == NotificationType.achievementUnlocked.categoryIdentifier {
@@ -224,7 +224,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             // User tapped "View Details" on progress report
             notificationManager.playClickHaptic()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                NotificationCenter.default.post(name: .showProgressReport, object: nil)
+                NotificationCenter.default.post(name: .showWeeklyInsights, object: nil)
             }
 
         case UNNotificationDefaultActionIdentifier:

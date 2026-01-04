@@ -182,6 +182,47 @@ struct SettingsView: View {
                 } header: {
                     Text(LocalizedString.Settings.about)
                 }
+                
+                #if DEBUG
+                // Debug Tools Section (only in DEBUG builds)
+                Section {
+                    Button {
+                        // Manually trigger weekly insights notification
+                        NotificationCenter.default.post(name: .showWeeklyInsights, object: nil)
+                        notificationManager.playSuccessHaptic()
+                    } label: {
+                        Label("Test Weekly Insights", systemImage: "chart.bar.doc.horizontal")
+                            .foregroundStyle(.blue)
+                    }
+                    
+                    Button {
+                        // Fire a test notification in 5 seconds
+                        let content = UNMutableNotificationContent()
+                        content.title = "Weekly Insights Ready"
+                        content.body = "Your weekly activity summary is available"
+                        content.sound = .default
+                        content.categoryIdentifier = "progressReport"
+                        
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                        let request = UNNotificationRequest(identifier: "test-weekly-insights", content: content, trigger: trigger)
+                        
+                        UNUserNotificationCenter.current().add(request) { error in
+                            if let error = error {
+                                print("Error scheduling test notification: \(error)")
+                            }
+                        }
+                        notificationManager.playSuccessHaptic()
+                    } label: {
+                        Label("Send Test Notification (5s)", systemImage: "bell.badge")
+                            .foregroundStyle(.orange)
+                    }
+                } header: {
+                    Text("🛠️ Debug Tools")
+                } footer: {
+                    Text("These debug options are only visible in development builds and won't appear in production.")
+                        .font(.caption2)
+                }
+                #endif
             }
             .navigationTitle(LocalizedString.Settings.title)
             .navigationBarTitleDisplayMode(.inline)

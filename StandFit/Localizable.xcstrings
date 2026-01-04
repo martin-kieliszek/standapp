@@ -99,10 +99,31 @@
     "•••" : {
 
     },
+    "🎯" : {
+
+    },
+    "🏅" : {
+
+    },
+    "🏆" : {
+
+    },
+    "🔥" : {
+
+    },
+    "🚀" : {
+
+    },
+    "🛠️ Debug Tools" : {
+
+    },
     "0 / 0" : {
 
     },
     "1.0.0" : {
+
+    },
+    "9:00 AM" : {
 
     },
     "achievements.title" : {
@@ -205,6 +226,9 @@
 
     },
     "Day" : {
+
+    },
+    "Every Sunday" : {
 
     },
     "general.cancel" : {
@@ -405,6 +429,18 @@
     "Minute" : {
 
     },
+    "Schedule" : {
+
+    },
+    "Send Test Notification (5s)" : {
+
+    },
+    "Test Weekly Insights" : {
+
+    },
+    "These debug options are only visible in development builds and won't appear in production." : {
+
+    },
     "time.minutes" : {
       "comment" : "X minutes duration",
       "extractionState" : "manual",
@@ -500,6 +536,9 @@
           }
         }
       }
+    },
+    "Weekly insights will be delivered every Sunday morning with your progress highlights." : {
+
     }
   },
   "version" : "1.0"

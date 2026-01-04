@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var selectedExerciseItem: ExerciseItem?
     @State private var showHistory = false
     @State private var showProgress = false
+    @State private var showWeeklyInsights = false
     @State private var showSettings = false
     @State private var showAchievements = false
     @State private var showCreateExercise = false
@@ -104,6 +105,9 @@ struct ContentView: View {
             .sheet(isPresented: $showProgress) {
                 ProgressReportView(store: exerciseStore, gamificationStore: gamificationStore)
             }
+            .sheet(isPresented: $showWeeklyInsights) {
+                WeeklyInsightsView(store: exerciseStore, gamificationStore: gamificationStore)
+            }
             .sheet(isPresented: $showSettings) {
                 SettingsView(store: exerciseStore)
             }
@@ -149,11 +153,8 @@ struct ContentView: View {
                     await requestNotificationPermission()
                 }
             }
-            .onReceive(NotificationCenter.default.publisher(for: .showExercisePicker)) { _ in
-                showExercisePicker = true
-            }
-            .onReceive(NotificationCenter.default.publisher(for: .showProgressReport)) { _ in
-                showProgress = true
+            .onReceive(NotificationCenter.default.publisher(for: .showWeeklyInsights)) { _ in
+                showWeeklyInsights = true
             }
             .onReceive(timer) { time in
                 currentTime = time

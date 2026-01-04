@@ -1397,6 +1397,79 @@ public enum LocalizedString {
         public static let lightning = NSLocalizedString("achievement_template_tier.lightning", tableName: table, comment: "Lightning tier label")
     }
 
+    // MARK: - Weekly Insights
+    
+    public enum WeeklyInsights {
+        private static let table = "WeeklyInsights"
+        
+        public static let navigationTitle = NSLocalizedString("weekly_insights.navigation_title", tableName: table, comment: "Navigation title for weekly insights view")
+        public static let doneButton = NSLocalizedString("weekly_insights.done_button", tableName: table, comment: "Done button")
+        
+        public static func pageIndicator(current: Int, total: Int) -> String {
+            String(format: NSLocalizedString("weekly_insights.page_indicator", tableName: table, comment: "Page indicator"), current, total)
+        }
+        
+        // Total Activity Card
+        public static let totalActivitySubtitle = NSLocalizedString("weekly_insights.total_activity_subtitle", tableName: table, comment: "Subtitle for total activity card")
+        
+        public static func vsLastWeek(_ percentage: String) -> String {
+            String(format: NSLocalizedString("weekly_insights.vs_last_week", tableName: table, comment: "Comparison label"), percentage)
+        }
+        
+        // Top Exercise Card
+        public static let topExerciseSubtitle = NSLocalizedString("weekly_insights.top_exercise_subtitle", tableName: table, comment: "Subtitle for top exercise card")
+        
+        public static func timesCount(_ count: Int) -> String {
+            String(format: NSLocalizedString("weekly_insights.times_count", tableName: table, comment: "Number of times performed"), count)
+        }
+        
+        public static func percentageActivity(_ percentage: String) -> String {
+            String(format: NSLocalizedString("weekly_insights.percentage_activity", tableName: table, comment: "Percentage of all activity"), percentage)
+        }
+        
+        // Consistency Card
+        public static func consistencyDays(_ days: Int) -> String {
+            String(format: NSLocalizedString("weekly_insights.consistency_days", tableName: table, comment: "Active days count"), days)
+        }
+        
+        public static let consistencySubtitle = NSLocalizedString("weekly_insights.consistency_subtitle", tableName: table, comment: "Subtitle for consistency card")
+        
+        public static func tryForMoreDays(_ days: Int) -> String {
+            String(format: NSLocalizedString("weekly_insights.try_for_more_days", tableName: table, comment: "Encouragement to be active more days"), days)
+        }
+        
+        // Day abbreviations
+        public static let dayMon = NSLocalizedString("weekly_insights.day_mon", tableName: table, comment: "Monday abbreviation")
+        public static let dayTue = NSLocalizedString("weekly_insights.day_tue", tableName: table, comment: "Tuesday abbreviation")
+        public static let dayWed = NSLocalizedString("weekly_insights.day_wed", tableName: table, comment: "Wednesday abbreviation")
+        public static let dayThu = NSLocalizedString("weekly_insights.day_thu", tableName: table, comment: "Thursday abbreviation")
+        public static let dayFri = NSLocalizedString("weekly_insights.day_fri", tableName: table, comment: "Friday abbreviation")
+        public static let daySat = NSLocalizedString("weekly_insights.day_sat", tableName: table, comment: "Saturday abbreviation")
+        public static let daySun = NSLocalizedString("weekly_insights.day_sun", tableName: table, comment: "Sunday abbreviation")
+        
+        // Streak Card
+        public static let streakDaySingular = NSLocalizedString("weekly_insights.streak_day_singular", tableName: table, comment: "Singular day for streak")
+        public static let streakTitle = NSLocalizedString("weekly_insights.streak_title", tableName: table, comment: "Title for streak card")
+        public static let streakMessageShort = NSLocalizedString("weekly_insights.streak_message_short", tableName: table, comment: "Message for streak under 3 days")
+        public static let streakMessageMedium = NSLocalizedString("weekly_insights.streak_message_medium", tableName: table, comment: "Message for streak 3-6 days")
+        public static let streakMessageLong = NSLocalizedString("weekly_insights.streak_message_long", tableName: table, comment: "Message for streak 7+ days")
+        
+        // Achievement Card
+        public static let newBadge = NSLocalizedString("weekly_insights.new_badge", tableName: table, comment: "NEW badge for new achievements")
+        public static let unlockedToday = NSLocalizedString("weekly_insights.unlocked_today", tableName: table, comment: "Achievement unlocked today")
+        
+        public static func unlockedDaysAgo(_ days: Int) -> String {
+            String(format: NSLocalizedString("weekly_insights.unlocked_days_ago", tableName: table, comment: "Achievement unlocked days ago"), days)
+        }
+        
+        // Milestone Card
+        public static let almostThere = NSLocalizedString("weekly_insights.almost_there", tableName: table, comment: "Almost there title for milestone card")
+        
+        public static func progressRatio(current: Int, target: Int) -> String {
+            String(format: NSLocalizedString("weekly_insights.progress_ratio", tableName: table, comment: "Progress ratio format"), current, target)
+        }
+    }
+
     // MARK: - Exercise Reference
 
     public enum ExerciseReferenceName {

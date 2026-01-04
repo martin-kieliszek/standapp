@@ -8,64 +8,57 @@
 import SwiftUI
 import StandFitCore
 
-/// Dedicated view for configuring progress report settings
+/// Dedicated view for configuring progress report notifications
+/// Simplified to just enable/disable weekly reports (Sundays at 9 AM)
 struct ProgressReportSettingsView: View {
     @ObservedObject var store: ExerciseStore
     @Environment(\.dismiss) private var dismiss
 
     private let notificationManager = NotificationManager.shared
 
-    @State private var pendingSettings: ProgressReportSettings
+    @State private var isEnabled: Bool
     @State private var hasChanges = false
 
     init(store: ExerciseStore) {
         self.store = store
-        _pendingSettings = State(initialValue: store.progressReportSettings)
+        _isEnabled = State(initialValue: store.progressReportSettings.enabled)
     }
 
     var body: some View {
         List {
-            // Enabled toggle
+            // Simple enabled toggle
             Section {
-                Toggle(isOn: $pendingSettings.enabled) {
+                Toggle(isOn: $isEnabled) {
                     Label(LocalizedString.ProgressReportSettings.enabledLabel, systemImage: "chart.bar.fill")
+                }
+                .onChange(of: isEnabled) { oldValue, newValue in
+                    hasChanges = (newValue != store.progressReportSettings.enabled)
                 }
             } footer: {
                 Text(LocalizedString.ProgressReportSettings.enabledFooter)
             }
-
-            if pendingSettings.enabled {
-                // Frequency picker 
+            
+            // Info section
+            if isEnabled {
                 Section {
-                    Picker(LocalizedString.ProgressReportSettings.frequencyLabel, selection: $pendingSettings.frequency) {
-                        ForEach(ReportFrequency.allCases, id: \.self) { freq in
-                            Text(freq.displayName).tag(freq)
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Image(systemName: "calendar")
+                                .foregroundStyle(.blue)
+                            Text("Every Sunday")
+                                .font(.body)
+                        }
+                        HStack {
+                            Image(systemName: "clock")
+                                .foregroundStyle(.blue)
+                            Text("9:00 AM")
+                                .font(.body)
                         }
                     }
-                    .pickerStyle(.menu)
                 } header: {
-                    Text(LocalizedString.ProgressReportSettings.scheduleHeader)
-                }
-
-                // Time pickers
-                Section {
-                    Picker(LocalizedString.ProgressReportSettings.hourLabel, selection: $pendingSettings.hour) {
-                        ForEach(0..<24, id: \.self) { hour in
-                            Text(formatHour(hour)).tag(hour)
-                        }
-                    }
-                    .pickerStyle(.navigationLink)
-
-                    Picker(LocalizedString.ProgressReportSettings.minuteLabel, selection: $pendingSettings.minute) {
-                        ForEach([0, 15, 30, 45], id: \.self) { min in
-                            Text(String(format: "%02d", min)).tag(min)
-                        }
-                    }
-                    .pickerStyle(.navigationLink)
-                } header: {
-                    Text(LocalizedString.ProgressReportSettings.timeHeader)
+                    Text("Schedule")
                 } footer: {
-                    Text(LocalizedString.ProgressReportSettings.timeFooter(hour: formatHour(pendingSettings.hour), minute: String(format: "%02d", pendingSettings.minute), frequency: pendingSettings.frequency.displayName.lowercased()))
+                    Text("Weekly insights will be delivered every Sunday morning with your progress highlights.")
                 }
             }
         }
@@ -79,33 +72,30 @@ struct ProgressReportSettingsView: View {
                 .disabled(!hasChanges)
             }
         }
-        .onChange(of: pendingSettings.enabled) { _ in updateHasChanges() }
-        .onChange(of: pendingSettings.frequency) { _ in updateHasChanges() }
-        .onChange(of: pendingSettings.hour) { _ in updateHasChanges() }
-        .onChange(of: pendingSettings.minute) { _ in updateHasChanges() }
-    }
-
-    private func updateHasChanges() {
-        hasChanges = pendingSettings != store.progressReportSettings
     }
 
     private func saveChanges() {
-        store.progressReportSettings = pendingSettings
+        // Update settings with fixed weekly schedule
+        var updatedSettings = store.progressReportSettings
+        updatedSettings.enabled = isEnabled
+        updatedSettings.frequency = .weekly
+        updatedSettings.hour = 9
+        updatedSettings.minute = 0
+        
+        store.progressReportSettings = updatedSettings
+        
+        // Update notification schedule
         store.updateAllNotificationSchedules(reason: "Progress report settings changed")
+        
         notificationManager.playSuccessHaptic()
+        hasChanges = false
         dismiss()
-    }
-
-    private func formatHour(_ hour: Int) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h a"
-        let date = Calendar.current.date(from: DateComponents(hour: hour)) ?? Date()
-        return formatter.string(from: date)
     }
 }
 
 #Preview {
     NavigationStack {
-        ProgressReportSettingsView(store: ExerciseStore())
+        ProgressReportSettingsView(store: ExerciseStore.shared)
     }
 }
+
