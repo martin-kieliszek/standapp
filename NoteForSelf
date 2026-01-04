@@ -1,8 +1,10 @@
-N8 - first time onboarding if no data set 
 N7 - go live
-x N3 - build remove dev mode for subscriptoons
 N5 - export data to csv
-N2 - remaining translations -> all achievements, all base exercises
+reference to StandFit in xcstrings or elsewhere ?
+
+x N8 - first time onboarding if no data set 
+x N3 - build remove dev mode for subscriptoons
+x N2 - remaining translations -> all achievements, all base exercises
 x "2 custom" in settings
 x create_exercises.exercices
 x create custom exercise reps,mins,secs
