@@ -1,0 +1,136 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "challenge_type.daily_exercises.description" : {
+      "comment" : "Complete exercises today challenge description",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe heute Übungen ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete exercises today" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa ejercicios hoy" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez des exercices aujourd'hui" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今日の運動を完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete exercícios hoje" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成今天的运动" } }
+      }
+    },
+    "challenge_type.daily_exercises.name" : {
+      "comment" : "Daily Exercises challenge type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Tägliche Übungen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Exercises" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ejercicios Diarios" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Exercices Quotidiens" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日の運動" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Exercícios Diários" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日运动" } }
+      }
+    },
+    "challenge_type.early_bird.description" : {
+      "comment" : "Exercise before 8 AM challenge description",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Trainiere vor 8 Uhr morgens" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Exercise before 8 AM" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Haz ejercicio antes de las 8 AM" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Faites de l'exercice avant 8h du matin" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "午前8時前に運動" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Exercite-se antes das 8h da manhã" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "早上8点前运动" } }
+      }
+    },
+    "challenge_type.early_bird.name" : {
+      "comment" : "Early Bird challenge type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Frühaufsteher" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Early Bird" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Madrugador" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Lève-tôt" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "早起き" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Madrugador" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "早起的鸟儿" } }
+      }
+    },
+    "challenge_type.specific_exercise.description" : {
+      "comment" : "Complete specific exercise challenge description",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe eine bestimmte Übung ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete specific exercise" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa un ejercicio específico" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez un exercice spécifique" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "特定の運動を完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete um exercício específico" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成特定运动" } }
+      }
+    },
+    "challenge_type.specific_exercise.name" : {
+      "comment" : "Specific Exercise challenge type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Spezifische Übung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Specific Exercise" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ejercicio Específico" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Exercice Spécifique" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "特定の運動" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Exercício Específico" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "特定运动" } }
+      }
+    },
+    "challenge_type.streak_protect.description" : {
+      "comment" : "Maintain your streak challenge description",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Behalte deine Serie bei" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Maintain your streak" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén tu racha" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maintenez votre série" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "連続記録を維持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha sua sequência" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持连续记录" } }
+      }
+    },
+    "challenge_type.streak_protect.name" : {
+      "comment" : "Streak Protect challenge type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Serienschutz" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Streak Protect" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Protección de Racha" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Protection de Série" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "連続記録保護" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Proteção de Sequência" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "连续记录保护" } }
+      }
+    },
+    "challenge_type.variety_challenge.description" : {
+      "comment" : "Try different exercises challenge description",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Probiere verschiedene Übungen aus" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try different exercises" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Prueba diferentes ejercicios" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Essayez différents exercices" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "さまざまな運動を試す" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Experimente exercícios diferentes" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "尝试不同的运动" } }
+      }
+    },
+    "challenge_type.variety_challenge.name" : {
+      "comment" : "Variety Challenge type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vielfalt-Herausforderung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Variety Challenge" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Desafío de Variedad" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Défi de Variété" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バラエティチャレンジ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Desafio de Variedade" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "多样性挑战" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

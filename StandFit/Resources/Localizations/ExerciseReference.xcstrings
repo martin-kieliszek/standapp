@@ -1,0 +1,19 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "exercise_reference.custom_exercise" : {
+      "comment" : "Custom Exercise label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Benutzerdefinierte Übung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Custom Exercise" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ejercicio Personalizado" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Exercice Personnalisé" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "カスタム運動" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Exercício Personalizado" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "自定义运动" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

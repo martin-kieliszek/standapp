@@ -1,0 +1,136 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "exercise_type.arm_circles" : {
+      "comment" : "Arm Circles exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Armkreise" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Arm Circles" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Círculos de Brazos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Cercles de Bras" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "腕回し" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Círculos de Braço" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "手臂画圈" } }
+      }
+    },
+    "exercise_type.calf_raises" : {
+      "comment" : "Calf Raises exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wadenheben" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calf Raises" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Elevaciones de Pantorrilla" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Levées de Mollets" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "カーフレイズ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Elevação de Panturrilha" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "提踵" } }
+      }
+    },
+    "exercise_type.lunges" : {
+      "comment" : "Lunges exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ausfallschritte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lunges" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Estocadas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Fentes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ランジ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Afundos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "弓步" } }
+      }
+    },
+    "exercise_type.neck_rolls" : {
+      "comment" : "Neck Rolls exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Nackenrollen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neck Rolls" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Rotaciones de Cuello" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Roulements de Cou" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "首回し" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Rotações de Pescoço" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "颈部转动" } }
+      }
+    },
+    "exercise_type.plank" : {
+      "comment" : "Plank exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Planke" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Plank" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Plancha" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Planche" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プランク" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Prancha" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "平板支撑" } }
+      }
+    },
+    "exercise_type.pushups" : {
+      "comment" : "Push-ups exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Liegestütze" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Push-ups" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Flexiones" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pompes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "腕立て伏せ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Flexões" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "俯卧撑" } }
+      }
+    },
+    "exercise_type.shoulder_shrugs" : {
+      "comment" : "Shoulder Shrugs exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schulterzucken" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shoulder Shrugs" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Encogimientos de Hombros" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Haussements d'Épaules" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "肩すくめ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Encolhimento de Ombros" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "耸肩" } }
+      }
+    },
+    "exercise_type.squats" : {
+      "comment" : "Squats exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kniebeugen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Squats" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sentadillas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Squats" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "スクワット" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Agachamentos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "深蹲" } }
+      }
+    },
+    "exercise_type.standing_stretch" : {
+      "comment" : "Standing Stretch exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Stehendes Dehnen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Standing Stretch" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Estiramiento de Pie" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Étirement Debout" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "立位ストレッチ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Alongamento em Pé" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "站立拉伸" } }
+      }
+    },
+    "exercise_type.walk_in_place" : {
+      "comment" : "Walk in Place exercise name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Auf der Stelle gehen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Walk in Place" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Caminar en el Lugar" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Marcher sur Place" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "その場足踏み" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Caminhar no Lugar" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "原地踏步" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

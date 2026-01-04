@@ -1,0 +1,58 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "achievement_tier.bronze" : {
+      "comment" : "Bronze achievement tier",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Bronze" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bronze" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Bronce" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Bronze" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ブロンズ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Bronze" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "青铜" } }
+      }
+    },
+    "achievement_tier.gold" : {
+      "comment" : "Gold achievement tier",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gold" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gold" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Oro" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Or" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ゴールド" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Ouro" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "黄金" } }
+      }
+    },
+    "achievement_tier.platinum" : {
+      "comment" : "Platinum achievement tier",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Platin" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Platinum" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Platino" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Platine" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プラチナ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Platina" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "白金" } }
+      }
+    },
+    "achievement_tier.silver" : {
+      "comment" : "Silver achievement tier",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Silber" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Silver" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Plata" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Argent" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "シルバー" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Prata" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "白银" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

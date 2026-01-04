@@ -105,7 +105,7 @@ struct CreateAchievementTemplateView: View {
             Section {
                 Picker(LocalizedString.Templates.templateType, selection: $templateType) {
                     ForEach(AchievementTemplateType.allCases, id: \.self) { type in
-                        Label(type.rawValue, systemImage: type.icon)
+                        Label(type.displayName, systemImage: type.icon)
                             .tag(type)
                     }
                 }
@@ -347,7 +347,7 @@ private struct ExerciseSelectionList: View {
         List {
             // Built-in exercises
             Section(LocalizedString.Templates.builtInExercises) {
-                ForEach(ExerciseType.allCases) { exercise in
+                ForEach(ExerciseType.allCases, id: \.id) { exercise in
                     let item = ExerciseItem(builtIn: exercise)
                     Button {
                         selectedExercise = item
@@ -357,7 +357,7 @@ private struct ExerciseSelectionList: View {
                             Image(systemName: exercise.icon)
                                 .foregroundStyle(.blue)
 
-                            Text(exercise.rawValue)
+                            Text(exercise.displayName)
 
                             Spacer()
 

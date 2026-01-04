@@ -1288,4 +1288,149 @@ public enum LocalizedString {
         public static let armCircle750Name = NSLocalizedString("achievement.arm_circle_750.name", tableName: table, comment: "Rotation Master achievement name")
         public static let armCircle750Description = NSLocalizedString("achievement.arm_circle_750.description", tableName: table, comment: "Complete 750 total arm circles")
     }
+
+    // MARK: - Achievement Categories
+
+    public enum AchievementCategoryName {
+        private static let table = "AchievementCategory"
+
+        public static let milestone = NSLocalizedString("achievement_category.milestone", tableName: table, comment: "Milestone achievement category")
+        public static let consistency = NSLocalizedString("achievement_category.consistency", tableName: table, comment: "Consistency achievement category")
+        public static let volume = NSLocalizedString("achievement_category.volume", tableName: table, comment: "Volume achievement category")
+        public static let variety = NSLocalizedString("achievement_category.variety", tableName: table, comment: "Variety achievement category")
+        public static let challenge = NSLocalizedString("achievement_category.challenge", tableName: table, comment: "Challenge achievement category")
+        public static let social = NSLocalizedString("achievement_category.social", tableName: table, comment: "Social achievement category")
+        public static let template = NSLocalizedString("achievement_category.template", tableName: table, comment: "Custom Templates achievement category")
+    }
+
+    // MARK: - Achievement Tiers
+
+    public enum AchievementTierName {
+        private static let table = "AchievementTier"
+
+        public static let bronze = NSLocalizedString("achievement_tier.bronze", tableName: table, comment: "Bronze achievement tier")
+        public static let silver = NSLocalizedString("achievement_tier.silver", tableName: table, comment: "Silver achievement tier")
+        public static let gold = NSLocalizedString("achievement_tier.gold", tableName: table, comment: "Gold achievement tier")
+        public static let platinum = NSLocalizedString("achievement_tier.platinum", tableName: table, comment: "Platinum achievement tier")
+    }
+
+    // MARK: - Streak Types
+
+    public enum StreakTypeName {
+        private static let table = "StreakType"
+
+        public static let dailyActive = NSLocalizedString("streak_type.daily_active", tableName: table, comment: "Daily Active streak type")
+        public static let reminderResponse = NSLocalizedString("streak_type.reminder_response", tableName: table, comment: "Reminder Response streak type")
+        public static let weeklyGoal = NSLocalizedString("streak_type.weekly_goal", tableName: table, comment: "Weekly Goal streak type")
+    }
+
+    // MARK: - Challenge Types
+
+    public enum ChallengeTypeName {
+        private static let table = "ChallengeType"
+
+        // Challenge type names
+        public static let dailyExercises = NSLocalizedString("challenge_type.daily_exercises.name", tableName: table, comment: "Daily Exercises challenge type name")
+        public static let specificExercise = NSLocalizedString("challenge_type.specific_exercise.name", tableName: table, comment: "Specific Exercise challenge type name")
+        public static let varietyChallenge = NSLocalizedString("challenge_type.variety_challenge.name", tableName: table, comment: "Variety Challenge type name")
+        public static let streakProtect = NSLocalizedString("challenge_type.streak_protect.name", tableName: table, comment: "Streak Protect challenge type name")
+        public static let earlyBird = NSLocalizedString("challenge_type.early_bird.name", tableName: table, comment: "Early Bird challenge type name")
+
+        // Challenge type descriptions
+        public static let dailyExercisesDescription = NSLocalizedString("challenge_type.daily_exercises.description", tableName: table, comment: "Complete exercises today challenge description")
+        public static let specificExerciseDescription = NSLocalizedString("challenge_type.specific_exercise.description", tableName: table, comment: "Complete specific exercise challenge description")
+        public static let varietyChallengeDescription = NSLocalizedString("challenge_type.variety_challenge.description", tableName: table, comment: "Try different exercises challenge description")
+        public static let streakProtectDescription = NSLocalizedString("challenge_type.streak_protect.description", tableName: table, comment: "Maintain your streak challenge description")
+        public static let earlyBirdDescription = NSLocalizedString("challenge_type.early_bird.description", tableName: table, comment: "Exercise before 8 AM challenge description")
+    }
+
+    // MARK: - Achievement Template Types
+
+    public enum AchievementTemplateTypeName {
+        private static let table = "AchievementTemplateType"
+
+        // Template type names
+        public static let volume = NSLocalizedString("achievement_template_type.volume.name", tableName: table, comment: "Lifetime Volume template type name")
+        public static let dailyGoal = NSLocalizedString("achievement_template_type.daily_goal.name", tableName: table, comment: "Daily Goal template type name")
+        public static let weeklyGoal = NSLocalizedString("achievement_template_type.weekly_goal.name", tableName: table, comment: "Weekly Goal template type name")
+        public static let streak = NSLocalizedString("achievement_template_type.streak.name", tableName: table, comment: "Consecutive Days template type name")
+        public static let speed = NSLocalizedString("achievement_template_type.speed.name", tableName: table, comment: "Speed Challenge template type name")
+
+        // Template type descriptions
+        public static let volumeDescription = NSLocalizedString("achievement_template_type.volume.description", tableName: table, comment: "Track total lifetime count for this exercise")
+        public static let dailyGoalDescription = NSLocalizedString("achievement_template_type.daily_goal.description", tableName: table, comment: "Achieve a target count in a single day")
+        public static let weeklyGoalDescription = NSLocalizedString("achievement_template_type.weekly_goal.description", tableName: table, comment: "Reach a weekly target across 7 days")
+        public static let streakDescription = NSLocalizedString("achievement_template_type.streak.description", tableName: table, comment: "Log this exercise on consecutive days")
+        public static let speedDescription = NSLocalizedString("achievement_template_type.speed.description", tableName: table, comment: "Complete reps within a time window")
+    }
+
+    // MARK: - Achievement Template Tier Labels
+
+    public enum AchievementTemplateTierLabel {
+        private static let table = "AchievementTemplateTier"
+
+        // Volume tier labels
+        public static let novice = NSLocalizedString("achievement_template_tier.novice", tableName: table, comment: "Novice tier label")
+        public static let intermediate = NSLocalizedString("achievement_template_tier.intermediate", tableName: table, comment: "Intermediate tier label")
+        public static let advanced = NSLocalizedString("achievement_template_tier.advanced", tableName: table, comment: "Advanced tier label")
+        public static let master = NSLocalizedString("achievement_template_tier.master", tableName: table, comment: "Master tier label")
+
+        // Daily goal tier labels
+        public static let dailyAchiever = NSLocalizedString("achievement_template_tier.daily_achiever", tableName: table, comment: "Daily Achiever tier label")
+        public static let dailyChampion = NSLocalizedString("achievement_template_tier.daily_champion", tableName: table, comment: "Daily Champion tier label")
+        public static let dailyLegend = NSLocalizedString("achievement_template_tier.daily_legend", tableName: table, comment: "Daily Legend tier label")
+
+        // Weekly goal tier labels
+        public static let weekWarrior = NSLocalizedString("achievement_template_tier.week_warrior", tableName: table, comment: "Week Warrior tier label")
+        public static let weekChampion = NSLocalizedString("achievement_template_tier.week_champion", tableName: table, comment: "Week Champion tier label")
+        public static let weekLegend = NSLocalizedString("achievement_template_tier.week_legend", tableName: table, comment: "Week Legend tier label")
+
+        // Streak tier labels
+        public static let consistent = NSLocalizedString("achievement_template_tier.consistent", tableName: table, comment: "Consistent tier label")
+        public static let dedicated = NSLocalizedString("achievement_template_tier.dedicated", tableName: table, comment: "Dedicated tier label")
+        public static let committed = NSLocalizedString("achievement_template_tier.committed", tableName: table, comment: "Committed tier label")
+
+        // Speed tier labels
+        public static let speedy = NSLocalizedString("achievement_template_tier.speedy", tableName: table, comment: "Speedy tier label")
+        public static let lightning = NSLocalizedString("achievement_template_tier.lightning", tableName: table, comment: "Lightning tier label")
+    }
+
+    // MARK: - Exercise Reference
+
+    public enum ExerciseReferenceName {
+        private static let table = "ExerciseReference"
+
+        public static let customExercise = NSLocalizedString("exercise_reference.custom_exercise", tableName: table, comment: "Custom Exercise label")
+    }
+
+    // MARK: - Exercise Type
+
+    public enum ExerciseTypeName {
+        private static let table = "ExerciseType"
+
+        public static let squats = NSLocalizedString("exercise_type.squats", tableName: table, comment: "Squats exercise name")
+        public static let pushups = NSLocalizedString("exercise_type.pushups", tableName: table, comment: "Push-ups exercise name")
+        public static let lunges = NSLocalizedString("exercise_type.lunges", tableName: table, comment: "Lunges exercise name")
+        public static let plank = NSLocalizedString("exercise_type.plank", tableName: table, comment: "Plank exercise name")
+        public static let standingStretch = NSLocalizedString("exercise_type.standing_stretch", tableName: table, comment: "Standing Stretch exercise name")
+        public static let neckRolls = NSLocalizedString("exercise_type.neck_rolls", tableName: table, comment: "Neck Rolls exercise name")
+        public static let shoulderShrugs = NSLocalizedString("exercise_type.shoulder_shrugs", tableName: table, comment: "Shoulder Shrugs exercise name")
+        public static let calfRaises = NSLocalizedString("exercise_type.calf_raises", tableName: table, comment: "Calf Raises exercise name")
+        public static let armCircles = NSLocalizedString("exercise_type.arm_circles", tableName: table, comment: "Arm Circles exercise name")
+        public static let walkInPlace = NSLocalizedString("exercise_type.walk_in_place", tableName: table, comment: "Walk in Place exercise name")
+    }
+
+    // MARK: - Exercise Unit Type
+
+    public enum ExerciseUnitTypeName {
+        private static let table = "ExerciseUnitType"
+
+        public static let reps = NSLocalizedString("exercise_unit_type.reps", tableName: table, comment: "Reps unit type name")
+        public static let seconds = NSLocalizedString("exercise_unit_type.seconds", tableName: table, comment: "Seconds unit type name")
+        public static let minutes = NSLocalizedString("exercise_unit_type.minutes", tableName: table, comment: "Minutes unit type name")
+
+        public static let repsLabel = NSLocalizedString("exercise_unit_type.reps.label", tableName: table, comment: "Reps unit label (lowercase)")
+        public static let secondsLabel = NSLocalizedString("exercise_unit_type.seconds.label", tableName: table, comment: "Seconds unit label (lowercase)")
+        public static let minutesLabel = NSLocalizedString("exercise_unit_type.minutes.label", tableName: table, comment: "Minutes unit label (lowercase)")
+    }
 }

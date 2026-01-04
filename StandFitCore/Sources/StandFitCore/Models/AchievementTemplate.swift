@@ -60,7 +60,7 @@ public struct AchievementTemplate: Identifiable, Codable, Hashable {
 
     /// Summary description for display in UI
     public var summaryDescription: String {
-        "\(tiers.count) tiers • \(templateType.rawValue)"
+        "\(tiers.count) tiers • \(templateType.displayName)"
     }
 }
 
@@ -74,9 +74,9 @@ public enum ExerciseReference: Codable, Hashable {
     public var displayName: String {
         switch self {
         case .builtIn(let type):
-            return type.rawValue
+            return type.displayName
         case .custom:
-            return "Custom Exercise"
+            return LocalizedString.ExerciseReferenceName.customExercise
         }
     }
 
@@ -98,11 +98,21 @@ public enum ExerciseReference: Codable, Hashable {
 
 /// Types of achievement templates available
 public enum AchievementTemplateType: String, Codable, CaseIterable, Hashable {
-    case volume = "Lifetime Volume"
-    case dailyGoal = "Daily Goal"
-    case weeklyGoal = "Weekly Goal"
-    case streak = "Consecutive Days"
-    case speed = "Speed Challenge"
+    case volume
+    case dailyGoal
+    case weeklyGoal
+    case streak
+    case speed
+
+    public var displayName: String {
+        switch self {
+        case .volume: return LocalizedString.AchievementTemplateTypeName.volume
+        case .dailyGoal: return LocalizedString.AchievementTemplateTypeName.dailyGoal
+        case .weeklyGoal: return LocalizedString.AchievementTemplateTypeName.weeklyGoal
+        case .streak: return LocalizedString.AchievementTemplateTypeName.streak
+        case .speed: return LocalizedString.AchievementTemplateTypeName.speed
+        }
+    }
 
     public var icon: String {
         switch self {
@@ -116,16 +126,11 @@ public enum AchievementTemplateType: String, Codable, CaseIterable, Hashable {
 
     public var description: String {
         switch self {
-        case .volume:
-            return "Track total lifetime count for this exercise"
-        case .dailyGoal:
-            return "Achieve a target count in a single day"
-        case .weeklyGoal:
-            return "Reach a weekly target across 7 days"
-        case .streak:
-            return "Log this exercise on consecutive days"
-        case .speed:
-            return "Complete reps within a time window"
+        case .volume: return LocalizedString.AchievementTemplateTypeName.volumeDescription
+        case .dailyGoal: return LocalizedString.AchievementTemplateTypeName.dailyGoalDescription
+        case .weeklyGoal: return LocalizedString.AchievementTemplateTypeName.weeklyGoalDescription
+        case .streak: return LocalizedString.AchievementTemplateTypeName.streakDescription
+        case .speed: return LocalizedString.AchievementTemplateTypeName.speedDescription
         }
     }
 
@@ -134,33 +139,33 @@ public enum AchievementTemplateType: String, Codable, CaseIterable, Hashable {
         switch self {
         case .volume:
             return [
-                AchievementTemplateTier(tier: .bronze, target: 50, label: "Novice"),
-                AchievementTemplateTier(tier: .silver, target: 100, label: "Intermediate"),
-                AchievementTemplateTier(tier: .gold, target: 500, label: "Advanced"),
-                AchievementTemplateTier(tier: .platinum, target: 1000, label: "Master")
+                AchievementTemplateTier(tier: .bronze, target: 50, label: LocalizedString.AchievementTemplateTierLabel.novice),
+                AchievementTemplateTier(tier: .silver, target: 100, label: LocalizedString.AchievementTemplateTierLabel.intermediate),
+                AchievementTemplateTier(tier: .gold, target: 500, label: LocalizedString.AchievementTemplateTierLabel.advanced),
+                AchievementTemplateTier(tier: .platinum, target: 1000, label: LocalizedString.AchievementTemplateTierLabel.master)
             ]
         case .dailyGoal:
             return [
-                AchievementTemplateTier(tier: .bronze, target: 20, label: "Daily Achiever"),
-                AchievementTemplateTier(tier: .silver, target: 50, label: "Daily Champion"),
-                AchievementTemplateTier(tier: .gold, target: 100, label: "Daily Legend")
+                AchievementTemplateTier(tier: .bronze, target: 20, label: LocalizedString.AchievementTemplateTierLabel.dailyAchiever),
+                AchievementTemplateTier(tier: .silver, target: 50, label: LocalizedString.AchievementTemplateTierLabel.dailyChampion),
+                AchievementTemplateTier(tier: .gold, target: 100, label: LocalizedString.AchievementTemplateTierLabel.dailyLegend)
             ]
         case .weeklyGoal:
             return [
-                AchievementTemplateTier(tier: .bronze, target: 100, label: "Week Warrior"),
-                AchievementTemplateTier(tier: .silver, target: 250, label: "Week Champion"),
-                AchievementTemplateTier(tier: .gold, target: 500, label: "Week Legend")
+                AchievementTemplateTier(tier: .bronze, target: 100, label: LocalizedString.AchievementTemplateTierLabel.weekWarrior),
+                AchievementTemplateTier(tier: .silver, target: 250, label: LocalizedString.AchievementTemplateTierLabel.weekChampion),
+                AchievementTemplateTier(tier: .gold, target: 500, label: LocalizedString.AchievementTemplateTierLabel.weekLegend)
             ]
         case .streak:
             return [
-                AchievementTemplateTier(tier: .bronze, target: 3, label: "Consistent"),
-                AchievementTemplateTier(tier: .silver, target: 7, label: "Dedicated"),
-                AchievementTemplateTier(tier: .gold, target: 30, label: "Committed")
+                AchievementTemplateTier(tier: .bronze, target: 3, label: LocalizedString.AchievementTemplateTierLabel.consistent),
+                AchievementTemplateTier(tier: .silver, target: 7, label: LocalizedString.AchievementTemplateTierLabel.dedicated),
+                AchievementTemplateTier(tier: .gold, target: 30, label: LocalizedString.AchievementTemplateTierLabel.committed)
             ]
         case .speed:
             return [
-                AchievementTemplateTier(tier: .bronze, target: 50, label: "Speedy", timeWindow: 10),
-                AchievementTemplateTier(tier: .silver, target: 100, label: "Lightning", timeWindow: 15)
+                AchievementTemplateTier(tier: .bronze, target: 50, label: LocalizedString.AchievementTemplateTierLabel.speedy, timeWindow: 10),
+                AchievementTemplateTier(tier: .silver, target: 100, label: LocalizedString.AchievementTemplateTierLabel.lightning, timeWindow: 15)
             ]
         }
     }

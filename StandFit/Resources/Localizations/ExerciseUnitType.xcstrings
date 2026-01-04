@@ -1,0 +1,84 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "exercise_unit_type.minutes" : {
+      "comment" : "Minutes unit type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Minuten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Minutes" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Minutos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Minutes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "分" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Minutos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "分钟" } }
+      }
+    },
+    "exercise_unit_type.minutes.label" : {
+      "comment" : "Minutes unit label (lowercase)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "minuten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "minutes" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "minutos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "minutes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "分" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "minutos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "分钟" } }
+      }
+    },
+    "exercise_unit_type.reps" : {
+      "comment" : "Reps unit type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wiederholungen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Repeticiones" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Répétitions" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "回数" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Repetições" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "次数" } }
+      }
+    },
+    "exercise_unit_type.reps.label" : {
+      "comment" : "Reps unit label (lowercase)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "wiederholungen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "repeticiones" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "répétitions" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "回" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "repetições" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "次" } }
+      }
+    },
+    "exercise_unit_type.seconds" : {
+      "comment" : "Seconds unit type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sekunden" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Seconds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Segundos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Secondes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "秒" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Segundos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "秒" } }
+      }
+    },
+    "exercise_unit_type.seconds.label" : {
+      "comment" : "Seconds unit label (lowercase)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "sekunden" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "seconds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "segundos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "secondes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "秒" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "segundos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "秒" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

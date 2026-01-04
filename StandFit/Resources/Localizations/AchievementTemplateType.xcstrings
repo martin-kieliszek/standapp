@@ -1,0 +1,136 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "achievement_template_type.daily_goal.description" : {
+      "comment" : "Achieve a target count in a single day",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erreiche ein Tagesziel an einem einzigen Tag" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Achieve a target count in a single day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Alcanza un objetivo en un solo día" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Atteignez un objectif en une seule journée" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1日で目標回数を達成" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Atinja uma meta em um único dia" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在一天内达到目标次数" } }
+      }
+    },
+    "achievement_template_type.daily_goal.name" : {
+      "comment" : "Daily Goal template type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Tagesziel" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Goal" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Meta Diaria" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Objectif Quotidien" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日の目標" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Meta Diária" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日目标" } }
+      }
+    },
+    "achievement_template_type.speed.description" : {
+      "comment" : "Complete reps within a time window",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe Wiederholungen innerhalb eines Zeitfensters ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete reps within a time window" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa repeticiones dentro de una ventana de tiempo" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez des répétitions dans un laps de temps" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "制限時間内に回数を完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete repetições dentro de um período de tempo" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在时间窗口内完成次数" } }
+      }
+    },
+    "achievement_template_type.speed.name" : {
+      "comment" : "Speed Challenge template type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Geschwindigkeits-Herausforderung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speed Challenge" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Desafío de Velocidad" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Défi de Vitesse" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "スピードチャレンジ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Desafio de Velocidade" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "速度挑战" } }
+      }
+    },
+    "achievement_template_type.streak.description" : {
+      "comment" : "Log this exercise on consecutive days",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere diese Übung an aufeinanderfolgenden Tagen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log this exercise on consecutive days" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra este ejercicio en días consecutivos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez cet exercice sur des jours consécutifs" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "連続した日にこの運動を記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre este exercício em dias consecutivos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "连续几天记录此运动" } }
+      }
+    },
+    "achievement_template_type.streak.name" : {
+      "comment" : "Consecutive Days template type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufeinanderfolgende Tage" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Consecutive Days" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Días Consecutivos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Jours Consécutifs" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "連続日数" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Dias Consecutivos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "连续天数" } }
+      }
+    },
+    "achievement_template_type.volume.description" : {
+      "comment" : "Track total lifetime count for this exercise",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Verfolge die gesamte lebenslange Anzahl für diese Übung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Track total lifetime count for this exercise" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Rastrea el total de por vida para este ejercicio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Suivez le total à vie pour cet exercice" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "この運動の生涯合計を追跡" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Rastreie o total vitalício para este exercício" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "追踪此运动的终身总数" } }
+      }
+    },
+    "achievement_template_type.volume.name" : {
+      "comment" : "Lifetime Volume template type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Lebenslanges Volumen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lifetime Volume" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Volumen de por Vida" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Volume à Vie" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "生涯ボリューム" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Volume Vitalício" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "终身总量" } }
+      }
+    },
+    "achievement_template_type.weekly_goal.description" : {
+      "comment" : "Reach a weekly target across 7 days",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erreiche ein wöchentliches Ziel über 7 Tage" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reach a weekly target across 7 days" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Alcanza una meta semanal en 7 días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Atteignez un objectif hebdomadaire sur 7 jours" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "7日間で週間目標を達成" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Atinja uma meta semanal em 7 dias" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在7天内达到每周目标" } }
+      }
+    },
+    "achievement_template_type.weekly_goal.name" : {
+      "comment" : "Weekly Goal template type name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wöchentliches Ziel" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weekly Goal" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Meta Semanal" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Objectif Hebdomadaire" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週間目標" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Meta Semanal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每周目标" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -65,15 +65,27 @@ public struct Achievement: Identifiable, Codable, Equatable {
 
 /// Categories for organizing achievements
 public enum AchievementCategory: String, Codable, CaseIterable, Identifiable {
-    case milestone = "Milestone"
-    case consistency = "Consistency"
-    case volume = "Volume"
-    case variety = "Variety"
-    case challenge = "Challenge"
-    case social = "Social"
-    case template = "Custom Templates"  // UX16: User-created achievements
+    case milestone
+    case consistency
+    case volume
+    case variety
+    case challenge
+    case social
+    case template  // UX16: User-created achievements
 
     public var id: String { rawValue }
+
+    public var displayName: String {
+        switch self {
+        case .milestone: return LocalizedString.AchievementCategoryName.milestone
+        case .consistency: return LocalizedString.AchievementCategoryName.consistency
+        case .volume: return LocalizedString.AchievementCategoryName.volume
+        case .variety: return LocalizedString.AchievementCategoryName.variety
+        case .challenge: return LocalizedString.AchievementCategoryName.challenge
+        case .social: return LocalizedString.AchievementCategoryName.social
+        case .template: return LocalizedString.AchievementCategoryName.template
+        }
+    }
 
     public var icon: String {
         switch self {
@@ -90,10 +102,19 @@ public enum AchievementCategory: String, Codable, CaseIterable, Identifiable {
 
 /// Tiers for achievement rarity/difficulty
 public enum AchievementTier: String, Codable, CaseIterable {
-    case bronze = "Bronze"
-    case silver = "Silver"
-    case gold = "Gold"
-    case platinum = "Platinum"
+    case bronze
+    case silver
+    case gold
+    case platinum
+
+    public var displayName: String {
+        switch self {
+        case .bronze: return LocalizedString.AchievementTierName.bronze
+        case .silver: return LocalizedString.AchievementTierName.silver
+        case .gold: return LocalizedString.AchievementTierName.gold
+        case .platinum: return LocalizedString.AchievementTierName.platinum
+        }
+    }
 
     public var sortOrder: Int {
         switch self {
@@ -355,9 +376,17 @@ public struct StreakData: Codable {
 
 /// Different types of streaks to track
 public enum StreakType: String, Codable, CaseIterable {
-    case dailyActive = "Daily Active"
-    case reminderResponse = "Reminder Response"
-    case weeklyGoal = "Weekly Goal"
+    case dailyActive
+    case reminderResponse
+    case weeklyGoal
+
+    public var displayName: String {
+        switch self {
+        case .dailyActive: return LocalizedString.StreakTypeName.dailyActive
+        case .reminderResponse: return LocalizedString.StreakTypeName.reminderResponse
+        case .weeklyGoal: return LocalizedString.StreakTypeName.weeklyGoal
+        }
+    }
 
     public var icon: String {
         switch self {
@@ -480,11 +509,21 @@ public struct Challenge: Identifiable, Codable {
 
 /// Types of challenges available
 public enum ChallengeType: String, Codable {
-    case dailyExercises = "Daily Exercises"
-    case specificExercise = "Specific Exercise"
-    case varietyChallenge = "Variety Challenge"
-    case streakProtect = "Streak Protect"
-    case earlyBird = "Early Bird"
+    case dailyExercises
+    case specificExercise
+    case varietyChallenge
+    case streakProtect
+    case earlyBird
+
+    public var displayName: String {
+        switch self {
+        case .dailyExercises: return LocalizedString.ChallengeTypeName.dailyExercises
+        case .specificExercise: return LocalizedString.ChallengeTypeName.specificExercise
+        case .varietyChallenge: return LocalizedString.ChallengeTypeName.varietyChallenge
+        case .streakProtect: return LocalizedString.ChallengeTypeName.streakProtect
+        case .earlyBird: return LocalizedString.ChallengeTypeName.earlyBird
+        }
+    }
 
     public var icon: String {
         switch self {
@@ -498,11 +537,11 @@ public enum ChallengeType: String, Codable {
 
     public var description: String {
         switch self {
-        case .dailyExercises: return "Complete exercises today"
-        case .specificExercise: return "Complete specific exercise"
-        case .varietyChallenge: return "Try different exercises"
-        case .streakProtect: return "Maintain your streak"
-        case .earlyBird: return "Exercise before 8 AM"
+        case .dailyExercises: return LocalizedString.ChallengeTypeName.dailyExercisesDescription
+        case .specificExercise: return LocalizedString.ChallengeTypeName.specificExerciseDescription
+        case .varietyChallenge: return LocalizedString.ChallengeTypeName.varietyChallengeDescription
+        case .streakProtect: return LocalizedString.ChallengeTypeName.streakProtectDescription
+        case .earlyBird: return LocalizedString.ChallengeTypeName.earlyBirdDescription
         }
     }
 }

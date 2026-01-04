@@ -11,17 +11,25 @@ import Foundation
 
 /// Defines whether an exercise is measured in repetitions or time
 public enum ExerciseUnitType: String, Codable, CaseIterable, Identifiable {
-    case reps = "Reps"
-    case seconds = "Seconds"
-    case minutes = "Minutes"
+    case reps
+    case seconds
+    case minutes
 
     public var id: String { rawValue }
 
+    public var displayName: String {
+        switch self {
+        case .reps: return LocalizedString.ExerciseUnitTypeName.reps
+        case .seconds: return LocalizedString.ExerciseUnitTypeName.seconds
+        case .minutes: return LocalizedString.ExerciseUnitTypeName.minutes
+        }
+    }
+
     public var unitLabel: String {
         switch self {
-        case .reps: return "reps"
-        case .seconds: return "seconds"
-        case .minutes: return "minutes"
+        case .reps: return LocalizedString.ExerciseUnitTypeName.repsLabel
+        case .seconds: return LocalizedString.ExerciseUnitTypeName.secondsLabel
+        case .minutes: return LocalizedString.ExerciseUnitTypeName.minutesLabel
         }
     }
 
@@ -62,19 +70,34 @@ public enum ExerciseUnitType: String, Codable, CaseIterable, Identifiable {
 
 /// An enum for exercise types that can be saved to JSON (`Codable`) and displayed in lists (`CaseIterable`)
 public enum ExerciseType: String, Codable, CaseIterable, Identifiable {
-    case squats = "Squats"
-    case pushups = "Push-ups"
-    case lunges = "Lunges"
-    case plank = "Plank"
-    case standingStretch = "Standing Stretch"
-    case neckRolls = "Neck Rolls"
-    case shoulderShrugs = "Shoulder Shrugs"
-    case calfRaises = "Calf Raises"
-    case armCircles = "Arm Circles"
-    case walkInPlace = "Walk in Place"
+    case squats
+    case pushups
+    case lunges
+    case plank
+    case standingStretch
+    case neckRolls
+    case shoulderShrugs
+    case calfRaises
+    case armCircles
+    case walkInPlace
 
     public var id: String {
         rawValue
+    }
+
+    public var displayName: String {
+        switch self {
+        case .squats: return LocalizedString.ExerciseTypeName.squats
+        case .pushups: return LocalizedString.ExerciseTypeName.pushups
+        case .lunges: return LocalizedString.ExerciseTypeName.lunges
+        case .plank: return LocalizedString.ExerciseTypeName.plank
+        case .standingStretch: return LocalizedString.ExerciseTypeName.standingStretch
+        case .neckRolls: return LocalizedString.ExerciseTypeName.neckRolls
+        case .shoulderShrugs: return LocalizedString.ExerciseTypeName.shoulderShrugs
+        case .calfRaises: return LocalizedString.ExerciseTypeName.calfRaises
+        case .armCircles: return LocalizedString.ExerciseTypeName.armCircles
+        case .walkInPlace: return LocalizedString.ExerciseTypeName.walkInPlace
+        }
     }
 
     public var icon: String {
@@ -166,7 +189,7 @@ public struct ExerciseItem: Identifiable, Equatable, Hashable {
 
     public init(builtIn: ExerciseType) {
         self.id = "builtin_\(builtIn.id)"
-        self.name = builtIn.rawValue
+        self.name = builtIn.displayName
         self.icon = builtIn.icon
         self.unitType = builtIn.unitType
         self.defaultCount = builtIn.defaultCount

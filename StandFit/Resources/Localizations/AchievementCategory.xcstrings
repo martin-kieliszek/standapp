@@ -1,0 +1,97 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "achievement_category.challenge" : {
+      "comment" : "Challenge achievement category",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Herausforderung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Challenge" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Desafío" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Défi" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "チャレンジ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Desafio" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "挑战" } }
+      }
+    },
+    "achievement_category.consistency" : {
+      "comment" : "Consistency achievement category",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Beständigkeit" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Consistency" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Consistencia" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Régularité" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "継続性" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Consistência" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "坚持性" } }
+      }
+    },
+    "achievement_category.milestone" : {
+      "comment" : "Milestone achievement category",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Meilenstein" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Milestone" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Hito" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Étape" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マイルストーン" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Marco" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "里程碑" } }
+      }
+    },
+    "achievement_category.social" : {
+      "comment" : "Social achievement category",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Sozial" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Social" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Social" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Social" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ソーシャル" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Social" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "社交" } }
+      }
+    },
+    "achievement_category.template" : {
+      "comment" : "Custom Templates achievement category",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Benutzerdefinierte Vorlagen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Custom Templates" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Plantillas Personalizadas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Modèles Personnalisés" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "カスタムテンプレート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Modelos Personalizados" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "自定义模板" } }
+      }
+    },
+    "achievement_category.variety" : {
+      "comment" : "Variety achievement category",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vielfalt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Variety" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Variedad" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Variété" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "多様性" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Variedade" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "多样性" } }
+      }
+    },
+    "achievement_category.volume" : {
+      "comment" : "Volume achievement category",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Volumen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Volume" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Volumen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Volume" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ボリューム" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Volume" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "总量" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

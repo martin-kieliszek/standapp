@@ -1,0 +1,45 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "streak_type.daily_active" : {
+      "comment" : "Daily Active streak type",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Täglich Aktiv" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Active" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Activo Diario" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Actif Quotidien" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日アクティブ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Ativo Diário" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日活跃" } }
+      }
+    },
+    "streak_type.reminder_response" : {
+      "comment" : "Reminder Response streak type",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erinnerungsantwort" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reminder Response" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Respuesta a Recordatorio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Réponse aux Rappels" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "リマインダー応答" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Resposta a Lembrete" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "提醒响应" } }
+      }
+    },
+    "streak_type.weekly_goal" : {
+      "comment" : "Weekly Goal streak type",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wöchentliches Ziel" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weekly Goal" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Meta Semanal" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Objectif Hebdomadaire" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週間目標" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Meta Semanal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每周目标" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

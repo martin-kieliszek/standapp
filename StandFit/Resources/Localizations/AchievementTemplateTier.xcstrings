@@ -1,0 +1,201 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "achievement_template_tier.advanced" : {
+      "comment" : "Advanced tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fortgeschritten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Advanced" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Avanzado" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Avancé" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "上級" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Avançado" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "高级" } }
+      }
+    },
+    "achievement_template_tier.committed" : {
+      "comment" : "Committed tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Engagiert" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Committed" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Comprometido" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Engagé" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "献身的" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Comprometido" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "坚定" } }
+      }
+    },
+    "achievement_template_tier.consistent" : {
+      "comment" : "Consistent tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Beständig" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Consistent" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Consistente" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Constant" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "一貫性" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Consistente" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "坚持" } }
+      }
+    },
+    "achievement_template_tier.daily_achiever" : {
+      "comment" : "Daily Achiever tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Täglicher Erfolg" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Achiever" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Logro Diario" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Réalisateur Quotidien" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日の達成者" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Realizador Diário" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日成就者" } }
+      }
+    },
+    "achievement_template_tier.daily_champion" : {
+      "comment" : "Daily Champion tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Täglicher Champion" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Champion" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Campeón Diario" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Champion Quotidien" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日のチャンピオン" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Campeão Diário" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日冠军" } }
+      }
+    },
+    "achievement_template_tier.daily_legend" : {
+      "comment" : "Daily Legend tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Tägliche Legende" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Legend" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Leyenda Diaria" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Légende Quotidienne" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日の伝説" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Lenda Diária" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日传奇" } }
+      }
+    },
+    "achievement_template_tier.dedicated" : {
+      "comment" : "Dedicated tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Engagiert" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dedicated" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Dedicado" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Dévoué" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "献身的" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Dedicado" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "专注" } }
+      }
+    },
+    "achievement_template_tier.intermediate" : {
+      "comment" : "Intermediate tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Mittel" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Intermediate" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Intermedio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Intermédiaire" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "中級" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Intermediário" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "中级" } }
+      }
+    },
+    "achievement_template_tier.lightning" : {
+      "comment" : "Lightning tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Blitz" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lightning" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Relámpago" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Éclair" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "稲妻" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Relâmpago" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "闪电" } }
+      }
+    },
+    "achievement_template_tier.master" : {
+      "comment" : "Master tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Meister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "大师" } }
+      }
+    },
+    "achievement_template_tier.novice" : {
+      "comment" : "Novice tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Anfänger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Novice" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Novato" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Novice" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "初心者" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Novato" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "新手" } }
+      }
+    },
+    "achievement_template_tier.speedy" : {
+      "comment" : "Speedy tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schnell" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speedy" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Rápido" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Rapide" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "高速" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Rápido" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "快速" } }
+      }
+    },
+    "achievement_template_tier.week_champion" : {
+      "comment" : "Week Champion tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wochen-Champion" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week Champion" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Campeón Semanal" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Champion de la Semaine" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週間チャンピオン" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Campeão Semanal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周冠军" } }
+      }
+    },
+    "achievement_template_tier.week_legend" : {
+      "comment" : "Week Legend tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wochen-Legende" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week Legend" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Leyenda Semanal" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Légende de la Semaine" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週間の伝説" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Lenda Semanal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周传奇" } }
+      }
+    },
+    "achievement_template_tier.week_warrior" : {
+      "comment" : "Week Warrior tier label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wochen-Krieger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week Warrior" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guerrero Semanal" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Guerrier de la Semaine" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週間ウォーリア" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Guerreiro Semanal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周战士" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
