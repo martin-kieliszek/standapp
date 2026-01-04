@@ -128,12 +128,14 @@ public struct ReportStats {
 
 public struct ExerciseBreakdown {
     public let exercise: ExerciseItem
-    public let count: Int
+    public let count: Int  // Number of sessions/times performed
+    public let totalAmount: Int  // Total reps/seconds across all sessions
     public let percentage: Double  // 0.0 to 1.0
 
-    public init(exercise: ExerciseItem, count: Int, percentage: Double) {
+    public init(exercise: ExerciseItem, count: Int, totalAmount: Int, percentage: Double) {
         self.exercise = exercise
         self.count = count
+        self.totalAmount = totalAmount
         self.percentage = percentage
     }
 }

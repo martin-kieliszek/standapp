@@ -114,9 +114,6 @@
     "🚀" : {
 
     },
-    "🛠️ Debug Tools" : {
-
-    },
     "0 / 0" : {
 
     },
@@ -421,15 +418,6 @@
       }
     },
     "Minute" : {
-
-    },
-    "Send Test Notification (5s)" : {
-
-    },
-    "Test Weekly Insights" : {
-
-    },
-    "These debug options are only visible in development builds and won't appear in production." : {
 
     },
     "time.minutes" : {

@@ -68,7 +68,7 @@ public struct ReportingService {
         let total = logs.count
         guard total > 0 else { return [] }
 
-        var breakdown: [String: (count: Int, item: ExerciseItem)] = [:]
+        var breakdown: [String: (sessionCount: Int, totalAmount: Int, item: ExerciseItem)] = [:]
 
         for log in logs {
             let item: ExerciseItem
@@ -86,18 +86,27 @@ public struct ReportingService {
             let key = item.id
 
             if let existing = breakdown[key] {
-                // Count sessions, not reps/seconds
-                breakdown[key] = (count: existing.count + 1, item: existing.item)
+                // Count sessions AND accumulate total reps/seconds
+                breakdown[key] = (
+                    sessionCount: existing.sessionCount + 1,
+                    totalAmount: existing.totalAmount + log.count,
+                    item: existing.item
+                )
             } else {
-                breakdown[key] = (count: 1, item: item)
+                breakdown[key] = (
+                    sessionCount: 1,
+                    totalAmount: log.count,
+                    item: item
+                )
             }
         }
 
         return breakdown.map { key, value in
             ExerciseBreakdown(
                 exercise: value.item,
-                count: value.count,
-                percentage: Double(value.count) / Double(total)
+                count: value.sessionCount,
+                totalAmount: value.totalAmount,
+                percentage: Double(value.sessionCount) / Double(total)
             )
         }.sorted { $0.count > $1.count }
     }

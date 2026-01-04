@@ -250,10 +250,27 @@ struct InsightCardView: View {
                 .font(.title3)
                 .foregroundStyle(.secondary)
             
-            VStack(spacing: 4) {
+            VStack(spacing: 8) {
+                // Session count
                 Text(LocalizedString.WeeklyInsights.timesCount(exercise.count))
                     .font(.title2)
                     .bold()
+                
+                // Total reps/seconds with proper unit
+                let unitText: String = {
+                    switch exercise.exercise.unitType {
+                    case .reps:
+                        return "\(exercise.totalAmount) " + LocalizedString.Units.reps
+                    case .seconds:
+                        return "\(exercise.totalAmount) " + LocalizedString.Units.seconds
+                    case .minutes:
+                        return "\(exercise.totalAmount) " + LocalizedString.Units.minutes
+                    }
+                }()
+                
+                Text(unitText)
+                    .font(.headline)
+                    .foregroundStyle(.blue)
                 
                 Text(LocalizedString.WeeklyInsights.percentageActivity(String(format: "%.0f%%", exercise.percentage * 100)))
                     .font(.subheadline)

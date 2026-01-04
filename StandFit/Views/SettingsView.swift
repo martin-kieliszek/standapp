@@ -196,15 +196,49 @@ struct SettingsView: View {
                     }
                     
                     Button {
-                        // Fire a test notification in 5 seconds
-                        let content = UNMutableNotificationContent()
-                        content.title = "Weekly Insights Ready"
-                        content.body = "Your weekly activity summary is available"
-                        content.sound = .default
-                        content.categoryIdentifier = NotificationType.progressReport.categoryIdentifier
+                        // Use the real notification scheduling logic for accurate testing
+                        let store = ExerciseStore.shared
                         
+                        // Get stats using the same logic as automatic reports
+                        let period: ReportPeriod = .weekStarting(Date())
+                        let stats = store.reportingService.getStats(
+                            for: period,
+                            logs: store.logs,
+                            customExercises: store.customExercises
+                        )
+                        
+                        let previousPeriod: ReportPeriod = .weekStarting(Calendar.current.date(byAdding: .day, value: -7, to: Date())!)
+                        let previousStats = store.reportingService.getStats(
+                            for: previousPeriod,
+                            logs: store.logs,
+                            customExercises: store.customExercises
+                        )
+                        
+                        // Generate localized content using the same method
+                        let content = ReportNotificationContent.generate(
+                            stats: stats,
+                            frequency: .weekly,
+                            previousStats: previousStats
+                        )
+                        
+                        // Build notification with real localized content
+                        let unContent = UNMutableNotificationContent()
+                        unContent.title = content.title
+                        unContent.body = content.body
+                        unContent.sound = .default
+                        unContent.categoryIdentifier = NotificationType.progressReport.categoryIdentifier
+                        
+                        if let badge = content.badge {
+                            unContent.title = "\(badge) \(content.title)"
+                        }
+                        
+                        // Only difference: 5-second trigger instead of weekly schedule
                         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                        let request = UNNotificationRequest(identifier: "test-weekly-insights", content: content, trigger: trigger)
+                        let request = UNNotificationRequest(
+                            identifier: "test-weekly-insights",
+                            content: unContent,
+                            trigger: trigger
+                        )
                         
                         UNUserNotificationCenter.current().add(request) { error in
                             if let error = error {
