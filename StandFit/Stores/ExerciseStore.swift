@@ -308,10 +308,10 @@ class ExerciseStore: ObservableObject {
         guard scheduleProfiles.isEmpty else { return }
         
         print("📅 Migrating to profile system...")
-        
+
         // Create default profile from legacy settings
         var defaultProfile = ScheduleProfile(
-            name: "Default",
+            name: LocalizedString.Schedule.defaultProfile,
             createdDate: Date(),
             fallbackInterval: legacyReminderIntervalMinutes,
             deadResponseEnabled: legacyDeadResponseEnabled,

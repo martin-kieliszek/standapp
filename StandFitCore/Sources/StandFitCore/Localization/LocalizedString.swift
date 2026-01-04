@@ -723,6 +723,7 @@ public enum LocalizedString {
         public static let scheduling = NSLocalizedString("schedule.scheduling", tableName: table, comment: "Scheduling...")
         public static let activeProfile = NSLocalizedString("schedule.active_profile", tableName: table, comment: "Active Schedule Profile")
         public static let currentSchedule = NSLocalizedString("schedule.current_schedule", tableName: table, comment: "Current Schedule")
+        public static let defaultProfile = NSLocalizedString("schedule.default_profile", tableName: table, comment: "Default profile name")
         
         // Day Schedule Editor
         public static let configureDailyReminder = NSLocalizedString("schedule.configure_daily_reminder", tableName: table, comment: "Configure your daily reminder schedule")
