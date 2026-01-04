@@ -1554,4 +1554,31 @@ public enum LocalizedString {
         public static let gotIt = NSLocalizedString("onboarding.got_it", tableName: table, comment: "Got it button")
         public static let skip = NSLocalizedString("onboarding.skip", tableName: table, comment: "Skip button")
     }
+
+    // MARK: - Share
+
+    public enum Share {
+        private static let table = "Share"
+
+        // Share buttons
+        public static let buttonShare = NSLocalizedString("share.button_share", tableName: table, comment: "Share button label")
+        public static let shareAchievement = NSLocalizedString("share.share_achievement", tableName: table, comment: "Share achievement button label")
+        public static let shareWeek = NSLocalizedString("share.share_week", tableName: table, comment: "Share weekly summary button label")
+
+        // Share card
+        public static let shareYourProgress = NSLocalizedString("share.share_your_progress", tableName: table, comment: "Share your progress card title")
+        public static let shareYourProgressSubtitle = NSLocalizedString("share.share_your_progress_subtitle", tableName: table, comment: "Share your progress card subtitle")
+
+        // Share image text
+        public static let achievementUnlocked = NSLocalizedString("share.achievement_unlocked", tableName: table, comment: "Achievement unlocked headline on share image")
+        public static let weeklySummary = NSLocalizedString("share.weekly_summary", tableName: table, comment: "Weekly summary headline on share image")
+        public static let appTagline = NSLocalizedString("share.app_tagline", tableName: table, comment: "App tagline on share images")
+
+        // Share text templates
+        public static func achievementText(_ achievementName: String) -> String {
+            String(format: NSLocalizedString("share.achievement_text", tableName: table, comment: "Share text for achievement unlock"), achievementName)
+        }
+
+        public static let weeklySummaryText = NSLocalizedString("share.weekly_summary_text", tableName: table, comment: "Share text for weekly summary")
+    }
 }

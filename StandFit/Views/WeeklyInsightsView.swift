@@ -28,36 +28,39 @@ struct WeeklyInsightsView: View {
     
     private var insightCards: [InsightCard] {
         guard let stats = weekStats else { return [] }
-        
+
         var cards: [InsightCard] = []
-        
+
         // 1. Total Activity (always show)
         cards.append(.totalActivity(count: stats.totalCount, comparison: stats.comparisonToPrevious))
-        
+
         // 2. Top Exercise (if any activity)
         if let topExercise = stats.breakdown.max(by: { $0.count < $1.count }) {
             cards.append(.topExercise(exercise: topExercise))
         }
-        
+
         // 3. Consistency (active days this week)
         let activeDays = calculateActiveDays(period: ReportPeriod.weekStarting(stats.periodStart))
         cards.append(.consistency(activeDays: activeDays))
-        
+
         // 4. Streak (if active)
         if let streak = stats.streak, streak > 0 {
             cards.append(.streak(days: streak))
         }
-        
+
         // 5. New Achievement (if unlocked this week)
         if let newAchievement = findRecentAchievement() {
             cards.append(.newAchievement(achievement: newAchievement))
         }
-        
+
         // 6. Next Milestone (closest to completion)
         if let nextMilestone = findNearestMilestone() {
             cards.append(.nextMilestone(achievement: nextMilestone))
         }
-        
+
+        // 7. Share Card (always last)
+        cards.append(.share)
+
         return cards
     }
     
@@ -82,6 +85,8 @@ struct WeeklyInsightsView: View {
                 TabView(selection: $currentPage) {
                     ForEach(Array(insightCards.enumerated()), id: \.offset) { index, card in
                         InsightCardView(card: card)
+                            .environmentObject(store)
+                            .environmentObject(gamificationStore)
                             .tag(index)
                     }
                 }
@@ -158,33 +163,41 @@ enum InsightCard {
     case streak(days: Int)
     case newAchievement(achievement: Achievement)
     case nextMilestone(achievement: Achievement)
+    case share
 }
 
 // MARK: - Insight Card View
 
 struct InsightCardView: View {
     let card: InsightCard
-    
+    @EnvironmentObject var store: ExerciseStore
+    @EnvironmentObject var gamificationStore: GamificationStore
+
+    @State private var isGeneratingShare = false
+
     var body: some View {
         VStack(spacing: 20) {
             switch card {
             case .totalActivity(let count, let comparison):
                 totalActivityCard(count: count, comparison: comparison)
-                
+
             case .topExercise(let exercise):
                 topExerciseCard(exercise: exercise)
-                
+
             case .consistency(let activeDays):
                 consistencyCard(activeDays: activeDays)
-                
+
             case .streak(let days):
                 streakCard(days: days)
-                
+
             case .newAchievement(let achievement):
                 newAchievementCard(achievement: achievement)
-                
+
             case .nextMilestone(let achievement):
                 nextMilestoneCard(achievement: achievement)
+
+            case .share:
+                shareCard()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -435,7 +448,119 @@ struct InsightCardView: View {
                 .multilineTextAlignment(.center)
         }
     }
-    
+
+    @ViewBuilder
+    private func shareCard() -> some View {
+        VStack(spacing: 24) {
+            Text("📤")
+                .font(.system(size: 60))
+
+            Text(LocalizedString.Share.shareYourProgress)
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+
+            Text(LocalizedString.Share.shareYourProgressSubtitle)
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+
+            Divider()
+                .padding(.vertical, 8)
+
+            // Share button
+            Button {
+                shareWeeklySummary()
+            } label: {
+                HStack(spacing: 12) {
+                    if isGeneratingShare {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .tint(.white)
+                    } else {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.title3)
+                    }
+                    Text(isGeneratingShare ? LocalizedString.Share.buttonShare + "..." : LocalizedString.Share.shareWeek)
+                        .font(.headline)
+                }
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(
+                    LinearGradient(
+                        colors: [.blue, .purple],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+            }
+            .buttonStyle(.plain)
+            .disabled(isGeneratingShare)
+        }
+    }
+
+    private func shareWeeklySummary() {
+        Task { @MainActor in
+            isGeneratingShare = true
+
+            // Get week stats
+            let weekStart = Calendar.current.dateInterval(of: .weekOfYear, for: Date())?.start ?? Date()
+            let period = ReportPeriod.weekStarting(weekStart)
+            let stats = store.reportingService.getStats(
+                for: period,
+                logs: store.logs,
+                customExercises: store.customExercises,
+                currentStreak: gamificationStore.streak.currentStreak
+            )
+
+            // Calculate active days
+            var activeDays = 0
+            for dayOffset in 0..<7 {
+                guard let date = Calendar.current.date(byAdding: .day, value: dayOffset, to: weekStart) else { continue }
+                if store.logs.contains(where: { Calendar.current.isDate($0.timestamp, inSameDayAs: date) }) {
+                    activeDays += 1
+                }
+            }
+
+            // Format date range
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d"
+            let startStr = formatter.string(from: stats.periodStart)
+            let endStr = formatter.string(from: stats.periodEnd.addingTimeInterval(-1))
+            let dateRange = "\(startStr) – \(endStr)"
+
+            // Get top exercise
+            let topExercise = stats.breakdown.max(by: { $0.count < $1.count })
+
+            // Generate share image
+            let image = ShareImageRenderer.render(size: CGSize(width: 1080, height: 1080)) {
+                WeeklySummaryShareView(
+                    totalCount: stats.totalCount,
+                    activeDays: activeDays,
+                    topExercise: topExercise,
+                    streakDays: stats.streak,
+                    dateRange: dateRange
+                )
+            }
+
+            guard let image = image else {
+                print("⚠️ Failed to generate share image for weekly summary")
+                isGeneratingShare = false
+                return
+            }
+
+            // Present share sheet
+            ShareService.shared.presentShareSheet(
+                image: image,
+                text: LocalizedString.Share.weeklySummaryText
+            )
+
+            isGeneratingShare = false
+        }
+    }
+
     private func dayLabel(_ index: Int) -> String {
         let days = [
             LocalizedString.WeeklyInsights.dayMon,

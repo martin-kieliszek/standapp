@@ -206,6 +206,8 @@ struct AchievementRow: View {
     var showProgress: Bool = false
     var isLocked: Bool = false
 
+    @State private var isGeneratingShare = false
+
     var body: some View {
         HStack(spacing: 12) {
             // Icon
@@ -271,8 +273,51 @@ struct AchievementRow: View {
             }
 
             Spacer(minLength: 0)
+
+            // Share button for unlocked achievements
+            if achievement.isUnlocked {
+                Button {
+                    shareAchievement(achievement)
+                } label: {
+                    if isGeneratingShare {
+                        ProgressView()
+                            .controlSize(.small)
+                    } else {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.title3)
+                            .foregroundStyle(.blue)
+                    }
+                }
+                .buttonStyle(.plain)
+                .disabled(isGeneratingShare)
+            }
         }
         .padding(.vertical, 4)
+    }
+
+    private func shareAchievement(_ achievement: Achievement) {
+        Task { @MainActor in
+            isGeneratingShare = true
+
+            // Generate share image
+            let image = ShareImageRenderer.render(size: CGSize(width: 1080, height: 1080)) {
+                AchievementShareView(achievement: achievement)
+            }
+
+            guard let image = image else {
+                print("⚠️ Failed to generate share image for achievement")
+                isGeneratingShare = false
+                return
+            }
+
+            // Present share sheet
+            ShareService.shared.presentShareSheet(
+                image: image,
+                text: LocalizedString.Share.achievementText(achievement.name)
+            )
+
+            isGeneratingShare = false
+        }
     }
 }
 
