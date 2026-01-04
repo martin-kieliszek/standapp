@@ -1170,4 +1170,122 @@ public enum LocalizedString {
         public static let weekendActivity = NSLocalizedString("schedule_template.weekend_activity", tableName: table, comment: "Weekend Activity")
         public static let activeHours = NSLocalizedString("schedule_template.active_hours", tableName: table, comment: "Active Hours")
     }
+
+    // MARK: - Achievement Definitions
+
+    public enum AchievementDefinition {
+        private static let table = "AchievementDefinitions"
+
+        // Milestone achievements
+        public static let firstExerciseName = NSLocalizedString("achievement.first_exercise.name", tableName: table, comment: "First Steps achievement name")
+        public static let firstExerciseDescription = NSLocalizedString("achievement.first_exercise.description", tableName: table, comment: "Log your first exercise")
+        public static let tenExercisesName = NSLocalizedString("achievement.ten_exercises.name", tableName: table, comment: "Getting Started achievement name")
+        public static let tenExercisesDescription = NSLocalizedString("achievement.ten_exercises.description", tableName: table, comment: "Log 10 exercise sessions")
+        public static let centuryName = NSLocalizedString("achievement.century.name", tableName: table, comment: "Century Club achievement name")
+        public static let centuryDescription = NSLocalizedString("achievement.century.description", tableName: table, comment: "Log 100 exercise sessions")
+        public static let fiveHundredName = NSLocalizedString("achievement.five_hundred.name", tableName: table, comment: "Dedicated achievement name")
+        public static let fiveHundredDescription = NSLocalizedString("achievement.five_hundred.description", tableName: table, comment: "Log 500 exercise sessions")
+        public static let thousandName = NSLocalizedString("achievement.thousand.name", tableName: table, comment: "The Grind achievement name")
+        public static let thousandDescription = NSLocalizedString("achievement.thousand.description", tableName: table, comment: "Log 1,000 exercise sessions")
+
+        // Consistency achievements
+        public static let weekStreakName = NSLocalizedString("achievement.week_streak.name", tableName: table, comment: "Week Warrior achievement name")
+        public static let weekStreakDescription = NSLocalizedString("achievement.week_streak.description", tableName: table, comment: "Maintain a 7-day streak")
+        public static let twoWeekStreakName = NSLocalizedString("achievement.two_week_streak.name", tableName: table, comment: "Building Habits achievement name")
+        public static let twoWeekStreakDescription = NSLocalizedString("achievement.two_week_streak.description", tableName: table, comment: "Maintain a 14-day streak")
+        public static let monthStreakName = NSLocalizedString("achievement.month_streak.name", tableName: table, comment: "Monthly Master achievement name")
+        public static let monthStreakDescription = NSLocalizedString("achievement.month_streak.description", tableName: table, comment: "Maintain a 30-day streak")
+        public static let yearStreakName = NSLocalizedString("achievement.year_streak.name", tableName: table, comment: "Unstoppable achievement name")
+        public static let yearStreakDescription = NSLocalizedString("achievement.year_streak.description", tableName: table, comment: "Maintain a 365-day streak")
+
+        // Variety achievements
+        public static let wellRoundedName = NSLocalizedString("achievement.well_rounded.name", tableName: table, comment: "Well Rounded achievement name")
+        public static let wellRoundedDescription = NSLocalizedString("achievement.well_rounded.description", tableName: table, comment: "Do 5 different exercise types in one day")
+        public static let varietyExpertName = NSLocalizedString("achievement.variety_expert.name", tableName: table, comment: "Variety Expert achievement name")
+        public static let varietyExpertDescription = NSLocalizedString("achievement.variety_expert.description", tableName: table, comment: "Do all 10 exercise types in one day")
+
+        // Challenge achievements
+        public static let earlyBirdName = NSLocalizedString("achievement.early_bird.name", tableName: table, comment: "Early Bird achievement name")
+        public static let earlyBirdDescription = NSLocalizedString("achievement.early_bird.description", tableName: table, comment: "Log an exercise before 7 AM")
+        public static let nightOwlName = NSLocalizedString("achievement.night_owl.name", tableName: table, comment: "Night Owl achievement name")
+        public static let nightOwlDescription = NSLocalizedString("achievement.night_owl.description", tableName: table, comment: "Log an exercise after 10 PM")
+        public static let powerDayName = NSLocalizedString("achievement.power_day.name", tableName: table, comment: "Power Day achievement name")
+        public static let powerDayDescription = NSLocalizedString("achievement.power_day.description", tableName: table, comment: "Complete 10 exercises in one day")
+        public static let marathonName = NSLocalizedString("achievement.marathon.name", tableName: table, comment: "Marathon achievement name")
+        public static let marathonDescription = NSLocalizedString("achievement.marathon.description", tableName: table, comment: "Complete 20 exercises in one day")
+
+        // Volume achievements - Pushups
+        public static let pushup100Name = NSLocalizedString("achievement.pushup_100.name", tableName: table, comment: "Pushup Pro achievement name")
+        public static let pushup100Description = NSLocalizedString("achievement.pushup_100.description", tableName: table, comment: "Complete 100 total pushup reps")
+        public static let pushup500Name = NSLocalizedString("achievement.pushup_500.name", tableName: table, comment: "Pushup Expert achievement name")
+        public static let pushup500Description = NSLocalizedString("achievement.pushup_500.description", tableName: table, comment: "Complete 500 total pushup reps")
+        public static let pushup1000Name = NSLocalizedString("achievement.pushup_1000.name", tableName: table, comment: "Pushup Master achievement name")
+        public static let pushup1000Description = NSLocalizedString("achievement.pushup_1000.description", tableName: table, comment: "Complete 1,000 total pushup reps")
+
+        // Volume achievements - Squats
+        public static let squat100Name = NSLocalizedString("achievement.squat_100.name", tableName: table, comment: "Squat Pro achievement name")
+        public static let squat100Description = NSLocalizedString("achievement.squat_100.description", tableName: table, comment: "Complete 100 total squat reps")
+        public static let squat500Name = NSLocalizedString("achievement.squat_500.name", tableName: table, comment: "Squat Expert achievement name")
+        public static let squat500Description = NSLocalizedString("achievement.squat_500.description", tableName: table, comment: "Complete 500 total squat reps")
+        public static let squat1000Name = NSLocalizedString("achievement.squat_1000.name", tableName: table, comment: "Squat Master achievement name")
+        public static let squat1000Description = NSLocalizedString("achievement.squat_1000.description", tableName: table, comment: "Complete 1,000 total squat reps")
+
+        // Volume achievements - Lunges
+        public static let lunge100Name = NSLocalizedString("achievement.lunge_100.name", tableName: table, comment: "Lunge Pro achievement name")
+        public static let lunge100Description = NSLocalizedString("achievement.lunge_100.description", tableName: table, comment: "Complete 100 total lunge reps")
+        public static let lunge500Name = NSLocalizedString("achievement.lunge_500.name", tableName: table, comment: "Lunge Expert achievement name")
+        public static let lunge500Description = NSLocalizedString("achievement.lunge_500.description", tableName: table, comment: "Complete 500 total lunge reps")
+        public static let lunge1000Name = NSLocalizedString("achievement.lunge_1000.name", tableName: table, comment: "Lunge Master achievement name")
+        public static let lunge1000Description = NSLocalizedString("achievement.lunge_1000.description", tableName: table, comment: "Complete 1,000 total lunge reps")
+
+        // Volume achievements - Plank
+        public static let plank300Name = NSLocalizedString("achievement.plank_300.name", tableName: table, comment: "Plank Beginner achievement name")
+        public static let plank300Description = NSLocalizedString("achievement.plank_300.description", tableName: table, comment: "Hold plank for 300 total seconds")
+        public static let plank1800Name = NSLocalizedString("achievement.plank_1800.name", tableName: table, comment: "Plank Warrior achievement name")
+        public static let plank1800Description = NSLocalizedString("achievement.plank_1800.description", tableName: table, comment: "Hold plank for 1,800 total seconds")
+        public static let plank3600Name = NSLocalizedString("achievement.plank_3600.name", tableName: table, comment: "Plank Champion achievement name")
+        public static let plank3600Description = NSLocalizedString("achievement.plank_3600.description", tableName: table, comment: "Hold plank for 3,600 total seconds (1 hour)")
+
+        // Volume achievements - Stretch
+        public static let stretch600Name = NSLocalizedString("achievement.stretch_600.name", tableName: table, comment: "Flexibility Friend achievement name")
+        public static let stretch600Description = NSLocalizedString("achievement.stretch_600.description", tableName: table, comment: "Stretch for 600 total seconds")
+        public static let stretch3000Name = NSLocalizedString("achievement.stretch_3000.name", tableName: table, comment: "Stretch Master achievement name")
+        public static let stretch3000Description = NSLocalizedString("achievement.stretch_3000.description", tableName: table, comment: "Stretch for 3,000 total seconds")
+        public static let stretch6000Name = NSLocalizedString("achievement.stretch_6000.name", tableName: table, comment: "Zen Master achievement name")
+        public static let stretch6000Description = NSLocalizedString("achievement.stretch_6000.description", tableName: table, comment: "Stretch for 6,000 total seconds")
+
+        // Volume achievements - Calf Raises
+        public static let calfRaise200Name = NSLocalizedString("achievement.calf_raise_200.name", tableName: table, comment: "Calf Crusher achievement name")
+        public static let calfRaise200Description = NSLocalizedString("achievement.calf_raise_200.description", tableName: table, comment: "Complete 200 total calf raises")
+        public static let calfRaise1000Name = NSLocalizedString("achievement.calf_raise_1000.name", tableName: table, comment: "Calf Expert achievement name")
+        public static let calfRaise1000Description = NSLocalizedString("achievement.calf_raise_1000.description", tableName: table, comment: "Complete 1,000 total calf raises")
+        public static let calfRaise2000Name = NSLocalizedString("achievement.calf_raise_2000.name", tableName: table, comment: "Steel Calves achievement name")
+        public static let calfRaise2000Description = NSLocalizedString("achievement.calf_raise_2000.description", tableName: table, comment: "Complete 2,000 total calf raises")
+
+        // Volume achievements - Walk In Place
+        public static let walk1000Name = NSLocalizedString("achievement.walk_1000.name", tableName: table, comment: "Stepping Up achievement name")
+        public static let walk1000Description = NSLocalizedString("achievement.walk_1000.description", tableName: table, comment: "Walk in place 1,000 total steps")
+        public static let walk5000Name = NSLocalizedString("achievement.walk_5000.name", tableName: table, comment: "Step Counter achievement name")
+        public static let walk5000Description = NSLocalizedString("achievement.walk_5000.description", tableName: table, comment: "Walk in place 5,000 total steps")
+        public static let walk10000Name = NSLocalizedString("achievement.walk_10000.name", tableName: table, comment: "Daily Walker achievement name")
+        public static let walk10000Description = NSLocalizedString("achievement.walk_10000.description", tableName: table, comment: "Walk in place 10,000 total steps")
+
+        // Volume achievements - Neck Rolls
+        public static let neckRoll100Name = NSLocalizedString("achievement.neck_roll_100.name", tableName: table, comment: "Neck Relief achievement name")
+        public static let neckRoll100Description = NSLocalizedString("achievement.neck_roll_100.description", tableName: table, comment: "Complete 100 total neck rolls")
+        public static let neckRoll500Name = NSLocalizedString("achievement.neck_roll_500.name", tableName: table, comment: "Tension Tamer achievement name")
+        public static let neckRoll500Description = NSLocalizedString("achievement.neck_roll_500.description", tableName: table, comment: "Complete 500 total neck rolls")
+
+        // Volume achievements - Shoulder Shrugs
+        public static let shoulderShrug200Name = NSLocalizedString("achievement.shoulder_shrug_200.name", tableName: table, comment: "Shoulder Soother achievement name")
+        public static let shoulderShrug200Description = NSLocalizedString("achievement.shoulder_shrug_200.description", tableName: table, comment: "Complete 200 total shoulder shrugs")
+        public static let shoulderShrug1000Name = NSLocalizedString("achievement.shoulder_shrug_1000.name", tableName: table, comment: "Desk Warrior achievement name")
+        public static let shoulderShrug1000Description = NSLocalizedString("achievement.shoulder_shrug_1000.description", tableName: table, comment: "Complete 1,000 total shoulder shrugs")
+
+        // Volume achievements - Arm Circles
+        public static let armCircle150Name = NSLocalizedString("achievement.arm_circle_150.name", tableName: table, comment: "Circle Starter achievement name")
+        public static let armCircle150Description = NSLocalizedString("achievement.arm_circle_150.description", tableName: table, comment: "Complete 150 total arm circles")
+        public static let armCircle750Name = NSLocalizedString("achievement.arm_circle_750.name", tableName: table, comment: "Rotation Master achievement name")
+        public static let armCircle750Description = NSLocalizedString("achievement.arm_circle_750.description", tableName: table, comment: "Complete 750 total arm circles")
+    }
 }

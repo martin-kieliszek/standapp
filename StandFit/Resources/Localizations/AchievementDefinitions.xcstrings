@@ -1,0 +1,1098 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "achievement.arm_circle_150.description" : {
+      "comment" : "Complete 150 total arm circles",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 150 Armkreise insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 150 total arm circles" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 150 círculos de brazo en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 150 cercles de bras au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計150回のアームサークルを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 150 círculos de braço no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计150次手臂绕圈" } }
+      }
+    },
+    "achievement.arm_circle_150.name" : {
+      "comment" : "Circle Starter achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kreis-Starter" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Circle Starter" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Iniciador de Círculos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Débutant en Cercles" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "サークルスターター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Iniciante de Círculos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "绕圈新手" } }
+      }
+    },
+    "achievement.arm_circle_750.description" : {
+      "comment" : "Complete 750 total arm circles",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 750 Armkreise insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 750 total arm circles" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 750 círculos de brazo en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 750 cercles de bras au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計750回のアームサークルを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 750 círculos de braço no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计750次手臂绕圈" } }
+      }
+    },
+    "achievement.arm_circle_750.name" : {
+      "comment" : "Rotation Master achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Rotationsmeister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rotation Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro de Rotación" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître de Rotation" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ローテーションマスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre da Rotação" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "旋转大师" } }
+      }
+    },
+    "achievement.calf_raise_1000.description" : {
+      "comment" : "Complete 1,000 total calf raises",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 1.000 Wadenheben insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1,000 total calf raises" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 1.000 elevaciones de pantorrilla en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 1 000 élévations de mollets au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計1,000回のカーフレイズを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1.000 elevações de panturrilha no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计1,000次提踵" } }
+      }
+    },
+    "achievement.calf_raise_1000.name" : {
+      "comment" : "Calf Expert achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Waden-Experte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calf Expert" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Experto en Pantorrillas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Expert en Mollets" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ふくらはぎエキスパート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Especialista em Panturrilha" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "小腿专家" } }
+      }
+    },
+    "achievement.calf_raise_200.description" : {
+      "comment" : "Complete 200 total calf raises",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 200 Wadenheben insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 200 total calf raises" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 200 elevaciones de pantorrilla en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 200 élévations de mollets au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計200回のカーフレイズを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 200 elevações de panturrilha no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计200次提踵" } }
+      }
+    },
+    "achievement.calf_raise_200.name" : {
+      "comment" : "Calf Crusher achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Waden-Crusher" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calf Crusher" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Triturador de Pantorrillas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Écraseur de Mollets" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ふくらはぎクラッシャー" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Esmagador de Panturrilha" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "小腿粉碎者" } }
+      }
+    },
+    "achievement.calf_raise_2000.description" : {
+      "comment" : "Complete 2,000 total calf raises",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 2.000 Wadenheben insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 2,000 total calf raises" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 2.000 elevaciones de pantorrilla en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 2 000 élévations de mollets au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計2,000回のカーフレイズを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 2.000 elevações de panturrilha no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计2,000次提踵" } }
+      }
+    },
+    "achievement.calf_raise_2000.name" : {
+      "comment" : "Steel Calves achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Stahlwaden" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Steel Calves" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pantorrillas de Acero" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mollets d'Acier" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "鋼鉄のふくらはぎ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Panturrilhas de Aço" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "钢铁小腿" } }
+      }
+    },
+    "achievement.century.description" : {
+      "comment" : "Log 100 exercise sessions",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere 100 Übungseinheiten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log 100 exercise sessions" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra 100 sesiones de ejercicio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez 100 séances d'exercice" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "100回の運動セッションを記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre 100 sessões de exercício" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "记录100次运动" } }
+      }
+    },
+    "achievement.century.name" : {
+      "comment" : "Century Club achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Jahrhundert-Club" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Century Club" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Club del Siglo" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Club du Siècle" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "センチュリークラブ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Clube do Século" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "百次俱乐部" } }
+      }
+    },
+    "achievement.early_bird.description" : {
+      "comment" : "Log an exercise before 7 AM",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere eine Übung vor 7 Uhr morgens" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log an exercise before 7 AM" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra un ejercicio antes de las 7 AM" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez un exercice avant 7h du matin" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "午前7時前に運動を記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre um exercício antes das 7h da manhã" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在早上7点前记录运动" } }
+      }
+    },
+    "achievement.early_bird.name" : {
+      "comment" : "Early Bird achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Frühaufsteher" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Early Bird" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Madrugador" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Lève-tôt" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "早起き" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Madrugador" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "早起的鸟儿" } }
+      }
+    },
+    "achievement.first_exercise.description" : {
+      "comment" : "Log your first exercise",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere deine erste Übung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log your first exercise" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra tu primer ejercicio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez votre premier exercice" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "最初の運動を記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre seu primeiro exercício" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "记录你的第一次运动" } }
+      }
+    },
+    "achievement.first_exercise.name" : {
+      "comment" : "First Steps achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erste Schritte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "First Steps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Primeros Pasos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Premiers Pas" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "最初の一歩" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Primeiros Passos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "第一步" } }
+      }
+    },
+    "achievement.five_hundred.description" : {
+      "comment" : "Log 500 exercise sessions",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere 500 Übungseinheiten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log 500 exercise sessions" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra 500 sesiones de ejercicio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez 500 séances d'exercice" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "500回の運動セッションを記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre 500 sessões de exercício" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "记录500次运动" } }
+      }
+    },
+    "achievement.five_hundred.name" : {
+      "comment" : "Dedicated achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Engagiert" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dedicated" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Dedicado" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Dévoué" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "献身的" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Dedicado" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "专注者" } }
+      }
+    },
+    "achievement.lunge_100.description" : {
+      "comment" : "Complete 100 total lunge reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 100 Ausfallschritte insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 total lunge reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 100 repeticiones de zancadas en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 100 répétitions de fentes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計100回のランジを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 repetições de afundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计100次弓步" } }
+      }
+    },
+    "achievement.lunge_100.name" : {
+      "comment" : "Lunge Pro achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ausfallschritt-Profi" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lunge Pro" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Profesional de Zancadas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pro des Fentes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ランジプロ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Profissional de Afundos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "弓步专家" } }
+      }
+    },
+    "achievement.lunge_1000.description" : {
+      "comment" : "Complete 1,000 total lunge reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 1.000 Ausfallschritte insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1,000 total lunge reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 1.000 repeticiones de zancadas en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 1 000 répétitions de fentes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計1,000回のランジを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1.000 repetições de afundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计1,000次弓步" } }
+      }
+    },
+    "achievement.lunge_1000.name" : {
+      "comment" : "Lunge Master achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ausfallschritt-Meister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lunge Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro de Zancadas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître des Fentes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ランジマスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre de Afundos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "弓步大师" } }
+      }
+    },
+    "achievement.lunge_500.description" : {
+      "comment" : "Complete 500 total lunge reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 500 Ausfallschritte insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 total lunge reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 500 repeticiones de zancadas en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 500 répétitions de fentes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計500回のランジを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 repetições de afundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计500次弓步" } }
+      }
+    },
+    "achievement.lunge_500.name" : {
+      "comment" : "Lunge Expert achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ausfallschritt-Experte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lunge Expert" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Experto en Zancadas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Expert en Fentes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ランジエキスパート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Especialista em Afundos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "弓步专家" } }
+      }
+    },
+    "achievement.marathon.description" : {
+      "comment" : "Complete 20 exercises in one day",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 20 Übungen an einem Tag ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 20 exercises in one day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 20 ejercicios en un día" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 20 exercices en une journée" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1日に20回の運動を完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 20 exercícios em um dia" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在一天内完成20次运动" } }
+      }
+    },
+    "achievement.marathon.name" : {
+      "comment" : "Marathon achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Marathon" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Marathon" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maratón" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Marathon" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マラソン" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Maratona" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "马拉松" } }
+      }
+    },
+    "achievement.month_streak.description" : {
+      "comment" : "Maintain a 30-day streak",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Halte eine 30-Tage-Serie aufrecht" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Maintain a 30-day streak" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén una racha de 30 días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maintenez une série de 30 jours" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "30日間の連続記録を維持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha uma sequência de 30 dias" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持30天连续记录" } }
+      }
+    },
+    "achievement.month_streak.name" : {
+      "comment" : "Monthly Master achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Monatsmeister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Monthly Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro Mensual" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître Mensuel" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "月間マスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre Mensal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "月度大师" } }
+      }
+    },
+    "achievement.neck_roll_100.description" : {
+      "comment" : "Complete 100 total neck rolls",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 100 Nackenrollen insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 total neck rolls" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 100 giros de cuello en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 100 rotations de cou au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計100回の首回しを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 rotações de pescoço no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计100次颈部转动" } }
+      }
+    },
+    "achievement.neck_roll_100.name" : {
+      "comment" : "Neck Relief achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Nackenentlastung" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neck Relief" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Alivio del Cuello" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Soulagement du Cou" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "首の緩和" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Alívio do Pescoço" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "颈部放松" } }
+      }
+    },
+    "achievement.neck_roll_500.description" : {
+      "comment" : "Complete 500 total neck rolls",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 500 Nackenrollen insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 total neck rolls" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 500 giros de cuello en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 500 rotations de cou au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計500回の首回しを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 rotações de pescoço no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计500次颈部转动" } }
+      }
+    },
+    "achievement.neck_roll_500.name" : {
+      "comment" : "Tension Tamer achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Spannungsbändiger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tension Tamer" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Domador de Tensión" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Dompteur de Tension" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "緊張緩和" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Domador de Tensão" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "紧张缓解者" } }
+      }
+    },
+    "achievement.night_owl.description" : {
+      "comment" : "Log an exercise after 10 PM",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere eine Übung nach 22 Uhr" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log an exercise after 10 PM" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra un ejercicio después de las 10 PM" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez un exercice après 22h" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "午後10時以降に運動を記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre um exercício após as 22h" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在晚上10点后记录运动" } }
+      }
+    },
+    "achievement.night_owl.name" : {
+      "comment" : "Night Owl achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Nachteule" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Night Owl" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Búho Nocturno" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Oiseau de Nuit" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "夜更かし" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Coruja Noturna" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "夜猫子" } }
+      }
+    },
+    "achievement.plank_1800.description" : {
+      "comment" : "Hold plank for 1,800 total seconds",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Halte die Plank-Position für 1.800 Sekunden insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hold plank for 1,800 total seconds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén la plancha durante 1.800 segundos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tenez la planche pendant 1 800 secondes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計1,800秒のプランクを保持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha a prancha por 1.800 segundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持平板支撑总计1,800秒" } }
+      }
+    },
+    "achievement.plank_1800.name" : {
+      "comment" : "Plank Warrior achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Plank-Krieger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Plank Warrior" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guerrero de Plancha" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Guerrier de la Planche" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プランクウォーリア" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Guerreiro da Prancha" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "平板战士" } }
+      }
+    },
+    "achievement.plank_300.description" : {
+      "comment" : "Hold plank for 300 total seconds",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Halte die Plank-Position für 300 Sekunden insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hold plank for 300 total seconds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén la plancha durante 300 segundos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tenez la planche pendant 300 secondes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計300秒のプランクを保持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha a prancha por 300 segundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持平板支撑总计300秒" } }
+      }
+    },
+    "achievement.plank_300.name" : {
+      "comment" : "Plank Beginner achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Plank-Anfänger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Plank Beginner" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Principiante de Plancha" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Débutant en Planche" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プランク初心者" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Iniciante em Prancha" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "平板新手" } }
+      }
+    },
+    "achievement.plank_3600.description" : {
+      "comment" : "Hold plank for 3,600 total seconds (1 hour)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Halte die Plank-Position für 3.600 Sekunden insgesamt (1 Stunde)" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hold plank for 3,600 total seconds (1 hour)" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén la plancha durante 3.600 segundos en total (1 hora)" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tenez la planche pendant 3 600 secondes au total (1 heure)" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計3,600秒（1時間）のプランクを保持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha a prancha por 3.600 segundos no total (1 hora)" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持平板支撑总计3,600秒（1小时）" } }
+      }
+    },
+    "achievement.plank_3600.name" : {
+      "comment" : "Plank Champion achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Plank-Champion" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Plank Champion" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Campeón de Plancha" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Champion de la Planche" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プランクチャンピオン" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Campeão da Prancha" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "平板冠军" } }
+      }
+    },
+    "achievement.power_day.description" : {
+      "comment" : "Complete 10 exercises in one day",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 10 Übungen an einem Tag ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 10 exercises in one day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 10 ejercicios en un día" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 10 exercices en une journée" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1日に10回の運動を完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 10 exercícios em um dia" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在一天内完成10次运动" } }
+      }
+    },
+    "achievement.power_day.name" : {
+      "comment" : "Power Day achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Power-Tag" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Power Day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Día Poderoso" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Jour de Puissance" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "パワーデイ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Dia Poderoso" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "力量日" } }
+      }
+    },
+    "achievement.pushup_100.description" : {
+      "comment" : "Complete 100 total pushup reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 100 Liegestütze insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 total pushup reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 100 flexiones en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 100 pompes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計100回の腕立て伏せを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 flexões no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计100次俯卧撑" } }
+      }
+    },
+    "achievement.pushup_100.name" : {
+      "comment" : "Pushup Pro achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Liegestütz-Profi" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pushup Pro" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Profesional de Flexiones" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pro des Pompes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "腕立て伏せプロ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Profissional de Flexões" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "俯卧撑专家" } }
+      }
+    },
+    "achievement.pushup_1000.description" : {
+      "comment" : "Complete 1,000 total pushup reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 1.000 Liegestütze insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1,000 total pushup reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 1.000 flexiones en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 1 000 pompes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計1,000回の腕立て伏せを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1.000 flexões no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计1,000次俯卧撑" } }
+      }
+    },
+    "achievement.pushup_1000.name" : {
+      "comment" : "Pushup Master achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Liegestütz-Meister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pushup Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro de Flexiones" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître des Pompes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "腕立て伏せマスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre de Flexões" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "俯卧撑大师" } }
+      }
+    },
+    "achievement.pushup_500.description" : {
+      "comment" : "Complete 500 total pushup reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 500 Liegestütze insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 total pushup reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 500 flexiones en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 500 pompes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計500回の腕立て伏せを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 flexões no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计500次俯卧撑" } }
+      }
+    },
+    "achievement.pushup_500.name" : {
+      "comment" : "Pushup Expert achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Liegestütz-Experte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pushup Expert" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Experto en Flexiones" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Expert en Pompes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "腕立て伏せエキスパート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Especialista em Flexões" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "俯卧撑专家" } }
+      }
+    },
+    "achievement.shoulder_shrug_1000.description" : {
+      "comment" : "Complete 1,000 total shoulder shrugs",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 1.000 Schulterzucken insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1,000 total shoulder shrugs" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 1.000 encogimientos de hombros en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 1 000 haussements d'épaules au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計1,000回の肩すくめを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1.000 encolhimentos de ombros no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计1,000次耸肩" } }
+      }
+    },
+    "achievement.shoulder_shrug_1000.name" : {
+      "comment" : "Desk Warrior achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schreibtisch-Krieger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Desk Warrior" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guerrero de Escritorio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Guerrier de Bureau" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "デスクウォーリア" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Guerreiro de Mesa" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "办公桌战士" } }
+      }
+    },
+    "achievement.shoulder_shrug_200.description" : {
+      "comment" : "Complete 200 total shoulder shrugs",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 200 Schulterzucken insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 200 total shoulder shrugs" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 200 encogimientos de hombros en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 200 haussements d'épaules au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計200回の肩すくめを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 200 encolhimentos de ombros no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计200次耸肩" } }
+      }
+    },
+    "achievement.shoulder_shrug_200.name" : {
+      "comment" : "Shoulder Soother achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schulter-Beruhiger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shoulder Soother" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Calmante de Hombros" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Apaisant des Épaules" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "肩の癒し手" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Suavizador de Ombros" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "肩部舒缓者" } }
+      }
+    },
+    "achievement.squat_100.description" : {
+      "comment" : "Complete 100 total squat reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 100 Kniebeugen insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 total squat reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 100 sentadillas en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 100 squats au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計100回のスクワットを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 100 agachamentos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计100次深蹲" } }
+      }
+    },
+    "achievement.squat_100.name" : {
+      "comment" : "Squat Pro achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kniebeuge-Profi" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Squat Pro" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Profesional de Sentadillas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pro des Squats" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "スクワットプロ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Profissional de Agachamentos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "深蹲专家" } }
+      }
+    },
+    "achievement.squat_1000.description" : {
+      "comment" : "Complete 1,000 total squat reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 1.000 Kniebeugen insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1,000 total squat reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 1.000 sentadillas en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 1 000 squats au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計1,000回のスクワットを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 1.000 agachamentos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计1,000次深蹲" } }
+      }
+    },
+    "achievement.squat_1000.name" : {
+      "comment" : "Squat Master achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kniebeuge-Meister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Squat Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro de Sentadillas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître des Squats" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "スクワットマスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre de Agachamentos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "深蹲大师" } }
+      }
+    },
+    "achievement.squat_500.description" : {
+      "comment" : "Complete 500 total squat reps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schließe 500 Kniebeugen insgesamt ab" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 total squat reps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Completa 500 sentadillas en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effectuez 500 squats au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計500回のスクワットを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Complete 500 agachamentos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成总计500次深蹲" } }
+      }
+    },
+    "achievement.squat_500.name" : {
+      "comment" : "Squat Expert achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kniebeuge-Experte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Squat Expert" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Experto en Sentadillas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Expert en Squats" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "スクワットエキスパート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Especialista em Agachamentos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "深蹲专家" } }
+      }
+    },
+    "achievement.stretch_3000.description" : {
+      "comment" : "Stretch for 3,000 total seconds",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Dehne dich für 3.000 Sekunden insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stretch for 3,000 total seconds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Estírate durante 3.000 segundos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Étirez-vous pendant 3 000 secondes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計3,000秒のストレッチ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Alongue-se por 3.000 segundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "总计拉伸3,000秒" } }
+      }
+    },
+    "achievement.stretch_3000.name" : {
+      "comment" : "Stretch Master achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Dehn-Meister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stretch Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro del Estiramiento" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître de l'Étirement" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ストレッチマスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre do Alongamento" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "拉伸大师" } }
+      }
+    },
+    "achievement.stretch_600.description" : {
+      "comment" : "Stretch for 600 total seconds",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Dehne dich für 600 Sekunden insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stretch for 600 total seconds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Estírate durante 600 segundos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Étirez-vous pendant 600 secondes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計600秒のストレッチ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Alongue-se por 600 segundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "总计拉伸600秒" } }
+      }
+    },
+    "achievement.stretch_600.name" : {
+      "comment" : "Flexibility Friend achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Flexibilitätsfreund" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Flexibility Friend" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Amigo de la Flexibilidad" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ami de la Flexibilité" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "柔軟性の友" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Amigo da Flexibilidade" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "柔韧性好友" } }
+      }
+    },
+    "achievement.stretch_6000.description" : {
+      "comment" : "Stretch for 6,000 total seconds",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Dehne dich für 6.000 Sekunden insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stretch for 6,000 total seconds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Estírate durante 6.000 segundos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Étirez-vous pendant 6 000 secondes au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計6,000秒のストレッチ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Alongue-se por 6.000 segundos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "总计拉伸6,000秒" } }
+      }
+    },
+    "achievement.stretch_6000.name" : {
+      "comment" : "Zen Master achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Zen-Meister" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Zen Master" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Maestro Zen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maître Zen" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "禅マスター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mestre Zen" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "禅宗大师" } }
+      }
+    },
+    "achievement.ten_exercises.description" : {
+      "comment" : "Log 10 exercise sessions",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere 10 Übungseinheiten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log 10 exercise sessions" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra 10 sesiones de ejercicio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez 10 séances d'exercice" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "10回の運動セッションを記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre 10 sessões de exercício" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "记录10次运动" } }
+      }
+    },
+    "achievement.ten_exercises.name" : {
+      "comment" : "Getting Started achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erste Schritte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Getting Started" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Primeros Pasos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Démarrage" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "スタート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Começando" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "入门" } }
+      }
+    },
+    "achievement.thousand.description" : {
+      "comment" : "Log 1,000 exercise sessions",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Protokolliere 1.000 Übungseinheiten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Log 1,000 exercise sessions" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Registra 1.000 sesiones de ejercicio" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez 1 000 séances d'exercice" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1,000回の運動セッションを記録" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Registre 1.000 sessões de exercício" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "记录1,000次运动" } }
+      }
+    },
+    "achievement.thousand.name" : {
+      "comment" : "The Grind achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Der Grind" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The Grind" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "La Rutina" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Le Grind" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "グラインド" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "A Rotina" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "坚持不懈" } }
+      }
+    },
+    "achievement.two_week_streak.description" : {
+      "comment" : "Maintain a 14-day streak",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Halte eine 14-Tage-Serie aufrecht" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Maintain a 14-day streak" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén una racha de 14 días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maintenez une série de 14 jours" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "14日間の連続記録を維持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha uma sequência de 14 dias" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持14天连续记录" } }
+      }
+    },
+    "achievement.two_week_streak.name" : {
+      "comment" : "Building Habits achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gewohnheiten aufbauen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Building Habits" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Construyendo Hábitos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Construction d'Habitudes" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "習慣作り" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Construindo Hábitos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "培养习惯" } }
+      }
+    },
+    "achievement.variety_expert.description" : {
+      "comment" : "Do all 10 exercise types in one day",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Absolviere alle 10 Übungsarten an einem Tag" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Do all 10 exercise types in one day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Haz los 10 tipos de ejercicio en un día" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Faites les 10 types d'exercices en une journée" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1日に10種類すべての運動を実施" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Faça todos os 10 tipos de exercício em um dia" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在一天内完成所有10种运动类型" } }
+      }
+    },
+    "achievement.variety_expert.name" : {
+      "comment" : "Variety Expert achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vielfalt-Experte" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Variety Expert" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Experto en Variedad" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Expert en Variété" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バラエティエキスパート" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Especialista em Variedade" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "多样化专家" } }
+      }
+    },
+    "achievement.walk_1000.description" : {
+      "comment" : "Walk in place 1,000 total steps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gehe 1.000 Schritte auf der Stelle insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Walk in place 1,000 total steps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Camina en el lugar 1.000 pasos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Marchez sur place 1 000 pas au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計1,000歩の足踏みを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Caminhe no lugar 1.000 passos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "原地踏步总计1,000步" } }
+      }
+    },
+    "achievement.walk_1000.name" : {
+      "comment" : "Stepping Up achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufsteigen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stepping Up" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Subiendo el Nivel" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Montée en Puissance" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ステップアップ" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Subindo de Nível" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "步步高升" } }
+      }
+    },
+    "achievement.walk_10000.description" : {
+      "comment" : "Walk in place 10,000 total steps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gehe 10.000 Schritte auf der Stelle insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Walk in place 10,000 total steps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Camina en el lugar 10.000 pasos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Marchez sur place 10 000 pas au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計10,000歩の足踏みを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Caminhe no lugar 10.000 passos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "原地踏步总计10,000步" } }
+      }
+    },
+    "achievement.walk_10000.name" : {
+      "comment" : "Daily Walker achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Täglicher Spaziergänger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Walker" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Caminante Diario" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Marcheur Quotidien" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日の歩行者" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Caminhante Diário" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每日行走者" } }
+      }
+    },
+    "achievement.walk_5000.description" : {
+      "comment" : "Walk in place 5,000 total steps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gehe 5.000 Schritte auf der Stelle insgesamt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Walk in place 5,000 total steps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Camina en el lugar 5.000 pasos en total" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Marchez sur place 5 000 pas au total" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "合計5,000歩の足踏みを完了" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Caminhe no lugar 5.000 passos no total" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "原地踏步总计5,000步" } }
+      }
+    },
+    "achievement.walk_5000.name" : {
+      "comment" : "Step Counter achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Schrittzähler" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Step Counter" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Contador de Pasos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Compteur de Pas" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "歩数カウンター" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Contador de Passos" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "步数计数器" } }
+      }
+    },
+    "achievement.week_streak.description" : {
+      "comment" : "Maintain a 7-day streak",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Halte eine 7-Tage-Serie aufrecht" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Maintain a 7-day streak" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén una racha de 7 días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maintenez une série de 7 jours" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "7日間の連続記録を維持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha uma sequência de 7 dias" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持7天连续记录" } }
+      }
+    },
+    "achievement.week_streak.name" : {
+      "comment" : "Week Warrior achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wochen-Krieger" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week Warrior" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guerrero Semanal" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Guerrier de la Semaine" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "週間ウォーリア" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Guerreiro Semanal" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周战士" } }
+      }
+    },
+    "achievement.well_rounded.description" : {
+      "comment" : "Do 5 different exercise types in one day",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Absolviere 5 verschiedene Übungsarten an einem Tag" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Do 5 different exercise types in one day" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Haz 5 tipos diferentes de ejercicio en un día" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Faites 5 types d'exercices différents en une journée" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1日に5種類の異なる運動を実施" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Faça 5 tipos diferentes de exercício em um dia" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在一天内完成5种不同的运动类型" } }
+      }
+    },
+    "achievement.well_rounded.name" : {
+      "comment" : "Well Rounded achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vielseitig" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Well Rounded" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Bien Equilibrado" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Bien Équilibré" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バランスの取れた" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Bem Equilibrado" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "全面发展" } }
+      }
+    },
+    "achievement.year_streak.description" : {
+      "comment" : "Maintain a 365-day streak",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Halte eine 365-Tage-Serie aufrecht" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Maintain a 365-day streak" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mantén una racha de 365 días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Maintenez une série de 365 jours" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "365日間の連続記録を維持" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mantenha uma sequência de 365 dias" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保持365天连续记录" } }
+      }
+    },
+    "achievement.year_streak.name" : {
+      "comment" : "Unstoppable achievement name",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Unaufhaltsam" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unstoppable" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Imparable" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Inarrêtable" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "止められない" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Imparável" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "势不可挡" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
