@@ -31,7 +31,8 @@ public struct ReportingService {
             return emptyStats(for: period)
         }
 
-        let totalCount = periodLogs.reduce(0) { $0 + $1.count }
+        // Count exercise sessions (logs), not reps/seconds
+        let totalCount = periodLogs.count
         let breakdown = exerciseBreakdown(periodLogs, customExercises: customExercises)
         let previousStats = previousPeriodStats(for: period, from: logs, customExercises: customExercises, currentStreak: currentStreak)
         let percentChange = percentageChange(current: totalCount, previous: previousStats?.totalCount)
@@ -63,7 +64,8 @@ public struct ReportingService {
     }
 
     private func exerciseBreakdown(_ logs: [ExerciseLog], customExercises: [CustomExercise]) -> [ExerciseBreakdown] {
-        let total = logs.reduce(0) { $0 + $1.count }
+        // Count total number of exercise sessions (logs), not reps/seconds
+        let total = logs.count
         guard total > 0 else { return [] }
 
         var breakdown: [String: (count: Int, item: ExerciseItem)] = [:]
@@ -84,9 +86,10 @@ public struct ReportingService {
             let key = item.id
 
             if let existing = breakdown[key] {
-                breakdown[key] = (count: existing.count + log.count, item: existing.item)
+                // Count sessions, not reps/seconds
+                breakdown[key] = (count: existing.count + 1, item: existing.item)
             } else {
-                breakdown[key] = (count: log.count, item: item)
+                breakdown[key] = (count: 1, item: item)
             }
         }
 

@@ -201,7 +201,7 @@ struct SettingsView: View {
                         content.title = "Weekly Insights Ready"
                         content.body = "Your weekly activity summary is available"
                         content.sound = .default
-                        content.categoryIdentifier = "progressReport"
+                        content.categoryIdentifier = NotificationType.progressReport.categoryIdentifier
                         
                         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
                         let request = UNNotificationRequest(identifier: "test-weekly-insights", content: content, trigger: trigger)

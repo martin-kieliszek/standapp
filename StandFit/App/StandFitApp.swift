@@ -205,11 +205,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             }
         }
 
+        // Handle actions based on action identifier first, then fall back to category
         switch response.actionIdentifier {
         case "LOG_EXERCISE":
             // User tapped "Log Exercise" - show exercise picker immediately
             notificationManager.playClickHaptic()
-            // Post notification to show exercise picker (slight delay to ensure view is ready)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 NotificationCenter.default.post(name: .showExercisePicker, object: nil)
             }
@@ -228,11 +228,19 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             }
 
         case UNNotificationDefaultActionIdentifier:
-            // User tapped the notification itself - open exercise picker
-            // (Next notification already scheduled above)
+            // User tapped the notification body itself - route based on category
             notificationManager.playClickHaptic()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                NotificationCenter.default.post(name: .showExercisePicker, object: nil)
+            
+            if categoryIdentifier == NotificationType.progressReport.categoryIdentifier {
+                // Progress report notification → show weekly insights
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    NotificationCenter.default.post(name: .showWeeklyInsights, object: nil)
+                }
+            } else {
+                // Exercise reminder → show exercise picker
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    NotificationCenter.default.post(name: .showExercisePicker, object: nil)
+                }
             }
 
         default:
