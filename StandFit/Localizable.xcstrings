@@ -50,9 +50,6 @@
         }
       }
     },
-    "%lld custom" : {
-
-    },
     "%lld:%@ - %lld:%@" : {
       "localizations" : {
         "en" : {

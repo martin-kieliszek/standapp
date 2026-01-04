@@ -92,7 +92,7 @@ struct SettingsView: View {
                         HStack {
                             Label(LocalizedString.Picker.custom, systemImage: "figure.run")
                             Spacer()
-                            Text("\(store.customExercises.count) custom")
+                            Text("\(store.customExercises.count) \(LocalizedString.Settings.custom)")
                                 .foregroundStyle(.secondary)
                                 .font(.caption)
                         }

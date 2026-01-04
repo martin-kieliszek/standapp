@@ -370,6 +370,7 @@ public enum LocalizedString {
         public static let customExercises = NSLocalizedString("settings.custom_exercises", tableName: table, comment: "Custom exercises section")
         public static let manageExercises = NSLocalizedString("settings.manage_exercises", tableName: table, comment: "Manage custom exercises")
         public static let createExercise = NSLocalizedString("settings.create_exercise", tableName: table, comment: "Create custom exercise")
+        public static let custom = NSLocalizedString("settings.custom", tableName: table, comment: "Custom (lowercase label)")
 
         // App
         public static let app = NSLocalizedString("settings.app", tableName: table, comment: "App section")
