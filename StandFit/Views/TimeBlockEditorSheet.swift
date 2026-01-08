@@ -300,8 +300,15 @@ struct TimeBlockEditorSheet: View {
     @State private var randomizationRange: Int
     @State private var selectedIcon: String?
     @State private var notificationStyle: TimeBlock.NotificationStyle
-    
-    let intervalOptions = [5,10, 15, 20, 30, 45, 60, 90, 120]
+
+    let intervalOptions: [Int] = {
+        #if DEBUG
+        return [1, 5, 10, 15, 20, 30, 45, 60, 90, 120]
+        #else
+        return [5, 10, 15, 20, 30, 45, 60, 90, 120]
+        #endif
+    }()
+
     let icons = ["sun.max.fill", "sunrise.fill", "moon.fill", "briefcase.fill", 
                  "laptopcomputer", "figure.run", "leaf.fill", "clock.fill",
                  "bell.fill", "star.fill", "heart.fill", "bolt.fill"]

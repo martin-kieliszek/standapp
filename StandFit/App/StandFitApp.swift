@@ -59,10 +59,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         Task {
             do {
                 try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
-                DispatchQueue.main.async {
-                    // Ensure all notifications are scheduled on app launch
-                    ExerciseStore.shared.updateAllNotificationSchedules(reason: "App launch")
-                }
+                // ✅ FIX: Don't reschedule on app launch - let lifecycle monitoring handle missing notifications
+                // This prevents resetting the notification chain every time user opens the app
             } catch {
                 print("Notification authorization error: \(error)")
             }
@@ -90,22 +88,35 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         }
     }
     
-    /// Check if there's a pending exercise reminder notification, schedule one if missing
+    /// Check if notifications are properly scheduled, schedule missing ones
     private func ensureNotificationChainActive() {
         Task {
             let center = UNUserNotificationCenter.current()
             let pendingRequests = await center.pendingNotificationRequests()
-            
+            let store = ExerciseStore.shared
+
             // Check if there's a pending exercise reminder
             let hasExerciseReminder = pendingRequests.contains { request in
                 request.identifier == NotificationType.exerciseReminder.rawValue
             }
-            
-            if !hasExerciseReminder {
+
+            if !hasExerciseReminder && store.remindersEnabled {
                 print("⚠️ No exercise reminder scheduled - scheduling one now")
-                NotificationManager.shared.scheduleReminderWithSchedule(store: ExerciseStore.shared)
+                NotificationManager.shared.scheduleReminderWithSchedule(store: store)
             } else {
                 print("✅ Exercise reminder is scheduled")
+            }
+
+            // Check if there's a pending progress report
+            let hasProgressReport = pendingRequests.contains { request in
+                request.identifier == NotificationType.progressReport.rawValue
+            }
+
+            if !hasProgressReport && store.progressReportSettings.enabled {
+                print("⚠️ No progress report scheduled - scheduling one now")
+                NotificationManager.shared.scheduleProgressReport(store: store)
+            } else if hasProgressReport {
+                print("✅ Progress report is scheduled")
             }
         }
     }
@@ -122,12 +133,16 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // Record that this notification was actually fired (for timeline tracking)
         NotificationFiredLog.shared.recordNotificationFired()
 
-        // Schedule a follow-up in case user doesn't respond (dead response reset)
-        NotificationManager.shared.scheduleFollowUpReminder(store: ExerciseStore.shared)
+        // ✅ When any exercise reminder fires (including dead response), schedule next one and follow-up
+        // This applies whether it was a regular notification, snoozed, or dead response
+        let categoryId = notification.request.content.categoryIdentifier
+        if categoryId == NotificationType.exerciseReminder.categoryIdentifier ||
+           categoryId == NotificationType.deadResponseReminder.categoryIdentifier {
 
-        // ✅ When notification fires, schedule next one using normal schedule
-        // This applies whether it was a regular notification or a snoozed one
-        if notification.request.content.categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier {
+            // Schedule follow-up in case user doesn't respond (dead response reset)
+            NotificationManager.shared.scheduleFollowUpReminder(store: ExerciseStore.shared)
+
+            // Schedule next regular reminder
             NotificationManager.shared.scheduleReminderWithSchedule(store: ExerciseStore.shared)
         }
 
@@ -150,15 +165,16 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         )
         
         // Add actions based on category
-        if categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier {
-            // Log Exercise button
+        if categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier ||
+           categoryIdentifier == NotificationType.deadResponseReminder.categoryIdentifier {
+            // Log Exercise button (same for both exercise reminder and dead response)
             alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionLogExercise, style: .default) { _ in
                 NotificationManager.shared.playClickHaptic()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     NotificationCenter.default.post(name: .showExercisePicker, object: nil)
                 }
             })
-            
+
             // Snooze button
             alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionSnooze5Min, style: .default) { _ in
                 NotificationManager.shared.snoozeReminder(seconds: 300, store: ExerciseStore.shared)
@@ -211,9 +227,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         
         // ✅ CRITICAL: Schedule next notification regardless of which action was taken
         // This ensures notification chain continues even if user dismisses/ignores
-        // Only do this for exercise reminders (not progress reports or achievements)
+        // Only do this for exercise reminders and dead response (not progress reports or achievements)
         let categoryIdentifier = response.notification.request.content.categoryIdentifier
-        if categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier {
+        if categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier ||
+           categoryIdentifier == NotificationType.deadResponseReminder.categoryIdentifier {
             // Don't schedule if user snoozed (snooze handles its own scheduling)
             if response.actionIdentifier != "SNOOZE" {
                 notificationManager.scheduleReminderWithSchedule(store: store)

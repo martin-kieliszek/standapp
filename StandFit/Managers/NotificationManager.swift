@@ -69,6 +69,14 @@ class NotificationManager: ObservableObject {
             options: []
         )
 
+        // Dead response category uses same actions as exercise reminder
+        let deadResponseCategory = UNNotificationCategory(
+            identifier: NotificationType.deadResponseReminder.categoryIdentifier,
+            actions: [logAction, snoozeAction],
+            intentIdentifiers: [],
+            options: []
+        )
+
         let reportCategory = UNNotificationCategory(
             identifier: NotificationType.progressReport.categoryIdentifier,
             actions: [viewReportAction],
@@ -83,11 +91,12 @@ class NotificationManager: ObservableObject {
             options: []
         )
 
-        UNUserNotificationCenter.current().setNotificationCategories([exerciseCategory, reportCategory, achievementCategory])
+        UNUserNotificationCenter.current().setNotificationCategories([exerciseCategory, deadResponseCategory, reportCategory, achievementCategory])
         
         #if DEBUG
-        print("✅ Registered 3 notification categories:")
+        print("✅ Registered 4 notification categories:")
         print("   - \(NotificationType.exerciseReminder.categoryIdentifier) with 2 actions")
+        print("   - \(NotificationType.deadResponseReminder.categoryIdentifier) with 2 actions")
         print("   - \(NotificationType.progressReport.categoryIdentifier) with 1 action")
         print("   - \(NotificationType.achievementUnlocked.categoryIdentifier) with 1 action")
         #endif
@@ -460,13 +469,20 @@ class NotificationManager: ObservableObject {
 
         // For weekly reports, set weekday to Sunday (1 in Calendar.Component.weekday)
         if store.progressReportSettings.frequency == .weekly {
-            components.weekday = 1  // Sunday
+            components.weekday = 1  // Sunday (1 = Sunday in Calendar.Component.weekday)
         }
 
         let trigger = UNCalendarNotificationTrigger(
             dateMatching: components,
-            repeats: true  // ✅ FIXED - automatically repeats daily/weekly
+            repeats: true  // Automatically repeats daily (if only hour/minute) or weekly (if weekday set)
         )
+
+        #if DEBUG
+        print("📅 Progress report trigger created:")
+        print("   - Frequency: \(store.progressReportSettings.frequency.displayName)")
+        print("   - Components: hour=\(components.hour ?? -1), minute=\(components.minute ?? -1), weekday=\(components.weekday ?? -1)")
+        print("   - Next trigger: \(trigger.nextTriggerDate() ?? Date())")
+        #endif
 
         let request = UNNotificationRequest(
             identifier: NotificationType.progressReport.rawValue,

@@ -219,7 +219,7 @@ public struct ProgressReportSettings: Codable, Equatable {
 
     public init(
         enabled: Bool = true,
-        frequency: ReportFrequency = .daily,
+        frequency: ReportFrequency = .weekly,  // ✅ Changed default to weekly (Sundays at 8pm)
         hour: Int = 20,
         minute: Int = 0,
         lastReportDate: Date? = nil,
