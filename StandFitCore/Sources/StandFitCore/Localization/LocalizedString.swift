@@ -452,6 +452,8 @@ public enum LocalizedString {
         public static let actionViewDetails = NSLocalizedString("notification.action_view_details", tableName: table, comment: "View Details action button")
         public static let actionViewAll = NSLocalizedString("notification.action_view_all", tableName: table, comment: "View All action button")
         public static let resetTimer = NSLocalizedString("notification.reset_timer", tableName: table, comment: "Reset Timer button")
+        public static let snooze1Min = NSLocalizedString("notification.snooze_1min", tableName: table, comment: "Snooze for 1 minute")
+        public static let snooze5Min = NSLocalizedString("notification.snooze_5min", tableName: table, comment: "Snooze for 5 minutes")
 
         // Format strings
         public static func dailyReport(_ totalExercises: Int) -> String {

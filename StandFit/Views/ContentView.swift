@@ -304,6 +304,40 @@ struct ContentView: View {
                         Divider()
                             .padding(.horizontal, -20)
 
+                        // Timer control buttons
+                        HStack(spacing: 8) {
+                            // +1 min button
+                            Button {
+                                NotificationManager.shared.snoozeReminder(seconds: 60, store: exerciseStore)
+                                NotificationManager.shared.playClickHaptic()
+                            } label: {
+                                Text(LocalizedString.Notifications.snooze1Min)
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                                    .background(Color.green.opacity(0.1))
+                                    .foregroundStyle(.green)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+
+                            // +5 min button
+                            Button {
+                                NotificationManager.shared.snoozeReminder(seconds: 300, store: exerciseStore)
+                                NotificationManager.shared.playClickHaptic()
+                            } label: {
+                                Text(LocalizedString.Notifications.snooze5Min)
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                                    .background(Color.orange.opacity(0.1))
+                                    .foregroundStyle(.orange)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+                        }
+                        .padding(.top, 12)
+
                         // Reset button
                         Button {
                             NotificationManager.shared.scheduleReminderWithSchedule(store: exerciseStore)
@@ -321,7 +355,7 @@ struct ContentView: View {
                             .foregroundStyle(.blue)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                        .padding(.top, 12)
+                        .padding(.top, 8)
 
                         // Quick link to reminder schedule settings
                         NavigationLink {
