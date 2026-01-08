@@ -224,17 +224,21 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
         // User responded - cancel any pending follow-up
         notificationManager.cancelFollowUpReminder()
-        
-        // ✅ CRITICAL: Schedule next notification regardless of which action was taken
-        // This ensures notification chain continues even if user dismisses/ignores
-        // Only do this for exercise reminders and dead response (not progress reports or achievements)
+
+        // ✅ FIX: Don't reschedule if user is just opening the app from notification tap
+        // Only schedule next reminder if user took an explicit action (logged exercise, dismissed)
+        // This prevents resetting the countdown timer when user just taps to open the app
         let categoryIdentifier = response.notification.request.content.categoryIdentifier
-        if categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier ||
-           categoryIdentifier == NotificationType.deadResponseReminder.categoryIdentifier {
-            // Don't schedule if user snoozed (snooze handles its own scheduling)
-            if response.actionIdentifier != "SNOOZE" {
-                notificationManager.scheduleReminderWithSchedule(store: store)
-            }
+        let isExerciseOrDeadResponse = categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier ||
+                                       categoryIdentifier == NotificationType.deadResponseReminder.categoryIdentifier
+
+        // Don't reschedule for default action (tapping notification body) or snooze
+        // Default action = user tapped notification to open app (should preserve existing timer)
+        let shouldReschedule = response.actionIdentifier != UNNotificationDefaultActionIdentifier &&
+                               response.actionIdentifier != "SNOOZE"
+
+        if isExerciseOrDeadResponse && shouldReschedule {
+            notificationManager.scheduleReminderWithSchedule(store: store)
         }
 
         // Handle actions based on action identifier first, then fall back to category

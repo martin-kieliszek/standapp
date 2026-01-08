@@ -167,6 +167,9 @@ struct ContentView: View {
                     await requestNotificationPermission()
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: .showExercisePicker)) { _ in
+                showExercisePicker = true
+            }
             .onReceive(NotificationCenter.default.publisher(for: .showWeeklyInsights)) { _ in
                 showWeeklyInsights = true
             }

@@ -1153,32 +1153,32 @@
         }
       }
     },
-    "stats.exercises" : {
-      "comment" : "Exercises",
+    "stats.exercise" : {
+      "comment" : "Exercise (singular)",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Übungen"
+            "value" : "Übung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exercises"
+            "value" : "exercise"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ejercicios"
+            "value" : "ejercicio"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exercices"
+            "value" : "exercice"
           }
         },
         "ja" : {
@@ -1190,7 +1190,55 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exercícios"
+            "value" : "exercício"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习"
+          }
+        }
+      }
+    },
+    "stats.exercises" : {
+      "comment" : "Exercises (plural)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "exercises"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ejercicios"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "exercices"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エクササイズ"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "exercícios"
           }
         },
         "zh-Hans" : {
