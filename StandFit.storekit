@@ -67,7 +67,7 @@
       "localizations" : [
 
       ],
-      "name" : "StandFit Premium",
+      "name" : "Upio Premium",
       "subscriptions" : [
         {
           "adHocOffers" : [
@@ -88,14 +88,14 @@
           },
           "localizations" : [
             {
-              "description" : "StandFit Premium Monthly Subscription",
+              "description" : "Upio Premium Monthly Subscription",
               "displayName" : "Premium Monthly",
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.standfit.premium.monthly",
+          "productID" : "com.mke.upio.premium.monthly",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "StandFit Premium Monthly",
+          "referenceName" : "Upio Premium Monthly",
           "subscriptionGroupID" : "21548766",
           "type" : "RecurringSubscription"
         },
@@ -118,14 +118,14 @@
           },
           "localizations" : [
             {
-              "description" : "StandFit Premium Annual Subscription",
+              "description" : "Upio Premium Annual Subscription",
               "displayName" : "Premium Annual",
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.standfit.premium.annual",
+          "productID" : "com.mke.upio.premium.annual",
           "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "StandFit Premium Annual",
+          "referenceName" : "Upio Premium Annual",
           "subscriptionGroupID" : "21548766",
           "type" : "RecurringSubscription"
         }

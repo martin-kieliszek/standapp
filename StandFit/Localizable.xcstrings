@@ -117,9 +117,6 @@
     "🚀" : {
 
     },
-    "🛠️ Debug Tools" : {
-
-    },
     "0 / 0" : {
 
     },
@@ -183,44 +180,44 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "StandFit"
+            "state" : "translated",
+            "value" : "Upio"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit"
+            "value" : "Upio"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "StandFit"
+            "state" : "translated",
+            "value" : "Upio"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "StandFit"
+            "state" : "translated",
+            "value" : "Upio"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "StandFit"
+            "state" : "translated",
+            "value" : "Upio（アピオ）"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "StandFit"
+            "state" : "translated",
+            "value" : "Upio"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "StandFit"
+            "state" : "translated",
+            "value" : "Upio"
           }
         }
       }
@@ -426,16 +423,151 @@
         }
       }
     },
+    "mascot.encouragement" : {
+      "comment" : "Mascot encouragement message",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du schaffst das!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You got this!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Tú puedes!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu peux le faire !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "がんばって！"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você consegue!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加油！"
+          }
+        }
+      }
+    },
+    "mascot.greeting" : {
+      "comment" : "Mascot friendly greeting message",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hallo! Ich bin Upi!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hi! I'm Upi!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Hola! ¡Soy Upi!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salut ! Je suis Upi !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "こんにちは！あぴくんだよ！"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oi! Sou o Upi!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你好！我是阿动！"
+          }
+        }
+      }
+    },
+    "mascot.name" : {
+      "comment" : "Mascot name - Upi for most languages, Apikun for Japanese, Ā Dòng for Chinese",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upi"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upi"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upi"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あぴくん"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿动"
+          }
+        }
+      }
+    },
     "Minute" : {
-
-    },
-    "Send Test Notification (5s)" : {
-
-    },
-    "Test Weekly Insights" : {
-
-    },
-    "These debug options are only visible in development builds and won't appear in production." : {
 
     },
     "time.minutes" : {

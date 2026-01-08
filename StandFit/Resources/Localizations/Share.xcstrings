@@ -56,43 +56,43 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gerade \"%@\" in StandFit freigeschaltet!"
+            "value" : "Gerade \"%@\" in Upio freigeschaltet!"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Just unlocked \"%@\" in StandFit!"
+            "value" : "Just unlocked \"%@\" in Upio!"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Acabo de desbloquear \"%@\" en StandFit!"
+            "value" : "¡Acabo de desbloquear \"%@\" en Upio!"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Je viens de débloquer \"%@\" dans StandFit !"
+            "value" : "Je viens de débloquer \"%@\" dans Upio !"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFitで「%@」を達成しました！"
+            "value" : "Upioで「%@」を達成しました！"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Acabei de desbloquear \"%@\" no StandFit!"
+            "value" : "Acabei de desbloquear \"%@\" no Upio!"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "刚刚在StandFit解锁了\"%@\"！"
+            "value" : "刚刚在Upio解锁了\"%@\"！"
           }
         }
       }
@@ -440,43 +440,43 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meine Woche in StandFit"
+            "value" : "Meine Woche in Upio"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My week in StandFit"
+            "value" : "My week in Upio"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi semana en StandFit"
+            "value" : "Mi semana en Upio"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ma semaine dans StandFit"
+            "value" : "Ma semaine dans Upio"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFitでの私の一週間"
+            "value" : "Upioでの私の一週間"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Minha semana no StandFit"
+            "value" : "Minha semana no Upio"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我在StandFit的一周"
+            "value" : "我在Upio的一周"
           }
         }
       }

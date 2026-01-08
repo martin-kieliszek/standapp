@@ -16,8 +16,11 @@ public enum LocalizedString {
 
     public enum General {
         private static let table = "General"
-        
+
         public static let appName = NSLocalizedString("app.name", tableName: table, comment: "App name")
+        public static let mascotName = NSLocalizedString("mascot.name", tableName: table, comment: "Mascot name")
+        public static let mascotGreeting = NSLocalizedString("mascot.greeting", tableName: table, comment: "Mascot greeting")
+        public static let mascotEncouragement = NSLocalizedString("mascot.encouragement", tableName: table, comment: "Mascot encouragement")
         public static let cancel = NSLocalizedString("general.cancel", tableName: table, comment: "Cancel button")
         public static let save = NSLocalizedString("general.save", tableName: table, comment: "Save button")
         public static let delete = NSLocalizedString("general.delete", tableName: table, comment: "Delete button")

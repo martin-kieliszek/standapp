@@ -8,43 +8,43 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Willkommen bei StandFit"
+            "value" : "Willkommen bei Upio"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welcome to StandFit"
+            "value" : "Welcome to Upio"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenido a StandFit"
+            "value" : "Bienvenido a Upio"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenue sur StandFit"
+            "value" : "Bienvenue sur Upio"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFitへようこそ"
+            "value" : "Upioへようこそ"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bem-vindo ao StandFit"
+            "value" : "Bem-vindo ao Upio"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "欢迎使用 StandFit"
+            "value" : "欢迎使用 Upio"
           }
         }
       }
@@ -296,43 +296,43 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit passt sich Ihrem Leben an. Erstellen Sie Zeitblöcke für unterschiedliche Teile Ihres Tages (arbeiten, schlafen, Freizeit), jeder mit seinen eigenen Erinnerungsintervallen."
+            "value" : "Upio passt sich Ihrem Leben an. Erstellen Sie Zeitblöcke für unterschiedliche Teile Ihres Tages (arbeiten, schlafen, Freizeit), jeder mit seinen eigenen Erinnerungsintervallen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit adapts to your life. Create time blocks for different parts of your day (work, sleep, leisure), each with its own reminder intervals."
+            "value" : "Upio adapts to your life. Create time blocks for different parts of your day (work, sleep, leisure), each with its own reminder intervals."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit se adapta a tu vida. Crea bloques de tiempo para diferentes partes de tu día (trabajo, descanso, ocio), cada uno con sus propios intervalos de recordatorios."
+            "value" : "Upio se adapta a tu vida. Crea bloques de tiempo para diferentes partes de tu día (trabajo, descanso, ocio), cada uno con sus propios intervalos de recordatorios."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit s'adapte à votre vie. Créez des blocs de temps pour différentes parties de votre journée (travail, sommeil, loisirs), chacun avec ses propres intervalles de rappel."
+            "value" : "Upio s'adapte à votre vie. Créez des blocs de temps pour différentes parties de votre journée (travail, sommeil, loisirs), chacun avec ses propres intervalles de rappel."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFitはあなたの生活に適応します。仕事、睡眠、余暇など、1日の異なる部分にタイムブロックを作成し、それぞれに独自のリマインダー間隔を設定できます。"
+            "value" : "Upioはあなたの生活に適応します。仕事、睡眠、余暇など、1日の異なる部分にタイムブロックを作成し、それぞれに独自のリマインダー間隔を設定できます。"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit se adapta à sua vida. Crie blocos de tempo para diferentes partes do seu dia (trabalho, sono, lazer), cada um com seus próprios intervalos de lembretes."
+            "value" : "Upio se adapta à sua vida. Crie blocos de tempo para diferentes partes do seu dia (trabalho, sono, lazer), cada um com seus próprios intervalos de lembretes."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit 适应您的生活。为一天中的不同部分创建时间块（工作、睡眠、休闲），每个都有自己的提醒间隔。"
+            "value" : "Upio 适应您的生活。为一天中的不同部分创建时间块（工作、睡眠、休闲），每个都有自己的提醒间隔。"
           }
         }
       }

@@ -2018,49 +2018,49 @@
       }
     },
     "settings.focus_check_settings" : {
-      "comment" : "Check Settings > Focus to allow StandFit notifications",
+      "comment" : "Check Settings > Focus to allow Upio notifications",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Überprüfen Sie Einstellungen > Fokus, um StandFit-Benachrichtigungen zu erlauben"
+            "value" : "Überprüfen Sie Einstellungen > Fokus, um Upio-Benachrichtigungen zu erlauben"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Check Settings > Focus to allow StandFit notifications"
+            "value" : "Check Settings > Focus to allow Upio notifications"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verifique Configuración > Enfoque para permitir notificaciones de StandFit"
+            "value" : "Verifique Configuración > Enfoque para permitir notificaciones de Upio"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vérifiez Réglages > Concentration pour autoriser les notifications StandFit"
+            "value" : "Vérifiez Réglages > Concentration pour autoriser les notifications Upio"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定 > 集中モードを確認して、StandFitの通知を許可してください"
+            "value" : "設定 > 集中モードを確認して、Upioの通知を許可してください"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verifique Ajustes > Foco para permitir notificações do StandFit"
+            "value" : "Verifique Ajustes > Foco para permitir notificações do Upio"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "检查设置 > 专注模式以允许 StandFit 通知"
+            "value" : "检查设置 > 专注模式以允许 Upio 通知"
           }
         }
       }

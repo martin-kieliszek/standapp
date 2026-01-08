@@ -722,49 +722,49 @@
       }
     },
     "premium.title" : {
-      "comment" : "StandFit Premium",
+      "comment" : "Upio Premium",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit Premium"
+            "value" : "Upio Premium"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit Premium"
+            "value" : "Upio Premium"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit Premium"
+            "value" : "Upio Premium"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit Premium"
+            "value" : "Upio Premium"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit プレミアム"
+            "value" : "Upio プレミアム"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit Premium"
+            "value" : "Upio Premium"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "StandFit高级版"
+            "value" : "Upio高级版"
           }
         }
       }

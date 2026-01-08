@@ -22,8 +22,8 @@ class SubscriptionManager: ObservableObject {
     
     // MARK: - Product IDs
     
-    private let monthlyProductID = "com.standfit.premium.monthly"
-    private let annualProductID = "com.standfit.premium.annual"
+    private let monthlyProductID = "com.mke.upio.premium.monthly"
+    private let annualProductID = "com.mke.upio.premium.annual"
     
     private var availableProducts: [Product] = []
     private var purchasedProductIDs = Set<String>()

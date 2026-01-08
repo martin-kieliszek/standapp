@@ -93,9 +93,13 @@ struct ProgressReportView: View {
                             // Show data
                             StatsHeaderView(stats: stats)
 
-                            // Timeline view (only for Today)
+                            // Timeline views (only for Today)
                             if selectedPeriodType == .today {
-                                timelineView
+                                // GitHub-style heatmap
+                                heatmapView
+
+                                // Multi-series timeline graph with dots
+                                timelineGraphView
                             }
 
                             if shouldShowChart {
@@ -160,9 +164,23 @@ struct ProgressReportView: View {
         }
     }
 
-    private var timelineView: some View {
-        let (notifications, exercises) = store.getTodaysTimeline()
-        return DayActivityHeatmapView(notifications: notifications, exercises: exercises)
+    private var heatmapView: some View {
+        // GitHub-style activity heatmap (original view)
+        let timeline = store.getTodaysTimeline()
+        return DayActivityHeatmapView(
+            notifications: timeline.notifications,
+            exercises: timeline.exercises
+        )
+    }
+
+    private var timelineGraphView: some View {
+        // Multi-series timeline graph with notification dots and exercise checkmarks
+        // Safely get timeline data with error handling to prevent crashes
+        let timeline = store.getTodaysTimeline()
+        return TimelineGraphView(
+            notifications: timeline.notifications,
+            exercises: timeline.exercises
+        )
     }
 
     private var emptyStateView: some View {
