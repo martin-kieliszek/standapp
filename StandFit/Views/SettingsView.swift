@@ -50,9 +50,9 @@ struct SettingsView: View {
                     }
                     .onChange(of: store.remindersEnabled) { enabled in
                         if enabled {
-                            notificationManager.scheduleReminderWithSchedule(store: store)
+                            notificationManager.rebuildNotificationQueue(store: store)
                         } else {
-                            notificationManager.cancelAllReminders()
+                            notificationManager.cancelAllExerciseReminders()
                         }
                         notificationManager.playClickHaptic()
                     }

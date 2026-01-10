@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import BackgroundTasks
 import StandFitCore
 
 @main
@@ -43,6 +44,10 @@ extension Notification.Name {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+
+    // MARK: - Background Task Identifiers
+    private static let backgroundRefreshIdentifier = "com.standfit.notification-refresh"
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -55,74 +60,130 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         NotificationManager.shared.setupNotificationCategories()
         print("✅ Notification categories registered on app launch")
 
-        // Request notification permissions
+        // Register background refresh task
+        registerBackgroundTasks()
+
+        // Request notification permissions and build initial queue
         Task {
             do {
-                try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
-                // ✅ FIX: Don't reschedule on app launch - let lifecycle monitoring handle missing notifications
-                // This prevents resetting the notification chain every time user opens the app
+                let granted = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
+                if granted {
+                    // Build initial notification queue
+                    await NotificationQueueManager.shared.ensureNotificationQueue(store: ExerciseStore.shared)
+                    print("✅ Initial notification queue built")
+                }
             } catch {
-                print("Notification authorization error: \(error)")
+                print("❌ Notification authorization error: \(error)")
             }
         }
-        
+
         // Request Focus Status authorization (iOS 15+)
         if #available(iOS 15.0, *) {
             FocusStatusManager.shared.requestAuthorization()
         }
-        
+
         // ✅ Monitor app lifecycle to ensure notifications stay scheduled
         setupAppLifecycleMonitoring()
-        
+
+        // Schedule background refresh
+        scheduleBackgroundRefresh()
+
         return true
     }
+
+    // MARK: - Background Tasks
+
+    /// Register background task handlers
+    private func registerBackgroundTasks() {
+        BGTaskScheduler.shared.register(
+            forTaskWithIdentifier: Self.backgroundRefreshIdentifier,
+            using: nil
+        ) { task in
+            self.handleBackgroundRefresh(task: task as! BGAppRefreshTask)
+        }
+        print("✅ Background refresh task registered")
+    }
+
+    /// Handle background refresh - validate and refill notification queue
+    private func handleBackgroundRefresh(task: BGAppRefreshTask) {
+        print("🔄 Background refresh started")
+
+        // Set expiration handler
+        task.expirationHandler = {
+            print("⚠️ Background refresh expired")
+            task.setTaskCompleted(success: false)
+        }
+
+        // Perform queue validation
+        Task {
+            await NotificationQueueManager.shared.ensureNotificationQueue(store: ExerciseStore.shared)
+            print("✅ Background refresh completed - queue validated")
+            task.setTaskCompleted(success: true)
+
+            // Schedule next background refresh
+            self.scheduleBackgroundRefresh()
+        }
+    }
+
+    /// Schedule the next background refresh
+    private func scheduleBackgroundRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: Self.backgroundRefreshIdentifier)
+        // Request refresh in 4 hours (iOS will decide actual timing)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 4 * 60 * 60)
+
+        do {
+            try BGTaskScheduler.shared.submit(request)
+            print("📅 Background refresh scheduled for ~4 hours from now")
+        } catch {
+            print("⚠️ Failed to schedule background refresh: \(error)")
+        }
+    }
     
-    /// Monitor app entering foreground to ensure notification chain stays active
+    // MARK: - App Lifecycle
+
+    /// Monitor app entering foreground to ensure notification queue stays healthy
     private func setupAppLifecycleMonitoring() {
         NotificationCenter.default.addObserver(
             forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            self?.ensureNotificationChainActive()
+            self?.validateNotificationQueue()
         }
     }
-    
-    /// Check if notifications are properly scheduled, schedule missing ones
-    private func ensureNotificationChainActive() {
+
+    /// Validate and refill the notification queue when app enters foreground
+    private func validateNotificationQueue() {
+        print("📱 App entered foreground - validating notification queue")
+
         Task {
-            let center = UNUserNotificationCenter.current()
-            let pendingRequests = await center.pendingNotificationRequests()
             let store = ExerciseStore.shared
 
-            // Check if there's a pending exercise reminder
-            let hasExerciseReminder = pendingRequests.contains { request in
-                request.identifier == NotificationType.exerciseReminder.rawValue
-            }
+            // Validate and refill exercise reminder queue
+            await NotificationQueueManager.shared.ensureNotificationQueue(store: store)
 
-            if !hasExerciseReminder && store.remindersEnabled {
-                print("⚠️ No exercise reminder scheduled - scheduling one now")
-                NotificationManager.shared.scheduleReminderWithSchedule(store: store)
-            } else {
-                print("✅ Exercise reminder is scheduled")
-            }
-
-            // Check if there's a pending progress report
+            // Ensure progress report is scheduled
+            let pendingRequests = await UNUserNotificationCenter.current().pendingNotificationRequests()
             let hasProgressReport = pendingRequests.contains { request in
-                request.identifier == NotificationType.progressReport.rawValue
+                NotificationIdentifier.isProgressReport(request.identifier)
             }
 
             if !hasProgressReport && store.progressReportSettings.enabled {
                 print("⚠️ No progress report scheduled - scheduling one now")
                 NotificationManager.shared.scheduleProgressReport(store: store)
-            } else if hasProgressReport {
-                print("✅ Progress report is scheduled")
+            }
+
+            // Update next scheduled time in store
+            if let nextTime = await NotificationManager.shared.getNextReminderTime() {
+                await MainActor.run {
+                    store.nextScheduledNotificationTime = nextTime
+                }
             }
         }
     }
     
     // MARK: - UNUserNotificationCenterDelegate
-    
+
     /// Handle notifications when app is in foreground
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
@@ -133,17 +194,19 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // Record that this notification was actually fired (for timeline tracking)
         NotificationFiredLog.shared.recordNotificationFired()
 
-        // ✅ When any exercise reminder fires (including dead response), schedule next one and follow-up
-        // This applies whether it was a regular notification, snoozed, or dead response
         let categoryId = notification.request.content.categoryIdentifier
+        let identifier = notification.request.identifier
+
+        // Log which notification fired
+        print("🔔 Notification fired: \(NotificationIdentifier.description(for: identifier))")
+
+        // For exercise reminders (including snooze) and dead response, schedule follow-up
+        // NOTE: We do NOT need to schedule the next reminder - the queue is pre-built!
         if categoryId == NotificationType.exerciseReminder.categoryIdentifier ||
            categoryId == NotificationType.deadResponseReminder.categoryIdentifier {
 
             // Schedule follow-up in case user doesn't respond (dead response reset)
             NotificationManager.shared.scheduleFollowUpReminder(store: ExerciseStore.shared)
-
-            // Schedule next regular reminder
-            NotificationManager.shared.scheduleReminderWithSchedule(store: ExerciseStore.shared)
         }
 
         // Show alert with action buttons for better UX (iOS banners hide actions)
@@ -222,26 +285,20 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // This captures the timestamp when user interacted with it
         NotificationFiredLog.shared.recordNotificationFired()
 
-        // User responded - cancel any pending follow-up
+        let categoryIdentifier = response.notification.request.content.categoryIdentifier
+        let identifier = response.notification.request.identifier
+
+        // Log the response
+        print("👆 User responded to notification: \(NotificationIdentifier.description(for: identifier))")
+        print("   Action: \(response.actionIdentifier)")
+
+        // User responded - cancel any pending follow-up (they're not "dead")
         notificationManager.cancelFollowUpReminder()
 
-        // ✅ FIX: Don't reschedule if user is just opening the app from notification tap
-        // Only schedule next reminder if user took an explicit action (logged exercise, dismissed)
-        // This prevents resetting the countdown timer when user just taps to open the app
-        let categoryIdentifier = response.notification.request.content.categoryIdentifier
-        let isExerciseOrDeadResponse = categoryIdentifier == NotificationType.exerciseReminder.categoryIdentifier ||
-                                       categoryIdentifier == NotificationType.deadResponseReminder.categoryIdentifier
+        // NOTE: We do NOT need to reschedule - the notification queue is pre-built!
+        // The next notification is already scheduled.
 
-        // Don't reschedule for default action (tapping notification body) or snooze
-        // Default action = user tapped notification to open app (should preserve existing timer)
-        let shouldReschedule = response.actionIdentifier != UNNotificationDefaultActionIdentifier &&
-                               response.actionIdentifier != "SNOOZE"
-
-        if isExerciseOrDeadResponse && shouldReschedule {
-            notificationManager.scheduleReminderWithSchedule(store: store)
-        }
-
-        // Handle actions based on action identifier first, then fall back to category
+        // Handle actions based on action identifier
         switch response.actionIdentifier {
         case "LOG_EXERCISE":
             // User tapped "Log Exercise" - show exercise picker immediately
@@ -251,8 +308,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             }
 
         case "SNOOZE":
-            // User tapped "Snooze" - schedule notification in 5 minutes (300 seconds)
-            // Note: Snooze handles its own scheduling, so we skip the auto-schedule above
+            // User tapped "Snooze" - schedule snooze notification (uses reserved slot)
             notificationManager.snoozeReminder(seconds: 300, store: store)
             notificationManager.playClickHaptic()
 
@@ -266,7 +322,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         case UNNotificationDefaultActionIdentifier:
             // User tapped the notification body itself - route based on category
             notificationManager.playClickHaptic()
-            
+
             if categoryIdentifier == NotificationType.progressReport.categoryIdentifier {
                 // Progress report notification → show weekly insights
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -281,7 +337,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
         default:
             // User dismissed notification or other action
-            // (Next notification already scheduled above)
             break
         }
     }

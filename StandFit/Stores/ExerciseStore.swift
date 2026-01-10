@@ -653,20 +653,28 @@ class ExerciseStore: ObservableObject {
 
     // MARK: - Notification Scheduling Coordination
 
+    /// Rebuild all notification schedules. Called when profile changes or settings are modified.
+    /// This triggers a full queue rebuild for exercise reminders.
     func updateAllNotificationSchedules(reason: String = "Settings changed") {
-        print("🔔 Rescheduling notifications (\(reason))")
+        print("🔔 Rebuilding notification queue (\(reason))")
 
         let notificationManager = NotificationManager.shared
-        notificationManager.cancelAllReminders()
 
-        // Reschedule exercise reminders
-        if remindersEnabled {
-            notificationManager.scheduleReminderWithSchedule(store: self)
-        }
+        // Rebuild the exercise reminder queue from scratch
+        // This cancels existing exercise reminders and schedules new ones based on current profile
+        notificationManager.rebuildNotificationQueue(store: self)
 
-        // Reschedule progress reports
+        // Reschedule progress reports (independent of exercise reminders)
         if progressReportSettings.enabled {
             notificationManager.scheduleProgressReport(store: self)
+        } else {
+            notificationManager.cancelProgressReport()
         }
+    }
+
+    /// Validate the notification queue without rebuilding. Called periodically.
+    func validateNotificationQueue() {
+        print("📊 Validating notification queue")
+        NotificationManager.shared.ensureNotificationQueue(store: self)
     }
 }

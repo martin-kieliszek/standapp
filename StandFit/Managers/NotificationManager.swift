@@ -102,64 +102,80 @@ class NotificationManager: ObservableObject {
         #endif
     }
     
-    func cancelAllReminders() {
+    /// Cancel all exercise-related reminders (exercise queue, snooze, dead response)
+    /// Does NOT cancel progress reports - use cancelProgressReport() for that
+    func cancelAllExerciseReminders() {
+        Task {
+            await NotificationQueueManager.shared.clearExerciseRelatedNotifications()
+        }
+    }
+
+    /// Cancel only the dead response follow-up reminder
+    func cancelFollowUpReminder() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(
-            withIdentifiers: [
-                NotificationType.exerciseReminder.rawValue,
-                NotificationType.deadResponseReminder.rawValue,
-                NotificationType.progressReport.rawValue
-            ]
+            withIdentifiers: [NotificationIdentifier.deadResponse]
         )
     }
 
-    func cancelFollowUpReminder() {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(
-            withIdentifiers: [NotificationType.deadResponseReminder.rawValue]
-        )
+    /// Cancel only snooze reminders
+    func cancelSnoozeReminders() {
+        Task {
+            let requests = await UNUserNotificationCenter.current().pendingNotificationRequests()
+            let snoozeIds = requests
+                .map(\.identifier)
+                .filter { NotificationIdentifier.isSnoozeReminder($0) }
+            if !snoozeIds.isEmpty {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: snoozeIds)
+            }
+        }
     }
-    
+
+    /// Cancel progress report notification
     func cancelProgressReport() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(
-            withIdentifiers: [NotificationType.progressReport.rawValue]
+            withIdentifiers: [NotificationIdentifier.progressReport]
         )
     }
     
     /// Snooze the reminder for a specified number of seconds from now.
-    /// This schedules a temporary notification that ignores schedule boundaries and active hours.
+    /// This schedules a snooze notification using a reserved slot.
+    /// The main exercise reminder queue remains intact - the next scheduled reminder will still fire.
     func snoozeReminder(seconds: Int, store: ExerciseStore) {
         // Cancel any pending follow-up (user explicitly snoozed)
         cancelFollowUpReminder()
-        
-        // Cancel existing reminder
-        UNUserNotificationCenter.current().removePendingNotificationRequests(
-            withIdentifiers: [NotificationType.exerciseReminder.rawValue]
-        )
-        
+
+        // Cancel any existing snooze reminder (only one snooze at a time)
+        cancelSnoozeReminders()
+
         let snoozeTime = Date().addingTimeInterval(TimeInterval(seconds))
-        
+
         let content = UNMutableNotificationContent()
         content.title = LocalizedString.Notifications.timeToMoveTitle
         content.body = LocalizedString.Notifications.standUpExerciseBody
         content.sound = .default
         content.categoryIdentifier = NotificationType.exerciseReminder.categoryIdentifier
-        
+
         // Use time interval trigger for precise snooze timing
         let trigger = UNTimeIntervalNotificationTrigger(
             timeInterval: TimeInterval(seconds),
             repeats: false
         )
-        
+
+        // Use snooze-specific identifier (doesn't overwrite exercise queue)
+        let identifier = NotificationIdentifier.snoozeReminder(for: snoozeTime)
+
         let request = UNNotificationRequest(
-            identifier: NotificationType.exerciseReminder.rawValue,
+            identifier: identifier,
             content: content,
             trigger: trigger
         )
-        
+
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Failed to schedule snooze: \(error)")
+                print("❌ Failed to schedule snooze: \(error)")
             } else {
                 print("✅ Snoozed reminder for \(seconds) seconds (will fire at \(snoozeTime))")
+                print("   Snooze ID: \(identifier)")
                 DispatchQueue.main.async {
                     store.nextScheduledNotificationTime = snoozeTime
                 }
@@ -169,8 +185,12 @@ class NotificationManager: ObservableObject {
 
     /// Schedule a follow-up reminder for dead response reset.
     /// This fires if the user doesn't respond to the main notification.
+    /// Uses a single reserved slot (NotificationIdentifier.deadResponse).
     func scheduleFollowUpReminder(store: ExerciseStore) {
         guard store.deadResponseEnabled else { return }
+
+        // Cancel any existing dead response first (only one at a time)
+        cancelFollowUpReminder()
 
         let content = UNMutableNotificationContent()
         content.title = LocalizedString.Notifications.stillThereTitle
@@ -184,32 +204,50 @@ class NotificationManager: ObservableObject {
         )
 
         let request = UNNotificationRequest(
-            identifier: NotificationType.deadResponseReminder.rawValue,
+            identifier: NotificationIdentifier.deadResponse,
             content: content,
             trigger: trigger
         )
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Failed to schedule follow-up: \(error)")
+                print("❌ Failed to schedule follow-up: \(error)")
             } else {
-                print("Scheduled follow-up reminder for \(store.deadResponseMinutes) minutes")
+                print("⏰ Scheduled dead response follow-up for \(store.deadResponseMinutes) minutes")
             }
         }
     }
     
-    /// Get the next scheduled reminder time
+    /// Get the next scheduled reminder time (from exercise queue or snooze)
     func getNextReminderTime() async -> Date? {
         let requests = await UNUserNotificationCenter.current()
             .pendingNotificationRequests()
 
-        guard let request = requests.first(where: { $0.identifier == NotificationType.exerciseReminder.rawValue }),
-              let trigger = request.trigger as? UNTimeIntervalNotificationTrigger
-        else {
-            return nil
+        // Find all exercise and snooze reminder times
+        var upcomingTimes: [Date] = []
+
+        for request in requests {
+            let identifier = request.identifier
+
+            // Check for batch-scheduled exercise reminders
+            if NotificationIdentifier.isExerciseReminder(identifier) {
+                if let date = NotificationIdentifier.date(from: identifier) {
+                    upcomingTimes.append(date)
+                }
+            }
+            // Check for snooze reminders
+            else if NotificationIdentifier.isSnoozeReminder(identifier) {
+                if let date = NotificationIdentifier.date(from: identifier) {
+                    upcomingTimes.append(date)
+                } else if let trigger = request.trigger as? UNTimeIntervalNotificationTrigger,
+                          let triggerDate = trigger.nextTriggerDate() {
+                    upcomingTimes.append(triggerDate)
+                }
+            }
         }
 
-        return trigger.nextTriggerDate()
+        // Return the soonest upcoming time
+        return upcomingTimes.filter { $0 > Date() }.min()
     }
      
     
@@ -244,61 +282,51 @@ class NotificationManager: ObservableObject {
     }
     
     // MARK: - Scheduling
-    
+
+    /// Debug: Print all pending notifications with detailed info
     func debugPendingNotifications() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-            print("=== Pending Notifications ===")
-            for request in requests {
-                print("ID: \(request.identifier)")
-                if let trigger = request.trigger as? UNTimeIntervalNotificationTrigger {
-                    print("  Fires in: \(trigger.timeInterval) seconds")
-                    print("  Next date: \(trigger.nextTriggerDate() ?? Date())")
-                }
-            }
-            if requests.isEmpty {
-                print("  (none scheduled)")
-            }
+        Task {
+            let debugInfo = await NotificationQueueManager.shared.getQueueDebugInfo()
+            print(debugInfo.description)
         }
     }
-    
-    func scheduleReminderWithSchedule(store: ExerciseStore) {
-        // Cancel any existing (including follow-ups)
-        cancelAllReminders()
 
-        // Find next valid time using profile system
-        guard let nextTime = calculateNextReminderTime(store: store, from: Date()) else {
-            print("No valid reminder time found in the next week")
-            return
-        }
+    /// Ensure the notification queue is properly populated.
+    /// Call this on app launch, foreground, and when settings change.
+    /// This is the primary method for managing exercise reminders.
+    func ensureNotificationQueue(store: ExerciseStore) {
+        Task {
+            await NotificationQueueManager.shared.ensureNotificationQueue(store: store)
 
-        let content = UNMutableNotificationContent()
-        content.title = LocalizedString.Notifications.timeToMoveTitle
-        content.body = LocalizedString.Notifications.standUpExerciseBody
-        content.sound = .default
-        content.categoryIdentifier = NotificationType.exerciseReminder.categoryIdentifier
-
-        let interval = nextTime.timeIntervalSince(Date())
-        let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: max(interval, 1),
-            repeats: false
-        )
-
-        let request = UNNotificationRequest(
-            identifier: NotificationType.exerciseReminder.rawValue,
-            content: content,
-            trigger: trigger
-        )
-        
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Failed to schedule notification: \(error)")
-            } else {
-                print("Scheduled reminder for \(nextTime)")
-                DispatchQueue.main.async {
+            // Update the next scheduled time in store
+            if let nextTime = await getNextReminderTime() {
+                await MainActor.run {
                     store.nextScheduledNotificationTime = nextTime
                 }
             }
         }
+    }
+
+    /// Rebuild the entire notification queue from scratch.
+    /// Call this when schedule profile changes or reminders are re-enabled.
+    func rebuildNotificationQueue(store: ExerciseStore) {
+        Task {
+            await NotificationQueueManager.shared.rebuildNotificationQueue(store: store)
+
+            // Update the next scheduled time in store
+            if let nextTime = await getNextReminderTime() {
+                await MainActor.run {
+                    store.nextScheduledNotificationTime = nextTime
+                }
+            }
+        }
+    }
+
+    /// @available(*, deprecated, message: "Use ensureNotificationQueue() or rebuildNotificationQueue() instead")
+    /// Legacy single-notification scheduling - kept for backward compatibility during transition
+    func scheduleReminderWithSchedule(store: ExerciseStore) {
+        // Redirect to the new queue-based system
+        ensureNotificationQueue(store: store)
     }
     
     // MARK: - Advanced Scheduling with Profile System
@@ -485,7 +513,7 @@ class NotificationManager: ObservableObject {
         #endif
 
         let request = UNNotificationRequest(
-            identifier: NotificationType.progressReport.rawValue,
+            identifier: NotificationIdentifier.progressReport,
             content: unContent,
             trigger: trigger
         )
@@ -519,16 +547,16 @@ class NotificationManager: ObservableObject {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
 
         let request = UNNotificationRequest(
-            identifier: "\(NotificationType.achievementUnlocked.rawValue)_\(achievement.id)",
+            identifier: NotificationIdentifier.achievement(id: achievement.id),
             content: content,
             trigger: trigger
         )
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Failed to send achievement notification: \(error)")
+                print("❌ Failed to send achievement notification: \(error)")
             } else {
-                print("✅ Achievement notification sent: \(achievement.name)")
+                print("🏆 Achievement notification sent: \(achievement.name)")
             }
         }
     }
@@ -541,14 +569,14 @@ class NotificationManager: ObservableObject {
         content.body = "This is a test notification fired immediately"
         content.sound = .default
         content.categoryIdentifier = NotificationType.progressReport.categoryIdentifier
-        
+
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(
-            identifier: NotificationType.progressReport.rawValue + "_debug",
+            identifier: "\(NotificationIdentifier.progressReport)_debug",
             content: content,
             trigger: trigger
         )
-        
+
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("DEBUG: Failed to trigger test notification: \(error)")
@@ -557,23 +585,69 @@ class NotificationManager: ObservableObject {
             }
         }
     }
-    
-    func listScheduledNotifications() -> [UNNotificationRequest] {
-        var result: [UNNotificationRequest] = []
-        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-            result = requests
-            print("=== Scheduled Notifications ===")
-            for request in requests {
-                print("ID: \(request.identifier)")
-                if let trigger = request.trigger as? UNTimeIntervalNotificationTrigger {
-                    print("  Fires in: \(trigger.timeInterval) seconds")
-                }
-            }
-            if requests.isEmpty {
-                print("  (none scheduled)")
+
+    /// Trigger an exercise reminder immediately for testing
+    func triggerExerciseReminderNow() {
+        let content = UNMutableNotificationContent()
+        content.title = LocalizedString.Notifications.timeToMoveTitle
+        content.body = "This is a test notification"
+        content.sound = .default
+        content.categoryIdentifier = NotificationType.exerciseReminder.categoryIdentifier
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let identifier = NotificationIdentifier.exerciseReminder(for: Date())
+
+        let request = UNNotificationRequest(
+            identifier: identifier,
+            content: content,
+            trigger: trigger
+        )
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("DEBUG: Failed to trigger test exercise reminder: \(error)")
+            } else {
+                print("DEBUG: Test exercise reminder scheduled with ID: \(identifier)")
             }
         }
-        return result
+    }
+
+    /// List all scheduled notifications with detailed info
+    func listScheduledNotifications() async -> [UNNotificationRequest] {
+        let requests = await UNUserNotificationCenter.current().pendingNotificationRequests()
+
+        print("=== Scheduled Notifications (\(requests.count) total) ===")
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E MMM d, h:mm a"
+
+        for request in requests {
+            let identifier = request.identifier
+            let description = NotificationIdentifier.description(for: identifier)
+
+            if let calendarTrigger = request.trigger as? UNCalendarNotificationTrigger,
+               let nextDate = calendarTrigger.nextTriggerDate() {
+                print("  \(description) → \(formatter.string(from: nextDate))")
+            } else if let intervalTrigger = request.trigger as? UNTimeIntervalNotificationTrigger,
+                      let nextDate = intervalTrigger.nextTriggerDate() {
+                print("  \(description) → \(formatter.string(from: nextDate))")
+            } else if let date = NotificationIdentifier.date(from: identifier) {
+                print("  \(description) → \(formatter.string(from: date))")
+            } else {
+                print("  \(description)")
+            }
+        }
+
+        if requests.isEmpty {
+            print("  (none scheduled)")
+        }
+
+        return requests
+    }
+
+    /// Get queue debug info asynchronously
+    func getQueueDebugInfo() async -> QueueDebugInfo {
+        return await NotificationQueueManager.shared.getQueueDebugInfo()
     }
     #endif
     

@@ -18,6 +18,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4038F29A2F11E3B300A36979 /* Exceptions for "StandFit" folder in "StandFit" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 406F62562F079A0A00CAE1C7 /* StandFit */;
+		};
 		406F62EF2F079F9400CAE1C7 /* Exceptions for "StandFit Watch App" folder in "StandFit Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -30,6 +37,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		406F62592F079A0A00CAE1C7 /* StandFit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4038F29A2F11E3B300A36979 /* Exceptions for "StandFit" folder in "StandFit" target */,
+			);
 			path = StandFit;
 			sourceTree = "<group>";
 		};
@@ -352,6 +362,7 @@
 				DEVELOPMENT_TEAM = P4GY39C72M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StandFit/Info.plist;
 				INFOPLIST_KEY_NSFocusStatusUsageDescription = "StandFit checks your Focus Mode status to warn you when reminders may be silenced, helping ensure you don't miss important exercise notifications.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -386,6 +397,7 @@
 				DEVELOPMENT_TEAM = P4GY39C72M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StandFit/Info.plist;
 				INFOPLIST_KEY_NSFocusStatusUsageDescription = "StandFit checks your Focus Mode status to warn you when reminders may be silenced, helping ensure you don't miss important exercise notifications.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
