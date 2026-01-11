@@ -183,6 +183,76 @@ class NotificationManager: ObservableObject {
         }
     }
 
+    /// Extend the current timer by adding time to the next scheduled notification.
+    /// This cancels the next scheduled notification and reschedules it later.
+    func extendTimer(bySeconds seconds: Int, store: ExerciseStore) {
+        Task {
+            // Get the current next reminder time
+            guard let currentNextTime = await getNextReminderTime() else {
+                // No scheduled notification - fall back to snooze from now
+                snoozeReminder(seconds: seconds, store: store)
+                return
+            }
+
+            // Calculate new time by adding to the current scheduled time
+            let newTime = currentNextTime.addingTimeInterval(TimeInterval(seconds))
+
+            // Cancel the current next notification (could be exercise or snooze)
+            await cancelNextScheduledNotification()
+
+            // Schedule a new snooze notification at the extended time
+            let content = UNMutableNotificationContent()
+            content.title = LocalizedString.Notifications.timeToMoveTitle
+            content.body = LocalizedString.Notifications.standUpExerciseBody
+            content.sound = .default
+            content.categoryIdentifier = NotificationType.exerciseReminder.categoryIdentifier
+
+            let identifier = NotificationIdentifier.snoozeReminder(for: newTime)
+            let trigger = UNCalendarNotificationTrigger(
+                dateMatching: Calendar.current.dateComponents(
+                    [.year, .month, .day, .hour, .minute],
+                    from: newTime
+                ),
+                repeats: false
+            )
+
+            let request = UNNotificationRequest(
+                identifier: identifier,
+                content: content,
+                trigger: trigger
+            )
+
+            do {
+                try await UNUserNotificationCenter.current().add(request)
+                print("✅ Extended timer by \(seconds)s: \(currentNextTime) → \(newTime)")
+                await MainActor.run {
+                    store.nextScheduledNotificationTime = newTime
+                }
+            } catch {
+                print("❌ Failed to extend timer: \(error)")
+            }
+        }
+    }
+
+    /// Cancel the next scheduled notification (whether exercise or snooze)
+    private func cancelNextScheduledNotification() async {
+        guard let nextTime = await getNextReminderTime() else { return }
+
+        let requests = await UNUserNotificationCenter.current().pendingNotificationRequests()
+
+        // Find the notification that matches the next time
+        for request in requests {
+            if let date = NotificationIdentifier.date(from: request.identifier),
+               abs(date.timeIntervalSince(nextTime)) < 60 { // Within 1 minute
+                UNUserNotificationCenter.current().removePendingNotificationRequests(
+                    withIdentifiers: [request.identifier]
+                )
+                print("🗑️ Cancelled next notification: \(request.identifier)")
+                return
+            }
+        }
+    }
+
     /// Schedule a follow-up reminder for dead response reset.
     /// This fires if the user doesn't respond to the main notification.
     /// Uses a single reserved slot (NotificationIdentifier.deadResponse).

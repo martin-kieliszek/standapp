@@ -256,8 +256,8 @@ class NotificationQueueManager: ObservableObject {
                 reminderTimes.append(roundedTime)
             }
 
-            // Move past this time for next iteration
-            currentDate = nextTime.addingTimeInterval(60)
+            // Move past this time for next iteration (just 1 second to avoid duplicates)
+            currentDate = nextTime.addingTimeInterval(1)
         }
 
         return reminderTimes
