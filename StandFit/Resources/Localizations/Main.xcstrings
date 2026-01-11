@@ -288,6 +288,201 @@
           }
         }
       }
+    },
+    "main.mascot_positive_01" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Stark! Du hast heute eine Übung protokolliert." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nice work — you logged an exercise today." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Buen trabajo! Hoy registraste un ejercicio." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Bravo ! Tu as enregistré un exercice aujourd'hui." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "いいね！今日はエクササイズを記録できたよ。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mandou bem — você registrou um exercício hoje." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "做得好！你今天已经记录了练习。" } }
+      }
+    },
+    "main.mascot_positive_02" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Klasse! Bleib dran — du bist auf Kurs." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Great job! Keep the momentum going." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Genial! Mantén el impulso." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Super ! Garde ton élan." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "すごい！この調子で続けよう。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Ótimo trabalho! Continue no ritmo." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "太棒了！继续保持这个势头。" } }
+      }
+    },
+    "main.mascot_positive_03" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Du baust gerade eine richtig gute Gewohnheit auf." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You’re building a strong habit." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Estás creando un hábito fuerte." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tu construis une belle habitude." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "いい習慣が身についてきてるね。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Você está criando um ótimo hábito." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "你正在养成一个很棒的习惯。" } }
+      }
+    },
+    "main.mascot_positive_04" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Das ist ein Sieg für heute." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "That’s a win for today." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Eso es una victoria de hoy." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "C'est une victoire pour aujourd'hui." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今日は勝ちだね。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Isso é uma vitória de hoje." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "今天这就是一场胜利。" } }
+      }
+    },
+    "main.mascot_positive_05" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gut gemacht — dein Zukunfts-Ich wird es dir danken." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Well done — your future self will thank you." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Bien hecho — tu yo del futuro te lo agradecerá." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Bien joué — ton toi du futur te remerciera." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "よくやった！未来の自分が喜ぶよ。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Muito bem — seu eu do futuro vai agradecer." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "干得漂亮——未来的你会感谢现在的你。" } }
+      }
+    },
+    "main.mascot_positive_06" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Bewegung protokolliert. Fortschritt gemacht." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Movement logged. Progress made." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Movimiento registrado. Progreso logrado." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mouvement enregistré. Progrès en marche." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "動きを記録。前進できたね。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Movimento registrado. Progresso feito." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已记录运动。进步已达成。" } }
+      }
+    },
+    "main.mascot_positive_07" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Du bist heute aufgetaucht — richtig gut!" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You showed up today. Awesome." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Apareciste hoy. ¡Genial!" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tu t'es lancé aujourd'hui. Génial." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今日はちゃんとやったね。えらい！" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Você apareceu hoje. Incrível." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "你今天坚持了。太棒了。" } }
+      }
+    },
+    "main.mascot_positive_08" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kleine Schritte, große Ergebnisse. Weiter so!" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Small steps, big results. Keep it up." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pasos pequeños, grandes resultados. Sigue así." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Petits pas, grands résultats. Continue comme ça." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "小さな一歩が大きな結果に。続けよう！" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Passos pequenos, grandes resultados. Continue assim." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "小步前进，也能收获大成果。继续加油。" } }
+      }
+    },
+    "main.mascot_positive_09" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Stolz auf dich, dass du dir Zeit für Bewegung genommen hast." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Proud of you for making time to move." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Estoy orgulloso de ti por hacer tiempo para moverte." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Fier de toi d'avoir pris du temps pour bouger." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "動く時間を作れたの、すごいよ。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Orgulho de você por reservar um tempo para se mover." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "为你愿意腾出时间运动感到骄傲。" } }
+      }
+    },
+    "main.mascot_positive_10" : {
+      "comment" : "Mascot positive reinforcement (shown when an exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Übung protokolliert — dein Rhythmus zahlt sich aus." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Exercise logged — your consistency is paying off." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ejercicio registrado — tu constancia está dando frutos." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Exercice enregistré — ta régularité paie." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "記録完了！コツコツ続けてるのが最高だよ。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Exercício registrado — sua consistência está valendo a pena." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已记录练习——你的坚持正在见效。" } }
+      }
+    },
+    "main.mascot_motivation_01" : {
+      "comment" : "Mascot motivational suggestion (shown when no exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ein kurzes Set reicht, um loszulegen." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "A quick set is all it takes to start." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Un set rápido es todo lo que necesitas para empezar." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Une petite série suffit pour commencer." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "まずは短い1セットからでOK。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Um set rápido já basta para começar." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "先做一小组就能开始了。" } }
+      }
+    },
+    "main.mascot_motivation_02" : {
+      "comment" : "Mascot motivational suggestion (shown when no exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Probier jetzt 10 Wiederholungen — du schaffst das." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try 10 reps right now — you can do it." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Prueba 10 repeticiones ahora mismo — tú puedes." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Essaie 10 répétitions maintenant — tu peux le faire." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "今すぐ10回やってみよう。きっとできる！" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Tente 10 repetições agora — você consegue." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "现在就做10次——你可以的。" } }
+      }
+    },
+    "main.mascot_motivation_03" : {
+      "comment" : "Mascot motivational suggestion (shown when no exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Steh auf, streck dich und protokolliere einen kleinen Erfolg." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stand up, stretch, and log a small win." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ponte de pie, estira y registra una pequeña victoria." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Lève-toi, étire-toi et enregistre une petite victoire." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "立って伸びて、小さな達成を記録しよう。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Levante, alongue e registre uma pequena vitória." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "站起来，伸伸懒腰，记录一次小胜利。" } }
+      }
+    },
+    "main.mascot_motivation_04" : {
+      "comment" : "Mascot motivational suggestion (shown when no exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Deine nächste Übung kann unter einer Minute dauern." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your next exercise can be under a minute." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tu próximo ejercicio puede durar menos de un minuto." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ton prochain exercice peut durer moins d'une minute." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "次の運動は1分以内でもいいんだよ。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Seu próximo exercício pode levar menos de um minuto." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下一个练习一分钟以内也可以。" } }
+      }
+    },
+    "main.mascot_motivation_05" : {
+      "comment" : "Mascot motivational suggestion (shown when no exercise has been logged today)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wähl eine Bewegung aus und leg los." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pick one movement and get it done." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Elige un movimiento y hazlo." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Choisis un mouvement et fais-le." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "動きを1つ選んで、やってみよう。" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Escolha um movimento e faça acontecer." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选一个动作，马上完成它。" } }
+      }
     }
   },
   "version" : "1.0"

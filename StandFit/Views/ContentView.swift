@@ -62,6 +62,9 @@ struct ContentView: View {
                         // Hero section with streak and timer
                         heroSection
 
+                        // Mascot message (motivational vs positive)
+                        mascotMessageCard
+
                         // Quick action buttons
                         quickActionsGrid
 
@@ -178,6 +181,37 @@ struct ContentView: View {
                 checkForNewAchievements()
             }
         }
+    }
+
+    // MARK: - Mascot Message Card
+
+    private var mascotMessageCard: some View {
+        let hasLoggedToday = !exerciseStore.todaysLogs.isEmpty
+        let message = MascotMessagePicker.message(hasLoggedToday: hasLoggedToday, date: currentTime)
+        let imageName = MascotMessagePicker.imageName(hasLoggedToday: hasLoggedToday)
+
+        return HStack(spacing: 14) {
+            Image(imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 56, height: 56)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .accessibilityHidden(true)
+
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.leading)
+
+            Spacer(minLength: 0)
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.ultraThinMaterial)
+                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
+        )
+        .accessibilityElement(children: .combine)
     }
 
     // MARK: - Hero Section
@@ -833,6 +867,46 @@ struct ContentView: View {
         .frame(maxWidth: .infinity)
         .background(Color.purple.opacity(0.15))
         .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+private enum MascotMessagePicker {
+    static func imageName(hasLoggedToday: Bool) -> String {
+        hasLoggedToday ? "Upi_Situps" : "Upi_Running"
+    }
+
+    static func message(hasLoggedToday: Bool, date: Date) -> String {
+        let messages = hasLoggedToday ? positiveMessages : motivationalMessages
+        guard !messages.isEmpty else { return "" }
+
+        let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 0
+        let index = abs(dayOfYear) % messages.count
+        return messages[index]
+    }
+
+    private static var positiveMessages: [String] {
+        [
+            LocalizedString.Main.mascotPositive01,
+            LocalizedString.Main.mascotPositive02,
+            LocalizedString.Main.mascotPositive03,
+            LocalizedString.Main.mascotPositive04,
+            LocalizedString.Main.mascotPositive05,
+            LocalizedString.Main.mascotPositive06,
+            LocalizedString.Main.mascotPositive07,
+            LocalizedString.Main.mascotPositive08,
+            LocalizedString.Main.mascotPositive09,
+            LocalizedString.Main.mascotPositive10
+        ]
+    }
+
+    private static var motivationalMessages: [String] {
+        [
+            LocalizedString.Main.mascotMotivation01,
+            LocalizedString.Main.mascotMotivation02,
+            LocalizedString.Main.mascotMotivation03,
+            LocalizedString.Main.mascotMotivation04,
+            LocalizedString.Main.mascotMotivation05
+        ]
     }
 }
 

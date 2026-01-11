@@ -109,6 +109,24 @@ public enum LocalizedString {
         public static let quickLog = NSLocalizedString("main.quick_log", tableName: table, comment: "Quick log section title")
         public static let todayActivity = NSLocalizedString("main.today_activity", tableName: table, comment: "Today's activity section")
         public static let noActivityToday = NSLocalizedString("main.no_activity_today", tableName: table, comment: "No activity message")
+
+        // Mascot messages (shown on the main screen)
+        public static let mascotPositive01 = NSLocalizedString("main.mascot_positive_01", tableName: table, comment: "Mascot positive reinforcement 1")
+        public static let mascotPositive02 = NSLocalizedString("main.mascot_positive_02", tableName: table, comment: "Mascot positive reinforcement 2")
+        public static let mascotPositive03 = NSLocalizedString("main.mascot_positive_03", tableName: table, comment: "Mascot positive reinforcement 3")
+        public static let mascotPositive04 = NSLocalizedString("main.mascot_positive_04", tableName: table, comment: "Mascot positive reinforcement 4")
+        public static let mascotPositive05 = NSLocalizedString("main.mascot_positive_05", tableName: table, comment: "Mascot positive reinforcement 5")
+        public static let mascotPositive06 = NSLocalizedString("main.mascot_positive_06", tableName: table, comment: "Mascot positive reinforcement 6")
+        public static let mascotPositive07 = NSLocalizedString("main.mascot_positive_07", tableName: table, comment: "Mascot positive reinforcement 7")
+        public static let mascotPositive08 = NSLocalizedString("main.mascot_positive_08", tableName: table, comment: "Mascot positive reinforcement 8")
+        public static let mascotPositive09 = NSLocalizedString("main.mascot_positive_09", tableName: table, comment: "Mascot positive reinforcement 9")
+        public static let mascotPositive10 = NSLocalizedString("main.mascot_positive_10", tableName: table, comment: "Mascot positive reinforcement 10")
+
+        public static let mascotMotivation01 = NSLocalizedString("main.mascot_motivation_01", tableName: table, comment: "Mascot motivational suggestion 1")
+        public static let mascotMotivation02 = NSLocalizedString("main.mascot_motivation_02", tableName: table, comment: "Mascot motivational suggestion 2")
+        public static let mascotMotivation03 = NSLocalizedString("main.mascot_motivation_03", tableName: table, comment: "Mascot motivational suggestion 3")
+        public static let mascotMotivation04 = NSLocalizedString("main.mascot_motivation_04", tableName: table, comment: "Mascot motivational suggestion 4")
+        public static let mascotMotivation05 = NSLocalizedString("main.mascot_motivation_05", tableName: table, comment: "Mascot motivational suggestion 5")
     }
 
     // MARK: - Exercise Picker
