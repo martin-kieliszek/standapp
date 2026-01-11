@@ -307,11 +307,11 @@ struct ContentView: View {
                         Divider()
                             .padding(.horizontal, -20)
 
-                        // Timer control buttons - extend the current countdown
+                        // Quick ad-hoc reminder buttons
                         HStack(spacing: 8) {
-                            // +1 min button - adds 1 minute to current timer
+                            // +1 min button - schedule quick reminder 1 minute from now
                             Button {
-                                NotificationManager.shared.extendTimer(bySeconds: 60, store: exerciseStore)
+                                NotificationManager.shared.snoozeReminder(seconds: 60, store: exerciseStore)
                                 NotificationManager.shared.playClickHaptic()
                             } label: {
                                 Text(LocalizedString.Notifications.snooze1Min)
@@ -324,9 +324,9 @@ struct ContentView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
 
-                            // +5 min button - adds 5 minutes to current timer
+                            // +5 min button - schedule quick reminder 5 minutes from now
                             Button {
-                                NotificationManager.shared.extendTimer(bySeconds: 300, store: exerciseStore)
+                                NotificationManager.shared.snoozeReminder(seconds: 300, store: exerciseStore)
                                 NotificationManager.shared.playClickHaptic()
                             } label: {
                                 Text(LocalizedString.Notifications.snooze5Min)

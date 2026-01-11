@@ -259,9 +259,18 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             })
         }
         
-        // Always add dismiss button
-        alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionDismiss, style: .cancel))
-        
+        // Always add dismiss button - also refresh next reminder time
+        alert.addAction(UIAlertAction(title: LocalizedString.Notifications.actionDismiss, style: .cancel) { _ in
+            // Update next scheduled time after dismiss
+            Task {
+                if let nextTime = await NotificationManager.shared.getNextReminderTime() {
+                    await MainActor.run {
+                        ExerciseStore.shared.nextScheduledNotificationTime = nextTime
+                    }
+                }
+            }
+        })
+
         // Present on main window
         await MainActor.run {
             if let window = UIApplication.shared.connectedScenes
