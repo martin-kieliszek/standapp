@@ -234,7 +234,7 @@ The queue should be validated/refilled at these moments:
 ```xml
 <key>BGTaskSchedulerPermittedIdentifiers</key>
 <array>
-    <string>com.standfit.notification-refresh</string>
+    <string>com.mke.upio.notification-refresh</string>
 </array>
 <key>UIBackgroundModes</key>
 <array>
@@ -247,7 +247,7 @@ The queue should be validated/refilled at these moments:
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions...) {
     BGTaskScheduler.shared.register(
-        forTaskWithIdentifier: "com.standfit.notification-refresh",
+        forTaskWithIdentifier: "com.mke.upio.notification-refresh",
         using: nil
     ) { task in
         self.handleNotificationRefresh(task: task as! BGAppRefreshTask)
@@ -269,7 +269,7 @@ func handleNotificationRefresh(task: BGAppRefreshTask) {
 }
 
 func scheduleBackgroundRefresh() {
-    let request = BGAppRefreshTaskRequest(identifier: "com.standfit.notification-refresh")
+    let request = BGAppRefreshTaskRequest(identifier: "com.mke.upio.notification-refresh")
     request.earliestBeginDate = Date(timeIntervalSinceNow: 4 * 60 * 60) // 4 hours
     try? BGTaskScheduler.shared.submit(request)
 }

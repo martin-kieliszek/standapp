@@ -46,7 +46,7 @@ extension Notification.Name {
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     // MARK: - Background Task Identifiers
-    private static let backgroundRefreshIdentifier = "com.standfit.notification-refresh"
+    private static let backgroundRefreshIdentifier = "com.mke.upio.notification-refresh"
 
     func application(
         _ application: UIApplication,
