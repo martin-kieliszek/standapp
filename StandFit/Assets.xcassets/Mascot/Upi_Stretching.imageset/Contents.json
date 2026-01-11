@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "upi_standstretch_notext_1024x1536.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

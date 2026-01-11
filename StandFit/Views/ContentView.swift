@@ -872,7 +872,7 @@ struct ContentView: View {
 
 private enum MascotMessagePicker {
     static func imageName(hasLoggedToday: Bool) -> String {
-        hasLoggedToday ? "Upi_Situps" : "Upi_Running"
+        hasLoggedToday ? "Upi_Stretching" : "Upi_Squating"
     }
 
     static func message(hasLoggedToday: Bool, date: Date) -> String {
