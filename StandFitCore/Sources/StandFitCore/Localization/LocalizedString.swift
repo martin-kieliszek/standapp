@@ -1015,6 +1015,9 @@ public enum LocalizedString {
         public static let emptyToday = NSLocalizedString("progress_report.empty_today", tableName: table, comment: "Empty state message for today")
         public static let emptyWeek = NSLocalizedString("progress_report.empty_week", tableName: table, comment: "Empty state message for week")
         public static let emptyMonth = NSLocalizedString("progress_report.empty_month", tableName: table, comment: "Empty state message for month")
+
+        public static let exerciseSet = NSLocalizedString("progress_report.exercise_set", tableName: table, comment: "Label for a single exercise set (one logged session)")
+        public static let exerciseSets = NSLocalizedString("progress_report.exercise_sets", tableName: table, comment: "Label for multiple exercise sets (logged sessions)")
     }
     
     // MARK: - Progress Report Settings

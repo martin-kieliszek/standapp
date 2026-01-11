@@ -176,29 +176,42 @@ struct ProgressChartsView: View {
 
     private func calculateBreakdown(for logs: [ExerciseLog]) -> [ExerciseChartItem] {
         // Group logs by exercise
-        var exerciseCounts: [String: (item: ExerciseItem, count: Int)] = [:]
+        var exerciseAmounts: [String: (item: ExerciseItem, amount: Int)] = [:]
 
         for log in logs {
             // Convert log to ExerciseItem (skip if deleted)
             guard let item = toExerciseItem(log) else { continue }
             let key = item.id
+            let amount = volumeAmount(for: item.unitType, storedValue: log.count)
 
-            if let existing = exerciseCounts[key] {
-                exerciseCounts[key] = (existing.item, existing.count + log.count)
+            if let existing = exerciseAmounts[key] {
+                exerciseAmounts[key] = (existing.item, existing.amount + amount)
             } else {
-                exerciseCounts[key] = (item, log.count)
+                exerciseAmounts[key] = (item, amount)
             }
         }
 
         // Convert to chart items with assigned colors
-        return exerciseCounts.map { key, value in
+        return exerciseAmounts.map { key, value in
             ExerciseChartItem(
                 exerciseId: key,
                 exerciseName: value.item.name,
-                count: value.count,
+                count: value.amount,
                 color: ExerciseColorPalette.color(for: value.item)
             )
-        }.sorted { $0.count > $1.count } // Sort by count for consistent stacking
+        }.sorted { $0.count > $1.count } // Sort by amount for consistent stacking
+    }
+
+    private func volumeAmount(for unitType: ExerciseUnitType, storedValue: Int) -> Int {
+        if unitType.isTimeBased {
+            return minutesRoundedUp(fromSeconds: storedValue)
+        }
+        return storedValue
+    }
+
+    private func minutesRoundedUp(fromSeconds seconds: Int) -> Int {
+        guard seconds > 0 else { return 0 }
+        return Int(ceil(Double(seconds) / 60.0))
     }
 
     private func toExerciseItem(_ log: ExerciseLog) -> ExerciseItem? {
@@ -262,6 +275,14 @@ struct ExerciseBreakdownView: View {
     let breakdown: [ExerciseBreakdown]
     let period: ReportPeriod
 
+    private var sortedByVolume: [ExerciseBreakdown] {
+        breakdown.sorted { volumeAmount(for: $0) > volumeAmount(for: $1) }
+    }
+
+    private var totalVolume: Int {
+        sortedByVolume.reduce(0) { $0 + volumeAmount(for: $1) }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(LocalizedString.Progress.breakdownTitle)
@@ -275,11 +296,14 @@ struct ExerciseBreakdownView: View {
                     .padding(.vertical, 16)
             } else {
                 VStack(spacing: 12) {
-                    ForEach(breakdown, id: \.exercise.id) { item in
+                    ForEach(sortedByVolume, id: \.exercise.id) { item in
+                        let (value, unitLabel) = volumeDisplay(for: item)
+                        let pct = totalVolume > 0 ? Double(value) / Double(totalVolume) : 0
                         ExerciseBreakdownRow(
                             name: item.exercise.name,
-                            count: item.count,
-                            percentage: item.percentage,
+                            value: value,
+                            unitLabel: unitLabel,
+                            percentage: pct,
                             color: exerciseColor(item.exercise)
                         )
                     }
@@ -293,11 +317,31 @@ struct ExerciseBreakdownView: View {
     private func exerciseColor(_ item: ExerciseItem) -> Color {
         return ExerciseColorPalette.color(for: item)
     }
+
+    private func volumeAmount(for item: ExerciseBreakdown) -> Int {
+        if item.exercise.unitType.isTimeBased {
+            return minutesRoundedUp(fromSeconds: item.totalAmount)
+        }
+        return item.totalAmount
+    }
+
+    private func volumeDisplay(for item: ExerciseBreakdown) -> (value: Int, unitLabel: String) {
+        if item.exercise.unitType.isTimeBased {
+            return (minutesRoundedUp(fromSeconds: item.totalAmount), LocalizedString.ExerciseUnitTypeName.minutesLabel)
+        }
+        return (item.totalAmount, item.exercise.unitType.unitLabel)
+    }
+
+    private func minutesRoundedUp(fromSeconds seconds: Int) -> Int {
+        guard seconds > 0 else { return 0 }
+        return Int(ceil(Double(seconds) / 60.0))
+    }
 }
 
 struct ExerciseBreakdownRow: View {
     let name: String
-    let count: Int
+    let value: Int
+    let unitLabel: String
     let percentage: Double
     let color: Color
 
@@ -325,11 +369,11 @@ struct ExerciseBreakdownRow: View {
             }
             .frame(width: 50)
 
-            Text("\(count)")
+            Text("\(value) \(unitLabel)")
                 .font(.headline)
                 .monospacedDigit()
                 .foregroundStyle(.secondary)
-                .frame(width: 40, alignment: .trailing)
+                .frame(minWidth: 64, alignment: .trailing)
         }
     }
 }

@@ -18,7 +18,7 @@ struct StatsHeaderView: View {
                 Text("\(stats.totalCount)")
                     .font(.title)
                     .fontWeight(.bold)
-                Text(stats.totalCount == 1 ? LocalizedString.Stats.rep : LocalizedString.Stats.reps)
+                Text(stats.totalCount == 1 ? LocalizedString.ProgressReport.exerciseSet : LocalizedString.ProgressReport.exerciseSets)
                     .font(.body)
                     .foregroundStyle(.secondary)
             }
