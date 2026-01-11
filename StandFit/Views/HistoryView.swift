@@ -17,9 +17,11 @@ struct HistoryView: View {
             Group {
                 if store.logs.isEmpty {
                     VStack(spacing: 16) {
-                        Image(systemName: "figure.stand")
-                            .font(.system(size: 48))
-                            .foregroundStyle(.secondary)
+                        Image("Upi_Running")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 96, height: 96)
+                            .accessibilityHidden(true)
                         Text(LocalizedString.UI.noExercisesYet)
                             .font(.headline)
                             .foregroundStyle(.secondary)

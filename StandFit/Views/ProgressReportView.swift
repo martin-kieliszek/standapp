@@ -185,9 +185,11 @@ struct ProgressReportView: View {
 
     private var emptyStateView: some View {
         VStack(spacing: 16) {
-            Image(systemName: "chart.bar.xaxis")
-                .font(.title)
-                .foregroundStyle(.secondary)
+            Image("Upi_Running")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 96, height: 96)
+                .accessibilityHidden(true)
             Text(LocalizedString.ProgressReport.noActivityLogged)
                 .font(.headline)
                 .foregroundStyle(.secondary)

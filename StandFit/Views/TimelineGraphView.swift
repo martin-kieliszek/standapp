@@ -154,9 +154,11 @@ struct TimelineGraphView: View {
 
     private var emptyStateView: some View {
         VStack(spacing: 12) {
-            Image(systemName: "chart.line.downtrend.xyaxis")
-                .font(.title2)
-                .foregroundStyle(.secondary)
+            Image("Upi_Running")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 84, height: 84)
+                .accessibilityHidden(true)
             Text(LocalizedString.Stats.noActivityToday)
                 .font(.body)
                 .foregroundStyle(.secondary)

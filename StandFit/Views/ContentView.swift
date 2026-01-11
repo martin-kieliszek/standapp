@@ -872,7 +872,14 @@ struct ContentView: View {
 
 private enum MascotMessagePicker {
     static func imageName(hasLoggedToday: Bool) -> String {
-        hasLoggedToday ? "Upi_Stretching" : "Upi_Squating"
+        if hasLoggedToday {
+            return "Upi_Running"
+        }
+
+        let motivationalImages = ["Upi_Squating", "Upi_Stretching"]
+        let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 0
+        let index = abs(dayOfYear) % motivationalImages.count
+        return motivationalImages[index]
     }
 
     static func message(hasLoggedToday: Bool, date: Date) -> String {

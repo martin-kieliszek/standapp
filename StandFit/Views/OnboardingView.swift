@@ -168,9 +168,11 @@ struct WelcomePageView: View {
                     .frame(width: 140, height: 140)
                     .shadow(color: .blue.opacity(0.4), radius: 20)
 
-                Image(systemName: "figure.stand")
-                    .font(.system(size: 70))
-                    .foregroundStyle(.white)
+                Image("Upi_Running")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 110, height: 110)
+                    .accessibilityHidden(true)
             }
 
             // Title and subtitle
